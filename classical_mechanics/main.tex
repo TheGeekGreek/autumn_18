@@ -1,0 +1,43 @@
+\input{header.tex}
+
+\begin{document}
+
+%Roman page numbering
+\frontmatter
+
+\renewcommand*{\thefootnote}{\fnsymbol{footnote}}
+
+%Half-Title Page
+\thispagestyle{empty}
+
+\begin{center}
+    \rule{\linewidth}{1mm}\\
+	\fontsize{85}{85}{\textsc{Classical Mechanics}}\\
+	\rule{\linewidth}{1mm} \\[.5cm]
+	\fontsize{25}{25}{\textsc{Yannis B\"ahni\footnote{ETH Z\"urich, R\"amistrasse 101, 8092 Z\"urich. \emph{E-mail address}: \href{mailto:baehniy@student.ethz.ch}{\nolinkurl{baehniy@student.ethz.ch}}}}}\\
+	\vspace{5cm}
+	Semester Paper under the Supervision of Prof. Dr. Ana Cannas Da Silva at ETH Z\"urich
+\end{center}
+\clearpage
+
+\chapter*{Preface}
+\noindent Winterthur, \hfill Yannis B\"ahni\\
+September 8, 2018
+\tableofcontents
+
+\mainmatter
+
+\renewcommand*{\thefootnote}{\arabic{footnote}}
+
+\input{Lagrangian_mechanics.tex}
+\input{Hamiltonian_mechanics.tex}
+
+%Appendix
+\appendix
+\begin{appendix}
+
+\end{appendix}
+
+\printbibliography
+
+\end{document}

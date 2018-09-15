@@ -1,0 +1,58 @@
+\chapter{Lagrangian Mechanics}
+\section*{Lagrangian Systems and the Principle of Least Action}
+
+\begin{definition}[Lagrangian System]
+	A \bld{Lagrangian system} is defined to be a tuple $(M,L)$ consisting of an object $M \in \mathsf{Diff}$ and a morphism $L \in \mathsf{Diff}(TM \times \mathbb{R},\mathbb{R})$, called a \bld{Lagrangian function}.
+\end{definition}
+
+\begin{definition}[Path Space]
+	\label{def:path_space}
+	Let $M \in \mathsf{Diff}$, $p,q \in M$ and $t_p, t_q \in \mathbb{R}$ with $t_p \leq t_q$. Define the \bld{path space of $M$ connecting $(p,t_p)$ and $(q,t_q)$} to be the set
+	\begin{equation}
+		\label{eq:path_space}
+		\mathcal{P}(M)^{p,t_p}_{q,t_q} := \cbr[0]{\gamma \in \mathsf{Diff}(\intcc[0]{t_p,t_q},M) : \gamma(t_p) = p \text{ and } \gamma(t_q) = q}.
+			\end{equation}
+\end{definition}
+
+\begin{remark}
+	For the sake of simplicity, we will just use the terminology \emph{path space} for $\mathcal{P}(M)^{p,t_p}_{q,t_q}$ and simply write $\mathcal{P}(M)$. We implicitely assume the conditions of definition \ref{def:path_space}, however.
+\end{remark}
+
+\begin{color}{red}
+\begin{proposition}
+	The path space $\mathcal{P}(M)$ is an infinite-dimensional real Fr\'echet manifold.
+\end{proposition}
+
+\begin{proof}
+		
+\end{proof}
+\end{color}
+
+\begin{definition}[Variation]
+	Let $\mathcal{P}(M)$ be a path space and $\gamma \in \mathcal{P}(M)$. A \bld{variation of $\gamma$} is defined to be a morphism $\Gamma \in \mathsf{Diff}(\intcc[0]{t_p,t_q} \times \intcc[0]{-\varepsilon_0,\varepsilon_0},M)$ for some $\varepsilon_0 > 0$ and such that
+	\begin{itemize}[wide=0pt]
+		\item $\Gamma(t,0) = \gamma$ for all $t \in \intcc[0]{t_p,t_q}$.
+		\item $\Gamma(t_p,\varepsilon) = p$ for all $\varepsilon \in \intcc[0]{-\varepsilon_0,\varepsilon_0}$.
+		\item $\Gamma(t_q,\varepsilon) = q$ for all $\varepsilon \in \intcc[0]{-\varepsilon_0,\varepsilon_0}$.
+	\end{itemize}
+\end{definition}
+
+\begin{remark}
+	If $\Gamma$ is a variation of $\gamma \in \mathcal{P}(M)$, we write $\gamma_\varepsilon(-) := \Gamma(-,\varepsilon)$ for all $\varepsilon \in \intcc[0]{-\varepsilon_0,\varepsilon_0}$.
+\end{remark}
+
+\begin{definition}[Action Functional]
+	Let $(M,L)$ be a Lagrangian system and $\mathcal{P}(M)$ be a path space. The morphism $S : \mathcal{P}(M) \to \mathbb{R}$ defined by
+	\begin{equation*}
+		S(\gamma) := \int_{t_p}^{t_q} L(\gamma(t),\gamma'(t),t) dt
+	\end{equation*}
+	\noindent is called the \bld{action functional}.
+\end{definition}
+
+\begin{axiom}[Hamilton's Principle of Least Action]
+	Let $(M,L)$ be a Lagrangian system and $\mathcal{P}(M)$ be a path space. A path $\gamma \in \mathsf{Diff}(\intcc[0]{t_p,t_q},M)$ describes a motion of $(M,L)$ iff 
+	\begin{equation}
+		\frac{d}{d\varepsilon}\bigg\vert_{\varepsilon = 0} S(\gamma_\varepsilon) = 0
+	\end{equation}
+	\noindent for all variations $\gamma_\varepsilon$ of $\gamma$.
+\end{axiom}
