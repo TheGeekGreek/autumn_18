@@ -1,0 +1,79 @@
+\section*{Calculus of Variations}
+Let $n \in \mathbb{N}$, $n \geq 1$, $\Omega \subseteq \subseteq \mathbb{R}^n$ and denote by $\abs{\cdot}$ the $n$-dimensional Lebesgue measure. Suppose $a^{ij} \in L^\infty(\Omega,\mathbb{R},\abs{\cdot})$ symmetric, $f \in L^2(\Omega,\mathbb{R},\abs{\cdot})$ and consider the second order homogenous Dirichlet problem
+\begin{equation}
+	\label{eq:homogeneous_Dirichlet_problem}
+	\ccases{
+			\displaystyle -\frac{\partial}{\partial x^j}\del[3]{a^{ij}\frac{\partial u}{\partial x^i}} = f & \text{in } \Omega,\\
+			u = 0 & \text{on } \partial \Omega,
+		}
+\end{equation}
+If $(a^{ij})_{ij}$ is \emph{uniformly elliptic}, i.e. there exists $\lambda > 0$ such that
+\begin{equation*}
+	\forall x \in \Omega\forall \xi \in \mathbb{R}^n : \> a^{ij}(x)\xi_i\xi_j \geq \lambda \abs{\xi}^2,	
+\end{equation*}
+\noindent then (\ref{eq:homogeneous_Dirichlet_problem}) admits a unique weak solution $u \in H^1_0(\Omega)$, i.e. $u$ satisfies
+\begin{equation*}
+	\forall v \in C^\infty_c(\Omega): \> \int_\Omega a^{ij} \frac{\partial u}{\partial x^i}\frac{\partial v}{\partial x^j} = \int_\Omega fv.
+\end{equation*}
+Indeed, observe that 
+\begin{equation*}
+	\langle \cdot,\cdot \rangle_a : H^1_0(\Omega) \times H^1_0(\Omega) \to \mathbb{R}
+\end{equation*}
+\noindent defined by
+\begin{equation}
+	\label{eq:Sobolev_inner_product}
+	\langle u, v \rangle_a := \int_\Omega a^{ij} \frac{\partial u}{\partial x^i}\frac{\partial v}{\partial x^j}
+\end{equation}
+\noindent is an inner product on $H^1_0(\Omega)$ with induced norm equivalent to the standard one on $H^1_0(\Omega)$ due to Poincar\'e's inequality. Applying the Riesz Representation theorem yields the result. Moreover, this solution can be characterized by a \emph{variational principle}, i.e. if we define the \emph{energy functional} $E : H^1_0(\Omega) \to \mathbb{R}$
+\begin{equation*}
+	E(v) := \frac{1}{2} \norm{v}^2_a - \int_\Omega fv,
+\end{equation*}
+\noindent for any $v \in H^1_0(\Omega)$, where $\norm{\cdot}_a$ denotes the norm induced by the inner product (\ref{eq:Sobolev_inner_product}), then $u \in H^1_0(\Omega)$ solves (\ref{eq:homogeneous_Dirichlet_problem}) if and only if
+\begin{equation}
+	\label{eq:variational_formulation}
+	E(u) = \inf_{v \in H^1_0(\Omega)}E(v).
+\end{equation}
+Indeed, suppose $u \in H^1_0(\Omega)$ is a solution of (\ref{eq:homogeneous_Dirichlet_problem}). Let $v \in H^1_0(\Omega)$. Then $u = v + w$ for $w := u - v \in H^1_0(\Omega)$ and we compute
+\begin{equation*}
+	E(v) = E(u + w) = \frac{1}{2}\norm{u}^2_a + \langle u,w \rangle_a + \frac{1}{2}\norm{w}^2_a - \int_\Omega f(u + w) = E(u) + \frac{1}{2}\norm{w}^2_a \geq E(u)
+\end{equation*}
+\noindent with equality if and only if $u = v$ a.e. Conversly, suppose the infimum is attained by some $u \in H^1_0(\Omega)$. Thus by elementary calculus
+\begin{equation}
+	\label{eq:derivative}
+	0 = \frac{d}{dt}\bigg\vert_{t = 0} E(u + tv) = \langle u, v \rangle_a - \int_\Omega f v
+\end{equation}
+\noindent for all $v \in H^1_0(\Omega)$.\\
+Suppose now that $u \in C^2(\wbar{\Omega})$ with $u\vert_{\partial \Omega} = 0$ solves the variational formulation (\ref{eq:variational_formulation}) and that $a^{ij} \in C^1(\wbar{\Omega})$, $f \in C^0(\wbar{\Omega})$. Then integration by parts (see \cite[436]{lee:smooth_manifolds:2013} and use that $C^\infty_c(\Omega)$ is dense in $L^p(\Omega,\mathbb{R},\abs{\cdot})$ for any $1 \leq p < \infty$) yields
+\begin{equation*}
+	\langle u, v \rangle_a - \int_\Omega f v = -\sum_{i = 1}^n \int_\Omega \mathrm{div}(X_i) v - \int_\Omega fv = \int_\Omega \del[3]{-\frac{\partial}{\partial x^j}\del[3]{a^{ij}\frac{\partial u}{\partial x^i}} - f} v
+\end{equation*}
+\noindent for all $v \in C^\infty_c(\Omega)$ and where $X_i := \del[1]{a^{ij}\frac{\partial}{\partial x^j}}_i$. Hence (\ref{eq:derivative}) implies 
+\begin{equation*}
+	\forall v \in C^\infty_c(\Omega): \> \int_\Omega \del[3]{-\frac{\partial}{\partial x^j}\del[3]{a^{ij}\frac{\partial u}{\partial x^i}} - f} v = 0.
+\end{equation*}
+
+We might expect that this implies 
+\begin{equation*}
+	-\frac{\partial}{\partial x^j}\del[3]{a^{ij}\frac{\partial u}{\partial x^i}} = f.
+\end{equation*}
+
+That this is indeed the case, is guaranteed by a foundational result in the \emph{calculus of variations} (therefore the name).
+
+\begin{proposition}[Fundamental Lemma of Calculus of Variations]
+	\label{prop:fundamental_lemma}
+	Let $\Omega \subseteq \mathbb{R}^n$ open and $f \in L^1_{\mathrm{loc}}(\Omega,\mathbb{R},\abs{\cdot})$, where $\abs{\cdot}$ denotes the $n$-dimensional Lebesgue measure. If
+	\begin{equation*}
+		\forall \varphi \in C^\infty_c(\Omega): \> \int_\Omega f\varphi = 0,
+	\end{equation*}
+	\noindent then $f = 0$ a.e.
+\end{proposition}
+
+\begin{proof}
+	See \cite[40]{struwe:fa:2014}.
+\end{proof}
+
+Thus we recovered a second order partial differential equation from the variational formulation. In fact, this is exactly the boundary value problem (\ref{eq:homogeneous_Dirichlet_problem}) from the beginning of our exposition. This technique, and in particular the fundamental lemma of calculus of variations \ref{prop:fundamental_lemma} will play an important role in our treatment of classical mechanics.
+
+\begin{exercise}\footnote{This is exercise $1.2. (b)$ from exercise sheet $1$ of the course \emph{Functional Analysis II} taught by \emph{Prof. Dr. A. Carlotto} at ETHZ in the spring of 2018, which can be found \href{https://metaphor.ethz.ch/x/2018/fs/401-3462-00L/ex/Problems01-FAII.pdf}{here}.}
+	Let $\Omega \subseteq \subseteq \mathbb{R}^n$, $2 \leq p < \infty$ and define $\mathcal{B} := \cbr[0]{v \in C^2(\wbar{\Omega}) : v\vert_{\partial\Omega} = 0}$. Moreover, define $E_p : \mathcal{B} \to \mathbb{R}$ by $E_p(v) := \int_\Omega \abs[0]{\nabla v}^p$. Derive the partial differential equation satisfied by minimizers $u \in \mathcal{B}$ of the variational problem $E(u) = \inf_{v \in \mathcal{B}}E(v)$.	
+\end{exercise}

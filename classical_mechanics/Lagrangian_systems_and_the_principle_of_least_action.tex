@@ -1,0 +1,71 @@
+\section*{Lagrangian Systems and the Principle of Least Action}
+
+\begin{definition}[Lagrangian System]
+	A \bld{Lagrangian system}\index{Lagrangian!system} is defined to be a tuple $(M,L)$ consisting of an object $M \in \mathsf{Diff}$ and a morphism $L \in \mathsf{Diff}(TM \times \mathbb{R},\mathbb{R})$, called a \bld{Lagrangian function}\index{Lagrangian!function}.
+\end{definition}
+
+\begin{definition}[Path Space]
+	\label{def:path_space}
+	Let $M \in \mathsf{Diff}$, $q_0,q_1 \in M$ and $t_0, t_1 \in \mathbb{R}$ with $t_0 \leq t_1$. Define the \bld{path space of $M$ connecting $(q_0,t_0)$ and $(q_1,t_1)$}\index{Path space} to be the set
+	\begin{equation}
+		\label{eq:path_space}
+		\mathcal{P}(M)^{q_0,t_0}_{q_1,t_1} := \cbr[0]{\gamma \in \mathsf{Diff}(\intcc[0]{t_0,t_1},M) : \gamma(t_0) = q_0 \text{ and } \gamma(t_1) = q_1}.
+			\end{equation}
+\end{definition}
+
+\begin{remark}
+	For the sake of simplicity, we will just use the terminology \emph{path space} for $\mathcal{P}(M)^{q_0,t_0}_{q_1,t_1}$ and simply write $\mathcal{P}(M)$. We implicitely assume the conditions of definition \ref{def:path_space}, however.
+\end{remark}
+
+The path space $\mathcal{P}(M)$ is an infinite dimensional real Fr\'echet manifold. However, we do not need this fact here and any proof would interrupt our exposition. We therefore follow a more heuristical approach as provided in lecture notes \cite[168--169]{salamon:dg:2018}.
+
+\begin{definition}[Tangent Space of $\mathcal{P}(M)$]
+	Let $M \in \mathsf{Diff}$ and $\gamma \in \mathcal{P}(M)$. Then we define the \bld{tangent space of $\mathcal{P}(M)$ at $\gamma$}, written $T_\gamma\mathcal{P}(M)$ by
+	\begin{equation*}
+		T_\gamma\mathcal{P}(M) := \cbr[0]{X \in \mathfrak{X}(\im \gamma) : X(t_0) = X(t_1) = 0},
+	\end{equation*}
+	\noindent where $\mathfrak{X}(\im \gamma)$ denotes the space of vector fields along $\im \gamma$.
+\end{definition}
+
+\begin{definition}[Variation]
+	Let $\mathcal{P}(M)$ be a path space and $\gamma \in \mathcal{P}(M)$. A \bld{variation of $\gamma$}\index{Variation} is defined to be a morphism $\Gamma \in \mathsf{Diff}(\intcc[0]{t_0,t_1} \times \intcc[0]{-\varepsilon_0,\varepsilon_0},M)$ for some $\varepsilon_0 > 0$ and such that
+	\begin{itemize}[wide=0pt]
+		\item $\Gamma(t,0) = \gamma$ for all $t \in \intcc[0]{t_1,t_0}$.
+		\item $\Gamma(t_0,\varepsilon) = q_0$ for all $\varepsilon \in \intcc[0]{-\varepsilon_0,\varepsilon_0}$.
+		\item $\Gamma(t_1,\varepsilon) = q_1$ for all $\varepsilon \in \intcc[0]{-\varepsilon_0,\varepsilon_0}$.
+	\end{itemize}
+\end{definition}
+
+\begin{remark}
+	If $\Gamma$ is a variation of $\gamma \in \mathcal{P}(M)$, we write $\gamma_\varepsilon(-) := \Gamma(-,\varepsilon)$ for all $\varepsilon \in \intcc[0]{-\varepsilon_0,\varepsilon_0}$.
+\end{remark}
+
+\begin{definition}[Action Functional]
+	Let $(M,L)$ be a Lagrangian system and $\mathcal{P}(M)$ be a path space. The morphism $S : \mathcal{P}(M) \to \mathbb{R}$ defined by
+	\begin{equation*}
+		S(\gamma) := \int_{t_0}^{t_1} L(\gamma(t),\gamma'(t),t) dt
+	\end{equation*}
+	\noindent is called the \bld{action functional}\index{Action functional}.
+\end{definition}
+
+\begin{axiom}[Hamilton's Principle of Least Action]\index{Hamilton!'s principle of least action}
+	Let $(M,L)$ be a Lagrangian system and $\mathcal{P}(M)$ be a path space. A path $\gamma \in \mathsf{Diff}(\intcc[0]{t_0,t_1},M)$ describes a motion of $(M,L)$ between $(q_0,t_0)$ and $q_1,t_1$ if and only if 
+	\begin{equation}
+		\frac{d}{d\varepsilon}\bigg\vert_{\varepsilon = 0} S(\gamma_\varepsilon) = 0
+	\end{equation}
+	\noindent for all variations $\gamma_\varepsilon$ of $\gamma$.
+\end{axiom}
+
+\begin{theorem}[Euler-Lagrange Equations]
+	\label{thm:EL_equations}
+	Let $(M,L)$ be a Lagrangian system. A path $\gamma \in \mathsf{Diff}(\intcc[0]{t_0,t_1},M)$ describes a motion of $(M,L)$ between $(q_0,t_0)$ and $(q_1,t_1)$ if and only if with respect to any chart $(U,q^i)$
+	\begin{equation}
+		\label{eq:EL_equations}
+		\pd{L}{q}\del[1]{q(t),\dot{q}(t),t} - \frac{d}{dt} \pd{L}{\dot{q}}\del[1]{q(t),\dot{q}(t),t} = 0
+	\end{equation}
+	\noindent holds, where $q$ denotes the coordinate representation of $\gamma$. The system of equations \textup{(}\ref{eq:EL_equations}\textup{)} is referred to as the \bld{Euler-Lagrange equations}\index{Euler-Lagrange equations}.
+\end{theorem}
+
+\begin{proof}
+		
+\end{proof}
