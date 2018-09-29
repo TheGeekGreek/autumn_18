@@ -1,21 +1,19 @@
 \section*{Lagrangian Systems and the Principle of Least Action}
-Mechanical systems, i.e. a pendulum, are modelled using the language of differential geometry. Thus it is necessary to introduce the relevant physical terminology. 
+Mechanical systems, i.e. a pendulum, are modelled using the language of differential geometry. Thus it is necessary to introduce the relevant physical counterparts. 
 
 \begin{definition}[Configuration Space]
-	A finite-dimensional manifold in $\mathsf{Diff}$ is said to be a \bld{configuration space}.
+	A \bld{configuration space}\index{Configuration space} is defined to be a finite-dimensional manifold in $\mathsf{Diff}$.
 \end{definition}
 
-As easily imaginable in the three dimensional Euclidean space $\mathbb{R}^3$, the motion of a pendulum covered over time is the image of a path in a configuration space.
-
 \begin{definition}[Motion]
-	A motion of a configuration space $M$ is defined to be a path $\gamma \in \mathsf{Diff}(J, M)$, where $J \subseteq \mathbb{R}$ is an interval.
+	A \bld{motion in a configuration space $M$}\index{Motion} is defined to be a path $\gamma \in C^\infty(J, M)$, where $J \subseteq \mathbb{R}$ is an interval.
 \end{definition}
 
 \begin{definition}[State]
-	A \bld{state in the configuration space} is defined to be an element of the tangent bundle of the configuration space.
+	A \bld{state of the configuration space}\index{State} is defined to be an element of the tangent bundle of the configuration space, called the \bld{state space}.
 \end{definition}
 
-Also in classical mechanics, one has to rely on basic principles, which are to some extent experimentally verified.
+Also in classical mechanics, one has to rely on basic principles, which are to some extent experimentally verified. One of the most fundamental is the following.
 
 \begin{axiom}[Newton-Laplace Determinacy Principle]
 	\label{ax:NL_determinacy_principle}
@@ -25,16 +23,21 @@ Also in classical mechanics, one has to rely on basic principles, which are to s
 The Newton-Laplace determinacy principle \ref{ax:NL_determinacy_principle} motivates our main definition of this chapter.
 
 \begin{definition}[Lagrangian System]
-	A \bld{Lagrangian system}\index{Lagrangian!system} is defined to be a tuple $(M,L)$ consisting of an object $M \in \mathsf{Diff}$ and a morphism $L \in \mathsf{Diff}(TM \times \mathbb{R},\mathbb{R})$, called a \bld{Lagrangian function}\index{Lagrangian!function}.
+	A \bld{Lagrangian system}\index{Lagrangian!system} is defined to be a tuple $(M,L)$ consisting of an object $M \in \mathsf{Diff}$ and a function $L \in C^\infty(TM \times \mathbb{R})$, called a \bld{Lagrangian function}\index{Lagrangian!function}.
 \end{definition}
+
+\begin{example}
+	\label{ex:Lagrangian}
+	For $M \in \mathsf{Diff}$ let $T \in C^\infty(TM \times \mathbb{R})$ and $U \in C^\infty(M \times \mathbb{R})$. Define $L \in C^\infty(TM \times \mathbb{R})$ by $L := T - U$. In this situation, $T$ is called the \bld{kinetic energy} and $U$ is called the \bld{potential energy}.
+\end{example}
 
 \begin{definition}[Path Space]
 	\label{def:path_space}
 	Let $M \in \mathsf{Diff}$, $q_0,q_1 \in M$ and $t_0, t_1 \in \mathbb{R}$ with $t_0 \leq t_1$. Define the \bld{path space of $M$ connecting $(q_0,t_0)$ and $(q_1,t_1)$}\index{Path space} to be the set
 	\begin{equation}
 		\label{eq:path_space}
-		\mathcal{P}(M)^{q_0,t_0}_{q_1,t_1} := \cbr[0]{\gamma \in \mathsf{Diff}(\intcc[0]{t_0,t_1},M) : \gamma(t_0) = q_0 \text{ and } \gamma(t_1) = q_1}.
-			\end{equation}
+		\mathcal{P}(M)^{q_0,t_0}_{q_1,t_1} := \cbr[0]{\gamma \in C^\infty(\intcc[0]{t_0,t_1},M) : \gamma(t_0) = q_0 \text{ and } \gamma(t_1) = q_1}.
+	\end{equation}
 \end{definition}
 
 \begin{remark}
@@ -43,7 +46,7 @@ The Newton-Laplace determinacy principle \ref{ax:NL_determinacy_principle} motiv
 
 \begin{definition}[Variation]
 	\label{def:variation}
-	Let $\mathcal{P}(M)$ be a path space and $\gamma \in \mathcal{P}(M)$. A \bld{variation of $\gamma$}\index{Variation} is defined to be a morphism $\Gamma \in \mathsf{Diff}(\intcc[0]{t_0,t_1} \times \intcc[0]{-\varepsilon_0,\varepsilon_0},M)$ for some $\varepsilon_0 > 0$ and such that
+	Let $\mathcal{P}(M)$ be a path space and $\gamma \in \mathcal{P}(M)$. A \bld{variation of $\gamma$}\index{Variation} is defined to be a morphism $\Gamma \in C^\infty(\intcc[0]{t_0,t_1} \times \intcc[0]{-\varepsilon_0,\varepsilon_0},M)$ for some $\varepsilon_0 > 0$ and such that
 	\begin{itemize}[wide=0pt]
 		\item $\Gamma(t,0) = \gamma$ for all $t \in \intcc[0]{t_1,t_0}$.
 		\item $\Gamma(t_0,\varepsilon) = q_0$ for all $\varepsilon \in \intcc[0]{-\varepsilon_0,\varepsilon_0}$.
@@ -77,8 +80,8 @@ The Newton-Laplace determinacy principle \ref{ax:NL_determinacy_principle} motiv
 
 	\begin{figure}[h!tb]
 		\centering
-		\includegraphics[width = .7\textwidth]{variation.pdf}
-		\caption{Example of a variation along the second coordinate using a smooth bump function as in \cite[42]{lee:smooth_manifolds:2013}.}
+		\includegraphics[width = .83\textwidth]{variation.pdf}
+		\caption{Example of a variation of the path $\gamma(t) = (\gamma^1(t),\gamma^2(t))$ in $\mathbb{R}^2$ defined by $\gamma(t) := (t^2 + \sin(t)\cos(t),t^3 - t)$ for $t \in \intcc[0]{-\frac{3}{2},\frac{3}{2}}$ along the second coordinate using a smooth bump function as in \cite[42]{lee:smooth_manifolds:2013}.}
 		\label{fig:variation}
 	\end{figure}
 \end{example}
@@ -99,15 +102,11 @@ The Newton-Laplace determinacy principle \ref{ax:NL_determinacy_principle} motiv
 	\noindent is called the \bld{action functional}\index{Action functional}.
 \end{definition}
 
-\begin{definition}[Motion of a Lagrangian System]
-	A \bld{motion of a Lagrangian system $(M,L)$ between $(q_0,t_0)$ and $(q_1,t_1)$} is defined to be a morphism $\gamma \in \mathsf{Diff}(\intcc[0]{t_0,t_1},M)$.
-\end{definition}
-
 Motions of Lagrangian systems are characterized by an axiom.
 
 \begin{axiom}[Hamilton's Principle of Least Action]\index{Hamilton!'s principle of least action}
 	\label{ax:Hamilton_least_action}
-	Let $(M,L)$ be a Lagrangian system and $\mathcal{P}(M)$ be a path space. A path $\gamma \in \mathsf{Diff}(\intcc[0]{t_0,t_1},M)$ describes a motion of $(M,L)$ between $(q_0,t_0)$ and $(q_1,t_1)$ if and only if 
+	Let $(M,L)$ be a Lagrangian system and $\mathcal{P}(M)$ be a path space. A path $\gamma \in C^\infty(\intcc[0]{t_0,t_1},M)$ describes a motion of $(M,L)$ between $(q_0,t_0)$ and $(q_1,t_1)$ if and only if 
 	\begin{equation}
 		\frac{d}{d\varepsilon}\bigg\vert_{\varepsilon = 0} S(\gamma_\varepsilon) = 0
 	\end{equation}
@@ -115,14 +114,14 @@ Motions of Lagrangian systems are characterized by an axiom.
 \end{axiom}
 
 \begin{definition}[Extremal]
-	A motion of a Lagrangian system between two points is called an \bld{extremal of the action functional $S$}.
+	A motion of a Lagrangian system between two points is called an \bld{extremal of the action functional $S$}\index{Extremal}.
 \end{definition}
 
-The Newton-Laplace determinacy principle \ref{ax:NL_determinacy_principle} implies that motions of mechanical systems can be described as solutions of second order differential equations. That this is indeed the case, is shown by the next theorem.
+The Newton-Laplace determinacy principle \ref{ax:NL_determinacy_principle} implies that motions of mechanical systems can be described as solutions of second order ordinary differential equations. That this is indeed the case, is shown by the next theorem.
 
 \begin{theorem}[Euler-Lagrange Equations]
 	\label{thm:EL_equations}
-	Let $(M,L)$ be a Lagrangian system. If a path $\gamma \in \mathsf{Diff}(\intcc[0]{t_0,t_1},M)$ describes a motion of $(M,L)$ between $(q_0,t_0)$ and $(q_1,t_1)$ then for all charts $(U,q^i)$
+	Let $(M,L)$ be a Lagrangian system. If a path $\gamma \in C^\infty(\intcc[0]{t_0,t_1},M)$ describes a motion of $(M,L)$ between $(q_0,t_0)$ and $(q_1,t_1)$ then for all charts $(U,q^i)$
 	\begin{equation}
 		\label{eq:EL_equations}
 		\pd{L}{q}\del[1]{\gamma(t),\dot{\gamma}(t),t} - \frac{d}{dt} \pd{L}{\dot{q}}\del[1]{\gamma(t),\dot{\gamma}(t),t} = 0
@@ -133,30 +132,30 @@ The Newton-Laplace determinacy principle \ref{ax:NL_determinacy_principle} impli
 \begin{proof}
 	By Hamilton's principle of least action \ref{ax:Hamilton_least_action}, we may assume that $\gamma$ is an extremal of the action functional $S$. The proof is divided into two steps.
 	\begin{enumerate}[label = \textit{Step \arabic*:},wide=0pt]
-		\item \textit{Suppose that the extremal $\gamma$ of $S$ is conatined in a chart domain $U$.} Let $t \in \intcc[0]{t_0,t_1}$ and abreviate $p := (\gamma(t),\dot{\gamma}(t),t)$ Using the formula for the derivative of a function along a curve \cite[283]{lee:smooth_manifolds:2013}, we compute
+		\item \textit{Suppose that $\gamma$ of $S$ is conatined in a chart domain $U$.} Let $t \in \intcc[0]{t_0,t_1}$ and abreviate $p := (\gamma(t),\dot{\gamma}(t),t)$ Using the formula for the derivative of a function along a curve \cite[283]{lee:smooth_manifolds:2013}, we compute
 			\begin{align*}
 				\frac{d}{d\varepsilon}\bigg\vert_{\varepsilon = 0} L\del[0]{\gamma_\varepsilon(t),\dot{\gamma}_\varepsilon(t),t} &= dL_p\del[3]{\frac{d}{d\varepsilon}\bigg\vert_{\varepsilon = 0}\gamma_\varepsilon(t),\frac{d}{d\varepsilon}\bigg\vert_{\varepsilon = 0}\dot{\gamma}_\varepsilon(t),0}\\
 				&= dL_p\del[3]{\frac{d\gamma_\varepsilon^j(t)}{d\varepsilon}(0)\frac{\partial}{\partial q^j}\bigg\vert_{\gamma(t)},\frac{d\dot{\gamma}_\varepsilon^j(t)}{d\varepsilon}(0)\frac{\partial}{\partial \dot{q}^j}\bigg\vert_{\dot{\gamma}(t)},0}.
 			\end{align*}
-			Using the formula for the differential of a function in coordinates yields
+			\noindent for all variations $\gamma_\varepsilon$ of $\gamma$ in $U$. Moreover
 			\begin{equation*}
 				dL_p = \frac{\partial L}{\partial q^i}(p) dq^i\vert_p + \frac{\partial L}{\partial \dot{q}^i}(p) d\dot{q}^i\vert_p + \frac{\partial L}{\partial t}(p)dt\vert_p.
 			\end{equation*}
-			So
+			Therefore
 			\begin{align*}
 				0 &= \frac{d}{d\varepsilon}\bigg\vert_{\varepsilon = 0} S(\gamma_\varepsilon)\\
 				&= \int_{t_0}^{t_1} \frac{d}{d\varepsilon}\bigg\vert_{\varepsilon = 0} L\del[0]{\gamma_\varepsilon(t),\dot{\gamma}_\varepsilon(t),t} dt\\
 				&= \int_{t_0}^{t_1} dL_p\del[3]{\frac{d\gamma_\varepsilon^j(t)}{d\varepsilon}(0)\frac{\partial}{\partial q^j}\bigg\vert_{\gamma(t)},\frac{d\dot{\gamma}_\varepsilon^j(t)}{d\varepsilon}(0)\frac{\partial}{\partial \dot{q}^j}\bigg\vert_{\dot{\gamma}(t)},0}\\
 				&= \int_{t_0}^{t_1} \frac{\partial L}{\partial q^i}(p)\frac{d\gamma_\varepsilon^i(t)}{d\varepsilon}(0)dt + \int_{t_0}^{t_1}\frac{\partial L}{\partial \dot{q}^i}(p)\frac{d\dot{\gamma}_\varepsilon^i(t)}{d\varepsilon}(0)dt\\
 				&= \int_{t_0}^{t_1} \frac{\partial L}{\partial q^i}(p)\frac{d\gamma_\varepsilon^i(t)}{d\varepsilon}(0)dt + \int_{t_0}^{t_1}\frac{\partial L}{\partial \dot{q}^i}(p)\del[3]{\frac{d\gamma_\varepsilon^i(t)}{d\varepsilon}(0)}'dt\\
-				&= \int_{t_0}^{t_1} \frac{\partial L}{\partial q^i}(p)\frac{d\gamma_\varepsilon^i(t)}{d\varepsilon}(0)dt + \frac{\partial L}{\partial \dot{q}^i}(p)\frac{d\gamma_\varepsilon^i(t)}{d\varepsilon}(0)\bigg\vert_{t_0}^{t_1} - \int_{t_0}^{t_1} \frac{d}{dt}\frac{\partial L}{\partial \dot{q}^i}(p)\frac{d\gamma_\varepsilon^i(t)}{d\varepsilon}(0)dt.	
+				&= \int_{t_0}^{t_1} \frac{\partial L}{\partial q^i}(p)\frac{d\gamma_\varepsilon^i(t)}{d\varepsilon}(0)dt + \frac{\partial L}{\partial \dot{q}^i}(p)\frac{d\gamma_\varepsilon^i(t)}{d\varepsilon}(0)\bigg\vert_{t_0}^{t_1} - \int_{t_0}^{t_1} \frac{d}{dt}\frac{\partial L}{\partial \dot{q}^i}(p)\frac{d\gamma_\varepsilon^i(t)}{d\varepsilon}(0)dt\\
+				&= \int_{t_0}^{t_1} \del[3]{\frac{\partial L}{\partial q^i}(p) - \frac{d}{dt}\frac{\partial L}{\partial \dot{q}^i}(p)}\frac{d\gamma_\varepsilon^i(t)}{d\varepsilon}(0)dt 
 			\end{align*}
-			\noindent Let $f \in C^\infty_c\intoo[0]{t_0,t_1}$, $j = 1,\dots,n$ and $\gamma_\varepsilon$ be the variation of $\gamma$ defined in example \ref{ex:perturbation_along_single_direction} along the $j$-th direction. Above computation therefore yields
-			\begin{align*}
-				0 &= \int_{t_0}^{t_1} \frac{\partial L}{\partial q^j}(p)f(t)dt + \frac{\partial L}{\partial \dot{q}^j}(p)f(t)\bigg\vert_{t_0}^{t_1} - \int_{t_0}^{t_1} \frac{d}{dt}\frac{\partial L}{\partial \dot{q}^j}(p)f(t)dt\\
-				&= \int_{t_0}^{t_1} \del[3]{\frac{\partial L}{\partial q^j}(p) - \frac{d}{dt}\frac{\partial L}{\partial \dot{q}^j}(p)}f(t) dt
-			\end{align*}
-			\noindent for all $f \in C^\infty_c\intoo[0]{t_0,t_1}$. Hence the fundamental lemma of calculus of variations \ref{prop:fundamental_lemma} implies
+			\noindent since $\gamma^i_\varepsilon(t_0)$ and $\gamma^i_\varepsilon(t_1)$ are constant by definition of a variation. Let $f \in C^\infty_c\intoo[0]{t_0,t_1}$, $j = 1,\dots,n$ and $\gamma_\varepsilon$ be the variation of $\gamma$ defined in example \ref{ex:perturbation_along_single_direction} along the $j$-th direction. Above computation therefore yields
+			\begin{equation*}
+				0 = \int_{t_0}^{t_1} \del[3]{\frac{\partial L}{\partial q^j}(p) - \frac{d}{dt}\frac{\partial L}{\partial \dot{q}^j}(p)}f(t) dt
+			\end{equation*}
+			\noindent for all $f \in C^\infty_c\intoo[0]{t_0,t_1}$. Hence the fundamental lemma of calculus of variations \ref{lem:fundamental_lemma} implies
 			\begin{equation*}
 				\frac{\partial L}{\partial q^j}(p) - \frac{d}{dt}\frac{\partial L}{\partial \dot{q}^j}(p) = 0
 			\end{equation*}
@@ -179,6 +178,36 @@ The Newton-Laplace determinacy principle \ref{ax:NL_determinacy_principle} impli
 	\end{enumerate}
 \end{proof}
 
-\begin{definition}[Equations of Motion]
-	The Euler-Lagrange equations of a Lagrangian system are also called \bld{equations of motion}.
-\end{definition}
+\begin{remark}
+	\label{rem:global_chart}
+	If a configuration space can be covered by a single chart, then the statement of theorem \ref{thm:EL_equations} becomes an equivalence.
+\end{remark}
+
+\begin{example}[Motions on Riemannian Manifolds]
+	Let $(M,g)$ be a Riemannian manifold and consider the Lagrangian $L$ on $M$ defined in example \ref{ex:Lagrangian} with $T(q,v,t) := \frac{1}{2}\abs{v}^2$ and $U(q,t) := 0$. 
+\end{example}
+
+\begin{lemma}
+	\label{prop:same_equations_of_motion}
+	Let $(M,L)$ be a Lagrangian system and define $L + df \in C^\infty(TM \times \mathbb{R})$ by
+	\begin{equation*}
+		(L + df)(q,v,t) := L(q,v,t) + df_q(v)
+	\end{equation*}
+	\noindent for any $f \in C^\infty(M)$. Then $(M,L)$ and $(M,L + df)$ admit the same equations of motion.
+\end{lemma}
+
+\begin{proof}
+	Let us denote the action function corresponding to $L + df$ by $\wtilde{S}$ and suppose $\gamma_\varepsilon$ is a variation of $\gamma$ in $M$. Using the formula for the derivative of a function along a curve \cite[283]{lee:smooth_manifolds:2013} we compute
+	\begin{align*}
+		\wtilde{S}(\gamma_\varepsilon) &= \int_{t_0}^{t_1}L(\gamma_\varepsilon(t),\dot{\gamma}_\varepsilon(t),t)dt + \int_{t_0}^{t_1}df_{\gamma_\varepsilon(t)}\del[1]{\dot{\gamma}_\varepsilon(t)}dt\\
+		&= S(\gamma_\varepsilon) + \int_{t_0}^{t_1}(f \circ \gamma_\varepsilon)'(t)dt\\
+		&= S(\gamma_\varepsilon) + f\del[1]{\gamma_\varepsilon(t_1)} - f\del[1]{\gamma_{\varepsilon}(t_0)}\\
+		&= S(\gamma_\varepsilon) + f(q_1) - f(q_0).
+	\end{align*}
+	In particular
+	\begin{equation*}
+		\frac{d}{d\varepsilon}\Bigg\vert_{\varepsilon = 0}\wtilde{S}(\gamma_\varepsilon) = \frac{d}{d\varepsilon}\bigg\vert_{\varepsilon = 0}S(\gamma_\varepsilon).
+	\end{equation*}
+\end{proof}
+
+

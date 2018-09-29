@@ -1,4 +1,4 @@
-\section*{Calculus of Variations}
+\section*{Introduction}
 Classical mechanics deals with differential equations originating from extremals of \emph{functionals}, i.e. functions defined on an infinite-dimensional function space. The study of such extremality properties of functionals is known as the \emph{calculus of variations}. To illustrate this fundamental principle, let us consider the \emph{variational formulation} of second order elliptic operators in divergence form based on \cite[167--168]{struwe:fa:2014}.\\ 
 Let $n \in \mathbb{N}$, $n \geq 1$, and $\Omega \subseteq \subseteq \mathbb{R}^n$ such that $\wbar{\Omega}$ is a manifold with boundary. Moreover, let $H^1_0(\Omega)$ denote the Sobolev space $W^{1,2}_0(\Omega)$ with inner product
 \begin{equation*}
@@ -81,7 +81,24 @@ That this is indeed the case, is guaranteed by a foundational result in the \emp
 	See \cite[40]{struwe:fa:2014}.
 \end{proof}
 
-Thus we recovered a second order partial differential equation from the variational formulation. In fact, this is exactly the boundary value problem (\ref{eq:homogeneous_Dirichlet_problem}) from the beginning of our exposition. This technique, and in particular the fundamental lemma of calculus of variations \ref{prop:fundamental_lemma} will play an important role in our treatment of classical mechanics.
+Thus we recovered a second order partial differential equation from the variational formulation. In fact, this is exactly the boundary value problem (\ref{eq:homogeneous_Dirichlet_problem}) from the beginning of our exposition. This technique, and in particular the fundamental lemma of calculus of variations \ref{prop:fundamental_lemma} will play an important role in our treatment of classical mechanics. However, since we are concerned with smooth manifolds, we use a version of the fundamental lemma of calculus of variations \ref{prop:fundamental_lemma}, which is fairly easy to prove and hence really deserves the terminology lemma.
+
+\begin{lemma}[Fundamental Lemma of Calculus of Variations, Smooth Version]
+	\label{lem:fundamental_lemma}
+	Let $\Omega \subseteq \mathbb{R}^n$ open and $f \in C^\infty(\Omega)$. If
+	\begin{equation*}
+		\forall \varphi \in C^\infty_c(\Omega): \> \int_\Omega f\varphi = 0,
+	\end{equation*}
+	\noindent then $f = 0$.
+\end{lemma}
+
+\begin{proof}
+	Towards a contradiction, assume that $f \neq 0$ on $\Omega$. Thus there exists $x_0 \in \Omega$, such that $f(x_0) \neq 0$. Without loss of generality, we may assume that $f(x_0) > 0$, since otherwise, consider $-f$ instead of $f$.	The smoothness of $f$ implies the continuity of $f$ on $\Omega$. Thus there exists $\delta > 0$, such that $f(x) \in B_{f(x_0)/2}\del[1]{f(x_0)}$ holds for all $x \in B_\delta(x_0)$ or equivalently, $f(x) > f(x_0)/2 > 0$ for all $x \in B_\delta(x_0)$. By lemma $2.22$ \cite[42]{lee:smooth_manifolds:2013}, there exists a smooth bump function $\varphi$ supported in $B_\delta(x_0)$ and $\varphi = 1$ on $\wbar{B}_{\delta/2}(x_0)$. In particular, $\varphi \in C^\infty_c(\Omega)$. Therefore we have
+	\begin{equation*}
+		0 = \int_\Omega f \varphi = \int_{B_\delta(x_0)} f \varphi \geq \int_{B_{\delta/2}(x_0)} f \varphi > \frac{1}{2}f(x_0) \abs[0]{B_{\delta/2}(x_0)} > 0,
+	\end{equation*}
+	\noindent which is a contradiction.
+\end{proof}
 
 \begin{exercise}\footnote{This is exercise $1.2. (b)$ from exercise sheet $1$ of the course \emph{Functional Analysis II} taught by \emph{Prof. Dr. A. Carlotto} at ETHZ in the spring of 2018, which can be found \href{https://metaphor.ethz.ch/x/2018/fs/401-3462-00L/ex/Problems01-FAII.pdf}{here}.}
 	Let $\Omega \subseteq \subseteq \mathbb{R}^n$, $2 \leq p < \infty$ and define $\mathcal{B} := \cbr[0]{v \in C^\infty(\wbar{\Omega}) : v\vert_{\partial\Omega} = 0}$. Moreover, define $E_p : \mathcal{B} \to \mathbb{R}$ by $E_p(v) := \int_\Omega \abs[0]{\nabla v}^p$. Derive the partial differential equation satisfied by minimizers $u \in \mathcal{B}$ of the variational problem $E(u) = \inf_{v \in \mathcal{B}}E(v)$.	

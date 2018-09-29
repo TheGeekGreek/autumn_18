@@ -1,6 +1,65 @@
 \section*{Newtonian Mechanics}
-Newtonian mechanics studies the motion of a system of point masses in three-dimensional Euclidean space. The basic principles of Newtonian mechanics heavily rely on experimental facts. Newtonian mechanics is modelled on the configuration space $\mathbb{R}^3$.
+Explicitely determining Lagrangian functions of mechanical systems falls into the domain of physics and hence is guided to a certain degree by experimental facts and would also result in introducing a large amount of additional physical terminology. Since we want to cover the mathematical theory only, we deduce in this section only the Lagrangian of a particularly simple mechanical system, namely the one of a single \emph{particle}, i.e. a point mass, subject to no force: the \emph{free} particle. Newtonian mechanics is concerned with the so-called \emph{space-time}, that is in its simplest form the space $\mathbb{R}^3 \times \mathbb{R}$, where a typical point is denoted by $(x,t)$ (the first coordinate is the \emph{space} coordinate and the second one is the \emph{time} coordinate). To deduce anything, we need first some basic principles governing Newtonian mechanics, in particular a principle governing the motion of a mechanical system consisting of a finite number of point masses subject to no external force. Such a mechanical system is called \emph{closed}.
 
 \begin{axiom}[Galileo's Relativity Principle]
-		
+	\label{ax:Galileos_relativity_principle}
+	Let $N \in \mathbb{N}$ and $L \in C^\infty(\mathbb{R}^{3N} \times \mathbb{R}^{3N} \times \mathbb{R})$. Then  
+	\begin{equation*}
+		L(x_1,\dots,x_N,\dot{x}_1,\dots,\dot{x}_N,t) = L\del[1]{\sigma(x_1),\dots,\sigma(x_N),\dot{x}_1,\dots,\dot{x}_N,\tau(t)}
+	\end{equation*}
+	\noindent for all $x_i,\dot{x}_i \in \mathbb{R}^3$, $i = 1,\dots,N$, and $t \in \mathbb{R}$, where $\sigma \in C^\infty(\mathbb{R}^3,\mathbb{R}^3)$, $\tau \in C^\infty(\mathbb{R})$ are defined to be
+	\begin{equation*}
+		\sigma(x) := x + vt \qquad \text{and} \qquad \tau := \id_{\mathbb{R}},
+	\end{equation*}
+	\noindent for $v \in \mathbb{R}^3$, or
+	\begin{equation*}
+		\sigma(x) := Ax + x_0 \qquad \text{and} \qquad \tau(t) := t + t_0,
+	\end{equation*}
+	\noindent for $A \in \mathrm{O}(3)$, $x_0 \in \mathbb{R}^3$ and $t_0 \in \mathbb{R}$.
 \end{axiom}
+
+\begin{remark}
+	The transformations introduced in Galileo's relativity principle form a group which is usually called the \emph{Galilean group}. Moreover, in physical language, this means that space is both \emph{homogenous} and \emph{isotropic} and time is \emph{absolute} and \emph{homogenous}.
+\end{remark}
+
+Using Galileo's relativity principle \ref{ax:Galileos_relativity_principle} we can now deduce the form of the Lagrangian of a free particle. We do this as proposed in \cite[5--7]{landau:mechanics:1981}. Suppose $L \in C^\infty(\mathbb{R}^3 \times \mathbb{R}^3 \times \mathbb{R})$. Setting $A = I$ and $x_0 = 0$ we have 
+\begin{equation*}
+	L(x,\dot{x},t) = L(x,\dot{x},t + t_0)
+\end{equation*}
+\noindent for all $x,\dot{x} \in \mathbb{R}^3$ and $t,t_0 \in \mathbb{R}$. Thus $L$ does not explicitely depend on time and we simply write $L(x,\dot{x})$. Moreover, setting again $A = I$, we conclude
+\begin{equation*}
+	L(x,\dot{x}) = L(x + x_0,\dot{x})
+\end{equation*}
+\noindent for all $x,\dot{x},x_0 \in \mathbb{R}^3$. Therefore, $L$ does also not explicitely depend on $x$ and we simply write $L(\dot{x})$. Lastly, consider the path $\gamma(t) := \dot{x}t$ for $\dot{x} \in \mathbb{R}^3$. We compute
+\begin{equation*}
+	L(\dot{x}) = L\del[1]{(A\gamma(t))'} = L(A\dot{x})
+\end{equation*}
+\noindent for all $A \in \mathrm{O}(3)$. Thus $L$ depends on $\abs[0]{\dot{x}}$ only and we write $L(\abs[0]{\dot{x}})$. However, since for example $L = \abs[0]{\dot{x}}$ is not smooth and we want $L$ to be smooth, $L$ depends on $\abs[0]{\dot{x}}^2$ only and we write $L(\abs[0]{\dot{x}}^2)$. For any motion $\gamma$ on $M$, the Euler-Lagrange equations \ref{thm:EL_equations} reduce to
+\begin{equation*}
+	\frac{d}{dt} \frac{\partial L}{\partial \dot{x}}\del[0]{\abs[0]{\dot{\gamma}(t)}^2} = 0,
+\end{equation*}
+\noindent implying that $\frac{\partial L}{\partial \dot{x}}\del[0]{\abs[0]{\dot{\gamma}(t)}^2}$ does not depend on time $t$. However, since the Lagrangian $L$ also does not depend on time $t$, this means that $\dot{\gamma}(t) = \dot{x}$, for some $\dot{x} \in \mathbb{R}^3$ for all $t \in \mathbb{R}$.\\
+Let $\xi \in \mathbb{R}^3$ and consider the path $\gamma(t) := \dot{x}t$. Again, Galileo's relativity principle \ref{ax:Galileos_relativity_principle} implies that
+\begin{equation*}
+	L(\abs[0]{\dot{x}}^2) = L\del[1]{\abs[0]{(\gamma(t) + \xi t)'}^2} = L(\abs[0]{\dot{x} + \xi}^2)
+\end{equation*}
+We compute
+\begin{equation*}
+	L(\abs[0]{\dot{x} + \xi}^2) = L(\langle \dot{x} + \xi, \dot{x} + \xi)\rangle) = L(\abs[0]{\dot{x}}^2 + 2\langle \dot{x},\xi \rangle + \abs[0]{\xi}^2).
+\end{equation*}
+First order Taylor expansion around $\xi = 0$ yields
+\begin{equation*}
+	L(\abs[0]{\dot{x} + \xi}^2) = L(\abs[0]{\dot{x}}^2) + 2\frac{\partial L}{\partial y}(\abs[0]{\dot{x}}^2) \langle \dot{x},\xi \rangle + R_1(\xi)
+\end{equation*}
+\noindent for the remainder term
+\begin{equation*}
+	R_1(\xi) = 2\sum_{i = 1}^3 \xi_i^2 \int_0^1 (1 - s) \frac{d^2L}{dy^2}(\abs[0]{\dot{x}^2} + 2s \langle \dot{x},\xi \rangle + s^2 \abs{\xi}^2)ds
+\end{equation*}
+as in \cite[648]{lee:smooth_manifolds:2013}. However, we do consider first order approximations only, so we get
+\begin{equation*}
+	L(\abs[0]{\dot{x}}^2) \approx L(\abs[0]{\dot{x}}^2) + 2\frac{\partial L}{\partial y}(\abs[0]{\dot{x}}^2) \langle \dot{x},\xi \rangle.
+\end{equation*}
+As common, we do consider this as an exact model for the physical system, and thus we conclude
+\begin{equation*}
+	\frac{\partial L}{\partial y}(\abs[0]{\dot{x}}^2) \langle \dot{x},\xi \rangle = 0.
+\end{equation*}
