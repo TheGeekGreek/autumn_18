@@ -1,6 +1,14 @@
 \section*{Symmetries and Noether's Theorem}
 Solving the Euler-Lagrange equations \ref{thm:EL_equations} in general is a very difficult task. Thus we have to make certain assumptions for deriving general results.
 
+\begin{definition}[Closed Lagrangian System]
+	A Lagrangian system $(M,L)$ is said to be \bld{closed}, iff
+	\begin{equation*}
+		\frac{\partial L}{\partial t} = 0
+	\end{equation*}
+	\noindent with respect to every chart $U$ of $M$.
+\end{definition}
+
 \begin{definition}[Integral of Motion]
 	Let $(M,L)$ be a Lagrangian system. An \bld{integral of motion} is defined to be a morphism $I \in C^\infty(TM)$ such that
 	\begin{equation*}
@@ -9,14 +17,12 @@ Solving the Euler-Lagrange equations \ref{thm:EL_equations} in general is a very
 	\noindent holds for every extremal $\gamma$ of the action functional.
 \end{definition}
 
+Let $(M,L)$ be a Lagrangian system and $(U,q)$ a chart. Denote by $(q,\dot{q})$ the standard coordinates on $TM$ and consider the function $E \in C^\infty(TU \times \mathbb{R})$ defined by
+\begin{equation}
+	\label{eq:energy}
+	E(q,\dot{q},t) := \dot{q}^i \frac{\partial L}{\partial \dot{q}^i}(q,\dot{q},t) - L(q,\dot{q},t).
+\end{equation}
+
 \begin{definition}[Energy]
 	
-\end{definition}
-
-\begin{definition}[Closed Lagrangian System]
-	A Lagrangian system $(M,L)$ is said to be \bld{closed}, iff
-	\begin{equation*}
-		\frac{\partial L}{\partial t} = 0
-	\end{equation*}
-	\noindent with respect to every chart $U$ of $M$.
 \end{definition}

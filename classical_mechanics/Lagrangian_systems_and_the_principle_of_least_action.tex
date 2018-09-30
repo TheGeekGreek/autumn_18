@@ -28,7 +28,7 @@ The Newton-Laplace determinacy principle \ref{ax:NL_determinacy_principle} motiv
 
 \begin{example}
 	\label{ex:Lagrangian}
-	For $M \in \mathsf{Diff}$ let $T \in C^\infty(TM \times \mathbb{R})$ and $U \in C^\infty(M \times \mathbb{R})$. Define $L \in C^\infty(TM \times \mathbb{R})$ by $L := T - U$. In this situation, $T$ is called the \bld{kinetic energy} and $U$ is called the \bld{potential energy}.
+	For $M \in \mathsf{Diff}$ let $T \in C^\infty(TM \times \mathbb{R})$ and $V \in C^\infty(M \times \mathbb{R})$. Define $L \in C^\infty(TM \times \mathbb{R})$ by $L := T - V$. In this situation, $T$ is called the \bld{kinetic energy} and $V$ is called the \bld{potential energy}.
 \end{example}
 
 \begin{definition}[Path Space]
@@ -184,7 +184,35 @@ The Newton-Laplace determinacy principle \ref{ax:NL_determinacy_principle} impli
 \end{remark}
 
 \begin{example}[Motions on Riemannian Manifolds]
-	Let $(M,g)$ be a Riemannian manifold and consider the Lagrangian $L$ on $M$ defined in example \ref{ex:Lagrangian} with $T(q,v,t) := \frac{1}{2}\abs{v}^2$ and $U(q,t) := 0$. 
+	Let $(M,g)$ be a Riemannian manifold and consider the Lagrangian $L$ on $M$ defined in example \ref{ex:Lagrangian} with
+	\begin{equation*}
+		T(q,v,t) := \frac{1}{2}g_q(v,v) = \frac{1}{2}\abs{v}^2
+	\end{equation*}
+	\noindent and $V(q,t) := 0$. Let $(U,x^i)$ be a chart on $M$. We compute
+	\begin{align*}
+		L(\gamma(t),\dot{\gamma}(t),t) &= \frac{1}{2}g_{\gamma(t)}\del[1]{\dot{\gamma}(t),\dot{\gamma}(t)}\\
+		&= \frac{1}{2}g_{\gamma(t)}\del[3]{\dot{\gamma}^i(t)\frac{\partial}{\partial x^i},\dot{\gamma}^j(t)\frac{\partial}{\partial x^j}}\\
+		&= \frac{1}{2}g_{\gamma(t)}\del[3]{\frac{\partial}{\partial x^i},\frac{\partial}{\partial x^j}}\dot{\gamma}^i(t)\dot{\gamma}^j(t)\\
+		&= \frac{1}{2}g_{ij}\del[1]{\gamma(t)}\dot{\gamma}^i(t)\dot{\gamma}^j(t).
+	\end{align*}
+	Hence 
+	\begin{equation*}
+		\frac{\partial L}{\partial x^k}(\gamma(t),\dot{\gamma}(t),t) = \frac{1}{2}\frac{\partial g_{ij}}{\partial x^k}\del[1]{\gamma(t)}\dot{\gamma}^i(t)\dot{\gamma}^j(t),
+	\end{equation*}
+	\noindent and
+	\begin{align*}
+		\frac{\partial L}{\partial \dot{x}^k}(\gamma(t),\dot{\gamma}(t),t) &= \frac{1}{2}g_{ij}\del[1]{\gamma(t)}\delta^i_k\dot{\gamma}^j(t) + \frac{1}{2}g_{ij}\del[1]{\gamma(t)}\dot{\gamma}^i(t)\delta^j_k\\
+		&= \frac{1}{2}g_{kj}\del[1]{\gamma(t)}\dot{\gamma}^j(t) + \frac{1}{2}g_{ik}\del[1]{\gamma(t)}\dot{\gamma}^i(t).
+	\end{align*}
+	Thus, we compute
+	\begin{align*}
+		\frac{d}{dt}\frac{\partial L}{\partial \dot{x}^k} &= \frac{1}{2}g_{kj}(\gamma)\dot{\gamma}^j + \frac{1}{2}g_{ik}(\gamma)\dot{\gamma}^i\\
+		&= \frac{1}{2}\frac{d}{dt}g_{kj}(\gamma)\dot{\gamma}^j + \frac{1}{2}g_{kj}(\gamma)\ddot{\gamma}^j + \frac{1}{2}\frac{d}{dt}g_{ik}(\gamma)\dot{\gamma}^i + \frac{1}{2}g_{ik}(\gamma)\ddot{\gamma}^i\\
+		&= \frac{1}{2}dg_{kj}(\dot{\gamma})\dot{\gamma}^j + \frac{1}{2}g_{kj}(\gamma)\ddot{\gamma}^j + \frac{1}{2}dg_{ik}(\dot{\gamma})\dot{\gamma}^i + \frac{1}{2}g_{ik}(\gamma)\ddot{\gamma}^i\\
+		&= \frac{1}{2}\frac{\partial g_{kj}}{\partial x^l}\dot{\gamma}^l\dot{\gamma}^j + \frac{1}{2}g_{kj}(\gamma)\ddot{\gamma}^j + \frac{1}{2}\frac{\partial g_{ik}}{\partial x^l}\dot{\gamma}^l\dot{\gamma}^i + \frac{1}{2}g_{ik}(\gamma)\ddot{\gamma}^i\\
+		&= \frac{1}{2}\frac{\partial g_{jk}}{\partial x^l}\dot{\gamma}^l\dot{\gamma}^j + \frac{1}{2}g_{jk}(\gamma)\ddot{\gamma}^j + \frac{1}{2}\frac{\partial g_{ik}}{\partial x^l}\dot{\gamma}^l\dot{\gamma}^i + \frac{1}{2}g_{ik}(\gamma)\ddot{\gamma}^i\\
+		&= g_{ik}(\gamma)\ddot{\gamma}^i + \frac{\partial g_{ik}}{\partial x^l}\dot{\gamma}^l\dot{\gamma}^i
+	\end{align*}
 \end{example}
 
 \begin{lemma}
@@ -206,8 +234,6 @@ The Newton-Laplace determinacy principle \ref{ax:NL_determinacy_principle} impli
 	\end{align*}
 	In particular
 	\begin{equation*}
-		\frac{d}{d\varepsilon}\Bigg\vert_{\varepsilon = 0}\wtilde{S}(\gamma_\varepsilon) = \frac{d}{d\varepsilon}\bigg\vert_{\varepsilon = 0}S(\gamma_\varepsilon).
+		\frac{d}{d\varepsilon}\bigg\vert_{\varepsilon = 0}\wtilde{S}(\gamma_\varepsilon) = \frac{d}{d\varepsilon}\bigg\vert_{\varepsilon = 0}S(\gamma_\varepsilon).
 	\end{equation*}
 \end{proof}
-
-
