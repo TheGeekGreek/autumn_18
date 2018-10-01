@@ -163,7 +163,7 @@ The Newton-Laplace determinacy principle \ref{ax:NL_determinacy_principle} impli
 		\item \textit{Suppose that $\gamma$ is an arbitrary extremal of $S$.} The key technical result used here is the following lemma.
 			\begin{lemma}[Lebesgue Number Lemma]
 				\label{lem:Lebesgue_number_lemma}
-				Every open cover of a compact metric space admits a Lebesgue number, i.e. a number $\delta > 0$ such that every subset of the metric space with diameter less than $\delta$ is contained in one member of the family.
+				Every open cover of a compact metric space admits a Lebesgue number, i.e. a number $\delta > 0$ such that every subset of the metric space with diameter less than $\delta$ is contained in a member of the family.
 			\end{lemma}
 
 			\begin{proof}
@@ -184,35 +184,47 @@ The Newton-Laplace determinacy principle \ref{ax:NL_determinacy_principle} impli
 \end{remark}
 
 \begin{example}[Motions on Riemannian Manifolds]
-	Let $(M,g)$ be a Riemannian manifold and consider the Lagrangian $L$ on $M$ defined in example \ref{ex:Lagrangian} with
+	Let $(M,g)$ be a Riemannian manifold of dimension $n$ and consider the Lagrangian $L$ on $M$ defined in example \ref{ex:Lagrangian} with
 	\begin{equation*}
-		T(q,v,t) := \frac{1}{2}g_q(v,v) = \frac{1}{2}\abs{v}^2
+		T(q,v,t) := \frac{1}{2}g_q(v,v) = \frac{1}{2}\abs{v}^2_g
 	\end{equation*}
-	\noindent and $V(q,t) := 0$. Let $(U,x^i)$ be a chart on $M$. We compute
+	\noindent and $V(q,t) := 0$ for $q \in M$, $v \in T_qM$ and $t \in \mathbb{R}$. Let $(U,x^i)$ be a chart on $M$. We compute
 	\begin{align*}
-		L(\gamma(t),\dot{\gamma}(t),t) &= \frac{1}{2}g_{\gamma(t)}\del[1]{\dot{\gamma}(t),\dot{\gamma}(t)}\\
-		&= \frac{1}{2}g_{\gamma(t)}\del[3]{\dot{\gamma}^i(t)\frac{\partial}{\partial x^i},\dot{\gamma}^j(t)\frac{\partial}{\partial x^j}}\\
-		&= \frac{1}{2}g_{\gamma(t)}\del[3]{\frac{\partial}{\partial x^i},\frac{\partial}{\partial x^j}}\dot{\gamma}^i(t)\dot{\gamma}^j(t)\\
-		&= \frac{1}{2}g_{ij}\del[1]{\gamma(t)}\dot{\gamma}^i(t)\dot{\gamma}^j(t).
+		L(q,v,t) &= \frac{1}{2}g_{q}\del[0]{v,v}\\
+		&= \frac{1}{2}g_{q}\del[3]{v^i\frac{\partial}{\partial x^i}\bigg\vert_q,v^j(t)\frac{\partial}{\partial x^j}\bigg\vert_q}\\
+		&= \frac{1}{2}g_{q}\del[3]{\frac{\partial}{\partial x^i}\bigg\vert_q,\frac{\partial}{\partial x^j}\bigg\vert_q}v^iv^j\\
+		&= \frac{1}{2}g_{ij}(q)v^iv^j,
 	\end{align*}
-	Hence 
+	\noindent where $g_{ij}(q) := g_{q}\del[1]{\frac{\partial}{\partial x^i}\big\vert_q,\frac{\partial}{\partial x^j}\big\vert_q}$. Thus $\frac{\partial L}{\partial x^l}(q,v,t) = \frac{1}{2}\frac{\partial g_{ij}}{\partial x^l}(q)v^i v^j$ and in particular
 	\begin{equation*}
-		\frac{\partial L}{\partial x^k}(\gamma(t),\dot{\gamma}(t),t) = \frac{1}{2}\frac{\partial g_{ij}}{\partial x^k}\del[1]{\gamma(t)}\dot{\gamma}^i(t)\dot{\gamma}^j(t),
+		\frac{\partial L}{\partial x^l}\del[1]{\gamma(t),\dot{\gamma}(t),t} = \frac{1}{2}\frac{\partial g_{ij}}{\partial x^l}\del[1]{\gamma(t)}\dot{\gamma}^i(t) \dot{\gamma}^j(t),
 	\end{equation*}
-	\noindent and
+	\noindent for all $l = 1,\dots,n$. Moreover
+	\begin{equation*}
+		\frac{\partial L}{\partial \dot{x}^l}(q,v,t) = \frac{1}{2}g_{ij}(q)\delta^i_lv^j + \frac{1}{2}g_{ij}(q)v^i\delta^j_l = \frac{1}{2}g_{lj}(q)v^j + \frac{1}{2}g_{il}(q)v^i
+	\end{equation*}
+	\noindent implies
 	\begin{align*}
-		\frac{\partial L}{\partial \dot{x}^k}(\gamma(t),\dot{\gamma}(t),t) &= \frac{1}{2}g_{ij}\del[1]{\gamma(t)}\delta^i_k\dot{\gamma}^j(t) + \frac{1}{2}g_{ij}\del[1]{\gamma(t)}\dot{\gamma}^i(t)\delta^j_k\\
-		&= \frac{1}{2}g_{kj}\del[1]{\gamma(t)}\dot{\gamma}^j(t) + \frac{1}{2}g_{ik}\del[1]{\gamma(t)}\dot{\gamma}^i(t).
+		\frac{d}{dt}\frac{\partial L}{\partial \dot{x}^l}\del[1]{\gamma(t),\dot{\gamma}(t),t} &= \frac{1}{2}\frac{d}{dt}g_{lj}(\gamma)\dot{\gamma}^j + \frac{1}{2}g_{lj}(\gamma)\ddot{\gamma}^j + \frac{1}{2}\frac{d}{dt}g_{il}(\gamma)\dot{\gamma}^i + \frac{1}{2}g_{il}(\gamma)\ddot{\gamma}^i\\
+		&= \frac{1}{2}dg_{lj}(\dot{\gamma})\dot{\gamma}^j + \frac{1}{2}g_{lj}(\gamma)\ddot{\gamma}^j + \frac{1}{2}dg_{il}(\dot{\gamma})\dot{\gamma}^i + \frac{1}{2}g_{il}(\gamma)\ddot{\gamma}^i\\
+		&= \frac{1}{2}\frac{\partial g_{lj}}{\partial x^k}\dot{\gamma}^k\dot{\gamma}^j + \frac{1}{2}g_{lj}(\gamma)\ddot{\gamma}^j + \frac{1}{2}\frac{\partial g_{il}}{\partial x^k}\dot{\gamma}^k\dot{\gamma}^i + \frac{1}{2}g_{il}(\gamma)\ddot{\gamma}^i\\
+		&= \frac{1}{2}\frac{\partial g_{jl}}{\partial x^k}\dot{\gamma}^k\dot{\gamma}^j + \frac{1}{2}g_{jl}(\gamma)\ddot{\gamma}^j + \frac{1}{2}\frac{\partial g_{il}}{\partial x^k}\dot{\gamma}^k\dot{\gamma}^i + \frac{1}{2}g_{il}(\gamma)\ddot{\gamma}^i\\
+		&= g_{il}\ddot{\gamma}^i + \frac{1}{2}\frac{\partial g_{jl}}{\partial x^i}\dot{\gamma}^i\dot{\gamma}^j + \frac{1}{2}\frac{\partial g_{il}}{\partial x^j}\dot{\gamma}^i\dot{\gamma}^j.
 	\end{align*}
-	Thus, we compute
-	\begin{align*}
-		\frac{d}{dt}\frac{\partial L}{\partial \dot{x}^k} &= \frac{1}{2}g_{kj}(\gamma)\dot{\gamma}^j + \frac{1}{2}g_{ik}(\gamma)\dot{\gamma}^i\\
-		&= \frac{1}{2}\frac{d}{dt}g_{kj}(\gamma)\dot{\gamma}^j + \frac{1}{2}g_{kj}(\gamma)\ddot{\gamma}^j + \frac{1}{2}\frac{d}{dt}g_{ik}(\gamma)\dot{\gamma}^i + \frac{1}{2}g_{ik}(\gamma)\ddot{\gamma}^i\\
-		&= \frac{1}{2}dg_{kj}(\dot{\gamma})\dot{\gamma}^j + \frac{1}{2}g_{kj}(\gamma)\ddot{\gamma}^j + \frac{1}{2}dg_{ik}(\dot{\gamma})\dot{\gamma}^i + \frac{1}{2}g_{ik}(\gamma)\ddot{\gamma}^i\\
-		&= \frac{1}{2}\frac{\partial g_{kj}}{\partial x^l}\dot{\gamma}^l\dot{\gamma}^j + \frac{1}{2}g_{kj}(\gamma)\ddot{\gamma}^j + \frac{1}{2}\frac{\partial g_{ik}}{\partial x^l}\dot{\gamma}^l\dot{\gamma}^i + \frac{1}{2}g_{ik}(\gamma)\ddot{\gamma}^i\\
-		&= \frac{1}{2}\frac{\partial g_{jk}}{\partial x^l}\dot{\gamma}^l\dot{\gamma}^j + \frac{1}{2}g_{jk}(\gamma)\ddot{\gamma}^j + \frac{1}{2}\frac{\partial g_{ik}}{\partial x^l}\dot{\gamma}^l\dot{\gamma}^i + \frac{1}{2}g_{ik}(\gamma)\ddot{\gamma}^i\\
-		&= g_{ik}(\gamma)\ddot{\gamma}^i + \frac{\partial g_{ik}}{\partial x^l}\dot{\gamma}^l\dot{\gamma}^i
-	\end{align*}
+	Therefore the Euler-Lagrange equations (\ref{eq:EL_equations}) read
+	\begin{equation*}
+		0 = \frac{d}{dt}\frac{\partial L}{\partial \dot{x}^l} - \frac{\partial L}{\partial x^l} = g_{il}\ddot{\gamma}^i + \frac{1}{2}\del[3]{\frac{\partial g_{jl}}{\partial x^i} + \frac{\partial g_{il}}{\partial x^j} - \frac{\partial g_{ij}}{\partial x^l}}\dot{\gamma}^i\dot{\gamma}^j,	
+	\end{equation*}
+	\noindent for all $l = 1,\dots,n$. Multiplying both sides by $g^{kl}$ yields
+	\begin{equation}
+		\label{eq:geodesic_equation}
+		\ddot{\gamma}^k + \Gamma^k_{ij}\dot{\gamma}^i \dot{\gamma}^j = 0,
+	\end{equation}
+	\noindent for all $k = 1,\dots,n$, where
+	\begin{equation*}
+		\Gamma^k_{ij} := \frac{1}{2}g^{kl}\del[3]{\frac{\partial g_{jl}}{\partial x^i} + \frac{\partial g_{il}}{\partial x^j} - \frac{\partial g_{ij}}{\partial x^l}}
+	\end{equation*}
+	\noindent are the \bld{Christoffel symbols} with respect to the choosen chart (see \cite[70]{lee:Riemannian_manifolds:1997}). Equation (\ref{eq:geodesic_equation}) is called the \bld{geodesic equation} (see \cite[58]{lee:Riemannian_manifolds:1997}). Hence extremals $\gamma$ of the action functional satisfy the geodesic equation and are therefore geodesics on the Riemannian manifold $M$.
 \end{example}
 
 \begin{lemma}
