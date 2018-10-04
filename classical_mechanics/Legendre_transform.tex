@@ -36,7 +36,7 @@ Thus
 \end{equation*}
 Therefore, $d^\mathcal{F}$ is independent of the choice of coordinates.
 
-\begin{definition}[Fibrewise Differential]
+\begin{definition}[Fibrewise Differential\footnote{\unboldmath This terminology is adapted from exercise C.3. on problem sheet C of the lecture \emph{Differential geometry I} taught by \emph{Will J. Merry} at \emph{ETH Z\"urich} in the autumn semester $2018$, which can be found \href{https://www.merry.io/differential-geometry-i-problem-sheets/problem-sheet-c}{here}.}]
 	Let $(M,L)$ be an autonomous Lagrangian system. The map $d^\mathcal{F}L : TM \to T^*M$ defined on a chart $(U,x^i)$ of $M$ by
 	\begin{equation}
 		\label{eq:fibrewise_differential}
@@ -56,5 +56,16 @@ Therefore, $d^\mathcal{F}$ is independent of the choice of coordinates.
 	\end{equation*}
 	\noindent in standard coordinates $(x^i,v^i)$ of $TM$.
 \end{definition}
+
+\begin{example}
+	Let $(M,g)$ be a Riemannian manifold and consider the Lagrangian $T - U$, with kinetic energy $T \in C^\infty(TM)$ defined by $T(v) := \frac{1}{2}\abs{v}^2$ and potential energy $U \in C^\infty(M)$. Then the computation performed in example \ref{ex:motions_on_Riemannian_manifolds} yields
+	\begin{align*}
+		E_{T - U}(x,v) &= \frac{\partial T}{\partial v^k}v^k - \frac{\partial U}{\partial v^k}v^k - T(v) + U(x)\\
+		&= \frac{1}{2}g_{ij}\delta^i_k v^jv^k + \frac{1}{2}g_{ij}v^i \delta^j_k v^k - T(v) + U(x)\\
+		&= g_{ij}v^i v^j - T(v) + U(x)\\
+		&= T(v) + U(x)
+	\end{align*}
+	\noindent for every $(x,v) \in TM$. Hence the energy of this Lagrangian system is given by \emph{kinetic energy plus potential energy}.
+\end{example}
 
 \subsection*{Hamilton's Equations}
