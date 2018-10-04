@@ -1,0 +1,60 @@
+\section*{Legendre Transform}
+In this section we \emph{dualize} the notion of a Lagrangian function, that is, to each Lagrangian function $L \in C^\infty(TM)$ we will associate a \emph{dual function} $L^* \in C^\infty(T^*M)$. It turns out, that in this dual formulation, the equations of motion take a very symmetric form. To simplify the notation and illuminating the main concept, we consider Lagrangian functions of a special type.
+
+\begin{definition}[Autonomous System]
+	A Lagrangian system $(M,L)$ is said to be an \bld{autonomous Lagrangian system}, iff $L \in C^\infty(TM)$.
+\end{definition}
+
+\subsection*{The Energy of a Lagrangian System}
+Let $M \in \mathsf{Diff}$ of dimension $n$ and $(U,(x^i))$ a chart on $M$. Let $(x^i,v^i)$ denote standard coordinates on $TM$, that is $v^i := dx^i$ for all $i = 1,\dots,n$. Suppose $L \in C^\infty(TM)$. For every $(x,v) \in TM$ we can define a covector $d^\mathcal{F}_{(x,v)} L \in T^*_xM$ by setting
+\begin{equation}
+	d^\mathcal{F}_{(x,v)}L := \frac{\partial}{\partial v^i}\bigg\vert_{(x,v)}(L) dx^i\vert_x = \frac{\partial L}{\partial v^i}dx^i.
+\end{equation}
+Let $(\wtilde{x}^i,\wtilde{v}^i)$ denote another pair of coordinates on $TM$. Then we have that 
+\begin{equation*}
+	\frac{\partial}{\partial \wtilde{v}^i} = \frac{\partial x^j}{\partial \wtilde{v}^i}\frac{\partial}{\partial x^j} + \frac{\partial v^j}{\partial \wtilde{v}^i}\frac{\partial}{\partial v^j} = \frac{\partial v^j}{\partial \wtilde{v}^i}\frac{\partial}{\partial v^j}.
+\end{equation*}
+Moreover
+\begin{equation*}
+	\frac{\partial}{\partial x^j} = \frac{\partial \wtilde{x}^k}{\partial x^j} \frac{\partial}{\partial \wtilde{x}^k}
+\end{equation*}
+\noindent which implies
+\begin{equation*}
+	d\wtilde{x}^i \del[3]{\frac{\partial}{\partial x^j}} = \frac{\partial \wtilde{x}^k}{\partial x^j} d\wtilde{x}^i\del[3]{\frac{\partial}{\partial \wtilde{x}^k}} = \frac{\partial \wtilde{x}^k}{\partial x^j}\delta^i_k = \frac{\partial \wtilde{x}^i}{\partial x^j}.
+\end{equation*}
+Thus
+\begin{equation*}
+	d\wtilde{x}^i = \frac{\partial \wtilde{x}^i}{\partial x^j} dx^j
+\end{equation*}
+\noindent or equivalently 
+\begin{equation*}
+	v^j = \frac{\partial x^j}{\partial \wtilde{x}^i}\wtilde{v}^i,
+\end{equation*}
+\noindent and so we compute
+\begin{equation*}
+	d^\mathcal{F}L = \frac{\partial L}{\partial \wtilde{v}^i}d\wtilde{x}^i = \frac{\partial v^j}{\partial \wtilde{v}^i}\frac{\partial L}{\partial v^j}\frac{\partial \wtilde{x}^i}{\partial x^k} dx^k = \frac{\partial x^j}{\partial \wtilde{x}^i}\frac{\partial L}{\partial v^j}\frac{\partial \wtilde{x}^i}{\partial x^k} dx^k = \frac{\partial L}{\partial v^j}\delta^j_k dx^k = \frac{\partial L}{\partial v^j}dx^j.
+\end{equation*}
+Therefore, $d^\mathcal{F}$ is independent of the choice of coordinates.
+
+\begin{definition}[Fibrewise Differential]
+	Let $(M,L)$ be an autonomous Lagrangian system. The map $d^\mathcal{F}L : TM \to T^*M$ defined on a chart $(U,x^i)$ of $M$ by
+	\begin{equation}
+		\label{eq:fibrewise_differential}
+		d^\mathcal{F}L := \frac{\partial L}{\partial v^i}dx^i
+	\end{equation}
+	\noindent where $(x^i,v^i)$ denotes the induced standard coordinates on $TM$, is called the \bld{fibrewise differential of $L$}.
+\end{definition}
+
+\begin{remark}
+	The preceeding discussion showed, that the fibrewise differential $d^\mathcal{F}L$ is well-defined.
+\end{remark}
+
+\begin{definition}[Energy]
+	The \bld{energy} of an autonomous Lagrangian system $(M,L)$ is defined to be the function $E_L \in C^\infty(TM)$ given by
+	\begin{equation*}
+		E_L(x,v) := d^\mathcal{F}_{(x,v)}L(v) - L(x,v),
+	\end{equation*}
+	\noindent in standard coordinates $(x^i,v^i)$ of $TM$.
+\end{definition}
+
+\subsection*{Hamilton's Equations}

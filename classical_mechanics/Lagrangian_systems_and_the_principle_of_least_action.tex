@@ -121,12 +121,12 @@ The Newton-Laplace determinacy principle \ref{ax:NL_determinacy_principle} impli
 
 \begin{theorem}[Euler-Lagrange Equations]
 	\label{thm:EL_equations}
-	Let $(M,L)$ be a Lagrangian system. If a path $\gamma \in C^\infty(\intcc[0]{t_0,t_1},M)$ describes a motion of $(M,L)$ between $(q_0,t_0)$ and $(q_1,t_1)$ then for all charts $(U,q^i)$
+	Let $(M,L)$ be a Lagrangian system. If a path $\gamma \in C^\infty(\intcc[0]{t_0,t_1},M)$ describes a motion of $(M,L)$ between $(q_0,t_0)$ and $(q_1,t_1)$ then for all charts $(U,x^i)$
 	\begin{equation}
 		\label{eq:EL_equations}
-		\pd{L}{q}\del[1]{\gamma(t),\dot{\gamma}(t),t} - \frac{d}{dt} \pd{L}{\dot{q}}\del[1]{\gamma(t),\dot{\gamma}(t),t} = 0
+		\pd{L}{x}\del[1]{\gamma(t),\dot{\gamma}(t),t} - \frac{d}{dt} \pd{L}{v}\del[1]{\gamma(t),\dot{\gamma}(t),t} = 0
 	\end{equation}
-	\noindent holds, where $(q,\dot{q})$ denotes the standard coordinates on $TM$. The system of equations \textup{(}\ref{eq:EL_equations}\textup{)} is referred to as the \bld{Euler-Lagrange equations}\index{Euler-Lagrange equations}.
+	\noindent holds, where $(x^i,v^i)$ denotes the standard coordinates on $TM$. The system of equations \textup{(}\ref{eq:EL_equations}\textup{)} is referred to as the \bld{Euler-Lagrange equations}\index{Euler-Lagrange equations}.
 \end{theorem}
 
 \begin{proof}
@@ -135,29 +135,29 @@ The Newton-Laplace determinacy principle \ref{ax:NL_determinacy_principle} impli
 		\item \textit{Suppose that $\gamma$ of $S$ is conatined in a chart domain $U$.} Let $t \in \intcc[0]{t_0,t_1}$ and abreviate $p := (\gamma(t),\dot{\gamma}(t),t)$ Using the formula for the derivative of a function along a curve \cite[283]{lee:smooth_manifolds:2013}, we compute
 			\begin{align*}
 				\frac{d}{d\varepsilon}\bigg\vert_{\varepsilon = 0} L\del[0]{\gamma_\varepsilon(t),\dot{\gamma}_\varepsilon(t),t} &= dL_p\del[3]{\frac{d}{d\varepsilon}\bigg\vert_{\varepsilon = 0}\gamma_\varepsilon(t),\frac{d}{d\varepsilon}\bigg\vert_{\varepsilon = 0}\dot{\gamma}_\varepsilon(t),0}\\
-				&= dL_p\del[3]{\frac{d\gamma_\varepsilon^j(t)}{d\varepsilon}(0)\frac{\partial}{\partial q^j}\bigg\vert_{\gamma(t)},\frac{d\dot{\gamma}_\varepsilon^j(t)}{d\varepsilon}(0)\frac{\partial}{\partial \dot{q}^j}\bigg\vert_{\dot{\gamma}(t)},0}.
+				&= dL_p\del[3]{\frac{d\gamma_\varepsilon^j(t)}{d\varepsilon}(0)\frac{\partial}{\partial x^j}\bigg\vert_{\gamma(t)},\frac{d\dot{\gamma}_\varepsilon^j(t)}{d\varepsilon}(0)\frac{\partial}{\partial v^j}\bigg\vert_{\dot{\gamma}(t)},0}.
 			\end{align*}
 			\noindent for all variations $\gamma_\varepsilon$ of $\gamma$ in $U$. Moreover
 			\begin{equation*}
-				dL_p = \frac{\partial L}{\partial q^i}(p) dq^i\vert_p + \frac{\partial L}{\partial \dot{q}^i}(p) d\dot{q}^i\vert_p + \frac{\partial L}{\partial t}(p)dt\vert_p.
+				dL_p = \frac{\partial L}{\partial x^i}(p) dx^i\vert_p + \frac{\partial L}{\partial v^i}(p) dv^i\vert_p + \frac{\partial L}{\partial t}(p)dt\vert_p.
 			\end{equation*}
 			Therefore
 			\begin{align*}
 				0 &= \frac{d}{d\varepsilon}\bigg\vert_{\varepsilon = 0} S(\gamma_\varepsilon)\\
 				&= \int_{t_0}^{t_1} \frac{d}{d\varepsilon}\bigg\vert_{\varepsilon = 0} L\del[0]{\gamma_\varepsilon(t),\dot{\gamma}_\varepsilon(t),t} dt\\
-				&= \int_{t_0}^{t_1} dL_p\del[3]{\frac{d\gamma_\varepsilon^j(t)}{d\varepsilon}(0)\frac{\partial}{\partial q^j}\bigg\vert_{\gamma(t)},\frac{d\dot{\gamma}_\varepsilon^j(t)}{d\varepsilon}(0)\frac{\partial}{\partial \dot{q}^j}\bigg\vert_{\dot{\gamma}(t)},0}\\
-				&= \int_{t_0}^{t_1} \frac{\partial L}{\partial q^i}(p)\frac{d\gamma_\varepsilon^i(t)}{d\varepsilon}(0)dt + \int_{t_0}^{t_1}\frac{\partial L}{\partial \dot{q}^i}(p)\frac{d\dot{\gamma}_\varepsilon^i(t)}{d\varepsilon}(0)dt\\
-				&= \int_{t_0}^{t_1} \frac{\partial L}{\partial q^i}(p)\frac{d\gamma_\varepsilon^i(t)}{d\varepsilon}(0)dt + \int_{t_0}^{t_1}\frac{\partial L}{\partial \dot{q}^i}(p)\del[3]{\frac{d\gamma_\varepsilon^i(t)}{d\varepsilon}(0)}'dt\\
-				&= \int_{t_0}^{t_1} \frac{\partial L}{\partial q^i}(p)\frac{d\gamma_\varepsilon^i(t)}{d\varepsilon}(0)dt + \frac{\partial L}{\partial \dot{q}^i}(p)\frac{d\gamma_\varepsilon^i(t)}{d\varepsilon}(0)\bigg\vert_{t_0}^{t_1} - \int_{t_0}^{t_1} \frac{d}{dt}\frac{\partial L}{\partial \dot{q}^i}(p)\frac{d\gamma_\varepsilon^i(t)}{d\varepsilon}(0)dt\\
-				&= \int_{t_0}^{t_1} \del[3]{\frac{\partial L}{\partial q^i}(p) - \frac{d}{dt}\frac{\partial L}{\partial \dot{q}^i}(p)}\frac{d\gamma_\varepsilon^i(t)}{d\varepsilon}(0)dt 
+				&= \int_{t_0}^{t_1} dL_p\del[3]{\frac{d\gamma_\varepsilon^j(t)}{d\varepsilon}(0)\frac{\partial}{\partial x^j}\bigg\vert_{\gamma(t)},\frac{d\dot{\gamma}_\varepsilon^j(t)}{d\varepsilon}(0)\frac{\partial}{\partial v^j}\bigg\vert_{\dot{\gamma}(t)},0}\\
+				&= \int_{t_0}^{t_1} \frac{\partial L}{\partial x^i}(p)\frac{d\gamma_\varepsilon^i(t)}{d\varepsilon}(0)dt + \int_{t_0}^{t_1}\frac{\partial L}{\partial v^i}(p)\frac{d\dot{\gamma}_\varepsilon^i(t)}{d\varepsilon}(0)dt\\
+				&= \int_{t_0}^{t_1} \frac{\partial L}{\partial x^i}(p)\frac{d\gamma_\varepsilon^i(t)}{d\varepsilon}(0)dt + \int_{t_0}^{t_1}\frac{\partial L}{\partial v^i}(p)\del[3]{\frac{d\gamma_\varepsilon^i(t)}{d\varepsilon}(0)}'dt\\
+				&= \int_{t_0}^{t_1} \frac{\partial L}{\partial x^i}(p)\frac{d\gamma_\varepsilon^i(t)}{d\varepsilon}(0)dt + \frac{\partial L}{\partial v^i}(p)\frac{d\gamma_\varepsilon^i(t)}{d\varepsilon}(0)\bigg\vert_{t_0}^{t_1} - \int_{t_0}^{t_1} \frac{d}{dt}\frac{\partial L}{\partial v^i}(p)\frac{d\gamma_\varepsilon^i(t)}{d\varepsilon}(0)dt\\
+				&= \int_{t_0}^{t_1} \del[3]{\frac{\partial L}{\partial x^i}(p) - \frac{d}{dt}\frac{\partial L}{\partial v^i}(p)}\frac{d\gamma_\varepsilon^i(t)}{d\varepsilon}(0)dt 
 			\end{align*}
 			\noindent since $\gamma^i_\varepsilon(t_0)$ and $\gamma^i_\varepsilon(t_1)$ are constant by definition of a variation. Let $f \in C^\infty_c\intoo[0]{t_0,t_1}$, $j = 1,\dots,n$ and $\gamma_\varepsilon$ be the variation of $\gamma$ defined in example \ref{ex:perturbation_along_single_direction} along the $j$-th direction. Above computation therefore yields
 			\begin{equation*}
-				0 = \int_{t_0}^{t_1} \del[3]{\frac{\partial L}{\partial q^j}(p) - \frac{d}{dt}\frac{\partial L}{\partial \dot{q}^j}(p)}f(t) dt
+				0 = \int_{t_0}^{t_1} \del[3]{\frac{\partial L}{\partial x^j}(p) - \frac{d}{dt}\frac{\partial L}{\partial v^j}(p)}f(t) dt
 			\end{equation*}
 			\noindent for all $f \in C^\infty_c\intoo[0]{t_0,t_1}$. Hence the fundamental lemma of calculus of variations \ref{lem:fundamental_lemma} implies
 			\begin{equation*}
-				\frac{\partial L}{\partial q^j}(p) - \frac{d}{dt}\frac{\partial L}{\partial \dot{q}^j}(p) = 0
+				\frac{\partial L}{\partial x^j}(p) - \frac{d}{dt}\frac{\partial L}{\partial v^j}(p) = 0
 			\end{equation*}
 			\noindent for all $j = 1,\dots,n$.
 		\item \textit{Suppose that $\gamma$ is an arbitrary extremal of $S$.} The key technical result used here is the following lemma.
@@ -172,7 +172,7 @@ The Newton-Laplace determinacy principle \ref{ax:NL_determinacy_principle} impli
 
 			Let $(U_\alpha)_{\alpha \in A}$ be the smooth structure on $M$, i.e. the maximal smooth atlas. Since $\gamma$ is continuous, $\del[1]{\gamma^{-1}(U_\alpha)}_{\alpha \in A}$ is an open cover for $\intcc[0]{t_0,t_1}$. By the Lebesgue number lemma \ref{lem:Lebesgue_number_lemma}, this open cover admits a Lebesgue number $\delta > 0$. Let $k \in \mathbb{N}$ such that $(t_1 - t_0)/k < \delta$ and define
 			\begin{equation*}
-				x_i := \frac{i}{k}(t_1 - t_0) + t_0
+				t_i := \frac{i}{k}(t_1 - t_0) + t_0
 			\end{equation*}
 			\noindent for all $i = 0,\dots,k$. Then for all $i = 1,\dots,k$, $\gamma\vert_{\intcc[0]{x_{i - 1},x_i}}$ is contained in $U_\alpha$ for some $\alpha \in A$. Hence applying step $1$ yields the result.
 	\end{enumerate}
@@ -183,12 +183,18 @@ The Newton-Laplace determinacy principle \ref{ax:NL_determinacy_principle} impli
 	If a configuration space can be covered by a single chart, then the statement of theorem \ref{thm:EL_equations} becomes an equivalence.
 \end{remark}
 
+Due to the Newton-Laplace Determinacy Principle \ref{ax:NL_determinacy_principle}, the motions on a Lagrangian system are inherently characterized by the Lagrangian function and locally by the Euler-Lagrange equations (\ref{eq:EL_equations}). Hence any motion satisfies locally a system of second order ordinary differential equations. This system bears its own name.
+
+\begin{definition}[Equations of Motion]
+	The Euler-Lagrange equations \textup{(}\ref{eq:EL_equations}\textup{)} of a Lagrangian system are called the \bld{equations of motion}.
+\end{definition}
+
 \begin{example}[Motions on Riemannian Manifolds]
-	Let $(M,g)$ be a Riemannian manifold of dimension $n$ and consider the Lagrangian $L$ on $M$ defined in example \ref{ex:Lagrangian} with
+	Let $(M,g)$ be a Riemannian manifold of dimension $n$ and consider the Lagrangian $L$ on $M$ defined in example \ref{ex:Lagrangian} with kinetic energy
 	\begin{equation*}
 		T(q,v,t) := \frac{1}{2}g_q(v,v) = \frac{1}{2}\abs{v}^2_g
 	\end{equation*}
-	\noindent and $V(q,t) := 0$ for $q \in M$, $v \in T_qM$ and $t \in \mathbb{R}$. Let $(U,x^i)$ be a chart on $M$. We compute
+	\noindent and potential energy $V(q,t) := 0$ for $q \in M$, $v \in T_qM$ and $t \in \mathbb{R}$. Let $(U,x^i)$ be a chart on $M$. We compute
 	\begin{align*}
 		L(q,v,t) &= \frac{1}{2}g_{q}\del[0]{v,v}\\
 		&= \frac{1}{2}g_{q}\del[3]{v^i\frac{\partial}{\partial x^i}\bigg\vert_q,v^j(t)\frac{\partial}{\partial x^j}\bigg\vert_q}\\
@@ -201,11 +207,11 @@ The Newton-Laplace determinacy principle \ref{ax:NL_determinacy_principle} impli
 	\end{equation*}
 	\noindent for all $l = 1,\dots,n$. Moreover
 	\begin{equation*}
-		\frac{\partial L}{\partial \dot{x}^l}(q,v,t) = \frac{1}{2}g_{ij}(q)\delta^i_lv^j + \frac{1}{2}g_{ij}(q)v^i\delta^j_l = \frac{1}{2}g_{lj}(q)v^j + \frac{1}{2}g_{il}(q)v^i
+		\frac{\partial L}{\partial v^l}(q,v,t) = \frac{1}{2}g_{ij}(q)\delta^i_lv^j + \frac{1}{2}g_{ij}(q)v^i\delta^j_l = \frac{1}{2}g_{lj}(q)v^j + \frac{1}{2}g_{il}(q)v^i
 	\end{equation*}
 	\noindent implies
 	\begin{align*}
-		\frac{d}{dt}\frac{\partial L}{\partial \dot{x}^l}\del[1]{\gamma(t),\dot{\gamma}(t),t} &= \frac{1}{2}\frac{d}{dt}g_{lj}(\gamma)\dot{\gamma}^j + \frac{1}{2}g_{lj}(\gamma)\ddot{\gamma}^j + \frac{1}{2}\frac{d}{dt}g_{il}(\gamma)\dot{\gamma}^i + \frac{1}{2}g_{il}(\gamma)\ddot{\gamma}^i\\
+		\frac{d}{dt}\frac{\partial L}{\partial v^l}\del[1]{\gamma(t),\dot{\gamma}(t),t} &= \frac{1}{2}\frac{d}{dt}g_{lj}(\gamma)\dot{\gamma}^j + \frac{1}{2}g_{lj}(\gamma)\ddot{\gamma}^j + \frac{1}{2}\frac{d}{dt}g_{il}(\gamma)\dot{\gamma}^i + \frac{1}{2}g_{il}(\gamma)\ddot{\gamma}^i\\
 		&= \frac{1}{2}dg_{lj}(\dot{\gamma})\dot{\gamma}^j + \frac{1}{2}g_{lj}(\gamma)\ddot{\gamma}^j + \frac{1}{2}dg_{il}(\dot{\gamma})\dot{\gamma}^i + \frac{1}{2}g_{il}(\gamma)\ddot{\gamma}^i\\
 		&= \frac{1}{2}\frac{\partial g_{lj}}{\partial x^k}\dot{\gamma}^k\dot{\gamma}^j + \frac{1}{2}g_{lj}(\gamma)\ddot{\gamma}^j + \frac{1}{2}\frac{\partial g_{il}}{\partial x^k}\dot{\gamma}^k\dot{\gamma}^i + \frac{1}{2}g_{il}(\gamma)\ddot{\gamma}^i\\
 		&= \frac{1}{2}\frac{\partial g_{jl}}{\partial x^k}\dot{\gamma}^k\dot{\gamma}^j + \frac{1}{2}g_{jl}(\gamma)\ddot{\gamma}^j + \frac{1}{2}\frac{\partial g_{il}}{\partial x^k}\dot{\gamma}^k\dot{\gamma}^i + \frac{1}{2}g_{il}(\gamma)\ddot{\gamma}^i\\
@@ -213,7 +219,7 @@ The Newton-Laplace determinacy principle \ref{ax:NL_determinacy_principle} impli
 	\end{align*}
 	Therefore the Euler-Lagrange equations (\ref{eq:EL_equations}) read
 	\begin{equation*}
-		0 = \frac{d}{dt}\frac{\partial L}{\partial \dot{x}^l} - \frac{\partial L}{\partial x^l} = g_{il}\ddot{\gamma}^i + \frac{1}{2}\del[3]{\frac{\partial g_{jl}}{\partial x^i} + \frac{\partial g_{il}}{\partial x^j} - \frac{\partial g_{ij}}{\partial x^l}}\dot{\gamma}^i\dot{\gamma}^j,	
+		0 = \frac{d}{dt}\frac{\partial L}{\partial v^l} - \frac{\partial L}{\partial x^l} = g_{il}\ddot{\gamma}^i + \frac{1}{2}\del[3]{\frac{\partial g_{jl}}{\partial x^i} + \frac{\partial g_{il}}{\partial x^j} - \frac{\partial g_{ij}}{\partial x^l}}\dot{\gamma}^i\dot{\gamma}^j,	
 	\end{equation*}
 	\noindent for all $l = 1,\dots,n$. Multiplying both sides by $g^{kl}$ yields
 	\begin{equation}
@@ -228,7 +234,7 @@ The Newton-Laplace determinacy principle \ref{ax:NL_determinacy_principle} impli
 \end{example}
 
 \begin{lemma}
-	\label{prop:same_equations_of_motion}
+	\label{lem:same_equations_of_motion}
 	Let $(M,L)$ be a Lagrangian system and define $L + df \in C^\infty(TM \times \mathbb{R})$ by
 	\begin{equation*}
 		(L + df)(q,v,t) := L(q,v,t) + df_q(v)
@@ -249,3 +255,7 @@ The Newton-Laplace determinacy principle \ref{ax:NL_determinacy_principle} impli
 		\frac{d}{d\varepsilon}\bigg\vert_{\varepsilon = 0}\wtilde{S}(\gamma_\varepsilon) = \frac{d}{d\varepsilon}\bigg\vert_{\varepsilon = 0}S(\gamma_\varepsilon).
 	\end{equation*}
 \end{proof}
+
+\begin{remark}
+	Lemma \ref{lem:same_equations_of_motion} implies, that the Lagrangian of a mechanical system can only be determined up to differentials of smooth functions. Actually, in coordinates, also up to total time derivatives. Hence a \emph{law of motion}, that is a Lagrangian describing a certain mechanical system, is in fact an equivalence class of Lagrangian functions.
+\end{remark}
