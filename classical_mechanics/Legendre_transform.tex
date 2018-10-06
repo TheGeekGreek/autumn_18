@@ -5,10 +5,25 @@ In this section we \emph{dualize} the notion of a Lagrangian function, that is, 
 	A Lagrangian system $(M,L)$ is said to be an \bld{autonomous Lagrangian system}, iff $L \in C^\infty(TM)$.
 \end{definition}
 
-\subsection*{The Energy of a Lagrangian System}
-Let $M \in \mathsf{Diff}$ of dimension $n$ and $(U,(x^i))$ a chart on $M$. Let $(x^i,v^i)$ denote standard coordinates on $TM$, that is $v^i := dx^i$ for all $i = 1,\dots,n$. Suppose $L \in C^\infty(TM)$. For every $(x,v) \in TM$ we can define a covector $d^\mathcal{F}_{(x,v)} L \in T^*_xM$ by setting
+Let $(M,L)$ be an autonomous Lagrangian system with $\dim M = n$ and $(U,x^i)$ a chart on $M$. Moreover, let $(x^i,v^i)$ denote standard coordinates on $TM$, that is $v^i := dx^i$ for all $i = 1,\dots,n$. Expanding the Euler-Lagrange equations (\ref{eq:EL_equations}) yields
+\begin{align*}
+	\frac{\partial L}{\partial x^j}\del[1]{\gamma(t),\dot{\gamma}(t)} &= \frac{d}{dt}\frac{\partial L}{\partial v^j}\del[1]{\gamma(t),\dot{\gamma}(t)}\\
+	&= \frac{\partial^2 L}{\partial x^i\partial v^j}\del[1]{\gamma(t),\dot{\gamma}(t)}\dot{\gamma}^i(t) + \frac{\partial^2 L}{\partial v^i\partial v^j}\del[1]{\gamma(t),\dot{\gamma}(t)}\ddot{\gamma}^i(t)
+\end{align*}
+\noindent for all $j = 1,\dots,n$. In order to solve above system of second order ordinary differential equations for $\ddot{\gamma}^i(t)$ and all initial conditions in the chart on $TU$, the matrix $H_L(x,v)$ defined by
 \begin{equation}
-	d^\mathcal{F}_{(x,v)}L := \frac{\partial}{\partial v^i}\bigg\vert_{(x,v)}(L) dx^i\vert_x = \frac{\partial L}{\partial v^i}dx^i.
+	\label{eq:H_L}
+	H_L(x,v) := \del[3]{\frac{\partial^2 L}{\partial v^i\partial v^j}(x,v)}_j^i
+\end{equation}
+\noindent must be invertible on $TU$.
+
+\begin{definition}[Nondegenrate System]
+	An autonomous Lagrangian system $(M,L)$ is said to be \bld{nondegenerate}, iff for all coordinate charts $U$ on $M$, $\det H_L(x,v) \neq 0$ holds on $TU$. 
+\end{definition}
+
+The nondegeneracy of an autonomous Lagrangian system is intrinsically connected to a certain differential form in $\Omega^1(TM)$, which we will construct now. For every $(x,v) \in TM$ we can define a covector $D^\mathcal{F}_{(x,v)} L \in T^*_xM$ by setting
+\begin{equation}
+	D^\mathcal{F}_{(x,v)}L := \frac{\partial}{\partial v^i}\bigg\vert_{(x,v)}(L) dx^i\vert_x = \frac{\partial L}{\partial v^i}dx^i.
 \end{equation}
 Let $(\wtilde{x}^i,\wtilde{v}^i)$ denote another pair of coordinates on $TM$. Then we have that 
 \begin{equation*}
@@ -32,40 +47,136 @@ Thus
 \end{equation*}
 \noindent and so we compute
 \begin{equation*}
-	d^\mathcal{F}L = \frac{\partial L}{\partial \wtilde{v}^i}d\wtilde{x}^i = \frac{\partial v^j}{\partial \wtilde{v}^i}\frac{\partial L}{\partial v^j}\frac{\partial \wtilde{x}^i}{\partial x^k} dx^k = \frac{\partial x^j}{\partial \wtilde{x}^i}\frac{\partial L}{\partial v^j}\frac{\partial \wtilde{x}^i}{\partial x^k} dx^k = \frac{\partial L}{\partial v^j}\delta^j_k dx^k = \frac{\partial L}{\partial v^j}dx^j.
+	D^\mathcal{F}L = \frac{\partial L}{\partial \wtilde{v}^i}d\wtilde{x}^i = \frac{\partial v^j}{\partial \wtilde{v}^i}\frac{\partial L}{\partial v^j}\frac{\partial \wtilde{x}^i}{\partial x^k} dx^k = \frac{\partial x^j}{\partial \wtilde{x}^i}\frac{\partial L}{\partial v^j}\frac{\partial \wtilde{x}^i}{\partial x^k} dx^k = \frac{\partial L}{\partial v^j}\delta^j_k dx^k = \frac{\partial L}{\partial v^j}dx^j.
 \end{equation*}
-Therefore, $d^\mathcal{F}$ is independent of the choice of coordinates.
+Therefore, $D^\mathcal{F}L$ is independent of the choice of coordinates.
 
 \begin{definition}[Fibrewise Differential\footnote{\unboldmath This terminology is adapted from exercise C.3. on problem sheet C of the lecture \emph{Differential geometry I} taught by \emph{Will J. Merry} at \emph{ETH Z\"urich} in the autumn semester $2018$, which can be found \href{https://www.merry.io/differential-geometry-i-problem-sheets/problem-sheet-c}{here}.}]
-	Let $(M,L)$ be an autonomous Lagrangian system. The map $d^\mathcal{F}L : TM \to T^*M$ defined on a chart $(U,x^i)$ of $M$ by
+	\label{def:fibrewise_differential}
+	Let $(M,L)$ be an autonomous Lagrangian system. The form $D^\mathcal{F}L \in \Omega^1(TM)$ defined on a chart $(U,x^i)$ of $M$ by
 	\begin{equation}
 		\label{eq:fibrewise_differential}
-		d^\mathcal{F}L := \frac{\partial L}{\partial v^i}dx^i
+		D^\mathcal{F}L := \frac{\partial L}{\partial v^i}dx^i
 	\end{equation}
 	\noindent where $(x^i,v^i)$ denotes the induced standard coordinates on $TM$, is called the \bld{fibrewise differential of $L$}.
 \end{definition}
 
 \begin{remark}
-	The preceeding discussion showed, that the fibrewise differential $d^\mathcal{F}L$ is well-defined.
+	The preceeding discussion showed, that the fibrewise differential $D^\mathcal{F}L$ is well-defined.
 \end{remark}
+
+Recall, that a $2$-covector on a finite-dimensional real vector space is said to be \emph{nondegenrate}, iff the matrix representation with respect to some basis is invertible. Moreover, a \emph{nondegenerate $2$-form} on a smooth manifold $M$ is defined to be a $2$-form $\omega$, such that $\omega_x$ is a nondegenrate $2$-covector for all $x \in M$ (see \cite[565,567]{lee:smooth_manifolds:2013}). 
+
+\begin{proposition}
+	An autonomous Lagrangian system $(M,L)$ is nondegenerate if and only if $d(D^\mathcal{F}L)$ is nondegenerate.
+\end{proposition}
+
+\begin{proof}
+	Using the computation performed in \cite[363]{lee:smooth_manifolds:2013}, we get
+	\begin{equation*}
+		d(D^\mathcal{F}L) = d\del[3]{\frac{\partial L}{\partial v^j}dx^j} = \frac{\partial^2 L}{\partial x^i\partial v^j}dx^i \wedge dx^j + \frac{\partial^2L}{\partial v^i\partial v^j}dv^i \wedge dx^j.
+	\end{equation*}
+	Moreover, using part (e) of properties of the wedge product \cite[356]{lee:smooth_manifolds:2013}, we compute
+	\begin{align*}
+		d(D^\mathcal{F}L)\del[3]{\frac{\partial}{\partial x^k},\frac{\partial}{\partial x^l}} =& \frac{\partial^2 L}{\partial x^i\partial v^j}\det\begin{pmatrix}
+			\displaystyle dx^i\del[3]{\frac{\partial}{\partial x^k}} & \displaystyle dx^j\del[3]{\frac{\partial}{\partial x^k}}\\[4mm]
+			\displaystyle dx^i\del[3]{\frac{\partial}{\partial x^l}} & \displaystyle dx^j\del[3]{\frac{\partial}{\partial x^l}}
+		\end{pmatrix}\\ 
+		&+ \frac{\partial^2L}{\partial v^i\partial v^j}\det\begin{pmatrix}
+			\displaystyle dv^i\del[3]{\frac{\partial}{\partial x^k}} & \displaystyle dx^j\del[3]{\frac{\partial}{\partial x^k}}\\[4mm]
+			\displaystyle dv^i\del[3]{\frac{\partial}{\partial x^l}} & \displaystyle dx^j\del[3]{\frac{\partial}{\partial x^l}}
+		\end{pmatrix}\\
+		=& \frac{\partial^2 L}{\partial x^i\partial v^j}(\delta^i_k\delta^j_l - \delta^i_l\delta^j_k)\\
+		=& \frac{\partial^2 L}{\partial x^k\partial v^l} - \frac{\partial^2 L}{\partial x^l\partial v^k}
+	\end{align*}
+	\noindent for all $k,l = 1,\dots,n$. Similarly, we compute
+	\begin{equation*}
+		d(D^\mathcal{F}L)\del[3]{\frac{\partial}{\partial v^k},\frac{\partial}{\partial x^l}} = \frac{\partial^2 L}{\partial v^k\partial v^l} \qquad \text{and} \qquad d(D^\mathcal{F}L)\del[3]{\frac{\partial}{\partial v^k},\frac{\partial}{\partial v^l}} = 0,
+	\end{equation*}
+	\noindent and using skew-symmetry, we also deduce
+	\begin{equation*}
+		d(D^\mathcal{F}L)\del[3]{\frac{\partial}{\partial x^k},\frac{\partial}{\partial v^l}} = -\frac{\partial^2 L}{\partial v^k\partial v^l}.
+	\end{equation*}
+	Therefore, the matrix representing $d(D^\mathcal{F}L)$ with respect to the standard basis is given by the block matrix
+	\begin{equation*}
+		d(D^\mathcal{F}L) = \del{\begin{array}{c|c}
+			* & -H_L\\\hline
+			H_L & 0
+		\end{array}},
+	\end{equation*}
+	\noindent where $H_L$ is the matrix defined in (\ref{eq:H_L}). Thus 
+	\begin{equation*}
+		\det\del[1]{d(D^\mathcal{F}L)} = (-1)^n(\det H_L)^2
+	\end{equation*}
+	Hence the matrix representation of $d(D^\mathcal{F}L)$ is invertible if and only if $H_L$ is invertible, and the conclusion follows.
+\end{proof}
+
+So far, we have associated to each Lagrangian system $(M,L)$ a $1$-form on $TM$, the fibrewise differential $D^\mathcal{F}L$. In order to get closer to our goal of dualizing the concept of a Lagrangian function, we need also a $1$-form on $T^*M$. Suppose $(U,x^i)$ is a chart on $M$. The induced standard coordinates on the cotangent bundle $T^*M$ of $M$ are given by $(x^i,\xi_i)$, where $\xi_i := \frac{\partial}{\partial x^i}$, considered as an element of the double dual $T^{**}U$. On this chart, define a one $1$-form $\alpha$ by $\alpha := \xi_i dx^i$. Suppose $(\wtilde{x}^i,\wtilde{\xi}_i)$ are other coordinates. Then from the computations performed at the beginning of the previous section, we have that
+\begin{equation*}
+	\wtilde{\xi}_i = \frac{\partial x^j}{\partial \wtilde{x}^i}\xi_j \qquad \text{and} \qquad d\wtilde{x}^i = \frac{\partial \wtilde{x}^i}{\partial x^k}dx^k.
+\end{equation*}
+Thus
+\begin{equation*}
+	\alpha = \wtilde{\xi}_i d\wtilde{x}^i = \frac{\partial x^j}{\partial \wtilde{x}^i}\xi_j\frac{\partial \wtilde{x}^i}{\partial x^k}dx^k = \xi_j \delta^j_k dx^k = \xi_j dx^j,
+\end{equation*}
+\noindent and so, $\alpha$ is independen of the choice of coordinates.
+
+\begin{definition}[Tautological Form]
+	\label{def:tautological_form}
+	Let $M$ be a smooth manifold. The \bld{tautological form on $T^*M$}, denoted by $\alpha$, is the form  $\alpha \in \Omega^1(T^*M)$ defined locally by
+	\begin{equation*}
+		\alpha := \xi_idx^i,
+	\end{equation*}
+	\noindent where $(x^i,\xi_i)$ denotes the standard coordinates on $T^*M$.
+\end{definition}
+
+\begin{remark}
+	The preceeding discussion showed, that the tautological form $\alpha$ is well-defined.
+\end{remark}
+
+\begin{remark}
+	The tautological form $\alpha$ as well as the fibrewise derivative $D^\mathcal{F}L$ on an autonomous Lagrangian system $(M,L)$ admit invariant definitions, that is a coordinate free definition. For the invariant definition of $\alpha$ see \cite[569]{lee:smooth_manifolds:2013} or \cite[10--11]{silva:SG:2008}, and for the invariant definition of $D^\mathcal{F}L$ see \cite[31]{takhtajan:QM:2008}. 
+\end{remark}
+
+\begin{definition}[Legendre Transform]
+	A \bld{Legendre transform of an autonomous Lagrangian system $(M,L)$} is defined to be a fibrewise mapping $\tau_L \in C^\infty(TM,T^*M)$ such that
+	\begin{equation*}
+		D^\mathcal{F}L = \tau_L^*(\alpha).
+	\end{equation*}
+\end{definition}
 
 \begin{definition}[Energy]
 	The \bld{energy} of an autonomous Lagrangian system $(M,L)$ is defined to be the function $E_L \in C^\infty(TM)$ given by
 	\begin{equation*}
-		E_L(x,v) := d^\mathcal{F}_{(x,v)}L(v) - L(x,v),
+		E_L(x,v) := D^\mathcal{F}_{(x,v)}L(v) - L(x,v),
 	\end{equation*}
 	\noindent in standard coordinates $(x^i,v^i)$ of $TM$.
 \end{definition}
 
-\begin{example}
-	Let $(M,g)$ be a Riemannian manifold and consider the Lagrangian $T - U$, with kinetic energy $T \in C^\infty(TM)$ defined by $T(v) := \frac{1}{2}\abs{v}^2$ and potential energy $U \in C^\infty(M)$. Then the computation performed in example \ref{ex:motions_on_Riemannian_manifolds} yields
+\begin{example}[Energy on a Riemannian Manifold]
+	Let $(M,g)$ be a Riemannian manifold and consider the Lagrangian $T - V$, with kinetic energy $T \in C^\infty(TM)$ defined by $T(v) := \frac{1}{2}\abs{v}^2$ and potential energy $V \in C^\infty(M)$. Then the computation performed in example \ref{ex:motions_on_Riemannian_manifolds} yields
 	\begin{align*}
-		E_{T - U}(x,v) &= \frac{\partial T}{\partial v^k}v^k - \frac{\partial U}{\partial v^k}v^k - T(v) + U(x)\\
-		&= \frac{1}{2}g_{ij}\delta^i_k v^jv^k + \frac{1}{2}g_{ij}v^i \delta^j_k v^k - T(v) + U(x)\\
-		&= g_{ij}v^i v^j - T(v) + U(x)\\
-		&= T(v) + U(x)
+		E_{T - V}(x,v) &= \frac{\partial T}{\partial v^k}v^k - \frac{\partial V}{\partial v^k}v^k - T(v) + V(x)\\
+		&= \frac{1}{2}g_{ij}\delta^i_k v^jv^k + \frac{1}{2}g_{ij}v^i \delta^j_k v^k - T(v) + V(x)\\
+		&= g_{ij}v^i v^j - T(v) + V(x)\\
+		&= T(v) + V(x)
 	\end{align*}
 	\noindent for every $(x,v) \in TM$. Hence the energy of this Lagrangian system is given by \emph{kinetic energy plus potential energy}.
 \end{example}
 
-\subsection*{Hamilton's Equations}
+\begin{definition}[Hamiltonian Function]
+	Let $(M,L)$ be an autonomous Lagrangian system and $\tau_L$ a diffeomorphic Legendre transform. The morphism $H \in C^\infty(T^*M)$ defined by
+	\begin{equation*}
+		H := E_L \circ \tau_L^{-1}
+	\end{equation*}
+	\noindent is called the \bld{Hamiltonian function associated to the Lagrangian function $L$}.
+\end{definition}
+
+\begin{theorem}[Hamilton's Equations]
+	\label{thm:Hamiltons_equations}
+	Let $\gamma$ be a motion on an autonomous Lagrangian system $(M,L)$ with $\dim M = n$ and suppose that $\tau_L$ is a diffeomorphic Legendre transform. Then $\gamma$ satisfies the Euler-Lagrange equations in every chart if and only if the path $\del[1]{x(t),\xi(t)} := \tau_L\del[1]{\gamma(t),\dot{\gamma}(t)}$ satisfies the following system of first order ordinary differential equations in every chart:
+	\begin{equation*}
+		\dot{x}^i(t) = \frac{\partial H}{\partial \xi_i}\del[1]{x(t),\xi(t)} \qquad \text{and} \qquad \dot{\xi}_i(t) = -\frac{\partial H}{\partial x^i}\del[1]{x(t),\xi(t)}
+	\end{equation*}
+	\noindent for all $i = 1,\dots,n$.
+\end{theorem}

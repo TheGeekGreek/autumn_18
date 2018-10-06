@@ -193,22 +193,26 @@ Due to the Newton-Laplace Determinacy Principle \ref{ax:NL_determinacy_principle
 	\label{ex:motions_on_Riemannian_manifolds}
 	Let $(M,g)$ be a Riemannian manifold of dimension $n$ and consider the Lagrangian $L$ on $M$ defined in example \ref{ex:Lagrangian} with kinetic energy
 	\begin{equation*}
-		T(q,v,t) := \frac{1}{2}g_q(v,v) = \frac{1}{2}\abs{v}^2_g
+		T(x,v,t) := \frac{1}{2}g_x(v,v) = \frac{1}{2}\abs{v}^2_g
 	\end{equation*}
-	\noindent and potential energy $V(q,t) := 0$ for $q \in M$, $v \in T_qM$ and $t \in \mathbb{R}$. Let $(U,x^i)$ be a chart on $M$. We compute
+	\noindent and potential energy $V(x,t) := 0$ for $x \in M$, $v \in T_xM$ and $t \in \mathbb{R}$. Let $(U,x^i)$ be a chart on $M$. We compute
 	\begin{align*}
-		L(q,v,t) &= \frac{1}{2}g_{q}\del[0]{v,v}\\
-		&= \frac{1}{2}g_{q}\del[3]{v^i\frac{\partial}{\partial x^i}\bigg\vert_q,v^j(t)\frac{\partial}{\partial x^j}\bigg\vert_q}\\
-		&= \frac{1}{2}g_{q}\del[3]{\frac{\partial}{\partial x^i}\bigg\vert_q,\frac{\partial}{\partial x^j}\bigg\vert_q}v^iv^j\\
-		&= \frac{1}{2}g_{ij}(q)v^iv^j,
+		L(x,v,t) &= \frac{1}{2}g_{x}\del[0]{v,v}\\
+		&= \frac{1}{2}g_{x}\del[3]{v^i\frac{\partial}{\partial x^i}\bigg\vert_x,v^j(t)\frac{\partial}{\partial x^j}\bigg\vert_x}\\
+		&= \frac{1}{2}g_{x}\del[3]{\frac{\partial}{\partial x^i}\bigg\vert_x,\frac{\partial}{\partial x^j}\bigg\vert_x}v^iv^j\\
+		&= \frac{1}{2}g_{ij}(x)v^iv^j,
 	\end{align*}
-	\noindent where $g_{ij}(q) := g_{q}\del[1]{\frac{\partial}{\partial x^i}\big\vert_q,\frac{\partial}{\partial x^j}\big\vert_q}$. Thus $\frac{\partial L}{\partial x^l}(q,v,t) = \frac{1}{2}\frac{\partial g_{ij}}{\partial x^l}(q)v^i v^j$ and in particular
+	\noindent where $g_{ij}(x) := g_{x}\del[1]{\frac{\partial}{\partial x^i}\big\vert_x,\frac{\partial}{\partial x^j}\big\vert_x}$. Thus 
+	\begin{equation*}
+		\frac{\partial L}{\partial x^l}(x,v,t) = \frac{1}{2}\frac{\partial g_{ij}}{\partial x^l}(x)v^i v^j
+	\end{equation*}
+	\noindent and in particular
 	\begin{equation*}
 		\frac{\partial L}{\partial x^l}\del[1]{\gamma(t),\dot{\gamma}(t),t} = \frac{1}{2}\frac{\partial g_{ij}}{\partial x^l}\del[1]{\gamma(t)}\dot{\gamma}^i(t) \dot{\gamma}^j(t),
 	\end{equation*}
 	\noindent for all $l = 1,\dots,n$. Moreover
 	\begin{equation*}
-		\frac{\partial L}{\partial v^l}(q,v,t) = \frac{1}{2}g_{ij}(q)\delta^i_lv^j + \frac{1}{2}g_{ij}(q)v^i\delta^j_l = \frac{1}{2}g_{lj}(q)v^j + \frac{1}{2}g_{il}(q)v^i
+		\frac{\partial L}{\partial v^l}(x,v,t) = \frac{1}{2}g_{ij}(x)\delta^i_lv^j + \frac{1}{2}g_{ij}(x)v^i\delta^j_l = \frac{1}{2}g_{lj}(x)v^j + \frac{1}{2}g_{il}(x)v^i
 	\end{equation*}
 	\noindent implies
 	\begin{align*}
