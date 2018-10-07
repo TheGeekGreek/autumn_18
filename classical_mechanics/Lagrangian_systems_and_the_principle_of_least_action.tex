@@ -2,7 +2,7 @@
 Mechanical systems, i.e. a pendulum, are modelled using the language of differential geometry. Thus it is necessary to introduce the relevant physical counterparts. 
 
 \begin{definition}[Configuration Space]
-	A \bld{configuration space}\index{Configuration space} is defined to be a finite-dimensional manifold in $\mathsf{Diff}$.
+	A \bld{configuration space}\index{Configuration space} is defined to be a finite-dimensional smooth manifold.
 \end{definition}
 
 \begin{definition}[Motion]
@@ -10,7 +10,7 @@ Mechanical systems, i.e. a pendulum, are modelled using the language of differen
 \end{definition}
 
 \begin{definition}[State]
-	A \bld{state of the configuration space}\index{State} is defined to be an element of the tangent bundle of the configuration space, called the \bld{state space}.
+	A \bld{state of the configuration space}\index{State} is defined to be an element of the tangent bundle of the configuration space, called the \bld{state space}\index{Space!state}.
 \end{definition}
 
 Also in classical mechanics, one has to rely on basic principles, which are to some extent experimentally verified. One of the most fundamental is the following.
@@ -23,25 +23,25 @@ Also in classical mechanics, one has to rely on basic principles, which are to s
 The Newton-Laplace determinacy principle \ref{ax:NL_determinacy_principle} motivates our main definition of this chapter.
 
 \begin{definition}[Lagrangian System]
-	A \bld{Lagrangian system}\index{Lagrangian!system} is defined to be a tuple $(M,L)$ consisting of an object $M \in \mathsf{Diff}$ and a function $L \in C^\infty(TM \times \mathbb{R})$, called a \bld{Lagrangian function}\index{Lagrangian!function}.
+	A \bld{Lagrangian system}\index{Lagrangian!system} is defined to be a tuple $(M,L)$ consisting of a smooth manifold $M$ and a function $L \in C^\infty(TM \times \mathbb{R})$, called a \bld{Lagrangian function}\index{Lagrangian!function}.
 \end{definition}
 
 \begin{example}
 	\label{ex:Lagrangian}
-	For $M \in \mathsf{Diff}$ let $T \in C^\infty(TM \times \mathbb{R})$ and $V \in C^\infty(M \times \mathbb{R})$. Define $L \in C^\infty(TM \times \mathbb{R})$ by $L := T - V$. In this situation, $T$ is called the \bld{kinetic energy} and $V$ is called the \bld{potential energy}.
+	For a smooth manifold $M$ let $T \in C^\infty(TM \times \mathbb{R})$ and $V \in C^\infty(M \times \mathbb{R})$. Define $L \in C^\infty(TM \times \mathbb{R})$ by $L := T - V$. In this situation, $T$ is called the \bld{kinetic energy}\index{Energy!kinetic} and $V$ is called the \bld{potential energy}\index{Energy!potential}.
 \end{example}
 
 \begin{definition}[Path Space]
 	\label{def:path_space}
-	Let $M \in \mathsf{Diff}$, $q_0,q_1 \in M$ and $t_0, t_1 \in \mathbb{R}$ with $t_0 \leq t_1$. Define the \bld{path space of $M$ connecting $(q_0,t_0)$ and $(q_1,t_1)$}\index{Path space} to be the set
+	Let $M$ be a smooth manifold, $x_0,x_1 \in M$ and $t_0, t_1 \in \mathbb{R}$ with $t_0 \leq t_1$. Define the \bld{path space of $M$ connecting $(x_0,t_0)$ and $(x_1,t_1)$}\index{Space!path} to be the set
 	\begin{equation}
 		\label{eq:path_space}
-		\mathcal{P}(M)^{q_0,t_0}_{q_1,t_1} := \cbr[0]{\gamma \in C^\infty(\intcc[0]{t_0,t_1},M) : \gamma(t_0) = q_0 \text{ and } \gamma(t_1) = q_1}.
+		\mathcal{P}(M)^{x_0,t_0}_{x_1,t_1} := \cbr[0]{\gamma \in C^\infty(\intcc[0]{t_0,t_1},M) : \gamma(t_0) = x_0 \text{ and } \gamma(t_1) = x_1}.
 	\end{equation}
 \end{definition}
 
 \begin{remark}
-	For the sake of simplicity, we will just use the terminology \emph{path space} for $\mathcal{P}(M)^{q_0,t_0}_{q_1,t_1}$ and simply write $\mathcal{P}(M)$. We implicitely assume the conditions of definition \ref{def:path_space}, however.
+	For the sake of simplicity, we will just use the terminology \emph{path space} for $\mathcal{P}(M)^{x_0,t_0}_{x_1,t_1}$ and simply write $\mathcal{P}(M)$. We implicitely assume the conditions of definition \ref{def:path_space}, however.
 \end{remark}
 
 \begin{definition}[Variation]
@@ -49,8 +49,8 @@ The Newton-Laplace determinacy principle \ref{ax:NL_determinacy_principle} motiv
 	Let $\mathcal{P}(M)$ be a path space and $\gamma \in \mathcal{P}(M)$. A \bld{variation of $\gamma$}\index{Variation} is defined to be a morphism $\Gamma \in C^\infty(\intcc[0]{t_0,t_1} \times \intcc[0]{-\varepsilon_0,\varepsilon_0},M)$ for some $\varepsilon_0 > 0$ and such that
 	\begin{itemize}[wide=0pt]
 		\item $\Gamma(t,0) = \gamma$ for all $t \in \intcc[0]{t_1,t_0}$.
-		\item $\Gamma(t_0,\varepsilon) = q_0$ for all $\varepsilon \in \intcc[0]{-\varepsilon_0,\varepsilon_0}$.
-		\item $\Gamma(t_1,\varepsilon) = q_1$ for all $\varepsilon \in \intcc[0]{-\varepsilon_0,\varepsilon_0}$.
+		\item $\Gamma(t_0,\varepsilon) = x_0$ for all $\varepsilon \in \intcc[0]{-\varepsilon_0,\varepsilon_0}$.
+		\item $\Gamma(t_1,\varepsilon) = x_1$ for all $\varepsilon \in \intcc[0]{-\varepsilon_0,\varepsilon_0}$.
 	\end{itemize}
 \end{definition}
 
@@ -60,7 +60,7 @@ The Newton-Laplace determinacy principle \ref{ax:NL_determinacy_principle} motiv
 
 \begin{example}[Perturbation of a Path along a Single Direction]
 	\label{ex:perturbation_along_single_direction}
-	Let $M \in \mathsf{Diff}$ of dimension $n$, $(U,\varphi)$ a chart and suppose that $\gamma$ is a path in $U$. With respect to this chart, we can write the coordinate representation of $\gamma$ as
+	Let $M$ be a smooth manifold with $\dim M = n$, $(U,\varphi)$ a chart and suppose that $\gamma$ is a path in $U$. With respect to this chart, we can write the coordinate representation of $\gamma$ as
 	\begin{equation*}
 		\gamma(t) = \del[1]{\gamma^1(t),\dots,\gamma^n(t)}
 	\end{equation*}
@@ -99,14 +99,14 @@ The Newton-Laplace determinacy principle \ref{ax:NL_determinacy_principle} motiv
 	\begin{equation*}
 		S(\gamma) := \int_{t_0}^{t_1} L\del[0]{\gamma(t),\dot{\gamma}(t),t} dt
 	\end{equation*}
-	\noindent is called the \bld{action functional}\index{Action functional}.
+	\noindent is called the \bld{action functional associated to the Lagrangian system $(M,L)$}\index{Action functional}.
 \end{definition}
 
 Motions of Lagrangian systems are characterized by an axiom.
 
 \begin{axiom}[Hamilton's Principle of Least Action]\index{Hamilton!'s principle of least action}
 	\label{ax:Hamilton_least_action}
-	Let $(M,L)$ be a Lagrangian system and $\mathcal{P}(M)$ be a path space. A path $\gamma \in C^\infty(\intcc[0]{t_0,t_1},M)$ describes a motion of $(M,L)$ between $(q_0,t_0)$ and $(q_1,t_1)$ if and only if 
+	Let $(M,L)$ be a Lagrangian system and $\mathcal{P}(M)$ be a path space. A path $\gamma \in C^\infty(\intcc[0]{t_0,t_1},M)$ describes a motion of $(M,L)$ between $(x_0,t_0)$ and $(x_1,t_1)$ if and only if 
 	\begin{equation}
 		\frac{d}{d\varepsilon}\bigg\vert_{\varepsilon = 0} S(\gamma_\varepsilon) = 0
 	\end{equation}
@@ -121,12 +121,12 @@ The Newton-Laplace determinacy principle \ref{ax:NL_determinacy_principle} impli
 
 \begin{theorem}[Euler-Lagrange Equations]
 	\label{thm:EL_equations}
-	Let $(M,L)$ be a Lagrangian system. If a path $\gamma \in C^\infty(\intcc[0]{t_0,t_1},M)$ describes a motion of $(M,L)$ between $(q_0,t_0)$ and $(q_1,t_1)$ then for all charts $(U,x^i)$
+	Let $(M,L)$ be a Lagrangian system. If a path $\gamma \in C^\infty(\intcc[0]{t_0,t_1},M)$ describes a motion of $(M,L)$ between $(x_0,t_0)$ and $(x_1,t_1)$ then for all charts $(U,x^i)$
 	\begin{equation}
 		\label{eq:EL_equations}
 		\pd{L}{x}\del[1]{\gamma(t),\dot{\gamma}(t),t} - \frac{d}{dt} \pd{L}{v}\del[1]{\gamma(t),\dot{\gamma}(t),t} = 0
 	\end{equation}
-	\noindent holds, where $(x^i,v^i)$ denotes the standard coordinates on $TM$. The system of equations \textup{(}\ref{eq:EL_equations}\textup{)} is referred to as the \bld{Euler-Lagrange equations}\index{Euler-Lagrange equations}.
+	\noindent holds, where $(x^i,v^i)$ denotes the standard coordinates on $TM$. The system of equations \textup{(}\ref{eq:EL_equations}\textup{)} is referred to as the \bld{Euler-Lagrange equations}\index{Equations!Euler-Lagrange}.
 \end{theorem}
 
 \begin{proof}
@@ -186,12 +186,12 @@ The Newton-Laplace determinacy principle \ref{ax:NL_determinacy_principle} impli
 Due to the Newton-Laplace Determinacy Principle \ref{ax:NL_determinacy_principle}, the motions on a Lagrangian system are inherently characterized by the Lagrangian function and locally by the Euler-Lagrange equations (\ref{eq:EL_equations}). Hence any motion satisfies locally a system of second order ordinary differential equations. This system bears its own name.
 
 \begin{definition}[Equations of Motion]
-	The Euler-Lagrange equations \textup{(}\ref{eq:EL_equations}\textup{)} of a Lagrangian system are called the \bld{equations of motion}.
+	The Euler-Lagrange equations \textup{(}\ref{eq:EL_equations}\textup{)} of a Lagrangian system are called the \bld{equations of motion}\index{Equations!of motion}.
 \end{definition}
 
 \begin{example}[Motions on Riemannian Manifolds]
 	\label{ex:motions_on_Riemannian_manifolds}
-	Let $(M,g)$ be a Riemannian manifold of dimension $n$ and consider the Lagrangian $L$ on $M$ defined in example \ref{ex:Lagrangian} with kinetic energy
+	Let $(M,g)$ be a Riemannian manifold with $\dim M = n$ and consider the Lagrangian $L$ on $M$ defined in example \ref{ex:Lagrangian} with kinetic energy
 	\begin{equation*}
 		T(x,v,t) := \frac{1}{2}g_x(v,v) = \frac{1}{2}\abs{v}^2_g
 	\end{equation*}
@@ -235,14 +235,14 @@ Due to the Newton-Laplace Determinacy Principle \ref{ax:NL_determinacy_principle
 	\begin{equation*}
 		\Gamma^k_{ij} := \frac{1}{2}g^{kl}\del[3]{\frac{\partial g_{jl}}{\partial x^i} + \frac{\partial g_{il}}{\partial x^j} - \frac{\partial g_{ij}}{\partial x^l}}
 	\end{equation*}
-	\noindent are the \bld{Christoffel symbols} with respect to the choosen chart (see \cite[70]{lee:Riemannian_manifolds:1997}). Equation (\ref{eq:geodesic_equation}) is called the \bld{geodesic equation} (see \cite[58]{lee:Riemannian_manifolds:1997}). Hence extremals $\gamma$ of the action functional satisfy the geodesic equation and are therefore geodesics on the Riemannian manifold $M$.
+	\noindent are the \bld{Christoffel symbols}\index{Symbols!Christoffel} with respect to the choosen chart (see \cite[70]{lee:Riemannian_manifolds:1997}). Equation (\ref{eq:geodesic_equation}) is called the \bld{geodesic equation}\index{Equations!geodesic} (see \cite[58]{lee:Riemannian_manifolds:1997}). Hence extremals $\gamma$ of the action functional satisfy the geodesic equation and are therefore geodesics on the Riemannian manifold $M$.
 \end{example}
 
 \begin{lemma}
 	\label{lem:same_equations_of_motion}
 	Let $(M,L)$ be a Lagrangian system and define $L + df \in C^\infty(TM \times \mathbb{R})$ by
 	\begin{equation*}
-		(L + df)(q,v,t) := L(q,v,t) + df_q(v)
+		(L + df)(x,v,t) := L(x,v,t) + df_x(v)
 	\end{equation*}
 	\noindent for any $f \in C^\infty(M)$. Then $(M,L)$ and $(M,L + df)$ admit the same equations of motion.
 \end{lemma}
@@ -253,7 +253,7 @@ Due to the Newton-Laplace Determinacy Principle \ref{ax:NL_determinacy_principle
 		\wtilde{S}(\gamma_\varepsilon) &= \int_{t_0}^{t_1}L(\gamma_\varepsilon(t),\dot{\gamma}_\varepsilon(t),t)dt + \int_{t_0}^{t_1}df_{\gamma_\varepsilon(t)}\del[1]{\dot{\gamma}_\varepsilon(t)}dt\\
 		&= S(\gamma_\varepsilon) + \int_{t_0}^{t_1}(f \circ \gamma_\varepsilon)'(t)dt\\
 		&= S(\gamma_\varepsilon) + f\del[1]{\gamma_\varepsilon(t_1)} - f\del[1]{\gamma_{\varepsilon}(t_0)}\\
-		&= S(\gamma_\varepsilon) + f(q_1) - f(q_0).
+		&= S(\gamma_\varepsilon) + f(x_1) - f(x_0).
 	\end{align*}
 	In particular
 	\begin{equation*}
