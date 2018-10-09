@@ -145,6 +145,41 @@ Thus
 	\end{equation*}
 \end{definition}
 
+Since the nondegenracy of a Lagragian system $(M,L)$ is inherently connected to the nondegenracy of the form $d(D^\mathcal{F}L)$ and the definition of the Legendre transform invokes the form $D^\mathcal{F}L$, one would expect a connection between the nondegeneracy of the Lagrangian system and a local property of Legendre transform.
+
+\begin{lemma}
+	\label{lem:local_diffeomorphism}
+	A Legendre transform on a Lagrangian system is a local diffeomorphism if and only if the Lagrangian system is nondegenrate.	
+\end{lemma}
+
+\begin{proof}
+	Denote the Lagrangian system by $(M,L)$. Let $(U,x^i)$ be a chart on $M$ and denote by $(x^i,v^i)$ and $(x^i,\xi_i)$ the induced standard coordinates on $TM$ and $T^*M$, respectively. Then we compute
+	\begin{equation*}
+		\tau^*_L(\alpha) = \tau^*_\alpha(\xi_j dx^j) = (\xi_j \circ \tau_L)d\del[1]{x^j \circ \tau_L},
+	\end{equation*}
+	\noindent which must coincide with
+	\begin{equation*}
+		D^\mathcal{F}L = \frac{\partial L}{\partial v^j}dx^j.
+	\end{equation*}
+	Thus in coordinates
+	\begin{equation}
+		\label{eq:Legendre_in_coordinates}
+		\tau_L(x,v) = \del[3]{x,\frac{\partial L}{\partial v}}
+	\end{equation}
+	\noindent and so
+	\begin{equation*}
+		d_{(x,v)}\tau_L = \del{\begin{array}{c|c}
+			I & 0\\\hline
+			0 & H_L
+		\end{array}}
+	\end{equation*}
+	\noindent at every $(x,v) \in TM$. Hence 
+	\begin{equation*}
+		\det \del[1]{d_{(x,v)}\tau_L} = \det H_L.
+	\end{equation*}
+	If $\tau_L$ is a local diffeomorphism, by definition, we have that some restriction of $\tau_L$ to some neighbourhood of $(x,v)$ is a diffeomorphism, and so, by properties of differentials (d) \cite[55]{lee:smooth_manifolds:2013}, we have that $d_{(x,v)}\tau_L$ is an isomorphism. Conversly, if the Lagrangian system is nondegenerate, we conclude using the inverse function theorem for manifolds \cite[79]{lee:smooth_manifolds:2013}, that $\tau_L$ is a local diffeomorphism.
+\end{proof}
+
 \begin{definition}[Energy]
 	The \bld{energy} of an autonomous Lagrangian system $(M,L)$ is defined to be the function $E_L \in C^\infty(TM)$ given by
 	\begin{equation*}
@@ -174,9 +209,54 @@ Thus
 
 \begin{theorem}[Hamilton's Equations]
 	\label{thm:Hamiltons_equations}
-	Let $\gamma$ be a motion on an autonomous Lagrangian system $(M,L)$ with $\dim M = n$ and suppose that $\tau_L$ is a diffeomorphic Legendre transform. Then $\gamma$ satisfies the Euler-Lagrange equations in every chart if and only if the path $\del[1]{x(t),\xi(t)} := \tau_L\del[1]{\gamma(t),\dot{\gamma}(t)}$ satisfies the following system of first order ordinary differential equations in every chart:
+	Let $\gamma$ be a motion on an autonomous Lagrangian system $(M,L)$ and suppose that $\tau_L$ is a diffeomorphic Legendre transform. Then $\gamma$ satisfies the Euler-Lagrange equations in every chart if and only if the path 
+	\begin{equation*}
+			\del[1]{\gamma(t),\xi(t)} := \tau_L\del[1]{\gamma(t),\dot{\gamma}(t)}
+	\end{equation*}
+	\noindent satisfies the following system of first order ordinary differential equations in every chart:
 	\begin{equation}
-		\dot{x}^i(t) = \frac{\partial H}{\partial \xi_i}\del[1]{x(t),\xi(t)} \qquad \text{and} \qquad \dot{\xi}_i(t) = -\frac{\partial H}{\partial x^i}\del[1]{x(t),\xi(t)}
+		\label{eq:Hamiltons_equations}
+		\dot{\gamma}(t) = \frac{\partial H}{\partial \xi}\del[1]{\gamma(t),\xi(t)} \qquad \text{and} \qquad \dot{\xi}(t) = -\frac{\partial H}{\partial x}\del[1]{\gamma(t),\xi(t)}
 	\end{equation}
-	\noindent for all $i = 1,\dots,n$.
+	The equations \textup{(}\ref{eq:Hamiltons_equations}\textup{)} are called \bld{Hamilton's equations}.
 \end{theorem}
+
+\begin{proof}
+	Let $\dim M = n$. First we compute $H$ in standard coordinates $(x^i,\xi_i)$ on $T^*M$. By (\ref{eq:Legendre_in_coordinates}), the Legendre transform is given by
+	\begin{equation}
+		\tau_L(x,v) = \del[3]{x,\frac{\partial L}{\partial v}(x,v)}
+	\end{equation}
+	\noindent in standard coordinates on $TM$. Since $\tau_L$ is a diffeomorphism by assumption, in particular it is a local diffeomorphism (see \cite[80]{lee:smooth_manifolds:2013}). Hence by lemma \ref{lem:local_diffeomorphism}, the Lagrangian system $(M,L)$ is nondegenerate. So considering $\tau^{-1}_L(x,\xi)$, we can apply the implicit function theorem \cite[661]{lee:smooth_manifolds:2013} to obtain $v$ implicitely from the equation
+	\begin{equation*}
+		\xi = \frac{\partial L}{\partial v}(x,v).
+	\end{equation*}
+	Hence in coordinates
+	\begin{equation*}
+		H(x,\xi) = \del[3]{\frac{\partial L}{\partial v^i}v^i - L(x,v)}\bigg\vert_{\xi = \frac{\partial L}{\partial v}}.
+	\end{equation*}
+	Therefore
+	\begin{equation*}
+		\frac{\partial H}{\partial \xi^j} = \frac{\partial}{\partial \xi_j} \del[1]{\xi_i v^i - L(x,v)}\big\vert_{\xi = \frac{\partial L}{\partial v}} = \delta^j_i v^i = v^j.
+	\end{equation*}
+	Hence
+	\begin{equation*}
+		\frac{\partial H}{\partial \xi^j}\del[1]{\gamma(t),\xi(t)} = \dot{\gamma}^j(t),
+	\end{equation*}
+	\noindent for all $j = 1,\dots,n$. Moreover, we have that
+	\begin{equation*}
+		\frac{\partial H}{\partial x^j} = \frac{\partial}{\partial x^j}\del[3]{\frac{\partial L}{\partial v^i}v^i - L(x,v)}\bigg\vert_{\xi = \frac{\partial L}{\partial v}} = - \frac{\partial L}{\partial x^j}(x,v)\bigg\vert_{\xi = \frac{\partial L}{\partial v}}, 
+	\end{equation*}
+	\noindent and so
+	\begin{equation*}
+		\frac{\partial H}{\partial x^j}\del[1]{\gamma(t),\xi(t)} = -\frac{\partial L}{\partial x^j}\del[1]{\gamma(t),\dot{\gamma}(t)},
+	\end{equation*}
+	\noindent for all $j = 1,\dots,n$. If the Euler-Lagrange equations (\ref{eq:EL_equations}) hold, then we get
+	\begin{equation*}
+		\frac{\partial H}{\partial x^j}\del[1]{\gamma(t),\xi(t)} = -\frac{d}{dt}\frac{\partial L}{\partial v^j}\del[1]{\gamma(t),\dot{\gamma}(t)} = -\xi_j(t),
+	\end{equation*}
+	\noindent and thus the Hamilton's equations (\ref{eq:Hamiltons_equations}) hold. Conversly, if we suppose that Hamilton's equations (\ref{eq:Hamiltons_equations}) hold, we get that
+	\begin{equation*}
+		-\frac{d}{dt}\frac{\partial L}{\partial v^j}\del[1]{\gamma(t),\dot{\gamma}(t)} = -\xi_j(t) = \frac{\partial H}{\partial x^j}\del[1]{\gamma(t),\xi(t)} = -\frac{\partial L}{\partial x^j}\del[1]{\gamma(t),\dot{\gamma}(t)},
+	\end{equation*}
+	\noindent and so the Euler-Lagrange equations (\ref{eq:EL_equations}) are satisfied.
+\end{proof}
