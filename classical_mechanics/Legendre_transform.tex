@@ -10,16 +10,25 @@ Let $(M,L)$ be an autonomous Lagrangian system with $\dim M = n$ and $(U,x^i)$ a
 	\frac{\partial L}{\partial x^j}\del[1]{\gamma(t),\dot{\gamma}(t)} &= \frac{d}{dt}\frac{\partial L}{\partial v^j}\del[1]{\gamma(t),\dot{\gamma}(t)}\\
 	&= \frac{\partial^2 L}{\partial x^i\partial v^j}\del[1]{\gamma(t),\dot{\gamma}(t)}\dot{\gamma}^i(t) + \frac{\partial^2 L}{\partial v^i\partial v^j}\del[1]{\gamma(t),\dot{\gamma}(t)}\ddot{\gamma}^i(t)
 \end{align*}
-\noindent for all $j = 1,\dots,n$. In order to solve above system of second order ordinary differential equations for $\ddot{\gamma}^i(t)$ and all initial conditions in the chart on $TU$, the matrix $H_L(x,v)$ defined by
+\noindent for all $j = 1,\dots,n$. In order to solve above system of second order ordinary differential equations for $\ddot{\gamma}^i(t)$ and all initial conditions in the chart on $TU$, the matrix $\mathcal{H}_L(x,v)$ defined by
 \begin{equation}
 	\label{eq:H_L}
-	H_L(x,v) := \del[3]{\frac{\partial^2 L}{\partial v^i\partial v^j}(x,v)}_j^i
+	\mathcal{H}_L(x,v) := \del[3]{\frac{\partial^2 L}{\partial v^i\partial v^j}(x,v)}_j^i
 \end{equation}
 \noindent must be invertible on $TU$.
 
 \begin{definition}[Nondegenrate System]
-	An autonomous Lagrangian system $(M,L)$ is said to be \bld{nondegenerate}, iff for all coordinate charts $U$ on $M$, $\det H_L(x,v) \neq 0$ holds on $TU$. 
+	An autonomous Lagrangian system $(M,L)$ is said to be \bld{nondegenerate}, iff for all coordinate charts $U$ on $M$, $\det \mathcal{H}_L(x,v) \neq 0$ holds on $TU$. 
 \end{definition}
+
+\begin{example}[Nondegenrate System on a Riemannian Manifold]
+	\label{ex:nondegenerate_Lagrangian_system}
+	Let $(M,g)$ be a Riemannian manifold. Consider the Lagrangian $T - V$ with kinetic energy $T \in C^\infty(TM)$ defined by $T(v) := \frac{1}{2}\abs{v}^2$ and potential energy $V \in C^\infty(M)$. Then the computation performed in example \ref{ex:motions_on_Riemannian_manifolds} yields
+	\begin{equation*}
+		\mathcal{H}_{T - V}(x,v) = \del[1]{g_{ij}(x)}^i_j
+	\end{equation*} 
+	\noindent on every chart since $\frac{\partial V}{\partial v^i} = 0$ for every $i$, and so this Lagrangian system is nondegenerate.
+\end{example}
 
 The nondegeneracy of an autonomous Lagrangian system is intrinsically connected to a certain differential form in $\Omega^1(TM)$, which we will construct now. For every $(x,v) \in TM$ we can define a covector $D^\mathcal{F}_{(x,v)} L \in T^*_xM$ by setting
 \begin{equation}
@@ -65,6 +74,15 @@ Therefore, $D^\mathcal{F}L$ is independent of the choice of coordinates.
 	The preceeding discussion showed, that the fibrewise differential $D^\mathcal{F}L$ is well-defined.
 \end{remark}
 
+\begin{example}[Fibrewise Differential on a Riemannian Manifold]
+	\label{ex:fibrewise_differential_Riemannian_manifold}
+	Consider the autonomous Lagrangian system as defined in example \ref{ex:nondegenerate_Lagrangian_system}. Then the computation performed in example \ref{ex:motions_on_Riemannian_manifolds} yields
+	\begin{equation*}
+		D_{(x,v)}^\mathcal{F}(T - V) = g_{ij}(x)v^idx^j
+	\end{equation*}
+	\noindent on every chart since $\frac{\partial V}{\partial v^j} = 0$ for all $j$.
+\end{example}
+
 Recall, that a $2$-covector on a finite-dimensional real vector space is said to be \emph{nondegenrate}, iff the matrix representation with respect to some basis is invertible. Moreover, a \emph{nondegenerate $2$-form} on a smooth manifold $M$ is defined to be a $2$-form $\omega$, such that $\omega_x$ is a nondegenrate $2$-covector for all $x \in M$ (see \cite[565,567]{lee:smooth_manifolds:2013}). 
 
 \begin{proposition}
@@ -100,15 +118,15 @@ Recall, that a $2$-covector on a finite-dimensional real vector space is said to
 	Therefore, the matrix representing $d(D^\mathcal{F}L)$ with respect to the standard basis is given by the block matrix
 	\begin{equation*}
 		d(D^\mathcal{F}L) = \del{\begin{array}{c|c}
-			* & -H_L\\\hline
-			H_L & 0
+			* & -\mathcal{H}_L\\\hline
+			\mathcal{H}_L & 0
 		\end{array}},
 	\end{equation*}
-	\noindent where $H_L$ is the matrix defined in (\ref{eq:H_L}). Thus 
+	\noindent where $\mathcal{H}_L$ is the matrix defined in (\ref{eq:H_L}). Thus 
 	\begin{equation*}
-		\det\del[1]{d(D^\mathcal{F}L)} = (-1)^n(\det H_L)^2
+		\det\del[1]{d(D^\mathcal{F}L)} = (-1)^n(\det \mathcal{H}_L)^2
 	\end{equation*}
-	Hence the matrix representation of $d(D^\mathcal{F}L)$ is invertible if and only if $H_L$ is invertible, and the conclusion follows.
+	Hence the matrix representation of $d(D^\mathcal{F}L)$ is invertible if and only if $\mathcal{H}_L$ is invertible, and the conclusion follows.
 \end{proof}
 
 So far, we have associated to each Lagrangian system $(M,L)$ a $1$-form on $TM$, the fibrewise differential $D^\mathcal{F}L$. In order to get closer to our goal of dualizing the concept of a Lagrangian function, we need also a $1$-form on $T^*M$. Suppose $(U,x^i)$ is a chart on $M$. The induced standard coordinates on the cotangent bundle $T^*M$ of $M$ are given by $(x^i,\xi_i)$, where $\xi_i := \frac{\partial}{\partial x^i}$, considered as an element of the double dual $T^{**}U$. On this chart, define a one $1$-form $\alpha$ by $\alpha := \xi_i dx^i$. Suppose $(\wtilde{x}^i,\wtilde{\xi}_i)$ are other coordinates. Then from the computations performed at the beginning of the previous section, we have that
@@ -145,6 +163,23 @@ Thus
 	\end{equation*}
 \end{definition}
 
+\begin{example}[Legendre Transform on a Riemannian Manifold]
+	\label{ex:Legendre_transform_Riemannian_manifold}
+	Let $(M,L)$ be a Lagrangian system. Then the morphism $\tau_L : TM \to T^*M$ defined by
+	\begin{equation*}
+		\tau_L(x,v) := \del[1]{x,D^\mathcal{F}_{(x,v)}L}
+	\end{equation*}
+	\noindent is a Legendre transform. In particular, if we consider the Lagrangian system defined in example \ref{ex:nondegenerate_Lagrangian_system}, we get that the above defined Legendre transform is a diffeomorphism. Indeed, suppose that $\tau_{T - V}(x,v) = \tau_{T - V}(\wtilde{x},\wtilde{v})$. Then $x = \wtilde{x}$ and
+	\begin{equation*}
+		g_{ij}(x)v^idx^j = g_{ij}(x)\wtilde{v}^idx^j	
+	\end{equation*}
+	\noindent using example \ref{ex:fibrewise_differential_Riemannian_manifold}. So we must have
+	\begin{equation*}
+		g_{ij}(x)v^i = g_{ij}(x)\wtilde{v}^i
+	\end{equation*}
+	\noindent for all $j$. Multiplying both sides by $g^{kj}(x)$ yields $v^k = \wtilde{v}^k$ for every $k$ and hence $v = \wtilde{v}$. Thus $\tau_{T - V}$ is injective. Let $\xi \in T^*_xM$ be given by $\xi_i dx^i\vert_x$. Then $\tau_{T - V}(x,v) = (x,\xi)$, where $v$ is given in coordinates by $v^k := g^{ki}(x)\xi_i$.
+\end{example} 
+
 Since the nondegenracy of a Lagragian system $(M,L)$ is inherently connected to the nondegenracy of the form $d(D^\mathcal{F}L)$ and the definition of the Legendre transform invokes the form $D^\mathcal{F}L$, one would expect a connection between the nondegeneracy of the Lagrangian system and a local property of Legendre transform.
 
 \begin{lemma}
@@ -170,12 +205,12 @@ Since the nondegenracy of a Lagragian system $(M,L)$ is inherently connected to 
 	\begin{equation*}
 		d_{(x,v)}\tau_L = \del{\begin{array}{c|c}
 			I & 0\\\hline
-			0 & H_L
+			0 & \mathcal{H}_L
 		\end{array}}
 	\end{equation*}
 	\noindent at every $(x,v) \in TM$. Hence 
 	\begin{equation*}
-		\det \del[1]{d_{(x,v)}\tau_L} = \det H_L.
+		\det \del[1]{d_{(x,v)}\tau_L} = \det \mathcal{H}_L.
 	\end{equation*}
 	If $\tau_L$ is a local diffeomorphism, by definition, we have that some restriction of $\tau_L$ to some neighbourhood of $(x,v)$ is a diffeomorphism, and so, by properties of differentials (d) \cite[55]{lee:smooth_manifolds:2013}, we have that $d_{(x,v)}\tau_L$ is an isomorphism. Conversly, if the Lagrangian system is nondegenerate, we conclude using the inverse function theorem for manifolds \cite[79]{lee:smooth_manifolds:2013}, that $\tau_L$ is a local diffeomorphism.
 \end{proof}
@@ -189,7 +224,8 @@ Since the nondegenracy of a Lagragian system $(M,L)$ is inherently connected to 
 \end{definition}
 
 \begin{example}[Energy on a Riemannian Manifold]
-	Let $(M,g)$ be a Riemannian manifold and consider the Lagrangian $T - V$, with kinetic energy $T \in C^\infty(TM)$ defined by $T(v) := \frac{1}{2}\abs{v}^2$ and potential energy $V \in C^\infty(M)$. Then the computation performed in example \ref{ex:motions_on_Riemannian_manifolds} yields
+	\label{ex:energy_Riemannian_manifold}
+	Consider the Lagrangian system defined in example \ref{ex:nondegenerate_Lagrangian_system}. Then the computation performed in example \ref{ex:fibrewise_differential_Riemannian_manifold} yields
 	\begin{align*}
 		E_{T - V}(x,v) &= \frac{\partial T}{\partial v^k}v^k - \frac{\partial V}{\partial v^k}v^k - T(v) + V(x)\\
 		&= \frac{1}{2}g_{ij}\delta^i_k v^jv^k + \frac{1}{2}g_{ij}v^i \delta^j_k v^k - T(v) + V(x)\\
@@ -200,12 +236,26 @@ Since the nondegenracy of a Lagragian system $(M,L)$ is inherently connected to 
 \end{example}
 
 \begin{definition}[Hamiltonian Function]
-	Let $(M,L)$ be an autonomous Lagrangian system and $\tau_L$ a diffeomorphic Legendre transform. The morphism $H \in C^\infty(T^*M)$ defined by
+	Let $(M,L)$ be an autonomous Lagrangian system and $\tau_L$ a diffeomorphic Legendre transform. The morphism $H_L \in C^\infty(T^*M)$ defined by
 	\begin{equation*}
-		H := E_L \circ \tau_L^{-1}
+		H_L := E_L \circ \tau_L^{-1}
 	\end{equation*}
 	\noindent is called the \bld{Hamiltonian function associated to the Lagrangian function $L$}.
 \end{definition}
+
+\begin{example}[Hamiltonian function on a Riemannian Manifold]
+	Consider the Lagrangian system defined in example \ref{ex:nondegenerate_Lagrangian_system}. By example \ref{ex:Legendre_transform_Riemannian_manifold} the Legendre transform $\tau_{T - V}$ is a diffeomorphism. Using example \ref{ex:energy_Riemannian_manifold}, we compute
+	\begin{align*}
+		H_{T - V}(x,\xi) &= E_{T - V}\del[1]{\tau^{-1}_{T - V}(x,\xi)}\\
+		&= E_{T - V}\del[1]{x,v}\\
+		&= T(v) + V(x)\\
+		&= \frac{1}{2}g_{ij}(x)v^i v^j + V(x)\\
+		&= \frac{1}{2}g_{ij}(x)g^{ik}(x)\xi_k g^{jl}(x)\xi_l + V(x)\\
+		&= \frac{1}{2}\delta^k_j\xi_j g^{jl}(x)\xi_l + V(x)\\
+		&= \frac{1}{2}g^{kl}(x)\xi_k\xi_l + V(x)
+	\end{align*}
+	\noindent where $v = \del[1]{g^{ki}}^k_i \xi$.
+\end{example}
 
 \begin{theorem}[Hamilton's Equations]
 	\label{thm:Hamiltons_equations}
@@ -216,13 +266,13 @@ Since the nondegenracy of a Lagragian system $(M,L)$ is inherently connected to 
 	\noindent satisfies the following system of first order ordinary differential equations in every chart:
 	\begin{equation}
 		\label{eq:Hamiltons_equations}
-		\dot{\gamma}(t) = \frac{\partial H}{\partial \xi}\del[1]{\gamma(t),\xi(t)} \qquad \text{and} \qquad \dot{\xi}(t) = -\frac{\partial H}{\partial x}\del[1]{\gamma(t),\xi(t)}
+		\dot{\gamma}(t) = \frac{\partial H_L}{\partial \xi}\del[1]{\gamma(t),\xi(t)} \qquad \text{and} \qquad \dot{\xi}(t) = -\frac{\partial H_L}{\partial x}\del[1]{\gamma(t),\xi(t)}
 	\end{equation}
 	The equations \textup{(}\ref{eq:Hamiltons_equations}\textup{)} are called \bld{Hamilton's equations}.
 \end{theorem}
 
 \begin{proof}
-	Let $\dim M = n$. First we compute $H$ in standard coordinates $(x^i,\xi_i)$ on $T^*M$. By (\ref{eq:Legendre_in_coordinates}), the Legendre transform is given by
+	Let $\dim M = n$. First we compute $H_L$ in standard coordinates $(x^i,\xi_i)$ on $T^*M$. By (\ref{eq:Legendre_in_coordinates}), the Legendre transform is given by
 	\begin{equation}
 		\tau_L(x,v) = \del[3]{x,\frac{\partial L}{\partial v}(x,v)}
 	\end{equation}
@@ -232,31 +282,31 @@ Since the nondegenracy of a Lagragian system $(M,L)$ is inherently connected to 
 	\end{equation*}
 	Hence in coordinates
 	\begin{equation*}
-		H(x,\xi) = \del[3]{\frac{\partial L}{\partial v^i}v^i - L(x,v)}\bigg\vert_{\xi = \frac{\partial L}{\partial v}}.
+		H_L(x,\xi) = \del[3]{\frac{\partial L}{\partial v^i}v^i - L(x,v)}\bigg\vert_{\xi = \frac{\partial L}{\partial v}}.
 	\end{equation*}
 	Therefore
 	\begin{equation*}
-		\frac{\partial H}{\partial \xi^j} = \frac{\partial}{\partial \xi_j} \del[1]{\xi_i v^i - L(x,v)}\big\vert_{\xi = \frac{\partial L}{\partial v}} = \delta^j_i v^i = v^j.
+		\frac{\partial H_L}{\partial \xi^j} = \frac{\partial}{\partial \xi_j} \del[1]{\xi_i v^i - L(x,v)}\big\vert_{\xi = \frac{\partial L}{\partial v}} = \delta^j_i v^i = v^j.
 	\end{equation*}
 	Hence
 	\begin{equation*}
-		\frac{\partial H}{\partial \xi^j}\del[1]{\gamma(t),\xi(t)} = \dot{\gamma}^j(t),
+		\frac{\partial H_L}{\partial \xi^j}\del[1]{\gamma(t),\xi(t)} = \dot{\gamma}^j(t),
 	\end{equation*}
 	\noindent for all $j = 1,\dots,n$. Moreover, we have that
 	\begin{equation*}
-		\frac{\partial H}{\partial x^j} = \frac{\partial}{\partial x^j}\del[3]{\frac{\partial L}{\partial v^i}v^i - L(x,v)}\bigg\vert_{\xi = \frac{\partial L}{\partial v}} = - \frac{\partial L}{\partial x^j}(x,v)\bigg\vert_{\xi = \frac{\partial L}{\partial v}}, 
+		\frac{\partial H_L}{\partial x^j} = \frac{\partial}{\partial x^j}\del[3]{\frac{\partial L}{\partial v^i}v^i - L(x,v)}\bigg\vert_{\xi = \frac{\partial L}{\partial v}} = - \frac{\partial L}{\partial x^j}(x,v)\bigg\vert_{\xi = \frac{\partial L}{\partial v}}, 
 	\end{equation*}
 	\noindent and so
 	\begin{equation*}
-		\frac{\partial H}{\partial x^j}\del[1]{\gamma(t),\xi(t)} = -\frac{\partial L}{\partial x^j}\del[1]{\gamma(t),\dot{\gamma}(t)},
+		\frac{\partial H_L}{\partial x^j}\del[1]{\gamma(t),\xi(t)} = -\frac{\partial L}{\partial x^j}\del[1]{\gamma(t),\dot{\gamma}(t)},
 	\end{equation*}
 	\noindent for all $j = 1,\dots,n$. If the Euler-Lagrange equations (\ref{eq:EL_equations}) hold, then we get
 	\begin{equation*}
-		\frac{\partial H}{\partial x^j}\del[1]{\gamma(t),\xi(t)} = -\frac{d}{dt}\frac{\partial L}{\partial v^j}\del[1]{\gamma(t),\dot{\gamma}(t)} = -\xi_j(t),
+		\frac{\partial H_L}{\partial x^j}\del[1]{\gamma(t),\xi(t)} = -\frac{d}{dt}\frac{\partial L}{\partial v^j}\del[1]{\gamma(t),\dot{\gamma}(t)} = -\xi_j(t),
 	\end{equation*}
 	\noindent and thus the Hamilton's equations (\ref{eq:Hamiltons_equations}) hold. Conversly, if we suppose that Hamilton's equations (\ref{eq:Hamiltons_equations}) hold, we get that
 	\begin{equation*}
-		-\frac{d}{dt}\frac{\partial L}{\partial v^j}\del[1]{\gamma(t),\dot{\gamma}(t)} = -\xi_j(t) = \frac{\partial H}{\partial x^j}\del[1]{\gamma(t),\xi(t)} = -\frac{\partial L}{\partial x^j}\del[1]{\gamma(t),\dot{\gamma}(t)},
+		-\frac{d}{dt}\frac{\partial L}{\partial v^j}\del[1]{\gamma(t),\dot{\gamma}(t)} = -\xi_j(t) = \frac{\partial H_L}{\partial x^j}\del[1]{\gamma(t),\xi(t)} = -\frac{\partial L}{\partial x^j}\del[1]{\gamma(t),\dot{\gamma}(t)},
 	\end{equation*}
 	\noindent and so the Euler-Lagrange equations (\ref{eq:EL_equations}) are satisfied.
 \end{proof}
