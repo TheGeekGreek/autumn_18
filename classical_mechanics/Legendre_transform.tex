@@ -34,7 +34,7 @@ The nondegeneracy of an autonomous Lagrangian system is intrinsically connected 
 \begin{equation}
 	D^\mathcal{F}_{(x,v)}L := \frac{\partial}{\partial v^i}\bigg\vert_{(x,v)}(L) dx^i\vert_x = \frac{\partial L}{\partial v^i}dx^i.
 \end{equation}
-Let $(\wtilde{x}^i,\wtilde{v}^i)$ denote another pair of coordinates on $TM$. Then we have that 
+Let $(\wtilde{U},\wtilde{x}^i)$ be another chart on $M$ such that $U \cap \wtilde{U} \neq \varnothing$. Denote the induced coordinates on $TM$ by $(\wtilde{x}^i,\wtilde{v}^i)$. Then on $U \cap \wtilde{U}$ we have that 
 \begin{equation*}
 	\frac{\partial}{\partial \wtilde{v}^i} = \frac{\partial x^j}{\partial \wtilde{v}^i}\frac{\partial}{\partial x^j} + \frac{\partial v^j}{\partial \wtilde{v}^i}\frac{\partial}{\partial v^j} = \frac{\partial v^j}{\partial \wtilde{v}^i}\frac{\partial}{\partial v^j}.
 \end{equation*}
@@ -60,7 +60,7 @@ Thus
 \end{equation*}
 Therefore, $D^\mathcal{F}L$ is independent of the choice of coordinates.
 
-\begin{definition}[Fibrewise Differential\footnote{\unboldmath This terminology is adapted from exercise C.3. on problem sheet C of the lecture \emph{Differential geometry I} taught by \emph{Will J. Merry} at \emph{ETH Z\"urich} in the autumn semester $2018$, which can be found \href{https://www.merry.io/differential-geometry-i-problem-sheets/problem-sheet-c}{here}.}]
+\begin{definition}[Fibrewise Differential\footnote{\unboldmath This terminology is adapted from exercise C.3. on problem sheet C of the lecture \emph{Differential geometry I} taught by \emph{Will J. Merry} at \emph{ETH Z\"urich} in the autumn semester $2018$, which can be found \href{https://www.merry.io/differential-geometry-i-problem-sheets/problem-sheet-c}{here}. See also \cite[2]{mazzucchelli:CPT:2012}.}]
 	\label{def:fibrewise_differential}
 	Let $(M,L)$ be an autonomous Lagrangian system. The form $D^\mathcal{F}L \in \Omega^1(TM)$ defined on a chart $(U,x^i)$ of $M$ by
 	\begin{equation}

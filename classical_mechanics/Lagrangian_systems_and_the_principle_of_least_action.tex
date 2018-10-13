@@ -1,5 +1,5 @@
 \section*{Lagrangian Systems and the Principle of Least Action}
-Mechanical systems, i.e. a pendulum, are modelled using the language of differential geometry. Thus it is necessary to introduce the relevant physical counterparts. 
+Mechanical systems, for example a pendulum, are modelled using the language of differential geometry. Thus it is necessary to introduce the relevant physical counterparts. 
 
 \begin{definition}[Configuration Space]
 	A \bld{configuration space}\index{Configuration space} is defined to be a finite-dimensional smooth manifold.
@@ -13,11 +13,11 @@ Mechanical systems, i.e. a pendulum, are modelled using the language of differen
 	A \bld{state of the configuration space}\index{State} is defined to be an element of the tangent bundle of the configuration space, called the \bld{state space}\index{Space!state}.
 \end{definition}
 
-Also in classical mechanics, one has to rely on basic principles, which are to some extent experimentally verified. One of the most fundamental is the following.
+One should think of a state $(x,v)$ of a configuration space as follows: $x$ gives the position of the mechanical system and $v$ its velocity. The fundamental principle governing motions of mechanical systems is the following.
 
 \begin{axiom}[Newton-Laplace Determinacy Principle]
 	\label{ax:NL_determinacy_principle}
-	A motion in a configuration space is completely determined by a state at some instant.
+	A motion in a configuration space is completely determined by a state at some instant of time.
 \end{axiom}
 
 The Newton-Laplace determinacy principle \ref{ax:NL_determinacy_principle} motivates our main definition of this chapter.
@@ -41,7 +41,7 @@ The Newton-Laplace determinacy principle \ref{ax:NL_determinacy_principle} motiv
 \end{definition}
 
 \begin{remark}
-	For the sake of simplicity, we will just use the terminology \emph{path space} for $\mathcal{P}(M)^{x_0,t_0}_{x_1,t_1}$ and simply write $\mathcal{P}(M)$. We implicitely assume the conditions of definition \ref{def:path_space}, however.
+	For the sake of simplicity, we will just use the terminology \emph{path space} for $\mathcal{P}(M)^{x_0,t_0}_{x_1,t_1}$ and simply write $\mathcal{P}(M)$.
 \end{remark}
 
 \begin{definition}[Variation]
@@ -55,12 +55,12 @@ The Newton-Laplace determinacy principle \ref{ax:NL_determinacy_principle} motiv
 \end{definition}
 
 \begin{remark}
-	If $\Gamma$ is a variation of $\gamma \in \mathcal{P}(M)$, we write $\gamma_\varepsilon(-) := \Gamma(-,\varepsilon)$ for all $\varepsilon \in \intcc[0]{-\varepsilon_0,\varepsilon_0}$.
+	If $\Gamma$ is a variation of $\gamma \in \mathcal{P}(M)$, we write $\gamma_\varepsilon(-) := \Gamma(-,\varepsilon)$ for all $\varepsilon \in \intcc[0]{-\varepsilon_0,\varepsilon_0}$. With this notation, $\gamma_\varepsilon \in \mathcal{P}(M)$ for all $\varepsilon \in \intcc[0]{-\varepsilon_0,\varepsilon_0}$.
 \end{remark}
 
 \begin{example}[Perturbation of a Path along a Single Direction]
 	\label{ex:perturbation_along_single_direction}
-	Let $M$ be a smooth manifold with $\dim M = n$, $(U,\varphi)$ a chart and suppose that $\gamma$ is a path in $U$. With respect to this chart, we can write the coordinate representation of $\gamma$ as
+	Let $M^n$ be a smooth manifold, $(U,\varphi)$ a chart and suppose that $\gamma$ is a path in $U$. With respect to this chart, we can write the coordinate representation of $\gamma$ as
 	\begin{equation*}
 		\gamma(t) = \del[1]{\gamma^1(t),\dots,\gamma^n(t)}
 	\end{equation*}
@@ -68,13 +68,13 @@ The Newton-Laplace determinacy principle \ref{ax:NL_determinacy_principle} motiv
 	\begin{equation*}
 		\Gamma(t,\varepsilon) := (\iota \circ \varphi^{-1})\del[1]{\gamma^1(t),\dots,\gamma^i(t) + \varepsilon f(t),\dots,\gamma^n(t)}
 	\end{equation*}
-	\noindent where $\iota : U \hookrightarrow M$ denotes inclusion and $\varepsilon_0 > 0$ is to be determined. By exercise \ref{ex:U_delta_neighbourhood}, there exists $\delta > 0$ such that
+	\noindent where $\iota : U \hookrightarrow M$ denotes inclusion and $\varepsilon_0 > 0$ is to be determined. Suppose $\norm{f}_\infty \neq 0$. By exercise \ref{ex:U_delta_neighbourhood}, there exists $\delta > 0$ such that
 	\begin{equation*}
-		U_\delta := \cbr[0]{x \in \mathbb{R}^n : \dist(x,\gamma(\intcc[0]{t_0,t_1})) < \delta} \subseteq \varphi(U).
+		U_\delta := \cbr[1]{x \in \mathbb{R}^n : \dist\del[1]{x,\gamma(\intcc[0]{t_0,t_1})} < \delta} \subseteq \varphi(U).
 	\end{equation*}
 	Choose $\varepsilon_0 > 0$ such that $0 < \varepsilon_0 < \delta/\norm{f}_\infty$. Then in coordinates
 	\begin{equation*}
-		\dist\del[1]{\gamma_\varepsilon(t), \gamma(\intcc[0]{t_0,t_1})} \leq \abs[0]{\gamma_\varepsilon(t) - \gamma(t)} = \abs{\varepsilon} \norm{f}_\infty \leq \varepsilon_0 \norm{f}_\infty < \delta 
+		\dist\del[1]{\gamma_\varepsilon(t), \gamma(\intcc[0]{t_0,t_1})} \leq \abs[0]{\gamma_\varepsilon(t) - \gamma(t)} \leq \abs{\varepsilon} \norm{f}_\infty \leq \varepsilon_0 \norm{f}_\infty < \delta 
 	\end{equation*}
 	\noindent for all $t \in \intcc[0]{t_0,t_1}$. Hence $\gamma_\varepsilon(t) \in U_\delta$ and thus $\gamma_\varepsilon(t) \in \varphi(U)$. Therefore, $\Gamma$ is indeed well-defined. Moreover, it is easy to show that the properties of definition \ref{def:variation} holds, therefore, $\Gamma$ is a variation of $\gamma$. In fact, this example shows, that any path $\gamma$ contained in a single chart admits infinitely many variations. An example of such a variation is shown in figure \ref{fig:variation}.
 
@@ -117,11 +117,19 @@ Motions of Lagrangian systems are characterized by an axiom.
 	A motion of a Lagrangian system between two points is called an \bld{extremal of the action functional $S$}\index{Extremal}.
 \end{definition}
 
-The Newton-Laplace determinacy principle \ref{ax:NL_determinacy_principle} implies that motions of mechanical systems can be described as solutions of second order ordinary differential equations. That this is indeed the case, is shown by the next theorem.
+The Newton-Laplace determinacy principle \ref{ax:NL_determinacy_principle} implies that motions of mechanical systems can be described as solutions of second order ordinary differential equations. That this is indeed the case, is shown by the next theorem. But first, let us fix some notation. Let $M^n$ be a smooth manifold and $(U,\varphi)$ be a chart on $M$ with coordinates $(x^i)$. In what follows, we will use the abbreviation
+\begin{equation*}
+	\frac{\partial}{\partial x} := \del[3]{\frac{\partial}{\partial x^1},\dots,\frac{\partial}{\partial x^n}},
+\end{equation*}
+\noindent where as usual $\frac{\partial}{\partial x^i} : U \to TM$ denotes the \emph{$i$-th coordinate vector field}, that is
+\begin{equation*}
+	\frac{\partial f}{\partial x^i}(x) := \frac{\partial}{\partial x^i}\bigg\vert_x f = \partial_i(f \circ \varphi^{-1})\del[1]{\varphi(x)},
+\end{equation*}
+\noindent for all $i = 1,\dots,n$, $x \in U$ and $f \in C^\infty(M)$.
 
 \begin{theorem}[Euler-Lagrange Equations]
 	\label{thm:EL_equations}
-	Let $(M,L)$ be a Lagrangian system. If a path $\gamma \in C^\infty(\intcc[0]{t_0,t_1},M)$ describes a motion of $(M,L)$ between $(x_0,t_0)$ and $(x_1,t_1)$ then for all charts $(U,x^i)$
+	Let $(M^n,L)$ be a Lagrangian system. If a path $\gamma \in C^\infty(\intcc[0]{t_0,t_1},M)$ describes a motion of $(M,L)$ between $(x_0,t_0)$ and $(x_1,t_1)$ then for all charts $(U,x^i)$
 	\begin{equation}
 		\label{eq:EL_equations}
 		\pd{L}{x}\del[1]{\gamma(t),\dot{\gamma}(t),t} - \frac{d}{dt} \pd{L}{v}\del[1]{\gamma(t),\dot{\gamma}(t),t} = 0
@@ -130,58 +138,46 @@ The Newton-Laplace determinacy principle \ref{ax:NL_determinacy_principle} impli
 \end{theorem}
 
 \begin{proof}
-	By Hamilton's principle of least action \ref{ax:Hamilton_least_action}, we may assume that $\gamma$ is an extremal of the action functional $S$. The proof is divided into two steps.
-	\begin{enumerate}[label = \textit{Step \arabic*:},wide=0pt]
-		\item \textit{Suppose that $\gamma$ of $S$ is conatined in a chart domain $U$.} Let $t \in \intcc[0]{t_0,t_1}$ and abreviate $p := (\gamma(t),\dot{\gamma}(t),t)$ Using the formula for the derivative of a function along a curve \cite[283]{lee:smooth_manifolds:2013}, we compute
-			\begin{align*}
-				\frac{d}{d\varepsilon}\bigg\vert_{\varepsilon = 0} L\del[0]{\gamma_\varepsilon(t),\dot{\gamma}_\varepsilon(t),t} &= dL_p\del[3]{\frac{d}{d\varepsilon}\bigg\vert_{\varepsilon = 0}\gamma_\varepsilon(t),\frac{d}{d\varepsilon}\bigg\vert_{\varepsilon = 0}\dot{\gamma}_\varepsilon(t),0}\\
-				&= dL_p\del[3]{\frac{d\gamma_\varepsilon^j(t)}{d\varepsilon}(0)\frac{\partial}{\partial x^j}\bigg\vert_{\gamma(t)},\frac{d\dot{\gamma}_\varepsilon^j(t)}{d\varepsilon}(0)\frac{\partial}{\partial v^j}\bigg\vert_{\dot{\gamma}(t)},0}.
-			\end{align*}
-			\noindent for all variations $\gamma_\varepsilon$ of $\gamma$ in $U$. Moreover
-			\begin{equation*}
-				dL_p = \frac{\partial L}{\partial x^i}(p) dx^i\vert_p + \frac{\partial L}{\partial v^i}(p) dv^i\vert_p + \frac{\partial L}{\partial t}(p)dt\vert_p.
-			\end{equation*}
-			Therefore
-			\begin{align*}
-				0 &= \frac{d}{d\varepsilon}\bigg\vert_{\varepsilon = 0} S(\gamma_\varepsilon)\\
-				&= \int_{t_0}^{t_1} \frac{d}{d\varepsilon}\bigg\vert_{\varepsilon = 0} L\del[0]{\gamma_\varepsilon(t),\dot{\gamma}_\varepsilon(t),t} dt\\
-				&= \int_{t_0}^{t_1} dL_p\del[3]{\frac{d\gamma_\varepsilon^j(t)}{d\varepsilon}(0)\frac{\partial}{\partial x^j}\bigg\vert_{\gamma(t)},\frac{d\dot{\gamma}_\varepsilon^j(t)}{d\varepsilon}(0)\frac{\partial}{\partial v^j}\bigg\vert_{\dot{\gamma}(t)},0}\\
-				&= \int_{t_0}^{t_1} \frac{\partial L}{\partial x^i}(p)\frac{d\gamma_\varepsilon^i(t)}{d\varepsilon}(0)dt + \int_{t_0}^{t_1}\frac{\partial L}{\partial v^i}(p)\frac{d\dot{\gamma}_\varepsilon^i(t)}{d\varepsilon}(0)dt\\
-				&= \int_{t_0}^{t_1} \frac{\partial L}{\partial x^i}(p)\frac{d\gamma_\varepsilon^i(t)}{d\varepsilon}(0)dt + \int_{t_0}^{t_1}\frac{\partial L}{\partial v^i}(p)\del[3]{\frac{d\gamma_\varepsilon^i(t)}{d\varepsilon}(0)}'dt\\
-				&= \int_{t_0}^{t_1} \frac{\partial L}{\partial x^i}(p)\frac{d\gamma_\varepsilon^i(t)}{d\varepsilon}(0)dt + \frac{\partial L}{\partial v^i}(p)\frac{d\gamma_\varepsilon^i(t)}{d\varepsilon}(0)\bigg\vert_{t_0}^{t_1} - \int_{t_0}^{t_1} \frac{d}{dt}\frac{\partial L}{\partial v^i}(p)\frac{d\gamma_\varepsilon^i(t)}{d\varepsilon}(0)dt\\
-				&= \int_{t_0}^{t_1} \del[3]{\frac{\partial L}{\partial x^i}(p) - \frac{d}{dt}\frac{\partial L}{\partial v^i}(p)}\frac{d\gamma_\varepsilon^i(t)}{d\varepsilon}(0)dt 
-			\end{align*}
-			\noindent since $\gamma^i_\varepsilon(t_0)$ and $\gamma^i_\varepsilon(t_1)$ are constant by definition of a variation. Let $f \in C^\infty_c\intoo[0]{t_0,t_1}$, $j = 1,\dots,n$ and $\gamma_\varepsilon$ be the variation of $\gamma$ defined in example \ref{ex:perturbation_along_single_direction} along the $j$-th direction. Above computation therefore yields
-			\begin{equation*}
-				0 = \int_{t_0}^{t_1} \del[3]{\frac{\partial L}{\partial x^j}(p) - \frac{d}{dt}\frac{\partial L}{\partial v^j}(p)}f(t) dt
-			\end{equation*}
-			\noindent for all $f \in C^\infty_c\intoo[0]{t_0,t_1}$. Hence the fundamental lemma of calculus of variations \ref{lem:fundamental_lemma} implies
-			\begin{equation*}
-				\frac{\partial L}{\partial x^j}(p) - \frac{d}{dt}\frac{\partial L}{\partial v^j}(p) = 0
-			\end{equation*}
-			\noindent for all $j = 1,\dots,n$.
-		\item \textit{Suppose that $\gamma$ is an arbitrary extremal of $S$.} The key technical result used here is the following lemma.
-			\begin{lemma}[Lebesgue Number Lemma]
-				\label{lem:Lebesgue_number_lemma}
-				Every open cover of a compact metric space admits a Lebesgue number, i.e. a number $\delta > 0$ such that every subset of the metric space with diameter less than $\delta$ is contained in a member of the family.
-			\end{lemma}
-
-			\begin{proof}
-				See \cite[194]{lee:topological_manifolds:2011}.
-			\end{proof}
-
-			Let $(U_\alpha)_{\alpha \in A}$ be the smooth structure on $M$, i.e. the maximal smooth atlas. Since $\gamma$ is continuous, $\del[1]{\gamma^{-1}(U_\alpha)}_{\alpha \in A}$ is an open cover for $\intcc[0]{t_0,t_1}$. By the Lebesgue number lemma \ref{lem:Lebesgue_number_lemma}, this open cover admits a Lebesgue number $\delta > 0$. Let $k \in \mathbb{N}$ such that $(t_1 - t_0)/k < \delta$ and define
-			\begin{equation*}
-				t_i := \frac{i}{k}(t_1 - t_0) + t_0
-			\end{equation*}
-			\noindent for all $i = 0,\dots,k$. Then for all $i = 1,\dots,k$, $\gamma\vert_{\intcc[0]{x_{i - 1},x_i}}$ is contained in $U_\alpha$ for some $\alpha \in A$. Hence applying step $1$ yields the result.
-	\end{enumerate}
+	By Hamilton's principle of least action \ref{ax:Hamilton_least_action}, we may assume that $\gamma$ is an extremal of the action functional $S$. The proof is divided into two steps.\\
+	\emph{Step 1: Suppose that $\gamma$ of $S$ is conatined in a chart domain $U$.} Let $t \in \intcc[0]{t_0,t_1}$ and abreviate $x_t := (\gamma(t),\dot{\gamma}(t),t)$ Using the formula for the derivative of a function along a curve \ref{prop:derivative_of_a_function_along_a_curve}, we compute
+	\begin{align*}
+		\frac{d}{d\varepsilon}\bigg\vert_{\varepsilon = 0} L\del[0]{\gamma_\varepsilon(t),\dot{\gamma}_\varepsilon(t),t} &= dL_{x_t}\del[3]{\frac{d}{d\varepsilon}\bigg\vert_{\varepsilon = 0}\gamma_\varepsilon(t),\frac{d}{d\varepsilon}\bigg\vert_{\varepsilon = 0}\dot{\gamma}_\varepsilon(t),0}\\
+		&= dL_{x_t}\del[3]{\frac{d\gamma_\varepsilon^j(t)}{d\varepsilon}(0)\frac{\partial}{\partial x^j}\bigg\vert_{\gamma(t)},\frac{d\dot{\gamma}_\varepsilon^j(t)}{d\varepsilon}(0)\frac{\partial}{\partial v^j}\bigg\vert_{\dot{\gamma}(t)},0}.
+	\end{align*}
+	\noindent for all variations $\gamma_\varepsilon$ of $\gamma$ in $U$. Moreover, using the formula for the differential of a function on coordinates (\ref{eq:differential_of_a_function}) yields
+	\begin{equation*}
+		dL_{x_t} = \frac{\partial L}{\partial x^i}(x_t) dx^i\vert_{x_t} + \frac{\partial L}{\partial v^i}(x_t) dv^i\vert_{x_t} + \frac{\partial L}{\partial t}(x_t)dt\vert_{x_t}.
+	\end{equation*}
+	Therefore
+	\begin{align*}
+		0 &= \frac{d}{d\varepsilon}\bigg\vert_{\varepsilon = 0} S(\gamma_\varepsilon)\\
+		&= \int_{t_0}^{t_1} \frac{d}{d\varepsilon}\bigg\vert_{\varepsilon = 0} L\del[0]{\gamma_\varepsilon(t),\dot{\gamma}_\varepsilon(t),t} dt\\
+		&= \int_{t_0}^{t_1} dL_{x_t}\del[3]{\frac{d\gamma_\varepsilon^j(t)}{d\varepsilon}(0)\frac{\partial}{\partial x^j}\bigg\vert_{\gamma(t)},\frac{d\dot{\gamma}_\varepsilon^j(t)}{d\varepsilon}(0)\frac{\partial}{\partial v^j}\bigg\vert_{\dot{\gamma}(t)},0}\\
+		&= \int_{t_0}^{t_1} \frac{\partial L}{\partial x^i}(x_t)\frac{d\gamma_\varepsilon^i(t)}{d\varepsilon}(0)dt + \int_{t_0}^{t_1}\frac{\partial L}{\partial v^i}(x_t)\frac{d\dot{\gamma}_\varepsilon^i(t)}{d\varepsilon}(0)dt\\
+		&= \int_{t_0}^{t_1} \frac{\partial L}{\partial x^i}(x_t)\frac{d\gamma_\varepsilon^i(t)}{d\varepsilon}(0)dt + \int_{t_0}^{t_1}\frac{\partial L}{\partial v^i}(x_t)\del[3]{\frac{d\gamma_\varepsilon^i(t)}{d\varepsilon}(0)}'dt\\
+		&= \int_{t_0}^{t_1} \frac{\partial L}{\partial x^i}(x_t)\frac{d\gamma_\varepsilon^i(t)}{d\varepsilon}(0)dt + \frac{\partial L}{\partial v^i}(x_t)\frac{d\gamma_\varepsilon^i(t)}{d\varepsilon}(0)\bigg\vert_{t_0}^{t_1} - \int_{t_0}^{t_1} \frac{d}{dt}\frac{\partial L}{\partial v^i}(x_t)\frac{d\gamma_\varepsilon^i(t)}{d\varepsilon}(0)dt\\
+		&= \int_{t_0}^{t_1} \del[3]{\frac{\partial L}{\partial x^i}(x_t) - \frac{d}{dt}\frac{\partial L}{\partial v^i}(x_t)}\frac{d\gamma_\varepsilon^i(t)}{d\varepsilon}(0)dt 
+	\end{align*}
+	\noindent since $\gamma^i_\varepsilon(t_0)$ and $\gamma^i_\varepsilon(t_1)$ are constant by definition of a variation. Let $f \in C^\infty_c\intoo[0]{t_0,t_1}$, $j = 1,\dots,n$ and $\gamma_\varepsilon$ be the variation of $\gamma$ defined in example \ref{ex:perturbation_along_single_direction} along the $j$-th direction. Above computation therefore yields
+	\begin{equation*}
+		0 = \int_{t_0}^{t_1} \del[3]{\frac{\partial L}{\partial x^j}(x_t) - \frac{d}{dt}\frac{\partial L}{\partial v^j}(x_t)}f(t) dt
+	\end{equation*}
+	\noindent for all $f \in C^\infty_c\intoo[0]{t_0,t_1}$. Hence the fundamental lemma of calculus of variations \ref{lem:fundamental_lemma} implies
+	\begin{equation*}
+		\frac{\partial L}{\partial x^j}(x_t) - \frac{d}{dt}\frac{\partial L}{\partial v^j}(x_t) = 0
+	\end{equation*}
+	\noindent for all $j = 1,\dots,n$.\\
+	\emph{Step 2: Suppose that $\gamma$ is an arbitrary extremal of $S$.} The key technical result used here is the following lemma.
+	\begin{lemma}[{Lebesgue Number Lemma \cite[194]{lee:topological_manifolds:2011}}]
+		\label{lem:Lebesgue_number_lemma}
+		Every open cover of a compact metric space admits a Lebesgue number, i.e. a number $\delta > 0$ such that every subset of the metric space with diameter less than $\delta$ is contained in a member of the family.
+	\end{lemma}
+	Let $(U_\alpha)_{\alpha \in A}$ be the smooth structure on $M$, i.e. the maximal smooth atlas. Since $\gamma$ is continuous, $\del[1]{\gamma^{-1}(U_\alpha)}_{\alpha \in A}$ is an open cover for $\intcc[0]{t_0,t_1}$. By the Lebesgue number lemma \ref{lem:Lebesgue_number_lemma}, this open cover admits a Lebesgue number $\delta > 0$. Let $k \in \mathbb{N}$ such that $(t_1 - t_0)/k < \delta$ and define
+	\begin{equation*}
+		t_i := \frac{i}{k}(t_1 - t_0) + t_0
+	\end{equation*}
+	\noindent for all $i = 0,\dots,k$. Then for all $i = 1,\dots,k$, $\gamma\vert_{\intcc[0]{t_{i - 1},t_i}}$ is contained in $U_\alpha$ for some $\alpha \in A$. Hence applying step 1 yields the result.
 \end{proof}
-
-\begin{remark}
-	\label{rem:global_chart}
-	If a configuration space can be covered by a single chart, then the statement of theorem \ref{thm:EL_equations} becomes an equivalence.
-\end{remark}
 
 Due to the Newton-Laplace Determinacy Principle \ref{ax:NL_determinacy_principle}, the motions on a Lagrangian system are inherently characterized by the Lagrangian function and locally by the Euler-Lagrange equations (\ref{eq:EL_equations}). Hence any motion satisfies locally a system of second order ordinary differential equations. This system bears its own name.
 
@@ -191,7 +187,7 @@ Due to the Newton-Laplace Determinacy Principle \ref{ax:NL_determinacy_principle
 
 \begin{example}[Motions on Riemannian Manifolds]
 	\label{ex:motions_on_Riemannian_manifolds}
-	Let $(M,g)$ be a Riemannian manifold with $\dim M = n$ and consider the Lagrangian $L$ on $M$ defined in example \ref{ex:Lagrangian} with kinetic energy
+	Let $(M^n,g)$ be a Riemannian manifold and consider the Lagrangian $L$ on $M$ defined in example \ref{ex:Lagrangian} with kinetic energy
 	\begin{equation*}
 		T(x,v,t) := \frac{1}{2}g_x(v,v) = \frac{1}{2}\abs{v}^2_g
 	\end{equation*}
