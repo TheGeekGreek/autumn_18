@@ -88,9 +88,9 @@ The Newton-Laplace determinacy principle \ref{ax:NL_determinacy_principle} motiv
 
 \begin{exercise}
 	\label{ex:U_delta_neighbourhood}
-	Let $U \subseteq \mathbb{R}^n$ open and $A \subseteq U$ closed. Then there exists $\delta > 0$ such that
+	Let $(X,d)$ be a metric space and $A \subseteq U \subseteq X$ where $U$ is open in $X$ and $A$ is closed in $X$. Then there exists $\delta > 0$ such that
 	\begin{equation*}
-		U_\delta := \cbr[0]{x \in \mathbb{R}^n : \dist(x,A) < \delta} \subseteq U.
+		U_\delta := \cbr[0]{x \in X : \dist(x,A) < \delta} \subseteq U.
 	\end{equation*}
 \end{exercise}
 
@@ -129,7 +129,7 @@ The Newton-Laplace determinacy principle \ref{ax:NL_determinacy_principle} impli
 
 \begin{theorem}[Euler-Lagrange Equations]
 	\label{thm:EL_equations}
-	Let $(M^n,L)$ be a Lagrangian system. If a path $\gamma \in C^\infty(\intcc[0]{t_0,t_1},M)$ describes a motion of $(M,L)$ between $(x_0,t_0)$ and $(x_1,t_1)$ then for all charts $(U,x^i)$
+	Let $(M^n,L)$ be a Lagrangian system. A path $\gamma \in C^\infty(\intcc[0]{t_0,t_1},M)$ describes a motion of $(M,L)$ between $(x_0,t_0)$ and $(x_1,t_1)$ if and only if with respect to all charts $(U,x^i)$
 	\begin{equation}
 		\label{eq:EL_equations}
 		\pd{L}{x}\del[1]{\gamma(t),\dot{\gamma}(t),t} - \frac{d}{dt} \pd{L}{v}\del[1]{\gamma(t),\dot{\gamma}(t),t} = 0
@@ -139,9 +139,38 @@ The Newton-Laplace determinacy principle \ref{ax:NL_determinacy_principle} impli
 
 \begin{proof}
 	By Hamilton's principle of least action \ref{ax:Hamilton_least_action}, we may assume that $\gamma$ is an extremal of the action functional $S$. The proof is divided into two steps.\\
-	\emph{Step 1: Suppose that $\gamma$ of $S$ is conatined in a chart domain $U$.} Let $t \in \intcc[0]{t_0,t_1}$ and abreviate $x_t := (\gamma(t),\dot{\gamma}(t),t)$ Using the formula for the derivative of a function along a curve \ref{prop:derivative_of_a_function_along_a_curve}, we compute
+	\emph{Step 1: Suppose that $\gamma$ is contained in a chart domain $U$.} Let $t \in \intcc[0]{t_0,t_1}$ and abreviate $x_t := (\gamma(t),\dot{\gamma}(t),t)$. Suppose $\Gamma : \intcc[0]{t_0,t_1} \times \intcc[0]{-\varepsilon_0,\varepsilon_0} \to M$ is a variation of $\gamma$. Then there exists a rectangle $\mathcal{R}$ such that
+	\begin{equation*}
+		\intcc[0]{t_0,t_1} \times \cbr[0]{0} \subseteq \mathcal{R} \subseteq \intcc[0]{t_0,t_1} \times \intcc[0]{-\varepsilon_0,\varepsilon_0} 
+	\end{equation*} 
+	\noindent and $\Gamma(\mathcal{R}) \subseteq U$. Indeed, $\Gamma$ is continuous since $\Gamma$ is smooth and so $\Gamma^{-1}(U)$ is open in $\intcc[0]{t_0,t_1} \times \intcc[0]{-\varepsilon_0,\varepsilon_0}$. Since $\gamma$ is a path in $U$, we get
+	\begin{equation*}
+		\intcc[0]{t_0,t_1} \times \cbr{0} \subseteq \Gamma^{-1}(U)
+	\end{equation*}
+	\noindent by the definition of a variation. By exercise 2.4. (c) \cite[22]{lee:topological_manifolds:2011}, the standard Euclidean metric and the \emph{maximum metric $\abs{\>\cdot\>}_\infty$} generate the same topology, thus for all $t \in \intcc[0]{t_0,t_1}$ there exists $r_t > 0$ such that
+	\begin{equation*}
+		B_{r_t}(t,0) := \cbr[1]{(x,\varepsilon) \in \intcc[0]{t_0,t_1} \times \intcc[0]{-\varepsilon_0,\varepsilon_0} : \max\cbr[0]{\>\abs{x - t},\abs{\varepsilon}} < r_t} \subseteq \Gamma^{-1}(U).
+	\end{equation*}
+	Since $\intcc[0]{t_0,t_1} \times \cbr[0]{0}$ is compact in $\intcc[0]{t_0,t_1} \times \intcc[0]{-\varepsilon_0,\varepsilon_0}$, we find $m \in \mathbb{N}$ such that 
+	\begin{equation*}
+		\intcc[0]{t_0,t_1} \times \cbr[0]{0} \subseteq \bigcup_{i = 1}^m B_{r_i}(t_i,0).
+	\end{equation*}
+	Set $r := \max_{i = 1,\dots,m} r_i$ and define $\mathcal{R} := \intcc[0]{t_0,t_1} \times \intoo[0]{-r,r}$. Then if $(t,\varepsilon) \in \mathcal{R}$ we get that there exists some index $i$ such that $(t,0) \in B_{r_i}(t_i,0)$. Hence $\abs{t - t_i} < r_i$ and so
+	\begin{equation*}
+		\abs[0]{(t,\varepsilon) - (t_i,0)}_\infty = \max\cbr[0]{\> \abs{t - t_i},\abs{\varepsilon}} < r_i.
+	\end{equation*}
+	Thus $(t,\varepsilon) \subseteq B_{r_i}(t_i,0) \subseteq \Gamma^{-1}(U)$ and so $\Gamma(\mathcal{R}) \subseteq U$. Hence we can write
+	\begin{equation*}
+		\gamma_\varepsilon(t) = \del[1]{\gamma_\varepsilon^1(t),\dots,\gamma_\varepsilon^n(t)}
+	\end{equation*}
+	\noindent and 
+	\begin{equation*}
+		\dot{\gamma}_\varepsilon(t) = \del[1]{\dot{\gamma}_\varepsilon^1(t),\dots,\dot{\gamma}_\varepsilon^n(t)}
+	\end{equation*}
+	\noindent for all $(x,\varepsilon) \in \mathcal{R}$, where the dot denotes a derivative with respect to time.\\
+	Using the formula for the derivative of a function along a curve \ref{prop:derivative_of_a_function_along_a_curve}, we compute
 	\begin{align*}
-		\frac{d}{d\varepsilon}\bigg\vert_{\varepsilon = 0} L\del[0]{\gamma_\varepsilon(t),\dot{\gamma}_\varepsilon(t),t} &= dL_{x_t}\del[3]{\frac{d}{d\varepsilon}\bigg\vert_{\varepsilon = 0}\gamma_\varepsilon(t),\frac{d}{d\varepsilon}\bigg\vert_{\varepsilon = 0}\dot{\gamma}_\varepsilon(t),0}\\
+		\frac{d}{d\varepsilon}\bigg\vert_{\varepsilon = 0} L\del[1]{\gamma_\varepsilon(t),\dot{\gamma}_\varepsilon(t),t} &= dL_{x_t}\del[3]{\frac{d}{d\varepsilon}\bigg\vert_{\varepsilon = 0}\gamma_\varepsilon(t),\frac{d}{d\varepsilon}\bigg\vert_{\varepsilon = 0}\dot{\gamma}_\varepsilon(t),0}\\
 		&= dL_{x_t}\del[3]{\frac{d\gamma_\varepsilon^j(t)}{d\varepsilon}(0)\frac{\partial}{\partial x^j}\bigg\vert_{\gamma(t)},\frac{d\dot{\gamma}_\varepsilon^j(t)}{d\varepsilon}(0)\frac{\partial}{\partial v^j}\bigg\vert_{\dot{\gamma}(t)},0}.
 	\end{align*}
 	\noindent for all variations $\gamma_\varepsilon$ of $\gamma$ in $U$. Moreover, using the formula for the differential of a function on coordinates (\ref{eq:differential_of_a_function}) yields
@@ -151,7 +180,7 @@ The Newton-Laplace determinacy principle \ref{ax:NL_determinacy_principle} impli
 	Therefore
 	\begin{align*}
 		0 &= \frac{d}{d\varepsilon}\bigg\vert_{\varepsilon = 0} S(\gamma_\varepsilon)\\
-		&= \int_{t_0}^{t_1} \frac{d}{d\varepsilon}\bigg\vert_{\varepsilon = 0} L\del[0]{\gamma_\varepsilon(t),\dot{\gamma}_\varepsilon(t),t} dt\\
+		&= \int_{t_0}^{t_1} \frac{d}{d\varepsilon}\bigg\vert_{\varepsilon = 0} L\del[1]{\gamma_\varepsilon(t),\dot{\gamma}_\varepsilon(t),t} dt\\
 		&= \int_{t_0}^{t_1} dL_{x_t}\del[3]{\frac{d\gamma_\varepsilon^j(t)}{d\varepsilon}(0)\frac{\partial}{\partial x^j}\bigg\vert_{\gamma(t)},\frac{d\dot{\gamma}_\varepsilon^j(t)}{d\varepsilon}(0)\frac{\partial}{\partial v^j}\bigg\vert_{\dot{\gamma}(t)},0}\\
 		&= \int_{t_0}^{t_1} \frac{\partial L}{\partial x^i}(x_t)\frac{d\gamma_\varepsilon^i(t)}{d\varepsilon}(0)dt + \int_{t_0}^{t_1}\frac{\partial L}{\partial v^i}(x_t)\frac{d\dot{\gamma}_\varepsilon^i(t)}{d\varepsilon}(0)dt\\
 		&= \int_{t_0}^{t_1} \frac{\partial L}{\partial x^i}(x_t)\frac{d\gamma_\varepsilon^i(t)}{d\varepsilon}(0)dt + \int_{t_0}^{t_1}\frac{\partial L}{\partial v^i}(x_t)\del[3]{\frac{d\gamma_\varepsilon^i(t)}{d\varepsilon}(0)}'dt\\
@@ -167,16 +196,26 @@ The Newton-Laplace determinacy principle \ref{ax:NL_determinacy_principle} impli
 		\frac{\partial L}{\partial x^j}(x_t) - \frac{d}{dt}\frac{\partial L}{\partial v^j}(x_t) = 0
 	\end{equation*}
 	\noindent for all $j = 1,\dots,n$.\\
+	Conversly, if we assume that the Euler-Lagrange equations (\ref{eq:EL_equations}) hold, above computation yields
+	\begin{equation*}
+		\frac{d}{d\varepsilon}\bigg\vert_{\varepsilon = 0} S(\gamma_\varepsilon) = \int_{t_0}^{t_1} \del[3]{\frac{\partial L}{\partial x^i}(x_t) - \frac{d}{dt}\frac{\partial L}{\partial v^i}(x_t)}\frac{d\gamma_\varepsilon^i(t)}{d\varepsilon}(0)dt = 0
+	\end{equation*}
+	\noindent for every variation $\gamma_\varepsilon$ of $\gamma$.\\
 	\emph{Step 2: Suppose that $\gamma$ is an arbitrary extremal of $S$.} The key technical result used here is the following lemma.
 	\begin{lemma}[{Lebesgue Number Lemma \cite[194]{lee:topological_manifolds:2011}}]
 		\label{lem:Lebesgue_number_lemma}
 		Every open cover of a compact metric space admits a Lebesgue number, i.e. a number $\delta > 0$ such that every subset of the metric space with diameter less than $\delta$ is contained in a member of the family.
 	\end{lemma}
-	Let $(U_\alpha)_{\alpha \in A}$ be the smooth structure on $M$, i.e. the maximal smooth atlas. Since $\gamma$ is continuous, $\del[1]{\gamma^{-1}(U_\alpha)}_{\alpha \in A}$ is an open cover for $\intcc[0]{t_0,t_1}$. By the Lebesgue number lemma \ref{lem:Lebesgue_number_lemma}, this open cover admits a Lebesgue number $\delta > 0$. Let $k \in \mathbb{N}$ such that $(t_1 - t_0)/k < \delta$ and define
+	Let $(U_\alpha)_{\alpha \in A}$ be the smooth structure on $M$, i.e. the maximal smooth atlas. Since $\gamma$ is continuous, $\del[1]{\gamma^{-1}(U_\alpha)}_{\alpha \in A}$ is an open cover for $\intcc[0]{t_0,t_1}$. By the Lebesgue number lemma \ref{lem:Lebesgue_number_lemma}, this open cover admits a Lebesgue number $\delta > 0$. Let $N \in \mathbb{N}$ such that $(t_1 - t_0)/N < \delta$ and define
 	\begin{equation*}
-		t_i := \frac{i}{k}(t_1 - t_0) + t_0
+		t_i := \frac{i}{N}(t_1 - t_0) + t_0
 	\end{equation*}
-	\noindent for all $i = 0,\dots,k$. Then for all $i = 1,\dots,k$, $\gamma\vert_{\intcc[0]{t_{i - 1},t_i}}$ is contained in $U_\alpha$ for some $\alpha \in A$. Hence applying step 1 yields the result.
+	\noindent for all $i = 0,\dots,N$. Then for all $i = 1,\dots,N$, $\gamma\vert_{\intcc[0]{t_{i - 1},t_i}}$ is contained in $U_\alpha$ for some $\alpha \in A$. Let us extend the construction of example \ref{ex:perturbation_along_single_direction}. Suppose $f \in C^\infty_c(t_{i - 1},t_i)$. Then we can define a variation $\Gamma : \intcc[0]{t_0,t_1} \times \intcc[0]{-\varepsilon_0,\varepsilon_0} \to M$ as follows: Define 
+	\begin{equation*}
+		\Gamma : \del[0]{\intcc[0]{t_0,t_1}\setminus \supp f} \times \intcc[0]{-\varepsilon_0,\varepsilon_0} \to M
+	\end{equation*}
+	\noindent by $\Gamma(t,\varepsilon) := \gamma(t)$, and $\Gamma : \intoo[0]{t_{i - 1},t_i} \times \intcc[0]{-\varepsilon_0,\varepsilon_0} \to M$ to be the map defined in example \ref{ex:perturbation_along_single_direction}. Since both definitions agree on the overlap $\intoo[0]{t_{i - 1},t_i} \setminus \supp f$, an application of the gluing lemma for smooth maps \cite[35]{lee:smooth_manifolds:2013} yields the existence of a variation $\Gamma$ of $\gamma$ on $M$.
+	Therefore, step 1 implies the Euler-Lagrange equations (\ref{eq:EL_equations}). The converse direction is content of problem \ref{prob:1-1.}
 \end{proof}
 
 Due to the Newton-Laplace Determinacy Principle \ref{ax:NL_determinacy_principle}, the motions on a Lagrangian system are inherently characterized by the Lagrangian function and locally by the Euler-Lagrange equations (\ref{eq:EL_equations}). Hence any motion satisfies locally a system of second order ordinary differential equations. This system bears its own name.
@@ -194,7 +233,7 @@ Due to the Newton-Laplace Determinacy Principle \ref{ax:NL_determinacy_principle
 	\noindent and potential energy $V(x,t) := 0$ for $x \in M$, $v \in T_xM$ and $t \in \mathbb{R}$. Let $(U,x^i)$ be a chart on $M$. We compute
 	\begin{align*}
 		L(x,v,t) &= \frac{1}{2}g_{x}\del[0]{v,v}\\
-		&= \frac{1}{2}g_{x}\del[3]{v^i\frac{\partial}{\partial x^i}\bigg\vert_x,v^j(t)\frac{\partial}{\partial x^j}\bigg\vert_x}\\
+		&= \frac{1}{2}g_{x}\del[3]{v^i\frac{\partial}{\partial x^i}\bigg\vert_x,v^j\frac{\partial}{\partial x^j}\bigg\vert_x}\\
 		&= \frac{1}{2}g_{x}\del[3]{\frac{\partial}{\partial x^i}\bigg\vert_x,\frac{\partial}{\partial x^j}\bigg\vert_x}v^iv^j\\
 		&= \frac{1}{2}g_{ij}(x)v^iv^j,
 	\end{align*}
