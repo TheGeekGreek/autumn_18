@@ -2,10 +2,10 @@
 In this section we \emph{dualize} the notion of a Lagrangian function, that is, to each Lagrangian function $L \in C^\infty(TM)$ we will associate a \emph{dual function} $L^* \in C^\infty(T^*M)$. It turns out, that in this dual formulation, the equations of motion take a very symmetric form. To simplify the notation and illuminating the main concept, we consider Lagrangian functions of a special type.
 
 \begin{definition}[Autonomous System]
-	A Lagrangian system $(M,L)$ is said to be an \bld{autonomous Lagrangian system}, iff $L \in C^\infty(TM)$.
+	A Lagrangian system $(M,L)$ is said to be an \bld{autonomous Lagrangian system}\index{Lagrangian!system!autonomous}, iff $L \in C^\infty(TM)$.
 \end{definition}
 
-Let $(M,L)$ be an autonomous Lagrangian system with $\dim M = n$ and $(U,x^i)$ a chart on $M$. Moreover, let $(x^i,v^i)$ denote standard coordinates on $TM$, that is $v^i := dx^i$ for all $i = 1,\dots,n$. Expanding the Euler-Lagrange equations (\ref{eq:EL_equations}) yields
+Let $(M^n,L)$ be an autonomous Lagrangian system and $(U,x^i)$ a chart on $M$. Moreover, let $(x^i,v^i)$ denote standard coordinates on $TM$, that is $v^i := dx^i$ for all $i = 1,\dots,n$. Expanding the Euler-Lagrange equations (\ref{eq:EL_equations}) yields
 \begin{align*}
 	\frac{\partial L}{\partial x^j}\del[1]{\gamma(t),\dot{\gamma}(t)} &= \frac{d}{dt}\frac{\partial L}{\partial v^j}\del[1]{\gamma(t),\dot{\gamma}(t)}\\
 	&= \frac{\partial^2 L}{\partial x^i\partial v^j}\del[1]{\gamma(t),\dot{\gamma}(t)}\dot{\gamma}^i(t) + \frac{\partial^2 L}{\partial v^i\partial v^j}\del[1]{\gamma(t),\dot{\gamma}(t)}\ddot{\gamma}^i(t)
@@ -18,7 +18,7 @@ Let $(M,L)$ be an autonomous Lagrangian system with $\dim M = n$ and $(U,x^i)$ a
 \noindent must be invertible on $TU$.
 
 \begin{definition}[Nondegenrate System]
-	An autonomous Lagrangian system $(M,L)$ is said to be \bld{nondegenerate}, iff for all coordinate charts $U$ on $M$, $\det \mathcal{H}_L(x,v) \neq 0$ holds on $TU$. 
+	An autonomous Lagrangian system $(M,L)$ is said to be \bld{nondegenerate}\index{Lagrangian!system!nondegenerate}, iff for all coordinate charts $U$ on $M$, $\det \mathcal{H}_L(x,v) \neq 0$ holds on $TU$. 
 \end{definition}
 
 \begin{example}[Nondegenrate System on a Riemannian Manifold]
@@ -67,7 +67,7 @@ Therefore, $D^\mathcal{F}L$ is independent of the choice of coordinates.
 		\label{eq:fibrewise_differential}
 		D^\mathcal{F}L := \frac{\partial L}{\partial v^i}dx^i
 	\end{equation}
-	\noindent where $(x^i,v^i)$ denotes the induced standard coordinates on $TM$, is called the \bld{fibrewise differential of $L$}.
+	\noindent where $(x^i,v^i)$ denotes the induced standard coordinates on $TM$, is called the \bld{fibrewise differential of $L$}\index{Differential!fibrewise}.
 \end{definition}
 
 \begin{remark}
@@ -141,7 +141,7 @@ Thus
 
 \begin{definition}[Tautological Form]
 	\label{def:tautological_form}
-	Let $M$ be a smooth manifold. The \bld{tautological form on $T^*M$}, denoted by $\alpha$, is the form  $\alpha \in \Omega^1(T^*M)$ defined locally by
+	Let $M$ be a smooth manifold. The \bld{tautological form on $T^*M$}\index{Form!tautological}, denoted by $\alpha$, is the form  $\alpha \in \Omega^1(T^*M)$ defined locally by
 	\begin{equation*}
 		\alpha := \xi_idx^i,
 	\end{equation*}
@@ -157,7 +157,7 @@ Thus
 \end{remark}
 
 \begin{definition}[Legendre Transform]
-	A \bld{Legendre transform of an autonomous Lagrangian system $(M,L)$} is defined to be a fibrewise mapping $\tau_L \in C^\infty(TM,T^*M)$ such that
+	A \bld{Legendre transform of an autonomous Lagrangian system $(M,L)$}\index{Transform!Legendre} is defined to be a fibrewise mapping $\tau_L \in C^\infty(TM,T^*M)$ such that
 	\begin{equation*}
 		D^\mathcal{F}L = \tau_L^*(\alpha).
 	\end{equation*}
@@ -166,9 +166,10 @@ Thus
 \begin{example}[Legendre Transform on a Riemannian Manifold]
 	\label{ex:Legendre_transform_Riemannian_manifold}
 	Let $(M,L)$ be a Lagrangian system. Then the morphism $\tau_L : TM \to T^*M$ defined by
-	\begin{equation*}
+	\begin{equation}
+		\label{eq:Legendre_transform}
 		\tau_L(x,v) := \del[1]{x,D^\mathcal{F}_{(x,v)}L}
-	\end{equation*}
+	\end{equation}
 	\noindent is a Legendre transform. In particular, if we consider the Lagrangian system defined in example \ref{ex:nondegenerate_Lagrangian_system}, we get that the above defined Legendre transform is a diffeomorphism. Indeed, suppose that $\tau_{T - V}(x,v) = \tau_{T - V}(\wtilde{x},\wtilde{v})$. Then $x = \wtilde{x}$ and
 	\begin{equation*}
 		g_{ij}(x)v^idx^j = g_{ij}(x)\wtilde{v}^idx^j	
@@ -216,7 +217,7 @@ Since the nondegenracy of a Lagragian system $(M,L)$ is inherently connected to 
 \end{proof}
 
 \begin{definition}[Energy]
-	The \bld{energy} of an autonomous Lagrangian system $(M,L)$ is defined to be the function $E_L \in C^\infty(TM)$ given by
+	The \bld{energy of an autonomous Lagrangian system $(M,L)$}\index{Energy!of an autonomous Lagrangian system} is defined to be the function $E_L \in C^\infty(TM)$ given by
 	\begin{equation*}
 		E_L(x,v) := D^\mathcal{F}_{(x,v)}L(v) - L(x,v),
 	\end{equation*}
@@ -240,7 +241,7 @@ Since the nondegenracy of a Lagragian system $(M,L)$ is inherently connected to 
 	\begin{equation*}
 		H_L := E_L \circ \tau_L^{-1}
 	\end{equation*}
-	\noindent is called the \bld{Hamiltonian function associated to the Lagrangian function $L$}.
+	\noindent is called the \bld{Hamiltonian function associated to the Lagrangian function $L$}\index{Hamiltonian!function}.
 \end{definition}
 
 \begin{example}[Hamiltonian function on a Riemannian Manifold]
@@ -268,7 +269,7 @@ Since the nondegenracy of a Lagragian system $(M,L)$ is inherently connected to 
 		\label{eq:Hamiltons_equations}
 		\dot{\gamma}(t) = \frac{\partial H_L}{\partial \xi}\del[1]{\gamma(t),\xi(t)} \qquad \text{and} \qquad \dot{\xi}(t) = -\frac{\partial H_L}{\partial x}\del[1]{\gamma(t),\xi(t)}
 	\end{equation}
-	The equations \textup{(}\ref{eq:Hamiltons_equations}\textup{)} are called \bld{Hamilton's equations}.
+	The equations \textup{(}\ref{eq:Hamiltons_equations}\textup{)} are called \bld{Hamilton's equations}\index{Equations!Hamilton's}.
 \end{theorem}
 
 \begin{proof}
@@ -310,3 +311,7 @@ Since the nondegenracy of a Lagragian system $(M,L)$ is inherently connected to 
 	\end{equation*}
 	\noindent and so the Euler-Lagrange equations (\ref{eq:EL_equations}) are satisfied.
 \end{proof}
+
+\begin{remark}
+	Under some reasonable assumptions on the Lagrangian system it can be shown that the Legendre transform (\ref{eq:Legendre_transform}) defined in example \ref{ex:Legendre_transform_Riemannian_manifold} is always a diffeomorphism. For more details see \cite[8]{mazzucchelli:CPT:2012}.	
+\end{remark}
