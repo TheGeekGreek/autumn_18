@@ -260,7 +260,7 @@ Since the nondegenracy of a Lagragian system $(M,L)$ is inherently connected to 
 
 \begin{theorem}[Hamilton's Equations]
 	\label{thm:Hamiltons_equations}
-	Let $\gamma$ be a motion on an autonomous Lagrangian system $(M,L)$ and suppose that $\tau_L$ is a diffeomorphic Legendre transform. Then $\gamma$ satisfies the Euler-Lagrange equations in every chart if and only if the path 
+	Let $\gamma$ be a motion on an autonomous Lagrangian system $(M^n,L)$ and suppose that $\tau_L$ is a diffeomorphic Legendre transform. Then $\gamma$ satisfies the Euler-Lagrange equations in every chart if and only if the path 
 	\begin{equation*}
 			\del[1]{\gamma(t),\xi(t)} := \tau_L\del[1]{\gamma(t),\dot{\gamma}(t)}
 	\end{equation*}
@@ -273,7 +273,7 @@ Since the nondegenracy of a Lagragian system $(M,L)$ is inherently connected to 
 \end{theorem}
 
 \begin{proof}
-	Let $\dim M = n$. First we compute $H_L$ in standard coordinates $(x^i,\xi_i)$ on $T^*M$. By (\ref{eq:Legendre_in_coordinates}), the Legendre transform is given by
+	First we compute $H_L$ in standard coordinates $(x^i,\xi_i)$ on $T^*M$. By (\ref{eq:Legendre_in_coordinates}), the Legendre transform is given by
 	\begin{equation}
 		\tau_L(x,v) = \del[3]{x,\frac{\partial L}{\partial v}(x,v)}
 	\end{equation}
@@ -303,11 +303,11 @@ Since the nondegenracy of a Lagragian system $(M,L)$ is inherently connected to 
 	\end{equation*}
 	\noindent for all $j = 1,\dots,n$. If the Euler-Lagrange equations (\ref{eq:EL_equations}) hold, then we get
 	\begin{equation*}
-		\frac{\partial H_L}{\partial x^j}\del[1]{\gamma(t),\xi(t)} = -\frac{d}{dt}\frac{\partial L}{\partial v^j}\del[1]{\gamma(t),\dot{\gamma}(t)} = -\xi_j(t),
+		\frac{\partial H_L}{\partial x^j}\del[1]{\gamma(t),\xi(t)} = -\frac{d}{dt}\frac{\partial L}{\partial v^j}\del[1]{\gamma(t),\dot{\gamma}(t)} = -\dot{\xi}_j(t),
 	\end{equation*}
 	\noindent and thus the Hamilton's equations (\ref{eq:Hamiltons_equations}) hold. Conversly, if we suppose that Hamilton's equations (\ref{eq:Hamiltons_equations}) hold, we get that
 	\begin{equation*}
-		-\frac{d}{dt}\frac{\partial L}{\partial v^j}\del[1]{\gamma(t),\dot{\gamma}(t)} = -\xi_j(t) = \frac{\partial H_L}{\partial x^j}\del[1]{\gamma(t),\xi(t)} = -\frac{\partial L}{\partial x^j}\del[1]{\gamma(t),\dot{\gamma}(t)},
+		-\frac{d}{dt}\frac{\partial L}{\partial v^j}\del[1]{\gamma(t),\dot{\gamma}(t)} = -\dot{\xi}_j(t) = \frac{\partial H_L}{\partial x^j}\del[1]{\gamma(t),\xi(t)} = -\frac{\partial L}{\partial x^j}\del[1]{\gamma(t),\dot{\gamma}(t)},
 	\end{equation*}
 	\noindent and so the Euler-Lagrange equations (\ref{eq:EL_equations}) are satisfied.
 \end{proof}

@@ -1,0 +1,226 @@
+\section*{Tensor Fields}
+\begin{lemma}[{Vector Bundle Chart Lemma \cite[253]{lee:smooth_manifolds:2013}}]
+	\label{lem:vector_bundle_chart_lemma}
+	Let $M$ be a smooth manifold, $k \in \mathbb{N}$ and suppose that for all $x \in M$ we are given a real vector space $E_x$ of dimension $k$. Let $E := \coprod_{x \in M} E_x$ and let $\pi : E \to M$ be given by $\pi(x,v) := x$. Moreover, suppose that we are given the following data:
+	\begin{enumerate}[label = \textup{(\roman*)},leftmargin=*]
+		\item An open cover $(U_\alpha)_{\alpha \in A}$ of $M$.
+		\item For all $\alpha \in A$ a bijection $\Phi_\alpha : \pi^{-1}(U_\alpha) \to U_\alpha \times \mathbb{R}^k$ such that the restriction $\Phi_\alpha\vert_{E_x} : E_x \to \cbr{x} \times \mathbb{R}^k \cong \mathbb{R}^k$ is an isomorphism of vector spaces for all $x \in M$.
+		\item For all $\alpha, \beta \in A$ with $U_\alpha \cap U_\beta \neq \varnothing$, a smooth mapping $\tau_{\alpha\beta} : U_\alpha \cap U_\beta \to \GL(k,\mathbb{R})$  such that the mapping $\Phi_\alpha \circ \Phi_\beta^{-1} : (U_\alpha \cap U_\beta) \times \mathbb{R}^k \to (U_\alpha \cap U_\beta) \times \mathbb{R}^k$ is of the form $\Phi_\alpha \circ \Phi_\beta^{-1}(x,v) = \del[1]{x,\tau_{\alpha\beta}(x)v}$. 
+	\end{enumerate}
+	Then $E$ admits a unique topology and a smooth structure making it into a smooth manifold and a smooth vector bundle $\pi : E \to M$ of rank $k$ with local trivializations $(U_\alpha,\Phi_\alpha)_{\alpha \in A}$.
+\end{lemma}
+
+Let $M^n$ be a smooth manifold and let $k,l \in \mathbb{N}$. For all $x \in M$ define the space of \bld{mixed tensors of type $(k,l)$ on $T_xM$} by
+\begin{equation*}
+	T^{(k,l)}(T_xM) := \undercbrace{T_xM \otimes \dots \otimes T_xM}_{k} \otimes \undercbrace{T^*_xM \otimes \dots \otimes T^*_xM}_{l}.
+\end{equation*}
+By proposition 12.10 \cite[311]{lee:smooth_manifolds:2013} we have that 
+\begin{equation*}
+	T^{(k,l)}(T_xM) \cong L\del[1]{\undercbrace{T^*_xM, \dots, T^*_xM}_{k},\undercbrace{T_xM,\dots,T_xM}_{l};\mathbb{R}}
+\end{equation*}
+\noindent since $(T^*_xM)^* \cong T_xM$ canonically ($T_xM$ is finite-dimensional) where the latter denotes the space of all $\mathbb{R}$-valued multilinear forms on
+\begin{equation*}
+	\undercbrace{T^*_xM \times \dots \times T^*_xM}_{k} \times \undercbrace{T_xM \times \dots \times T_xM}_{l}.
+\end{equation*}
+We will always think of mixed tensors as multilinear forms. Let $(U,x^i)$ be a chart about $x$. Then using corollary 12.12 \cite[313]{lee:smooth_manifolds:2013} we get that a basis for $T^{(k,l)}(T_xM)$ is given by all elements 
+\begin{equation*}
+	\frac{\partial}{\partial x^{i_1}}\bigg\vert_x \otimes \dots \otimes \frac{\partial}{\partial x^{i_k}}\bigg\vert_x \otimes dx^{j_1}\vert_x \otimes \dots \otimes dx^{j_l}\vert_x
+\end{equation*}
+\noindent for all $1 \leq i_1,\dots,i_k,j_1,\dots,j_l \leq n$. Consequently, $\dim T^{(k,l)}(T_xM) = n^{k + l}$ and a particular tensor $A \in T^{(k,l)}(T_xM)$ expressed in this basis is given by 
+\begin{equation}
+	\label{eq:tensor_expression_basis}
+	A = A^{i_1\dots i_k}_{j_1\dots j_l}\frac{\partial}{\partial x^{i_1}}\bigg\vert_x \otimes \dots \otimes \frac{\partial}{\partial x^{i_k}}\bigg\vert_x \otimes dx^{j_1}\vert_x \otimes \dots \otimes dx^{j_l}\vert_x
+\end{equation}
+\noindent where
+\begin{equation}
+	\label{eq:tensor_components}
+	A^{i_1\dots i_k}_{j_1\dots j_l} := A\del[3]{dx^{i_1}\vert_x,\dots,dx^{i_k}\vert_x,\frac{\partial}{\partial x^{j_1}}\bigg\vert_x,\dots\frac{\partial}{\partial x^{j_l}}\bigg\vert_x}.
+\end{equation}
+ Next we want to ``glue'' together the different spaces of mixed tensors.
+
+\begin{proposition}
+	\label{prop:tensor_bundle}
+	Let $M$ be a smooth manifold and let $k,l \in \mathbb{N}$. Then
+	\begin{equation*}
+		T^{(k,l)}TM := \coprod_{x \in M} T^{(k,l)}(T_xM)
+	\end{equation*}
+	\noindent admits a unique topology and a smooth structure making it into a smooth manifold and a smooth vector bundle $\pi : T^{(k,l)}TM \to M$ of rank $n^{k + l}$. This smooth vector bundle is called the \bld{bundle of mixed tensors of type $(k,l)$ on $M$}. 
+\end{proposition}
+
+\begin{proof}
+	This is an application of the vector bundle chart lemma \ref{lem:vector_bundle_chart_lemma}. For all $x \in M$ define $E_x := T^{(k,l)}(T_xM)$. By the preceeding discussion, $\dim E_x = n^{k + l}$. Let $(U_\alpha,\varphi_\alpha)_{\alpha \in A}$ denote the smooth structure on $M$. Then clearly $(U_\alpha)_{\alpha \in A}$ is an open cover for $M$. For each $\alpha \in A$, define
+\begin{equation*}
+	\Phi_\alpha:\ccases{
+		\pi^{-1}(U_\alpha) \to U_\alpha \times \mathbb{R}^{n^{k + l}}\\
+		(x,A) \mapsto \del[1]{x,(A^{i_1\dots i_k}_{j_1\dots j_l})}
+	}
+\end{equation*}
+\noindent where we expressed $A$ as in (\ref{eq:tensor_expression_basis}). Observe, that this map strongly depends on the coordinate functions. Clearly, the inverse is given by
+\begin{equation*}
+	\Phi^{-1}_\alpha:\ccases{
+		U_\alpha \times\mathbb{R}^{n^{k + l}} \to \pi^{-1}(U_\alpha)\\
+		\del[1]{x,(A^{i_1\dots i_k}_{j_1\dots j_l})} \mapsto (x,A)
+	}.
+\end{equation*}
+	Hence each $\Phi_\alpha$ is bijective. Now we have to check, that $\Phi_\alpha\vert_{E_x}$ is an isomorphism for all $x \in M$. By elementary linear algebra it is enough to show that $\Phi_\alpha$ is linear. So let $\lambda \in \mathbb{R}$ and $A,B \in E_x$. Then
+	\begin{align*}
+		\Phi_\alpha\vert_{E_x}(x,A + \lambda B) &= \del[1]{x,(A + \lambda B)^{i_1\dots i_k}_{j_1\dots j_l})}\\
+		&= \del[1]{x,(A^{i_1\dots i_k}_{j_1\dots j_l}) + \lambda (B^{i_1\dots i_k}_{j_1\dots j_l})}\\
+		&= \Phi_\alpha\vert_{E_x}(x,A) + \lambda\Phi_\alpha\vert_{E_x}(x,B).
+	\end{align*}
+	Lastly, let $\alpha, \beta \in A$ such that $U_\alpha \cap U_\beta \neq \varnothing$ and coordinates $(x^i_\alpha)$ and $(x^i_\beta)$, respectively. Then for $x \in U_\alpha \cap U_\beta$ we have that
+	\begin{equation*}
+		\frac{\partial}{\partial x_\alpha^i}\bigg\vert_x = \frac{\partial x^j_\beta}{\partial x_\alpha^i}(x)\frac{\partial}{\partial x_\beta^j}\bigg\vert_x \qquad \text{and} \qquad dx_\alpha^i\vert_x = \frac{\partial x_\alpha^i}{\partial x_\beta^j}(x)dx^j_\beta\vert_x.
+	\end{equation*}
+	So if $A^{i_1\dots i_k}_{j_1\dots j_l}$ are coordinates of a mixed tensor with respect to the basis induced by $(x^i_\alpha)$, we compute
+	\begin{align*}
+		A^{i_1\dots i_k}_{j_1\dots j_l} &= A\del[3]{dx_\alpha^{i_1}\vert_x,\dots,dx_\alpha^{i_k}\vert_x,\frac{\partial}{\partial x_\alpha^{j_1}}\bigg\vert_x,\dots\frac{\partial}{\partial x_\alpha^{j_l}}\bigg\vert_x}\\
+		&= \frac{\partial x_\alpha^{i_1}}{\partial x^{p_1}_\beta}(x)\cdots\frac{\partial x_\alpha^{i_k}}{\partial x_\beta^{p_k}}(x)\frac{\partial x^{q_1}_\beta}{\partial x_\alpha^{j_1}}(x) \cdots \frac{\partial x^{q_l}_\beta}{\partial x_\alpha^{j_l}}(x)A^{p_1\dots p_k}_{q_1\dots q_l}
+	\end{align*}
+	Thus define $\tau_{\alpha\beta}: U_\alpha \cap U_\beta \to \mathrm{GL}(n^{k + l},\mathbb{R})$ by
+	\begin{equation*}
+		\tau_{\alpha\beta}(x) := \del[4]{\frac{\partial x_\alpha^{i_1}}{\partial x^{p_1}_\beta}(x)\cdots\frac{\partial x_\alpha^{i_k}}{\partial x_\beta^{p_k}}(x)\frac{\partial x^{q_1}_\beta}{\partial x_\alpha^{j_1}}(x) \cdots \frac{\partial x^{q_l}_\beta}{\partial x_\alpha^{j_l}}(x)}.
+	\end{equation*}
+	Then $\tau_{\alpha\beta}$ is clearly smooth and moreover
+	\begin{equation*}
+		\Phi_\alpha \circ \Phi_\beta^{-1}\del[1]{x,(A^{p_1\dots p_k}_{q_1\dots q_l})} = \del[1]{x, (A^{i_1\dots i_k}_{j_1\dots j_l})} = \del[1]{x,\tau_{\alpha\beta}(x)(A^{p_1\dots p_k}_{q_1\dots q_l})}. 
+	\end{equation*}
+	Therefore, conditions (i)-(iii) in the vector bundle chart lemma \ref{lem:vector_bundle_chart_lemma} are satisfied and the statement follows.
+\end{proof}
+
+Recall, that in a category $\mathcal{C}$, a \emph{section} of a morphism $f : X \to Y$ is a morphism $\sigma : Y \to X$ such that $f \circ \sigma = \id_Y$.
+
+\begin{definition}[Tensor Field]
+	Let $M$ be a smooth manifold and $k,l \in \mathbb{N}$. A \bld{smooth tensor field of type $(k,l)$ on $M$} is defined to be a section of $\pi : T^{(k,l)}TM \to M$. The space of all smooth tensor fields of type $(k,l)$ on $M$ is denoted by $\Gamma\del[1]{T^{(k,l)}TM}$.
+\end{definition}
+
+\begin{example}[Vector Field and Covector Field]
+	Let $M$ be a smooth manifold. Of particular importance are the tensor fields such that $k + l = 1$. If $k = 1$, such tensor fields are called \bld{vector fields} and we write $\mathfrak{X}(M) := \Gamma\del[1]{T^{(1,0)}TM}$. Likewise, if $l = 1$, we call such tensor fields \bld{covector fields} and write $\mathfrak{X}^*(M) := \Gamma\del[1]{T^{(0,1)}TM}$.
+\end{example}
+
+Let $\del[1]{U,(x^i)}$ be a chart on $M$ and $A : M \to T^{(k,l)}TM$ such that $A_x \in T^{(k,l)}(T_xM)$ for all $x \in M$. From (\ref{eq:tensor_expression_basis}) we get that
+\begin{equation*}
+	A_x = A^{i_1\dots i_k}_{j_1\dots j_l}(x)\frac{\partial}{\partial x^{i_1}}\bigg\vert_x \otimes \dots \otimes \frac{\partial}{\partial x^{i_k}}\bigg\vert_x \otimes dx^{j_1}\vert_x \otimes \dots \otimes dx^{j_l}\vert_x
+\end{equation*}
+\noindent for all $x \in U$ where $A^{i_1\dots i_k}_{j_1\dots j_l} : U \to \mathbb{R}$ are given as in (\ref{eq:tensor_components}). We will call these functions the \bld{component functions of $A$}.
+
+\begin{proposition}[{Smoothness Criteria for Tensor Fields \cite[317]{lee:smooth_manifolds:2013}}]
+	\label{prop:smoothness_criteria_for_tensor_fields}
+	Let $M$ be smooth manifold, $k,l \in \mathbb{N}$ and $A : M \to T^{(k,l)}TM$ such that $A_x \in T^{(k,l)}T_xM$ for all $x \in M$. Then the following conditions are equivalent:
+	\begin{enumerate}[label = \textup{(\alph*\textup)},leftmargin=*]
+		\item $A \in \Gamma\del[1]{T^{(k,l)}TM}$.
+		\item In every smooth coordinate chart, the component functions of $A$ are smooth.
+		\item For all $\omega^1,\dots,\omega^k \in \mathfrak{X}^*(M)$ and $X_1,\dots,X_l \in \mathfrak{X}(M)$, the function $\mathcal{A} : M \to \mathbb{R}$ defined by
+			\begin{equation}
+				\label{eq:curly_A}
+				\mathcal{A}(x) := A_x\del[1]{\omega^1_x,\dots,\omega^k_x, X_1\vert_x,\dots,X_l\vert_x}
+			\end{equation}
+			\noindent is a smooth.
+		\item Let $U \subseteq M$ be open. If $\omega^1,\dots,\omega^k \in \mathfrak{X}^*(U)$ and $X_1,\dots,X_l \in \mathfrak{X}(U)$, then $\mathcal{A}$ defined by \textup{(\ref{eq:curly_A})} belongs to $C^\infty(U)$.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+We prove (a) $\Leftrightarrow$ (b) and (b) $\Rightarrow$ (c) $\Rightarrow$ (d) $\Rightarrow$ (b).\\
+To prove (a) $\Leftrightarrow$ (b), let $x \in M$ and $\del[1]{U,(x^i)}$ be a smooth chart on $M$ about $x$. Proposition \ref{prop:tensor_bundle} yields a map $\Phi_U : \pi^{-1}(U) \to U \times \mathbb{R}^{n^{k + l}}$, and the proof of the vector bundle chart lemma implies, that the corresponding chart on $T^{(k,l)}TM$ is given by $\del[1]{\pi^{-1}(U),\wtilde{\varphi}}$, where 
+\begin{equation*}
+	\wtilde{\varphi}: \pi^{-1}(U) \to \varphi(U) \times \mathbb{R}^{n^{k+l}}
+\end{equation*}
+\noindent is defined by
+\begin{equation*}
+	\wtilde{\varphi} := \del[1]{\varphi \times \id_{\mathbb{R}^{n^{k+l}}}} \circ \Phi_U.
+\end{equation*}
+Since $A_x \in T^{(k,l)}T_xM$ for all $x \in M$, we have that 
+\begin{equation*}
+A^{-1}\del[1]{\pi^{-1}(U)} = (\pi \circ A)^{-1}(U) = \id_M(U) = U.
+\end{equation*}
+Hence $U \cap A^{-1}\del[1]{\pi^{-1}(U)} = U$, which is open in $M$, and 
+\begin{equation*}
+	\wtilde{\varphi} \circ A \circ \varphi^{-1} : \varphi(U) \to \wtilde{\varphi}\del[1]{\pi^{-1}(U)} 
+\end{equation*}
+\noindent is given by
+\begin{align*}
+	\del[1]{\wtilde{\varphi} \circ A \circ \varphi^{-1}}\del[1]{\varphi(y)} &= \del[1]{\varphi \times \id_{\mathbb{R}^{n^{k+l}}}}\del[1]{\Phi_U(A_y)}\\
+	&= \del[1]{\varphi(y),(A^{i_1\dots i_k}_{j_1\dots j_l})(y)}\\
+	&= \del[1]{\varphi(y),\del[1]{(A^{i_1\dots i_k}_{j_1\dots j_l}) \circ {\varphi^{-1}}}\del[1]{\varphi(y)}}
+\end{align*}
+\noindent for all $y \in U$. Thus $\wtilde{\varphi} \circ A \circ \varphi^{-1}$ is smooth if and only if $(A^{i_1\dots i_k}_{j_1\dots j_l}) \circ {\varphi^{-1}}$ is smooth, which is equivalent to $A^{i_1\dots i_k}_{j_1\dots j_l}$ being smooth.\\
+To prove (b)$\Rightarrow$(c), let $(U,(x^i))$ be a smooth chart. Then write $X_1,\dots,X_k \in \mathfrak{X}(M)$ as 
+\begin{equation*}
+X_\nu = X^{\mu_\nu}_\nu \frac{\partial}{\partial x^{\mu_\nu}}.
+\end{equation*}
+\noindent for $\nu = 1,\dots,k$. For $p \in U$ lemma \ref{lem:corr} implies
+\begin{align*}
+A(X_1,\dots,X_n)(p) &= A_p(X_1\vert_p,\dots,X_k\vert_p)\\
+&= A_p\del[3]{X^{\mu_1}_1(p) \frac{\partial}{\partial x^{\mu_1}}\bigg\vert_p,\dots,X^{\mu_k}_1(p) \frac{\partial}{\partial x^{\mu_k}}\bigg\vert_p}\\
+&= X^{\mu_1}_1(p) \cdots X^{\mu_k}_k(p)A_p\del[3]{\frac{\partial}{\partial x^{\mu_1}}\bigg\vert_p,\dots,\frac{\partial}{\partial x^{\mu_k}}\bigg\vert_p}\\
+&= X^{\mu_1}_1(p) \cdots X^{\mu_k}_k(p) A^i_{\mu_1 \dots \mu_k}(p)\frac{\partial}{\partial x^i}\bigg\vert_p.
+\end{align*}
+By the smoothness criterion for vector fields \cite[175]{lee:smooth_manifolds:2013} we have that each component function $X^{\mu_n}_\nu$ is smooth. Thus if $A$ is smooth, we have by  that each $A^i_{j_1\dots j_k}$ is smooth and since $C^\infty(M)$ is an $\mathbb{R}$-algebra (see \cite[33]{lee:smooth_manifolds:2013}), we have that 
+\begin{equation*}
+X^{\mu_1}_1 \cdots X^{\mu_k}_k A^i_{\mu_1 \dots \mu_k}
+\end{equation*} 
+\noindent is smooth for $i = 1,\dots,n$. Thus again by the smoothness criterion together with the localness of smoothness \cite[35]{lee:smooth_manifolds:2013} we get that $A(X_1,\dots,X_k) \in \mathfrak{X}(M)$.\\
+To prove (c)$\Rightarrow$(d), we use that smoothness is a local property (see \cite[35]{lee:smooth_manifolds:2013}). Let $p \in U$.  Then by \cite[14]{cattaneo:manifolds:2017} we find a smooth bump function $\psi$ supported in $U$ and identically equal to $1$ on some neighbourhood $V$ of $p$. Set 
+\begin{align*}
+\widetilde{X}_\nu\vert_p := \begin{cases}
+\psi(p) X_\nu\vert_p & p \in \supp \psi\\
+0 & p \in M \setminus \supp \psi
+\end{cases}.
+\end{align*}
+Then the gluing lemma for smooth maps \cite[35]{lee:smooth_manifolds:2013} implies $\widetilde{X}_1,\dots,\widetilde{X}_k \in \mathfrak{X}(M)$. Hence by (c) we get that $A(\widetilde{X}_1,\dots,\widetilde{X}_k) \in \\mathfrak{X}(M)$ and so the restriction $A(\widetilde{X}_1,\dots,\widetilde{X}_k)\vert_V$ is smooth. But $A(\widetilde{X}_1,\dots,\widetilde{X}_k)\vert_V = A(X_1,\dots,X_k)$ and so we are done.\\
+Lasty to prove (d)$\Rightarrow$(b), each vector field locally defined by 
+\begin{equation*}
+X_{j_\nu} = \delta^{\mu_\nu}_{j_\nu} \frac{\partial}{\partial x^{\mu_\nu}}.
+\end{equation*}
+\noindent is smooth. Thus by
+\begin{equation*}
+A(X_1,\dots,X_n)(p) = \delta^{\mu_1}_{j_1} \cdots \delta^{\mu_k}_{j_k} A^i_{\mu_1 \dots \mu_k}(p)\frac{\partial}{\partial x^i}\bigg\vert_p = A^i_{j_1\dots j_k}(p)\frac{\partial}{\partial x^i}\bigg\vert_p
+\end{equation*}
+\noindent we get that $A^i_{j_1 \dots j_k}$ is smooth and hence by (b) also $A$.
+\end{proof}
+
+\begin{theorem}[Tensor Characterization Lemma]
+A mapping
+\begin{equation*}
+\underbrace{\mathfrak{X}(M) \times \dots \times \mathfrak{X}(M)}_{k} \to C^\infty(M) \qquad \text{or} \qquad \underbrace{\mathfrak{X}(M) \times \dots \times \mathfrak{X}(M)}_{k} \to \mathfrak{X}(M)
+\end{equation*}
+\noindent is induced by an element of $\Gamma(T^{(0,k)}TM)$ or $\Gamma(T^{(1,k)}TM)$, respectively, if and only if they are multilinear over $C^\infty(M)$.
+\label{thm:tensor_char}
+\end{theorem}
+
+\begin{proof}
+We are proving only the second statement. Any element in $\Gamma(T^{(1,k)}TM)$ induces a mapping $\mathfrak{X}(M) \times \dots \times \mathfrak{X}(M) \to \mathfrak{X}(M)$ by part (c) of the smoothness criteria for tensor fields \ref{prop:smoothness_tensor}. Thus we have to show that $\mathcal{A}$ is multilinear over $C^\infty(M)$. Let $f \in C^\infty(M)$ and $X_\nu,\widetilde{X}_\nu \in \mathfrak{X}(M)$, $\nu = 1,\dots,k$. Then for any $p \in M$ we have that
+\begin{align*}
+\mathcal{A}(X_1,\dots,fX_\nu + \widetilde{X}_\nu,\dots,X_k)_p =& A_p(X_1\vert_p,\dots,(fX_\nu + \widetilde{X}_\nu)_p,\dots,X_k\vert_p)\\
+=& A_p(X_1\vert_p,\dots,f(p)X_\nu\vert_p + \widetilde{X}_\nu\vert_p,\dots,X_k\vert_p)\\
+=& f(p)A_p(X_1\vert_p,\dots,X_\nu\vert_p ,\dots,X_k\vert_p)\\
+& + A_p(X_1\vert_p,\dots,\widetilde{X}_\nu\vert_p,\dots,X_k\vert_p)\\
+=& f(p) \mathcal{A}(X_1,\dots,X_\nu,\dots,X_k)_p\\
+& + \mathcal{A}(X_1,\dots,\widetilde{X}_\nu,\dots,X_k)_p\\
+=& \del[1]{f \mathcal{A}(X_1,\dots,X_\nu,\dots,X_k)}_p \\
+& + \mathcal{A}(X_1,\dots,\widetilde{X}_\nu,\dots,X_k)_p.
+\end{align*}
+Conversly, suppose that $\mathcal{A}: \mathfrak{X}(M) \times \dots \times \mathfrak{X}(M) \to \mathfrak{X}(M)$ is multilinear over $C^\infty(M)$. Let $p \in M$. First we show that $\mathcal{A}$ acts locally, i.e. if $X_\nu = \widetilde{X}_\nu$ in some neighbourhood $U$ of $p$ implies that also 
+\begin{equation*}
+\mathcal{A}(X_1,\dots,X_\nu,\dots,X_k) = \mathcal{A}(X_1,\dots,\widetilde{X}_\nu,\dots,X_k)
+\end{equation*}
+\noindent on $U$. By the multilinearity of $\mathcal{A}$ it is enough to show that if $X_\nu$ vanishes on $U$ then so does $\mathcal{A}$. There exists a smooth bump function $\psi$ for $\cbr[0]{p}$ supported in $U$ (see \cite[44]{lee:smooth_manifolds:2013}). Hence $\psi X_\nu = 0$ on $M$ and $\psi(p) = 1$. Thus
+\begin{align*}
+0 = \mathcal{A}(X_1,\dots,\psi X_\nu,\dots,X_k)_p = \psi(p)\mathcal{A}(X_1,\dots,X_\nu,\dots,X_k)_p.
+\end{align*}
+\noindent and since $\psi(p) = 1$ we have that
+\begin{equation*}
+\mathcal{A}(X_1,\dots,X_\nu,\dots,X_k)_p = 0
+\end{equation*}
+\noindent for any $p \in U$.\\
+Next we show that $\mathcal{A}$ actually acts pointwise, i.e. if $X_\nu\vert_p$ vanishes so does $\mathcal{A}$. Let $(U,(x^i))$ be a chart containing $p$ and $X_\nu = X_\nu^i \frac{\partial}{\partial x^i}$ on $U$. The same construction as used showing the implication (c)$\Rightarrow$(d) in the proof of proposition \ref{prop:smoothness_tensor} yields the existence of $f^1,\dots,f^n \in C^\infty(M)$ and $\widetilde{X}_1,\dots,\widetilde{X}_n \in \mathfrak{X}(M)$ such that $f^i = X_\nu^i$ and $\widetilde{X}_i = \frac{\partial}{\partial x^i}$ on a neighbourhood $V \subseteq U$ of $p$. Thus by the previous localization, we get that 
+\begin{equation*}
+\mathcal{A}(X_1,\dots,X_\nu,\dots,X_k) = \mathcal{A}(X_1,\dots,f^i\widetilde{X}_i,\dots,X_k) = f^i\mathcal{A}(X_1,\dots,\widetilde{X}_i,\dots,X_k) 
+\end{equation*} 
+\noindent in $U$. Since $0 = X_\nu^i(p) = f^i(p)$, $\mathcal{A}$ vanishes at $p$. Hence $\mathcal{A}$ depends only on the value of $X_\nu$ at $p$. Thus define a rough section $A : M \to T^{(1,k)}TM$ by 
+\begin{equation*}
+A_p(v_1,\dots,v_k) := \mathcal{A}(V_1,\dots,V_k)(p)
+\end{equation*}
+\noindent where $V_1,\dots,V_k \in \mathfrak{X}(M)$ are any extensions of $v_1,\dots,v_k \in T_pM$ (see \cite[177]{lee:smooth_manifolds:2013}). By the above, the choice of the extensions does not matter and the resulting rough section is smooth by proposition \ref{prop:smoothness_tensor} part (c), hence $A \in \Gamma(T^{(1,k)}TM)$.
+\end{proof}

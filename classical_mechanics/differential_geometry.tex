@@ -1,0 +1,37 @@
+\chapter{Differential Geometry}
+\section*{The Tubular Neighbourhood Theorem}
+We follow \cite[344--346]{spivak:DGI:2005}. Let $M$ be a smooth manifold. Recall, that if $S \subseteq M$ is a subset, $S$ is called an \emph{embedded submanifold of $N$} or just a \emph{submanifold of $M$}, iff the inclusion $\iota : S \hookrightarrow M$ is an \emph{embedding}, that is $\iota$ is an \emph{immersion} and $\iota$ maps $S$ homeomorphically onto $S$.
+
+\begin{definition}[Tubular Neighbourhood]
+	Let $M$ be a smooth manifold and $S \subseteq M$ a submanifold. A \bld{tubular neighbourhood of $S$ in $M$} is defined to be a vector bundle $\pi : U \to S$ for a neighbourhood $U$ of $S$ in $M$ such that the zero section is the inclusion $S \hookrightarrow U$.
+\end{definition}
+
+\begin{proposition}[Existence and Uniqueness of Geodesics]
+	\label{prop:existence_and_uniqueness_of_geodesics}
+	Let $(M,g)$ be a Riemannian manifold and $x \in M$. Then there exists a neighbourhood $U$ of $x$ in $M$, $\intcc{0,1} \subseteq I \subseteq \mathbb{R}$ an open interval, and $\varepsilon > 0$ such that for all $y \in U$ and $v \in T_yM$ with $\abs{v}_g < \varepsilon$ there exists a unique geodesic $\gamma_v : I \to M$ with
+	\begin{equation*}
+		\gamma_v(0) = y \qquad \text{and} \qquad \dot{\gamma}_v(0) = v.
+	\end{equation*}
+\end{proposition}
+
+\begin{theorem}[The Tubular Neighbourhood Theorem]
+	\label{thm:tubular_neighbourhood_theorem}
+	Let $S \subseteq M$ be a compact submanifold of a smooth manifold $M$. Then $S$ admits a tubular neighbourhood.
+\end{theorem}
+
+\begin{proof}
+	Choose a Riemannian metric $g$ on $M$ (the existence is assured by \cite[329]{lee:smooth_manifolds:2013}). For any $x \in S$ define
+	\begin{equation*}
+		N_xS := \cbr[0]{v \in T_xM : \langle v,d\iota_x(w) \rangle_g = 0 \> \forall w \in T_xS}
+	\end{equation*}
+	\noindent and 
+	\begin{equation*}
+		NS := \coprod_{x \in S} N_xS.
+	\end{equation*}
+	Then $\pi : NS \to S$ is a vector bundle with the obvious projection $\pi$. Moreover, let $\varepsilon > 0$ to be determined and set
+	\begin{equation*}
+		NS_\varepsilon := \cbr[0]{v \in NS : \abs{v}_g < \varepsilon} \qquad \text{and} \qquad U_\varepsilon := \cbr[0]{x \in M : \dist(x,S) < \varepsilon}.
+	\end{equation*}
+	Compactness of $S$ together with the existence and uniqueness of geodesics (proposition \ref{prop:existence_and_uniqueness_of_geodesics}) implies that the exponential map $\exp : E_\varepsilon \to M$ is well-defined for a sufficiently small $\varepsilon > 0$.
+	
+\end{proof}

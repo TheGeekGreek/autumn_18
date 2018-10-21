@@ -49,23 +49,7 @@ September 8, 2018
 \renewcommand{\theequation}{\thechapter.\arabic{equation}}
 
 \begin{appendix}
-	\chapter{Differential Topology}
-	\section*{The Differential of a Function}
-	Recall, that if $M$ is a smooth manifold and $f \in C^\infty(M)$, then with respect to any chart $(U,x^i)$ on $M$ we have that
-	\begin{equation}
-		\label{eq:differential_of_a_function}
-		df_x = \frac{\partial f}{\partial x^i}(x)dx^i\vert_x
-	\end{equation}
-	\noindent for all $x \in U$ (see \cite[281]{lee:smooth_manifolds:2013}).
-
-	\begin{proposition}[{Derivative of a Function along a Curve \cite[283]{lee:smooth_manifolds:2013}}]
-		\label{prop:derivative_of_a_function_along_a_curve}
-		Suppose $M$ is a smooth manifold, $J \subseteq \mathbb{R}$ an interval, $\gamma \in C^\infty(J,M)$ a curve on $M$ and $f \in C^\infty(M)$. Then
-		\begin{equation*}
-			(f \circ \gamma)'(t) = df_{\gamma(t)}\del[1]{\gamma'(t)}
-		\end{equation*}
-		\noindent for all $t \in J$.
-	\end{proposition}
+	\input{differential_topology.tex}
 \end{appendix}
 
 \printbibliography

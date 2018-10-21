@@ -1,0 +1,30 @@
+\section*{Symplectic Geometry}
+A profound difference between the tangent bundle $TM$ and the cotangent bundle $T^*M$ of a smooth manifold $M$ is that on the latter there exists a natural $1$-form, the tautological form $\alpha$ defined in definition \ref{def:tautological_form}. 
+
+\subsection*{The Category of Symplectic Manifolds}
+Recall that a form $\omega$ on a smooth manifold $M$ is said to be \emph{closed}, iff $d\omega = 0$.
+
+\begin{definition}[Symplectic Manifold]
+	A \bld{symplectic manifold} is a tuple $(M,\omega)$ consisting of a smooth manifold $M$ and a closed nondegenerate $2$-form $\omega \in \Omega^2(M)$, called a \bld{symplectic form on $M$}.
+\end{definition}
+
+\begin{example}[The Cotangent Bundle]
+	Let $M$ be a smooth manifold and consider the tautological form $\alpha \in \Omega^1(T^*M)$ defined by $\alpha := \xi_i dx^i$ on a chart $\del[1]{T^*U, (x^i,\xi^i)}$ on $T^*M$. Define $\omega \in \Omega^2(T^*M)$ by $\omega := -d\alpha$. It is immediate that $\omega$ is closed since $d\omega = -(d \circ d)(\alpha) = 0$. Moreover, we compute locally
+	\begin{equation*}
+		\omega = -d(\xi_idx^i) = -\frac{\partial \xi_i}{\partial x^j} dx^j \wedge dx^i - \frac{\partial \xi_i}{\partial \xi_j} d\xi_j \wedge dx^i = \delta^j_i dx^i \wedge d\xi_j = \sum_i dx^i \wedge d\xi_i.
+	\end{equation*}
+	Thus $\omega$ is nondegenerate. 
+\end{example}
+
+\begin{definition}
+	\label{def:symplectic_morphisms}
+	A morphism $F : (M,\omega) \to (\wtilde{M},\wtilde{\omega})$ between two symplectic manifolds $(M,\omega)$ and $(\wtilde{M},\wtilde{\omega})$ is defined to be a morphism $F \in C^\infty(M,\wtilde{M})$ such that $F^*\wtilde{\omega} = \omega$. 
+\end{definition}
+
+\begin{exercise}
+	Consider as objects symplectic manifolds and as morphisms the ones from definition \ref{def:symplectic_morphisms}. Show that they do form a category, the \bld{category of symplectic manifolds}.
+\end{exercise}
+
+\begin{definition}[Symplectomorphism]
+	A \bld{symplectomorphism} is defined to be an isomorphism in the category of symplectic manifolds.
+\end{definition}
