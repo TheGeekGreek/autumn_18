@@ -125,7 +125,20 @@ The Newton-Laplace determinacy principle \ref{ax:NL_determinacy_principle} impli
 \begin{equation*}
 	\frac{\partial f}{\partial x^i}(x) := \frac{\partial}{\partial x^i}\bigg\vert_x f = \partial_i(f \circ \varphi^{-1})\del[1]{\varphi(x)},
 \end{equation*}
-\noindent for all $i = 1,\dots,n$, $x \in U$ and $f \in C^\infty(M)$.
+\noindent for all $i = 1,\dots,n$, $x \in U$ and $f \in C^\infty(M)$. Also recall, that on this chart
+\begin{equation}
+	\label{eq:differential_of_a_function}
+	df_x = \frac{\partial f}{\partial x^i}(x)dx^i\vert_x
+\end{equation}
+\noindent holds for all $x \in U$ (see \cite[281]{lee:smooth_manifolds:2013}). Additionally, we need the following proposition.
+
+\begin{proposition}[{Derivative of a Function along a Curve \cite[283]{lee:smooth_manifolds:2013}}]
+	\label{prop:derivative_of_a_function_along_a_curve}
+	Suppose $M$ is a smooth manifold, $J \subseteq \mathbb{R}$ an interval, $\gamma \in C^\infty(J,M)$ a curve on $M$ and $f \in C^\infty(M)$. Then for all $t \in J$ holds
+	\begin{equation*}
+		(f \circ \gamma)'(t) = df_{\gamma(t)}\del[1]{\gamma'(t)}.
+	\end{equation*}
+\end{proposition}
 
 \begin{theorem}[Euler-Lagrange Equations]
 	\label{thm:EL_equations}

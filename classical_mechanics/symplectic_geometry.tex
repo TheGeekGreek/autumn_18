@@ -1,5 +1,5 @@
 \section*{Symplectic Geometry}
-A profound difference between the tangent bundle $TM$ and the cotangent bundle $T^*M$ of a smooth manifold $M$ is that on the latter there exists a natural $1$-form, the tautological form $\alpha$ defined in definition \ref{def:tautological_form}. 
+A profound difference between the tangent bundle $TM$ and the cotangent bundle $T^*M$ of a smooth manifold $M$ is that on the latter there exists a natural $1$-form, the tautological form $\alpha$ defined in definition \ref{def:tautological_form}.  
 
 \subsection*{The Category of Symplectic Manifolds}
 Recall that a form $\omega$ on a smooth manifold $M$ is said to be \emph{closed}, iff $d\omega = 0$.
@@ -28,3 +28,26 @@ Recall that a form $\omega$ on a smooth manifold $M$ is said to be \emph{closed}
 \begin{definition}[Symplectomorphism]
 	A \bld{symplectomorphism} is defined to be an isomorphism in the category of symplectic manifolds.
 \end{definition}
+
+\subsection*{The Tangent-Cotangent Bundle Isomorphism}
+%Input tensor fields
+\input{tensor_fields.tex}
+
+\begin{theorem}[{Bundle Homomorphism Characterisation Lemma \cite[262]{lee:smooth_manifolds:2013}}]
+	\label{thm:bundle_homomorphism_characterisation_lemma}
+	Let $\pi : E \to M$ and $\wtilde{\pi} : \wtilde{E} \to M$ be smooth vector bundles over a smooth manifold $M$. A map $\mathcal{F} : \Gamma(E) \to \Gamma(\wtilde{E})$ is linear over $C^\infty(M)$ if and only if there exists a smooth bundle homomorphism $F : E \to \wtilde{E}$ over $M$ such that $\mathcal{F}(\sigma) = F \circ \sigma$ for all $\sigma \in \Gamma(E)$.
+\end{theorem}
+
+
+\begin{proposition}[Tangent-Cotangent Bundle Isomorphism]
+	\label{prop:tangent-cotangent_bundle_isomorphism}
+	Let $(M,\omega)$ be a symplectic manifold. Define $\Omega : TM \to T^*M$ by
+	\begin{equation}
+		\Omega_{(x,v)}(w) := \omega_x(v,w)
+	\end{equation}
+	\noindent for all $w \in T_xM$. Then $\Omega$ is a well-defined smooth bundle isomorphism.
+\end{proposition}
+
+\begin{proof}
+	
+\end{proof}

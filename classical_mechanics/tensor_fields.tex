@@ -1,4 +1,3 @@
-\section*{Tensor Fields}
 \begin{lemma}[{Vector Bundle Chart Lemma \cite[253]{lee:smooth_manifolds:2013}}]
 	\label{lem:vector_bundle_chart_lemma}
 	Let $M$ be a smooth manifold, $k \in \mathbb{N}$ and suppose that for all $x \in M$ we are given a real vector space $E_x$ of dimension $k$. Let $E := \coprod_{x \in M} E_x$ and let $\pi : E \to M$ be given by $\pi(x,v) := x$. Moreover, suppose that we are given the following data:
@@ -95,6 +94,7 @@ Recall, that in a category $\mathcal{C}$, a \emph{section} of a morphism $f : X 
 \end{definition}
 
 \begin{example}[Vector Field and Covector Field]
+	\label{ex:vector_and_covector_fields}
 	Let $M$ be a smooth manifold. Of particular importance are the tensor fields such that $k + l = 1$. If $k = 1$, such tensor fields are called \bld{vector fields} and we write $\mathfrak{X}(M) := \Gamma\del[1]{T^{(1,0)}TM}$. Likewise, if $l = 1$, we call such tensor fields \bld{covector fields} and write $\mathfrak{X}^*(M) := \Gamma\del[1]{T^{(0,1)}TM}$.
 \end{example}
 
@@ -102,7 +102,12 @@ Let $\del[1]{U,(x^i)}$ be a chart on $M$ and $A : M \to T^{(k,l)}TM$ such that $
 \begin{equation*}
 	A_x = A^{i_1\dots i_k}_{j_1\dots j_l}(x)\frac{\partial}{\partial x^{i_1}}\bigg\vert_x \otimes \dots \otimes \frac{\partial}{\partial x^{i_k}}\bigg\vert_x \otimes dx^{j_1}\vert_x \otimes \dots \otimes dx^{j_l}\vert_x
 \end{equation*}
-\noindent for all $x \in U$ where $A^{i_1\dots i_k}_{j_1\dots j_l} : U \to \mathbb{R}$ are given as in (\ref{eq:tensor_components}). We will call these functions the \bld{component functions of $A$}.
+\noindent for all $x \in U$ where $A^{i_1\dots i_k}_{j_1\dots j_l} : U \to \mathbb{R}$ are given as in (\ref{eq:tensor_components}). We will call these functions the \bld{component functions of $A$}. Recall, that if $M$ is a smooth manifold, $A \subseteq U \subseteq M$, where $U$ is open and $A$ is closed in $M$, a function $\psi \in C^\infty(M)$ is said to be a \emph{smooth bump function for $A$ supported in $U$}, iff $0 \leq \psi \leq 1$, $\psi \vert_A = 1$ and $\supp \psi \subseteq U$. The paracompactness condition guarantees that smooth bump functions exist in great abundance.
+
+\begin{proposition}[{Existence of Smooth Bump Functions \cite[44]{lee:smooth_manifolds:2013}}]
+	\label{prop:existence_smooth_bump_functions}
+	Let $M$ be a smooth manifold and $A \subseteq U \subseteq M$, where $U$ is open and $A$ is closed in $M$. Then there exists a smooth bump function for $A$ supported in $U$. 	
+\end{proposition}
 
 \begin{proposition}[{Smoothness Criteria for Tensor Fields \cite[317]{lee:smooth_manifolds:2013}}]
 	\label{prop:smoothness_criteria_for_tensor_fields}
@@ -110,18 +115,23 @@ Let $\del[1]{U,(x^i)}$ be a chart on $M$ and $A : M \to T^{(k,l)}TM$ such that $
 	\begin{enumerate}[label = \textup{(\alph*\textup)},leftmargin=*]
 		\item $A \in \Gamma\del[1]{T^{(k,l)}TM}$.
 		\item In every smooth coordinate chart, the component functions of $A$ are smooth.
-		\item For all $\omega^1,\dots,\omega^k \in \mathfrak{X}^*(M)$ and $X_1,\dots,X_l \in \mathfrak{X}(M)$, the function $\mathcal{A} : M \to \mathbb{R}$ defined by
+		\item Each point of $M$ is conatined in a chart in which $A$ has smooth component functions.
+		\item For all $\omega^1,\dots,\omega^k \in \mathfrak{X}^*(M)$ and $X_1,\dots,X_l \in \mathfrak{X}(M)$, the function 
+			\begin{equation*}
+				\mathcal{A}(\omega^1,\dots,\omega^k,X_1,\dots,X_l) : M \to \mathbb{R}
+			\end{equation*}
+			\noindent defined by
 			\begin{equation}
 				\label{eq:curly_A}
-				\mathcal{A}(x) := A_x\del[1]{\omega^1_x,\dots,\omega^k_x, X_1\vert_x,\dots,X_l\vert_x}
+				\mathcal{A}\del[1]{\omega^1,\dots,\omega^k,X_1,\dots,X_l}(x) := A_x\del[1]{\omega^1_x,\dots,\omega^k_x, X_1\vert_x,\dots,X_l\vert_x}
 			\end{equation}
-			\noindent is a smooth.
+			\noindent is smooth.
 		\item Let $U \subseteq M$ be open. If $\omega^1,\dots,\omega^k \in \mathfrak{X}^*(U)$ and $X_1,\dots,X_l \in \mathfrak{X}(U)$, then $\mathcal{A}$ defined by \textup{(\ref{eq:curly_A})} belongs to $C^\infty(U)$.
 	\end{enumerate}
 \end{proposition}
 
 \begin{proof}
-We prove (a) $\Leftrightarrow$ (b) and (b) $\Rightarrow$ (c) $\Rightarrow$ (d) $\Rightarrow$ (b).\\
+We prove (a) $\Leftrightarrow$ (b) and (b) $\Rightarrow$ (c) $\Rightarrow$ (d) $\Rightarrow$ (e) $\Rightarrow$ (b).\\
 To prove (a) $\Leftrightarrow$ (b), let $x \in M$ and $\del[1]{U,(x^i)}$ be a smooth chart on $M$ about $x$. Proposition \ref{prop:tensor_bundle} yields a map $\Phi_U : \pi^{-1}(U) \to U \times \mathbb{R}^{n^{k + l}}$, and the proof of the vector bundle chart lemma implies, that the corresponding chart on $T^{(k,l)}TM$ is given by $\del[1]{\pi^{-1}(U),\wtilde{\varphi}}$, where 
 \begin{equation*}
 	\wtilde{\varphi}: \pi^{-1}(U) \to \varphi(U) \times \mathbb{R}^{n^{k+l}}
@@ -145,39 +155,41 @@ Hence $U \cap A^{-1}\del[1]{\pi^{-1}(U)} = U$, which is open in $M$, and
 	&= \del[1]{\varphi(y),\del[1]{(A^{i_1\dots i_k}_{j_1\dots j_l}) \circ {\varphi^{-1}}}\del[1]{\varphi(y)}}
 \end{align*}
 \noindent for all $y \in U$. Thus $\wtilde{\varphi} \circ A \circ \varphi^{-1}$ is smooth if and only if $(A^{i_1\dots i_k}_{j_1\dots j_l}) \circ {\varphi^{-1}}$ is smooth, which is equivalent to $A^{i_1\dots i_k}_{j_1\dots j_l}$ being smooth.\\
-To prove (b)$\Rightarrow$(c), let $(U,(x^i))$ be a smooth chart. Then write $X_1,\dots,X_k \in \mathfrak{X}(M)$ as 
+The implication (b) $\Rightarrow$ (c) is immediate.\\
+To prove (c) $\Rightarrow$ (d), suppose $x \in M$ and let $(U,(x^i))$ be a chart about $x$ such that the component functions of $A$ are smooth. By example \ref{ex:vector_and_covector_fields} and the equivalence (a) $\Leftrightarrow$ (b) we have
 \begin{equation*}
-X_\nu = X^{\mu_\nu}_\nu \frac{\partial}{\partial x^{\mu_\nu}}.
+	\omega^i = \omega_j^i dx^j \qquad \text{and} \qquad X_i = X^j_i \frac{\partial}{\partial x^j}
 \end{equation*}
-\noindent for $\nu = 1,\dots,k$. For $p \in U$ lemma \ref{lem:corr} implies
+\noindent on $U$ for smooth functions $\omega_j^i$ and $X^j_i$. Thus for any $y \in U$ we compute
 \begin{align*}
-A(X_1,\dots,X_n)(p) &= A_p(X_1\vert_p,\dots,X_k\vert_p)\\
-&= A_p\del[3]{X^{\mu_1}_1(p) \frac{\partial}{\partial x^{\mu_1}}\bigg\vert_p,\dots,X^{\mu_k}_1(p) \frac{\partial}{\partial x^{\mu_k}}\bigg\vert_p}\\
-&= X^{\mu_1}_1(p) \cdots X^{\mu_k}_k(p)A_p\del[3]{\frac{\partial}{\partial x^{\mu_1}}\bigg\vert_p,\dots,\frac{\partial}{\partial x^{\mu_k}}\bigg\vert_p}\\
-&= X^{\mu_1}_1(p) \cdots X^{\mu_k}_k(p) A^i_{\mu_1 \dots \mu_k}(p)\frac{\partial}{\partial x^i}\bigg\vert_p.
+	\mathcal{A}\del[1]{\omega^1,\dots,\omega^k,X_1,\dots,X_l}(y) &= A_x\del[1]{\omega^1_x,\dots,\omega^k_x, X_1\vert_x,\dots,X_l\vert_x}\\
+	&= \omega^1_{i_1}(y) \cdots \omega^k_{i_k}(y)X_1^{j_1}(y)\cdots X_l^{j_l}(y) A^{i_1\dots i_k}_{j_1\dots j_l}(y)
 \end{align*}
-By the smoothness criterion for vector fields \cite[175]{lee:smooth_manifolds:2013} we have that each component function $X^{\mu_n}_\nu$ is smooth. Thus if $A$ is smooth, we have by  that each $A^i_{j_1\dots j_k}$ is smooth and since $C^\infty(M)$ is an $\mathbb{R}$-algebra (see \cite[33]{lee:smooth_manifolds:2013}), we have that 
+\noindent and so $\mathcal{A}\del[1]{\omega^1,\dots,\omega^k,X_1,\dots,X_l}$ is smooth.\\
+To prove (d) $\Rightarrow$ (e), we use the fact that smoothness is a local property. Let $x \in U$ and suppose $(V,\varphi)$ is a chart on $U$ centered at $x$. Then $\varphi(V) \subseteq \mathbb{R}^n$ is open and so we find $\varepsilon > 0$ such that $B_\varepsilon(0) \subseteq \varphi(V)$. Set $A := \varphi^{-1}\del[1]{\wbar{B}_{\varepsilon/2}(0)} \subseteq U$. Then $A$ is closed in $U$ and by proposition \ref{prop:existence_smooth_bump_functions} there exists a smooth bump function $\psi \in C^\infty(U)$ for $A$ supported in $U$. Define $\wtilde{\omega}^i : M \to T^*M$ and $\wtilde{X}_i : M \to TM$ by
 \begin{equation*}
-X^{\mu_1}_1 \cdots X^{\mu_k}_k A^i_{\mu_1 \dots \mu_k}
-\end{equation*} 
-\noindent is smooth for $i = 1,\dots,n$. Thus again by the smoothness criterion together with the localness of smoothness \cite[35]{lee:smooth_manifolds:2013} we get that $A(X_1,\dots,X_k) \in \mathfrak{X}(M)$.\\
-To prove (c)$\Rightarrow$(d), we use that smoothness is a local property (see \cite[35]{lee:smooth_manifolds:2013}). Let $p \in U$.  Then by \cite[14]{cattaneo:manifolds:2017} we find a smooth bump function $\psi$ supported in $U$ and identically equal to $1$ on some neighbourhood $V$ of $p$. Set 
-\begin{align*}
-\widetilde{X}_\nu\vert_p := \begin{cases}
-\psi(p) X_\nu\vert_p & p \in \supp \psi\\
-0 & p \in M \setminus \supp \psi
-\end{cases}.
-\end{align*}
-Then the gluing lemma for smooth maps \cite[35]{lee:smooth_manifolds:2013} implies $\widetilde{X}_1,\dots,\widetilde{X}_k \in \mathfrak{X}(M)$. Hence by (c) we get that $A(\widetilde{X}_1,\dots,\widetilde{X}_k) \in \\mathfrak{X}(M)$ and so the restriction $A(\widetilde{X}_1,\dots,\widetilde{X}_k)\vert_V$ is smooth. But $A(\widetilde{X}_1,\dots,\widetilde{X}_k)\vert_V = A(X_1,\dots,X_k)$ and so we are done.\\
-Lasty to prove (d)$\Rightarrow$(b), each vector field locally defined by 
-\begin{equation*}
-X_{j_\nu} = \delta^{\mu_\nu}_{j_\nu} \frac{\partial}{\partial x^{\mu_\nu}}.
+	\wtilde{\omega}^i_x := \ccases{
+		\psi(x)\omega^i_x & x \in U,\\
+		0_x & x \in M \setminus \supp \psi,
+	} \quad \text{and} \quad \wtilde{X}_i\vert_x := \ccases{
+		\psi(x)X_i\vert_x & x \in U,\\
+		0_x & x \in M \setminus \supp \psi.
+	}
 \end{equation*}
-\noindent is smooth. Thus by
+Then $\wtilde{\omega}^i \in \mathfrak{X}^*(M)$ and $\wtilde{X}_i \in \mathfrak{X}(M)$ by the gluing lemma for smooth maps (see \cite[35]{lee:smooth_manifolds:2013}). Moreover, on $\varphi^{-1}\del[1]{B_{\varepsilon/2}(0)}$ we have that $\wtilde{\omega}^i = \omega^i$ and $\wtilde{X}_i = X_i$. But then also	
 \begin{equation*}
-A(X_1,\dots,X_n)(p) = \delta^{\mu_1}_{j_1} \cdots \delta^{\mu_k}_{j_k} A^i_{\mu_1 \dots \mu_k}(p)\frac{\partial}{\partial x^i}\bigg\vert_p = A^i_{j_1\dots j_k}(p)\frac{\partial}{\partial x^i}\bigg\vert_p
+	\mathcal{A}\del[1]{\wtilde{\omega}^1,\dots,\wtilde{\omega}^k,\wtilde{X_1},\dots,\wtilde{X}_l} = \mathcal{A}\del[1]{\omega^1,\dots,\omega^k,X_1,\dots,X_l}
 \end{equation*}
-\noindent we get that $A^i_{j_1 \dots j_k}$ is smooth and hence by (b) also $A$.
+\noindent on this neighbourhood, and so since the former is smooth by assumption, so is the latter.
+Finally, to prove (e) $\Rightarrow$ (b), let $(U,(x^i))$ be a chart about $x \in M$. Consider $\omega^i \in \mathfrak{X}^*(U)$ and $X_i \in \mathfrak{X}(U)$ defined by
+\begin{equation*}
+	\omega^i := \delta^i_j dx^j \qquad \text{and} \qquad X_i := \delta^j_i \frac{\partial}{\partial x^j}.
+\end{equation*}
+Then it is easy to verify that
+\begin{equation*}
+	\mathcal{A}\del[1]{\omega^{i_1},\dots,\omega^{i_k},X_{j_1},\dots,X_{j_l}} = A^{i_1\dots i_k}_{j_1\dots j_l}
+\end{equation*}
+\noindent holds on $U$. Thus by assumption, each component function is smooth.
 \end{proof}
 
 \begin{theorem}[Tensor Characterization Lemma]
