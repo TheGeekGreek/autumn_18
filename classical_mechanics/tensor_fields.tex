@@ -115,7 +115,7 @@ Let $\del[1]{U,(x^i)}$ be a chart on $M$ and $A : M \to T^{(k,l)}TM$ such that $
 	\begin{enumerate}[label = \textup{(\alph*\textup)},leftmargin=*]
 		\item $A \in \Gamma\del[1]{T^{(k,l)}TM}$.
 		\item In every smooth coordinate chart, the component functions of $A$ are smooth.
-		\item Each point of $M$ is conatined in a chart in which $A$ has smooth component functions.
+		\item Each point of $M$ is contained in a chart in which $A$ has smooth component functions.
 		\item For all $\omega^1,\dots,\omega^k \in \mathfrak{X}^*(M)$ and $X_1,\dots,X_l \in \mathfrak{X}(M)$, the function 
 			\begin{equation*}
 				\mathcal{A}(\omega^1,\dots,\omega^k,X_1,\dots,X_l) : M \to \mathbb{R}
@@ -192,47 +192,76 @@ Then it is easy to verify that
 \noindent holds on $U$. Thus by assumption, each component function is smooth.
 \end{proof}
 
-\begin{theorem}[Tensor Characterization Lemma]
-A mapping
+Part (d) of the smoothness criteria for tensor fields \ref{prop:smoothness_criteria_for_tensor_fields} implies that for any tensor field $A \in \Gamma\del[1]{T^{(k,l)}TM}$ there is a mapping 
 \begin{equation*}
-\underbrace{\mathfrak{X}(M) \times \dots \times \mathfrak{X}(M)}_{k} \to C^\infty(M) \qquad \text{or} \qquad \underbrace{\mathfrak{X}(M) \times \dots \times \mathfrak{X}(M)}_{k} \to \mathfrak{X}(M)
+	\mathcal{A} : \undercbrace{\mathfrak{X}^*(M) \times \dots \times \mathfrak{X}^*(M)}_{k} \times \undercbrace{\mathfrak{X}(M) \times \dots \times \mathfrak{X}(M)}_{l} \to C^\infty(M)
 \end{equation*}
-\noindent is induced by an element of $\Gamma(T^{(0,k)}TM)$ or $\Gamma(T^{(1,k)}TM)$, respectively, if and only if they are multilinear over $C^\infty(M)$.
-\label{thm:tensor_char}
+\noindent defined by 
+\begin{equation*}
+	\del[1]{\omega^1,\dots,\omega^k,X_1,\dots,X_l} \mapsto \mathcal{A}\del[1]{\omega^1,\dots,\omega^k,X_1,\dots,X_l}.
+\end{equation*}
+We will call this mapping the \bld{map induced by the tensor field $A$}.
+
+\begin{theorem}[{Tensor Field Characterisation Lemma \cite[318]{lee:smooth_manifolds:2013}}]
+	\label{thm:tensor_field_characterisation_lemma}
+	Let $M$ be a smooth manifold and $k,l \in \mathbb{N}$. A mapping
+\begin{equation*}
+	\mathcal{A}: \undercbrace{\mathfrak{X}^*(M) \times \dots \times \mathfrak{X}^*(M)}_{k} \times \undercbrace{\mathfrak{X}(M) \times \dots \times \mathfrak{X}(M)}_{l} \to C^\infty(M) 
+	\end{equation*}
+	\noindent is induced by a $(k,l)$-tensor field if and only if $\mathcal{A}$ is multilinear over $C^\infty(M)$.
 \end{theorem}
 
 \begin{proof}
-We are proving only the second statement. Any element in $\Gamma(T^{(1,k)}TM)$ induces a mapping $\mathfrak{X}(M) \times \dots \times \mathfrak{X}(M) \to \mathfrak{X}(M)$ by part (c) of the smoothness criteria for tensor fields \ref{prop:smoothness_tensor}. Thus we have to show that $\mathcal{A}$ is multilinear over $C^\infty(M)$. Let $f \in C^\infty(M)$ and $X_\nu,\widetilde{X}_\nu \in \mathfrak{X}(M)$, $\nu = 1,\dots,k$. Then for any $p \in M$ we have that
-\begin{align*}
-\mathcal{A}(X_1,\dots,fX_\nu + \widetilde{X}_\nu,\dots,X_k)_p =& A_p(X_1\vert_p,\dots,(fX_\nu + \widetilde{X}_\nu)_p,\dots,X_k\vert_p)\\
-=& A_p(X_1\vert_p,\dots,f(p)X_\nu\vert_p + \widetilde{X}_\nu\vert_p,\dots,X_k\vert_p)\\
-=& f(p)A_p(X_1\vert_p,\dots,X_\nu\vert_p ,\dots,X_k\vert_p)\\
-& + A_p(X_1\vert_p,\dots,\widetilde{X}_\nu\vert_p,\dots,X_k\vert_p)\\
-=& f(p) \mathcal{A}(X_1,\dots,X_\nu,\dots,X_k)_p\\
-& + \mathcal{A}(X_1,\dots,\widetilde{X}_\nu,\dots,X_k)_p\\
-=& \del[1]{f \mathcal{A}(X_1,\dots,X_\nu,\dots,X_k)}_p \\
-& + \mathcal{A}(X_1,\dots,\widetilde{X}_\nu,\dots,X_k)_p.
-\end{align*}
-Conversly, suppose that $\mathcal{A}: \mathfrak{X}(M) \times \dots \times \mathfrak{X}(M) \to \mathfrak{X}(M)$ is multilinear over $C^\infty(M)$. Let $p \in M$. First we show that $\mathcal{A}$ acts locally, i.e. if $X_\nu = \widetilde{X}_\nu$ in some neighbourhood $U$ of $p$ implies that also 
-\begin{equation*}
-\mathcal{A}(X_1,\dots,X_\nu,\dots,X_k) = \mathcal{A}(X_1,\dots,\widetilde{X}_\nu,\dots,X_k)
-\end{equation*}
-\noindent on $U$. By the multilinearity of $\mathcal{A}$ it is enough to show that if $X_\nu$ vanishes on $U$ then so does $\mathcal{A}$. There exists a smooth bump function $\psi$ for $\cbr[0]{p}$ supported in $U$ (see \cite[44]{lee:smooth_manifolds:2013}). Hence $\psi X_\nu = 0$ on $M$ and $\psi(p) = 1$. Thus
-\begin{align*}
-0 = \mathcal{A}(X_1,\dots,\psi X_\nu,\dots,X_k)_p = \psi(p)\mathcal{A}(X_1,\dots,X_\nu,\dots,X_k)_p.
-\end{align*}
-\noindent and since $\psi(p) = 1$ we have that
-\begin{equation*}
-\mathcal{A}(X_1,\dots,X_\nu,\dots,X_k)_p = 0
-\end{equation*}
-\noindent for any $p \in U$.\\
-Next we show that $\mathcal{A}$ actually acts pointwise, i.e. if $X_\nu\vert_p$ vanishes so does $\mathcal{A}$. Let $(U,(x^i))$ be a chart containing $p$ and $X_\nu = X_\nu^i \frac{\partial}{\partial x^i}$ on $U$. The same construction as used showing the implication (c)$\Rightarrow$(d) in the proof of proposition \ref{prop:smoothness_tensor} yields the existence of $f^1,\dots,f^n \in C^\infty(M)$ and $\widetilde{X}_1,\dots,\widetilde{X}_n \in \mathfrak{X}(M)$ such that $f^i = X_\nu^i$ and $\widetilde{X}_i = \frac{\partial}{\partial x^i}$ on a neighbourhood $V \subseteq U$ of $p$. Thus by the previous localization, we get that 
-\begin{equation*}
-\mathcal{A}(X_1,\dots,X_\nu,\dots,X_k) = \mathcal{A}(X_1,\dots,f^i\widetilde{X}_i,\dots,X_k) = f^i\mathcal{A}(X_1,\dots,\widetilde{X}_i,\dots,X_k) 
-\end{equation*} 
-\noindent in $U$. Since $0 = X_\nu^i(p) = f^i(p)$, $\mathcal{A}$ vanishes at $p$. Hence $\mathcal{A}$ depends only on the value of $X_\nu$ at $p$. Thus define a rough section $A : M \to T^{(1,k)}TM$ by 
-\begin{equation*}
-A_p(v_1,\dots,v_k) := \mathcal{A}(V_1,\dots,V_k)(p)
-\end{equation*}
-\noindent where $V_1,\dots,V_k \in \mathfrak{X}(M)$ are any extensions of $v_1,\dots,v_k \in T_pM$ (see \cite[177]{lee:smooth_manifolds:2013}). By the above, the choice of the extensions does not matter and the resulting rough section is smooth by proposition \ref{prop:smoothness_tensor} part (c), hence $A \in \Gamma(T^{(1,k)}TM)$.
+	Suppose $\mathcal{A}$ is induced by a $(k,l)$-tensor field $A$. Let $\omega^1,\dots,\omega^k,\wtilde{\omega}^i \in \mathfrak{X}^*(M)$ and $X_1,\dots,X_l \in \mathfrak{X}(M)$ as well as $f \in C^\infty(M)$. Then for any $x \in M$ we compute
+	\begin{align*}
+		\mathcal{A}\del[1]{\dots,\omega^i + f\wtilde{\omega}^i,\dots}(x) &= A_x\del[1]{\dots,\omega^i_x + f(x)\wtilde{\omega}^i_x,\dots}\\
+		&= A_x\del[1]{\dots,\omega^i_x,\dots} + f(x)A_x\del[1]{\dots,\wtilde{\omega}^i_x,\dots}\\
+		&= \mathcal{A}\del[1]{\dots,\omega^i,\dots}(x) + f(x)\mathcal{A}\del[1]{\dots,\wtilde{\omega}^i,\dots}(x)\\
+		&= \del[1]{\mathcal{A}\del[1]{\dots,\omega^i,\dots} + f\mathcal{A}\del[1]{\dots,\wtilde{\omega}^i,\dots}}(x).
+	\end{align*}
+	Thus $\mathcal{A}$ is $C^\infty(M)$-multilinear with respect to the first $k$ arguments. Similarly, $\mathcal{A}$ is $C^\infty(M)$-multilinear with repect to the last $l$ arguments.\\
+Conversly, suppose that
+	\begin{equation*}
+		\mathcal{A}: \undercbrace{\mathfrak{X}^*(M) \times \dots \times \mathfrak{X}^*(M)}_{k} \times \undercbrace{\mathfrak{X}(M) \times \dots \times \mathfrak{X}(M)}_{l} \to C^\infty(M)
+	\end{equation*}
+	\noindent is $C^\infty(M)$-multilinear. We wish to define a $(k,l)$-tensor field $A$ that induces $\mathcal{A}$. That this is indeed possible, is the observation that $\mathcal{A}\del[1]{\omega^1,\dots,\omega^k,X_1,\dots,X_l}(x)$ only depends on $\omega^1_x,\dots,\omega^k_x,X_1\vert_x,\dots,X_l\vert_x$. Thus we divide the remaining proof into three steps.\\
+	\emph{Step 1: $\mathcal{A}\del[1]{\omega^1,\dots,\omega^k,X_1,\dots,X_l}$ acts locally.} That is, if either some $\omega^i$ or $X_i$ vanish on an open set $U$, then so does $\mathcal{A}\del[1]{\omega^1,\dots,\omega^k,X_1,\dots,X_l}$. Let $x \in U$ and $\psi \in C^\infty(M)$ be a smooth bump function for $\cbr{x}$ supported in $U$. Then $\psi\omega^i = 0$ on $M$ and by $C^\infty(M)$-multilinearity 
+	\begin{equation*}
+		0 = \mathcal{A}\del[1]{\dots,\psi\omega^i,\dots} = \psi(x)\mathcal{A}\del[1]{\dots,\omega^i,\dots}(x) = \mathcal{A}\del[1]{\dots,\omega^i,\dots}(x).
+	\end{equation*}
+	An analogous argument works if some $X_i$ vanishes on $U$.\\
+	\emph{Step 2: $\mathcal{A}\del[1]{\omega^1,\dots,\omega^k,X_1,\dots,X_l}$ acts pointwise.} Thats is, if $\omega^i_x$ or $X_i\vert_x$ vanish for some $x \in M$, then so does $\mathcal{A}\del[1]{\omega^1,\dots,\omega^k,X_1,\dots,X_l}$. Let $(U,(x^i))$ be a chart about $x$. Then $\omega^i = \omega_j^i dx^j$ on $U$. Let $\psi \in C^\infty(U)$ denote the smooth bump function used in the proof of part (d) $\Rightarrow$ (e) of the smoothness criteria for tensor fields \ref{prop:smoothness_criteria_for_tensor_fields}. Define
+	\begin{equation*}
+		\varepsilon^j := \ccases{
+			\psi(x)dx^j\vert_x & x \in U,\\
+			0_x & x \in M \setminus \supp \psi,
+		} \quad \text{and} \quad 
+		f^i_j := \ccases{
+			\psi(x)\omega^i_j(x) & x \in U,\\
+			0_x & x \in M \setminus \supp \psi.
+		}
+	\end{equation*} 
+	Then $\omega^i = f^i_j \varepsilon^j$ on a neighbourhood of $x$ and so by multilinearity and step 1, we have that
+	\begin{equation*}
+		\mathcal{A}\del[1]{\dots,\omega^i,\dots} = f^i_j\mathcal{A}\del[1]{\dots,\varepsilon^j,\dots}
+	\end{equation*}
+	\noindent on a neighbourhood of $x$. But since $\omega^i_x$ vanishes so does each $\omega^i_j(x)$. Hence 
+	\begin{equation*}
+		\mathcal{A}\del[1]{\dots,\omega^i,\dots}(x) = f^i_j(x)\mathcal{A}\del[1]{\dots,\varepsilon^j,\dots}(x) = \omega^i_j(x)\mathcal{A}\del[1]{\dots,\varepsilon^j,\dots}(x) = 0.
+	\end{equation*}
+	An analogous argument works if some $X_i\vert_x$.\\
+	\emph{Step 3: Definition of the $(k,l)$-tensor field $A$ inducing $\mathcal{A}$.} Let $x \in M$, $\omega^1,\dots,\omega^k \in T_x^*M$ and $v_1,\dots,v_l \in T_xM$. Suppose that $\wtilde{\omega}^1,\dots,\wtilde{\omega}^k \in \mathfrak{X}^*(M)$ and $\wtilde{X}_1,\dots,\wtilde{X}_l \in \mathfrak{X}(M)$ are any extensions, respectively. That is, $\wtilde{\omega}^i_x = \omega^i$ and $\wtilde{X}_i\vert_x = v_i$. They do always exist, since in a chart $(U,(x^i))$ we may write
+	\begin{equation*}
+		\omega^i = \omega^i_j dx^j\vert_x \qquad \text{and} \qquad v_i = v_i^j \frac{\partial}{\partial x^j}\bigg\vert_x
+	\end{equation*}
+	\noindent and so using a smooth bump function for $\cbr{x}$ supported in $U$ we can construct global maps as in step 2 if we consider the components as constant functions. Now define
+	\begin{equation}
+		\label{eq:def_A}
+		A_x\del[1]{\omega^1,\dots,\omega^k,v_1,\dots,v_l} := \mathcal{A}\del[1]{\wtilde{\omega}^1,\dots,\wtilde{\omega}^k,\wtilde{X}_1,\dots,\wtilde{X}_l}(x).
+	\end{equation}
+	This is well-defined by step 2. Now if $\omega^1,\dots,\omega^k \in \mathfrak{X}^*(M)$ and $X_1,\dots,X_l \in \mathfrak{X}(M)$, we have that 
+	\begin{equation*}
+		\mathcal{A}\del[1]{\omega^1,\dots,\omega^k,X_1,\dots,X_l}(x) = A_x\del[1]{\omega^1_x,\dots,\omega^k_x,X_1\vert_x,\dots,X_l\vert_x},
+	\end{equation*}
+	\noindent since $\omega^i$ and $X_i$ are extensions of $\omega^i_x$ and $X_i\vert_x$, respectively, for all $x \in M$. So the assumption that $\mathcal{A}$ takes values in the space of smooth functions $C^\infty(M)$ together with part (d) of the smoothness criteria for tensor fields \ref{prop:smoothness_criteria_for_tensor_fields} yields that $A$ is a smooth $(k,l)$-tensor field which moreover induces $\mathcal{A}$.
 \end{proof}
