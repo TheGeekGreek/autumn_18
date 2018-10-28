@@ -35,7 +35,7 @@ We will always think of mixed tensors as multilinear forms. Let $(U,x^i)$ be a c
 	\label{eq:tensor_components}
 	A^{i_1\dots i_k}_{j_1\dots j_l} := A\del[3]{dx^{i_1}\vert_x,\dots,dx^{i_k}\vert_x,\frac{\partial}{\partial x^{j_1}}\bigg\vert_x,\dots\frac{\partial}{\partial x^{j_l}}\bigg\vert_x}.
 \end{equation}
- Next we want to ``glue'' together the different spaces of mixed tensors.
+Next we want to ``glue'' together the different spaces of mixed tensors. 
 
 \begin{proposition}
 	\label{prop:tensor_bundle}
@@ -102,7 +102,7 @@ Let $\del[1]{U,(x^i)}$ be a chart on $M$ and $A : M \to T^{(k,l)}TM$ such that $
 \begin{equation*}
 	A_x = A^{i_1\dots i_k}_{j_1\dots j_l}(x)\frac{\partial}{\partial x^{i_1}}\bigg\vert_x \otimes \dots \otimes \frac{\partial}{\partial x^{i_k}}\bigg\vert_x \otimes dx^{j_1}\vert_x \otimes \dots \otimes dx^{j_l}\vert_x
 \end{equation*}
-\noindent for all $x \in U$ where $A^{i_1\dots i_k}_{j_1\dots j_l} : U \to \mathbb{R}$ are given as in (\ref{eq:tensor_components}). We will call these functions the \bld{component functions of $A$}. Recall, that if $M$ is a smooth manifold, $A \subseteq U \subseteq M$, where $U$ is open and $A$ is closed in $M$, a function $\psi \in C^\infty(M)$ is said to be a \emph{smooth bump function for $A$ supported in $U$}, iff $0 \leq \psi \leq 1$, $\psi \vert_A = 1$ and $\supp \psi \subseteq U$. The paracompactness condition guarantees that smooth bump functions exist in great abundance.
+\noindent for all $x \in U$ where $A^{i_1\dots i_k}_{j_1\dots j_l} : U \to \mathbb{R}$ are given as in (\ref{eq:tensor_components}). We will call these functions the \bld{component functions of $A$}. Recall, that a map $F : M \to N$ between two smooth manifolds $M$ and $N$ is said to be \emph{smooth}, iff for every $x \in M$ there exists a chart $(U,\varphi)$ about $x$ on $M$ and a chart $(V,\psi)$ about $F(x)$ on $N$ such that $U \cap F^{-1}(V)$ is open in $M$ and $\psi \circ F \circ \varphi^{-1} : \varphi\del[1]{U \cap F^{-1}(V)} \to \psi(V)$ is smooth. Moreover, if $A \subseteq U \subseteq M$, where $U$ is open and $A$ is closed in $M$, a function $\psi \in C^\infty(M)$ is said to be a \emph{smooth bump function for $A$ supported in $U$}, iff $0 \leq \psi \leq 1$, $\psi \vert_A = 1$ and $\supp \psi \subseteq U$. The paracompactness condition guarantees that smooth bump functions exist in great abundance.
 
 \begin{proposition}[{Existence of Smooth Bump Functions \cite[44]{lee:smooth_manifolds:2013}}]
 	\label{prop:existence_smooth_bump_functions}

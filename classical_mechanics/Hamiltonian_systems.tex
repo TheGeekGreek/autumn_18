@@ -1,13 +1,38 @@
 \section*{Hamiltonian Systems}
+If the Legendre transform \ref{def:Legendre_transform} is a diffeomorphism, we can define an associated Hamiltonian function by \ref{def:Hamiltonian_function}, that is a smooth function $H$ on $T^*M$, where $M$ is a smooth manifold. By example \ref{ex:cotangent_bundle}, we know that the cotangent bundle $T^*M$ admits a canonical symplectic structure in terms of the tautological form \ref{def:tautological_form}. The tuple $(T^*M,H)$ turns out to be the prototype of a much more general structure.
 
 \begin{definition}[Hamiltonian System]
-	A \bld{Hamiltonian system} is defined to be a tuple $\del[1]{(M,\omega),H}$ consisting of a symplectic manifold $(M,\omega)$, called a \bld{phase space}, and a function $H \in C^\infty(M)$, called a \bld{Hamiltonian function}.
+	A \bld{Hamiltonian system}\index{Hamiltonian!system} is defined to be a tuple $\del[1]{(M,\omega),H}$ consisting of a symplectic manifold $(M,\omega)$, called a \bld{phase space}\index{Space!phase}, and a function $H \in C^\infty(M)$, called a \bld{Hamiltonian function}\index{Hamiltonian!function}.
 \end{definition}
 
+\begin{remark}
+	In what follows, we will write simply $(M,\omega,H)$ for a Hamiltonian system instead of the more cumbersome $\del[1]{(M,\omega),H}$. The latter was choosen in the definition to emphasize the similarity to the definition of a Lagrangian system \ref{def:Lagrangian_system}.
+\end{remark}
+
+As in Riemannian geometry, a main advantage of the symplectic structure is to reinstate the definition of the gradient of a smooth function as a vector field instead of a covector field using the tangent-cotangent bundle isomorphism (for the Riemannian case see \cite[342--343]{lee:smooth_manifolds:2013}).
+
 \begin{definition}[Hamiltonian Vector Field]
-	Let $\del[1]{(M,\omega),H}$ be a Hamiltonian system and denote by $\Omega : \mathfrak{X}(M) \to \mathfrak{X}^*(M)$ the tangent-cotangent bundle isomorphism from proposition \textup{\ref{prop:tangent-cotangent_bundle_isomorphism}}. The vector field $X_H$ defined by
-	\begin{equation*}
+	Let $(M,\omega,H)$ be a Hamiltonian system and denote by $\Omega : \mathfrak{X}(M) \to \mathfrak{X}^*(M)$ the tangent-cotangent bundle isomorphism from proposition \textup{\ref{prop:tangent-cotangent_bundle_isomorphism}}. The vector field $X_H$ defined by
+	\begin{equation}
+		\label{eq:Hamiltonian_vector_field}
 		X_H := \Omega^{-1}(dH)
-	\end{equation*}
-	\noindent is called the \bld{Hamiltonian vector field associated to the Hamiltonian system}.
+	\end{equation}
+	\noindent is called the \bld{Hamiltonian vector field associated to the Hamiltonian system}\index{Hamiltonian!vector field}.
 \end{definition}
+
+Recall, that if $k \in \mathbb{N}$ and $X \in \mathfrak{X}(M)$ for a smooth manifold $M$, we can define a mapping $i_X : \upOmega^{k + 1}(M) \to \upOmega^k(M)$, called \emph{interior multiplication}, by
+\begin{equation*}
+	(i_X\omega)_x(v_1,\dots,v_k) := \omega_x\del[1]{X\vert_x,v_1,\dots,v_k}
+\end{equation*}
+\noindent for all $x \in M$ and $v_1,\dots,v_k \in T_xM$.
+
+\begin{lemma}
+	Let $(M,\omega,H)$ be a Hamiltonian system. Then $i_{X_H}\omega = dH$.
+\end{lemma}
+
+\begin{proof}
+	By definition of the Hamiltonian vector field (\ref{eq:Hamiltonian_vector_field}) we have that $\Omega_{X_H} = dH$. Thus for any $x \in M$ and $v \in T_xM$ we compute
+	\begin{equation*}
+		dH_x(v) = \del[1]{\Omega_{X_H}}_x(v) = \Omega(X_H\vert_x)(v) = \omega_x\del[1]{X_H\vert_x,v} = (i_{X_H})_x(v). 
+	\end{equation*}
+\end{proof}
