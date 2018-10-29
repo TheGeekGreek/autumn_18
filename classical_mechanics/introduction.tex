@@ -1,65 +1,65 @@
 \section*{Introduction}
 Classical mechanics deals with ordinary differential equations originating from extremals of \bld{functionals}\index{Functional}, that is functions defined on an infinite-dimensional function space. The study of such extremality properties of functionals is known as the \bld{calculus of variations}\index{Calculus!of variations}. To illustrate this fundamental principle, let us consider the \emph{variational formulation} of second order elliptic operators in divergence form based on \cite[167--168]{struwe:fa:2014}.\\ 
 For convention, unless explicietly stated otherwise, we will assume that all manifolds are smooth, that is of class $C^\infty$, finite-dimensional, Hausdorff and paracompact with at most countably many connected components.\\ 
-Let $n \in \mathbb{N}$, $n \geq 1$, and $\Omega \subseteq \subseteq \mathbb{R}^n$ such that $\wbar{\Omega}$ is a smooth manifold with boundary. Moreover, let $H^1_0(\Omega)$ denote the Sobolev space $W^{1,2}_0(\Omega)$ with inner product
+Let $n \in \mathbb{N}$, $n \geq 1$, and $\upOmega \subseteq \subseteq \mathbb{R}^n$ such that $\wbar{\upOmega}$ is a smooth manifold with boundary. Moreover, let $H^1_0(\upOmega)$ denote the Sobolev space $W^{1,2}_0(\upOmega)$ with inner product
 \begin{equation*}
-	\langle u,v \rangle_{H^1_0(\Omega)} = \int_\Omega uv + \int_\Omega \nabla u \nabla v.
+	\langle u,v \rangle_{H^1_0(\upOmega)} = \int_\upOmega uv + \int_\upOmega \nabla u \nabla v.
 \end{equation*}
-Suppose $a^{ij} \in C^\infty(\wbar{\Omega})$ symmetric, $f \in C^\infty(\wbar{\Omega})$ and consider the second order homogenous Dirichlet problem
+Suppose $a^{ij} \in C^\infty(\wbar{\upOmega})$ symmetric, $f \in C^\infty(\wbar{\upOmega})$ and consider the second order homogenous Dirichlet problem
 \begin{equation}
 	\label{eq:homogeneous_Dirichlet_problem}
 	\ccases{
-			\displaystyle -\frac{\partial}{\partial x^j}\del[3]{a^{ij}\frac{\partial u}{\partial x^i}} = f & \text{in } \Omega,\\
-			u = 0 & \text{on } \partial \Omega,
+			\displaystyle -\frac{\partial}{\partial x^j}\del[3]{a^{ij}\frac{\partial u}{\partial x^i}} = f & \text{in } \upOmega,\\
+			u = 0 & \text{on } \partial \upOmega,
 		}
 \end{equation}
-Suppose $u \in C^\infty(\wbar{\Omega})$ solves (\ref{eq:homogeneous_Dirichlet_problem}). Then integration by parts (see \cite[436]{lee:smooth_manifolds:2013}) yields 
+Suppose $u \in C^\infty(\wbar{\upOmega})$ solves (\ref{eq:homogeneous_Dirichlet_problem}). Then integration by parts (see \cite[436]{lee:smooth_manifolds:2013}) yields 
 \begin{equation*}
-	\int_\Omega f v = -\int_\Omega \frac{\partial}{\partial x^j}\del[3]{a^{ij}\frac{\partial u}{\partial x^i}}v = -\int_\Omega \mathrm{div}(X)v = \int_\Omega \langle X, \nabla v\rangle = \int_\Omega a^{ij} \frac{\partial u}{\partial x^i}\frac{\partial v}{\partial x^j}
+	\int_\upOmega f v = -\int_\upOmega \frac{\partial}{\partial x^j}\del[3]{a^{ij}\frac{\partial u}{\partial x^i}}v = -\int_\upOmega \mathrm{div}(X)v = \int_\upOmega \langle X, \nabla v\rangle = \int_\upOmega a^{ij} \frac{\partial u}{\partial x^i}\frac{\partial v}{\partial x^j}
 \end{equation*}
-\noindent for any $v \in C^\infty_c(\Omega)$, where $X := \del[1]{a^{ij}\frac{\partial u}{\partial x^i}}_j$. Thus we say that $u \in H^1_0(\Omega)$ is a \emph{weak solution} of (\ref{eq:homogeneous_Dirichlet_problem}) iff
+\noindent for any $v \in C^\infty_c(\upOmega)$, where $X := \del[1]{a^{ij}\frac{\partial u}{\partial x^i}}_j$. Thus we say that $u \in H^1_0(\upOmega)$ is a \emph{weak solution} of (\ref{eq:homogeneous_Dirichlet_problem}) iff
 \begin{equation*}
-	\forall v \in C^\infty_c(\Omega): \> \int_\Omega a^{ij} \frac{\partial u}{\partial x^i}\frac{\partial v}{\partial x^j} = \int_\Omega fv.
+	\forall v \in C^\infty_c(\upOmega): \> \int_\upOmega a^{ij} \frac{\partial u}{\partial x^i}\frac{\partial v}{\partial x^j} = \int_\upOmega fv.
 \end{equation*}
 If $(a^{ij})_{ij}$ is \emph{uniformly elliptic}, i.e. there exists $\lambda > 0$ such that
 \begin{equation*}
-	\forall x \in \Omega\forall \xi \in \mathbb{R}^n : \> a^{ij}(x)\xi_i\xi_j \geq \lambda \abs{\xi}^2,	
+	\forall x \in \upOmega\forall \xi \in \mathbb{R}^n : \> a^{ij}(x)\xi_i\xi_j \geq \lambda \abs{\xi}^2,	
 \end{equation*}
-\noindent then (\ref{eq:homogeneous_Dirichlet_problem}) admits a unique weak solution $u \in H^1_0(\Omega)$ (in fact $u \in C^\infty(\Omega)$ using \emph{regularity theory}, for more details see \cite[175]{struwe:fa:2014}). Indeed, observe that 
+\noindent then (\ref{eq:homogeneous_Dirichlet_problem}) admits a unique weak solution $u \in H^1_0(\upOmega)$ (in fact $u \in C^\infty(\upOmega)$ using \emph{regularity theory}, for more details see \cite[175]{struwe:fa:2014}). Indeed, observe that 
 \begin{equation*}
-	\langle \cdot,\cdot \rangle_a : H^1_0(\Omega) \times H^1_0(\Omega) \to \mathbb{R}
+	\langle \cdot,\cdot \rangle_a : H^1_0(\upOmega) \times H^1_0(\upOmega) \to \mathbb{R}
 \end{equation*}
 \noindent defined by
 \begin{equation}
 	\label{eq:Sobolev_inner_product}
-	\langle u, v \rangle_a := \int_\Omega a^{ij} \frac{\partial u}{\partial x^i}\frac{\partial v}{\partial x^j}
+	\langle u, v \rangle_a := \int_\upOmega a^{ij} \frac{\partial u}{\partial x^i}\frac{\partial v}{\partial x^j}
 \end{equation}
-\noindent is an inner product on $H^1_0(\Omega)$ with induced norm equivalent to the standard one on $H^1_0(\Omega)$ due to Poincar\'e's inequality \cite[107]{struwe:fa:2014}. Applying the Riesz Representation theorem \cite[49--50]{struwe:fa:2014} yields the result. Moreover, this solution can be characterized by a \emph{variational principle}, i.e. if we define the \emph{energy functional} $E : H^1_0(\Omega) \to \mathbb{R}$
+\noindent is an inner product on $H^1_0(\upOmega)$ with induced norm equivalent to the standard one on $H^1_0(\upOmega)$ due to Poincar\'e's inequality \cite[107]{struwe:fa:2014}. Applying the Riesz Representation theorem \cite[49--50]{struwe:fa:2014} yields the result. Moreover, this solution can be characterized by a \emph{variational principle}, i.e. if we define the \emph{energy functional} $E : H^1_0(\upOmega) \to \mathbb{R}$
 \begin{equation*}
-	E(v) := \frac{1}{2} \norm{v}^2_a - \int_\Omega fv,
+	E(v) := \frac{1}{2} \norm{v}^2_a - \int_\upOmega fv,
 \end{equation*}
-\noindent for any $v \in H^1_0(\Omega)$, where $\norm{\cdot}_a$ denotes the norm induced by the inner product (\ref{eq:Sobolev_inner_product}), then $u \in H^1_0(\Omega)$ solves (\ref{eq:homogeneous_Dirichlet_problem}) if and only if
+\noindent for any $v \in H^1_0(\upOmega)$, where $\norm{\cdot}_a$ denotes the norm induced by the inner product (\ref{eq:Sobolev_inner_product}), then $u \in H^1_0(\upOmega)$ solves (\ref{eq:homogeneous_Dirichlet_problem}) if and only if
 \begin{equation}
 	\label{eq:variational_formulation}
-	E(u) = \inf_{v \in H^1_0(\Omega)}E(v).
+	E(u) = \inf_{v \in H^1_0(\upOmega)}E(v).
 \end{equation}
-Indeed, suppose $u \in H^1_0(\Omega)$ is a solution of (\ref{eq:homogeneous_Dirichlet_problem}). Let $v \in H^1_0(\Omega)$. Then $u = v + w$ for $w := u - v \in H^1_0(\Omega)$ and we compute
+Indeed, suppose $u \in H^1_0(\upOmega)$ is a solution of (\ref{eq:homogeneous_Dirichlet_problem}). Let $v \in H^1_0(\upOmega)$. Then $u = v + w$ for $w := u - v \in H^1_0(\upOmega)$ and we compute
 \begin{equation*}
-	E(v) = E(u + w) = \frac{1}{2}\norm{u}^2_a + \langle u,w \rangle_a + \frac{1}{2}\norm{w}^2_a - \int_\Omega f(u + w) = E(u) + \frac{1}{2}\norm{w}^2_a \geq E(u)
+	E(v) = E(u + w) = \frac{1}{2}\norm{u}^2_a + \langle u,w \rangle_a + \frac{1}{2}\norm{w}^2_a - \int_\upOmega f(u + w) = E(u) + \frac{1}{2}\norm{w}^2_a \geq E(u)
 \end{equation*}
-\noindent with equality if and only if $u = v$ a.e. Conversly, suppose the infimum is attained by some $u \in H^1_0(\Omega)$. Thus by elementary calculus
+\noindent with equality if and only if $u = v$ a.e. Conversly, suppose the infimum is attained by some $u \in H^1_0(\upOmega)$. Thus by elementary calculus
 \begin{equation}
 	\label{eq:derivative}
-	0 = \frac{d}{dt}\bigg\vert_{t = 0} E(u + tv) = \langle u, v \rangle_a - \int_\Omega f v
+	0 = \frac{d}{dt}\bigg\vert_{t = 0} E(u + tv) = \langle u, v \rangle_a - \int_\upOmega f v
 \end{equation}
-\noindent for all $v \in H^1_0(\Omega)$.\\
-Suppose now that $u \in C^\infty(\wbar{\Omega})$ with $u\vert_{\partial \Omega} = 0$ solves the variational formulation (\ref{eq:variational_formulation}). Then again integration by parts yields
+\noindent for all $v \in H^1_0(\upOmega)$.\\
+Suppose now that $u \in C^\infty(\wbar{\upOmega})$ with $u\vert_{\partial \upOmega} = 0$ solves the variational formulation (\ref{eq:variational_formulation}). Then again integration by parts yields
 \begin{equation*}
-	\langle u, v \rangle_a - \int_\Omega f v = -\int_\Omega \mathrm{div}(X) v - \int_\Omega fv = \int_\Omega \del[3]{-\frac{\partial}{\partial x^j}\del[3]{a^{ij}\frac{\partial u}{\partial x^i}} - f} v
+	\langle u, v \rangle_a - \int_\upOmega f v = -\int_\upOmega \mathrm{div}(X) v - \int_\upOmega fv = \int_\upOmega \del[3]{-\frac{\partial}{\partial x^j}\del[3]{a^{ij}\frac{\partial u}{\partial x^i}} - f} v
 \end{equation*}
-\noindent for all $v \in C^\infty_c(\Omega)$ and where $X := \del[1]{a^{ij}\frac{\partial u}{\partial x^i}}_j$. Hence (\ref{eq:derivative}) implies 
+\noindent for all $v \in C^\infty_c(\upOmega)$ and where $X := \del[1]{a^{ij}\frac{\partial u}{\partial x^i}}_j$. Hence (\ref{eq:derivative}) implies 
 \begin{equation*}
-	\forall v \in C^\infty_c(\Omega): \> \int_\Omega \del[3]{-\frac{\partial}{\partial x^j}\del[3]{a^{ij}\frac{\partial u}{\partial x^i}} - f} v = 0.
+	\forall v \in C^\infty_c(\upOmega): \> \int_\upOmega \del[3]{-\frac{\partial}{\partial x^j}\del[3]{a^{ij}\frac{\partial u}{\partial x^i}} - f} v = 0.
 \end{equation*}
 
 We might expect that this implies 
@@ -71,9 +71,9 @@ That this is indeed the case, is guaranteed by a foundational result in the \emp
 
 \begin{proposition}[{Fundamental Lemma of Calculus of Variations \cite[40]{struwe:fa:2014}}]
 	\label{prop:fundamental_lemma}
-	Let $\Omega \subseteq \mathbb{R}^n$ open and $f \in L^1_{\mathrm{loc}}(\Omega)$. If
+	Let $\upOmega \subseteq \mathbb{R}^n$ open and $f \in L^1_{\mathrm{loc}}(\upOmega)$. If
 	\begin{equation*}
-		\forall \varphi \in C^\infty_c(\Omega): \> \int_\Omega f\varphi = 0,
+		\forall \varphi \in C^\infty_c(\upOmega): \> \int_\upOmega f\varphi = 0,
 	\end{equation*}
 	\noindent then $f = 0$ a.e.
 \end{proposition}
@@ -82,21 +82,21 @@ Thus we recovered a second order partial differential equation from the variatio
 
 \begin{lemma}[Fundamental Lemma of Calculus of Variations, Smooth Version\index{Calculus!of variations!fundamental lemma of}]
 	\label{lem:fundamental_lemma}
-	Let $\Omega \subseteq \mathbb{R}^n$ open and $f \in C^\infty(\Omega)$. If
+	Let $\upOmega \subseteq \mathbb{R}^n$ open and $f \in C^\infty(\upOmega)$. If
 	\begin{equation*}
-		\forall \varphi \in C^\infty_c(\Omega): \> \int_\Omega f\varphi = 0,
+		\forall \varphi \in C^\infty_c(\upOmega): \> \int_\upOmega f\varphi = 0,
 	\end{equation*}
 	\noindent then $f = 0$.
 \end{lemma}
 
 \begin{proof}
-	Towards a contradiction, assume that $f \neq 0$ on $\Omega$. Thus there exists $x_0 \in \Omega$, such that $f(x_0) \neq 0$. Without loss of generality, we may assume that $f(x_0) > 0$, since otherwise, consider $-f$ instead of $f$.	The smoothness of $f$ implies the continuity of $f$ on $\Omega$. Thus there exists $\delta > 0$, such that $f(x) \in B_{f(x_0)/2}\del[1]{f(x_0)}$ holds for all $x \in B_\delta(x_0)$ or equivalently, $f(x) > f(x_0)/2 > 0$ for all $x \in B_\delta(x_0)$. By lemma $2.22$ \cite[42]{lee:smooth_manifolds:2013}, there exists a smooth bump function $\varphi$ supported in $B_\delta(x_0)$ and $\varphi = 1$ on $\wbar{B}_{\delta/2}(x_0)$. In particular, $\varphi \in C^\infty_c(\Omega)$. Therefore we have
+	Towards a contradiction, assume that $f \neq 0$ on $\upOmega$. Thus there exists $x_0 \in \upOmega$, such that $f(x_0) \neq 0$. Without loss of generality, we may assume that $f(x_0) > 0$, since otherwise, consider $-f$ instead of $f$.	The smoothness of $f$ implies the continuity of $f$ on $\upOmega$. Thus there exists $\delta > 0$, such that $f(x) \in B_{f(x_0)/2}\del[1]{f(x_0)}$ holds for all $x \in B_\delta(x_0)$ or equivalently, $f(x) > f(x_0)/2 > 0$ for all $x \in B_\delta(x_0)$. By lemma $2.22$ \cite[42]{lee:smooth_manifolds:2013}, there exists a smooth bump function $\varphi$ supported in $B_\delta(x_0)$ and $\varphi = 1$ on $\wbar{B}_{\delta/2}(x_0)$. In particular, $\varphi \in C^\infty_c(\upOmega)$. Therefore we have
 	\begin{equation*}
-		0 = \int_\Omega f \varphi = \int_{B_\delta(x_0)} f \varphi \geq \int_{B_{\delta/2}(x_0)} f \varphi > \frac{1}{2}f(x_0) \abs[0]{B_{\delta/2}(x_0)} > 0,
+		0 = \int_\upOmega f \varphi = \int_{B_\delta(x_0)} f \varphi \geq \int_{B_{\delta/2}(x_0)} f \varphi > \frac{1}{2}f(x_0) \abs[0]{B_{\delta/2}(x_0)} > 0,
 	\end{equation*}
 	\noindent which is a contradiction.
 \end{proof}
 
 \begin{exercise}\footnote{This is exercise $1.2. (b)$ from exercise sheet $1$ of the course \emph{Functional Analysis II} taught by \emph{Prof. Dr. A. Carlotto} at ETHZ in the spring of 2018, which can be found \href{https://metaphor.ethz.ch/x/2018/fs/401-3462-00L/ex/Problems01-FAII.pdf}{here}.}
-	Let $\Omega \subseteq \subseteq \mathbb{R}^n$, $2 \leq p < \infty$ and define $\mathcal{B} := \cbr[0]{v \in C^\infty(\wbar{\Omega}) : v\vert_{\partial\Omega} = 0}$. Moreover, define $E_p : \mathcal{B} \to \mathbb{R}$ by $E_p(v) := \int_\Omega \abs[0]{\nabla v}^p$. Derive the partial differential equation satisfied by minimizers $u \in \mathcal{B}$ of the variational problem $E(u) = \inf_{v \in \mathcal{B}}E(v)$.	
+	Let $\upOmega \subseteq \subseteq \mathbb{R}^n$, $2 \leq p < \infty$ and define $\mathcal{B} := \cbr[0]{v \in C^\infty(\wbar{\upOmega}) : v\vert_{\partial\upOmega} = 0}$. Moreover, define $E_p : \mathcal{B} \to \mathbb{R}$ by $E_p(v) := \int_\upOmega \abs[0]{\nabla v}^p$. Derive the partial differential equation satisfied by minimizers $u \in \mathcal{B}$ of the variational problem $E(u) = \inf_{v \in \mathcal{B}}E(v)$.	
 \end{exercise}

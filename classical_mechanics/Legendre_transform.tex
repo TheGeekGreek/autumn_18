@@ -156,6 +156,12 @@ Thus
 	The tautological form $\alpha$ as well as the fibrewise derivative $D^\mathcal{F}L$ on an autonomous Lagrangian system $(M,L)$ admit invariant definitions, that is a coordinate free definition. For the invariant definition of $\alpha$ see \cite[569]{lee:smooth_manifolds:2013} or \cite[10--11]{silva:SG:2008}, and for the invariant definition of $D^\mathcal{F}L$ see \cite[31]{takhtajan:QM:2008}. 
 \end{remark}
 
+Recall, that if $F \in C^\infty(M,N)$ for some smooth manifolds $M$ and $N$, and $l \in \mathbb{N}$, we can define a mapping $F^* : \upGamma\del[1]{T^{(0,l)}TN} \to  \upGamma\del[1]{T^{(0,l)}TM}$, called the \emph{pullback by $F$}, by
+\begin{equation*}
+	(F^*A)_x(v_1,\dots,v_l) := A_{F(x)}\del[1]{dF_x(v_1),\dots,dF_x(v_l)}
+\end{equation*}
+\noindent for all $x \in M$ and $v_1,\dots,v_l \in T_xM$ (see \cite[320]{lee:smooth_manifolds:2013}).
+
 \begin{definition}[Legendre Transform]
 	\label{def:Legendre_transform}
 	A \bld{Legendre transform of an autonomous Lagrangian system $(M,L)$}\index{Transform!Legendre} is defined to be a fibrewise mapping $\tau_L \in C^\infty(TM,T^*M)$ such that

@@ -27,6 +27,7 @@ Recall, that if $k \in \mathbb{N}$ and $X \in \mathfrak{X}(M)$ for a smooth mani
 \noindent for all $x \in M$ and $v_1,\dots,v_k \in T_xM$.
 
 \begin{lemma}
+	\label{lem:interior_multiplication_Hamiltonian_vector_field}
 	Let $(M,\omega,H)$ be a Hamiltonian system. Then $i_{X_H}\omega = dH$.
 \end{lemma}
 
@@ -36,3 +37,39 @@ Recall, that if $k \in \mathbb{N}$ and $X \in \mathfrak{X}(M)$ for a smooth mani
 		dH_x(v) = \del[1]{\Omega_{X_H}}_x(v) = \Omega(X_H\vert_x)(v) = \omega_x\del[1]{X_H\vert_x,v} = (i_{X_H})_x(v). 
 	\end{equation*}
 \end{proof}
+
+\begin{definition}[Invariance]
+	\label{def:invariance}
+	Let $M$ be a smooth manifold, $X \in \mathfrak{X}(M)$ a complete vector field with global flow $\theta : \mathbb{R} \times M \to M$ and $l \in \mathbb{N}$. A tensor field $A \in \upGamma\del[1]{T^{(0,l)}TM}$ is said to be \bld{invariant under the flow $\theta$ of $X$}\index{Invariance!under flows of a vector field}, iff
+	\begin{equation*}
+		\theta_t^*A = A
+	\end{equation*}
+	\noindent for all $t \in \mathbb{R}$.
+\end{definition}
+
+A useful characterisation of invariance under flows can be given in terms of a special derivative. Recall, that in the setting of definition \ref{def:invariance}, the \emph{Lie derivative of $A$ with respect to $X$}, written $\mathcal{L}_XA$, is defined to be the tensor field $\mathcal{L}_XA \in \upGamma\del[1]{T^{(0,l)}TM}$ given by
+\begin{equation*}
+	(\mathcal{L}_XA)_x := \frac{d}{dt}\bigg\vert_{t = 0}(\theta^*_tA)_x
+\end{equation*}
+\noindent for all $x \in M$. By \cite[324]{lee:smooth_manifolds:2013}, we have that $A$ is invariant under the flow of $X$ if and only if $\mathcal{L}_XA = 0$. The next proposition is a prime example why we require a symplectic structure to be both closed and nondegenerate. For the proof, we need one more preliminary result from the calculus of differential forms.
+
+\begin{proposition}[{Cartan's Magic Formula \cite[372]{lee:smooth_manifolds:2013}}]
+	\label{prop:Cartans_magic_formula}
+	Let $M$ be a smooth manifold, $X \in \mathfrak{X}(M)$ and $\omega \in \upOmega^l(M)$ for some $l \in \mathbb{N}$. Then
+	\begin{equation*}
+		\mathcal{L}_X\omega = i_X(d\omega) + d(i_X\omega).
+	\end{equation*}
+\end{proposition}
+
+\begin{proposition}
+	Let $(M,\omega,H)$ be a Hamiltonian system such that the Hamiltonian vector field is complete. Then the symplectic form is invariant under the flow of the Hamiltonian vector field.
+\end{proposition}
+
+\begin{proof}
+	By the previous discussion it is enough to show that $\mathcal{L}_{X_H}\omega = 0$. Using Cartan's magic formula \ref{prop:Cartans_magic_formula}, closedness of $\omega$ together with lemma \ref{lem:interior_multiplication_Hamiltonian_vector_field} we compute
+	\begin{equation*}
+		\mathcal{L}_{X_H}\omega = i_{X_H}(d\omega) + d(i_{X_H}\omega) = d(i_{X_H}\omega) = (d \circ d)H = 0.
+	\end{equation*}
+\end{proof}
+
+
