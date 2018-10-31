@@ -36,23 +36,23 @@ As in Riemannian geometry, one very important feature of a symplectic manifold $
 %Input tensor fields
 \input{tensor_fields.tex}
 
-\begin{theorem}[{Bundle Homomorphism Characterisation Lemma \cite[262]{lee:smooth_manifolds:2013}}]
-	\label{thm:bundle_homomorphism_characterisation_lemma}
+\begin{proposition}[{Bundle Homomorphism Characterisation Lemma \cite[262]{lee:smooth_manifolds:2013}}]
+	\label{prop:bundle_homomorphism_characterisation_lemma}
 	Let $\pi : E \to M$ and $\wtilde{\pi} : \wtilde{E} \to M$ be smooth vector bundles over a smooth manifold $M$. A map $\mathcal{F} : \upGamma(E) \to \upGamma(\wtilde{E})$ is linear over $C^\infty(M)$ if and only if there exists a smooth bundle homomorphism $F : E \to \wtilde{E}$ over $M$ such that $\mathcal{F}(\sigma) = F \circ \sigma$ for all $\sigma \in \upGamma(E)$.
-\end{theorem}
+\end{proposition}
 
-\begin{proposition}[Tangent-Cotangent Bundle Isomorphism]
-	\label{prop:tangent-cotangent_bundle_isomorphism}
+\begin{theorem}[Tangent-Cotangent Bundle Isomorphism]
+	\label{thm:tangent-cotangent_bundle_isomorphism}
 	Let $(M,\omega)$ be a symplectic manifold. Define $\Omega : TM \to T^*M$ by
 	\begin{equation}
 		\label{eq:tangent-cotangent_isomorphism}
 		\Omega(v)(w) := \omega_x(v,w)
 	\end{equation}
 	\noindent for all $x \in M$ and $v,w \in T_xM$. Then $\Omega$ is a well-defined smooth bundle isomorphism. The morphism $\Omega$ is called the \bld{tangent-cotangent bundle isomorphism}\index{Isomorphism!tangent-cotangent bundle}.
-\end{proposition}
+\end{theorem}
 
 \begin{proof}
-	Using the tensor field characterisation lemma \ref{thm:tensor_field_characterisation_lemma}, $\omega$ induces a map 
+	Using the tensor field characterisation lemma \ref{prop:tensor_field_characterisation_lemma}, $\omega$ induces a map 
 	\begin{equation*}
 		\omega : \mathfrak{X}(M) \times \mathfrak{X}(M) \to C^\infty(M)
 	\end{equation*}
@@ -60,7 +60,7 @@ As in Riemannian geometry, one very important feature of a symplectic manifold $
 	\begin{equation*}
 		\Omega_X(Y) := \omega(X,Y).
 	\end{equation*}
-	Since $\omega$ is multilinear over $C^\infty(M)$, so is $\Omega_X$, and thus again by the tensor field characterisation lemma \ref{thm:tensor_field_characterisation_lemma}, $\Omega_X$ belongs to $\mathfrak{X}^*(M)$. Hence we get a map $\Omega : \mathfrak{X}(M) \to \mathfrak{X}^*(M)$ by $\Omega(X) := \Omega_X$ which is also multilinear over $C^\infty(M)$. Finally, by the bundle homomorphism characterisation lemma \ref{thm:bundle_homomorphism_characterisation_lemma}, there exists a smooth vector bundle homomorphism $\Omega : TM \to T^*M$ such that $\Omega_X = \Omega \circ X$ for all $X \in \mathfrak{X}(M)$. Let $x \in M$, $v,w \in T_xM$ and $V,W \in \mathfrak{X}(M)$ be extensions of $v$ and $w$, respectively (see step 3 in the proof of the tensor field characterisation lemma \ref{thm:tensor_field_characterisation_lemma}). We compute
+	Since $\omega$ is multilinear over $C^\infty(M)$, so is $\Omega_X$, and thus again by the tensor field characterisation lemma \ref{prop:tensor_field_characterisation_lemma}, $\Omega_X$ belongs to $\mathfrak{X}^*(M)$. Hence we get a map $\Omega : \mathfrak{X}(M) \to \mathfrak{X}^*(M)$ by $\Omega(X) := \Omega_X$ which is also multilinear over $C^\infty(M)$. Finally, by the bundle homomorphism characterisation lemma \ref{prop:bundle_homomorphism_characterisation_lemma}, there exists a smooth vector bundle homomorphism $\Omega : TM \to T^*M$ such that $\Omega_X = \Omega \circ X$ for all $X \in \mathfrak{X}(M)$. Let $x \in M$, $v,w \in T_xM$ and $V,W \in \mathfrak{X}(M)$ be extensions of $v$ and $w$, respectively (see step 3 in the proof of the tensor field characterisation lemma \ref{prop:tensor_field_characterisation_lemma}). We compute
 	\begin{equation*}
 		\Omega_V\vert_x(w) = \Omega_V(W)(x) = \omega(V,W)(x) = \omega_x(V\vert_x,W\vert_x) = \omega_x(v,w)
 	\end{equation*}

@@ -12,7 +12,7 @@ If the Legendre transform \ref{def:Legendre_transform} is a diffeomorphism, we c
 As in Riemannian geometry, a main advantage of the symplectic structure is to reinstate the definition of the gradient of a smooth function as a vector field instead of a covector field using the tangent-cotangent bundle isomorphism (for the Riemannian case see \cite[342--343]{lee:smooth_manifolds:2013}).
 
 \begin{definition}[Hamiltonian Vector Field]
-	Let $(M,\omega,H)$ be a Hamiltonian system and denote by $\Omega : \mathfrak{X}(M) \to \mathfrak{X}^*(M)$ the tangent-cotangent bundle isomorphism from proposition \textup{\ref{prop:tangent-cotangent_bundle_isomorphism}}. The vector field $X_H$ defined by
+	Let $(M,\omega,H)$ be a Hamiltonian system and denote by $\Omega : \mathfrak{X}(M) \to \mathfrak{X}^*(M)$ the tangent-cotangent bundle isomorphism from proposition \textup{\ref{thm:tangent-cotangent_bundle_isomorphism}}. The vector field $X_H$ defined by
 	\begin{equation}
 		\label{eq:Hamiltonian_vector_field}
 		X_H := \Omega^{-1}(dH)
@@ -72,4 +72,86 @@ A useful characterisation of invariance under flows can be given in terms of a s
 	\end{equation*}
 \end{proof}
 
+\begin{definition}[Poisson Bracket]
+	Let $(M,\omega)$ be a symplectic manifold. Define a mapping 
+	\begin{equation*}
+		\cbr{\cdot,\cdot} : C^\infty(M) \times C^\infty(M) \to C^\infty(M)
+	\end{equation*}
+	\noindent by
+	\begin{equation*}
+		\cbr{f,g} := \omega(X_f,X_g)
+	\end{equation*}
+	\noindent where $X_f$ and $X_g$ are Hamiltonian vector fields associated to the Hamiltonian systems $(M,\omega,f)$ and $(M,\omega,g)$, respectively. The mapping $\cbr{\cdot,\cdot}$ is called the \bld{Poisson bracket on $C^\infty(M)$}.	
+\end{definition}
 
+Recall, that if $f \in C^\infty(M)$ for a smooth manifold $M$, the \emph{differential of $f$} is defined to be the covector field given by $df_x(v) := vf$ for $x \in M$ and $v \in T_xM$. This is indeed a smooth covector field by part (d) of the smoothness criteria for tensor fields \ref{prop:smoothness_criteria_for_tensor_fields} since
+\begin{equation}
+	\label{eq:differential_vector_field}
+	df(X)(x) = df_x(X\vert_x) = X\vert_x f = (Xf)(x)
+\end{equation}
+\noindent for any $X \in \mathfrak{X}(M)$ and $x \in M$, and $Xf$ is smooth by \cite[180]{lee:smooth_manifolds:2013} (proving this is analogous to the proof of the smoothness criteria for tensor fields \ref{prop:smoothness_criteria_for_tensor_fields}).
+
+\begin{lemma}
+	Let $(M,\omega)$ be a symplectic manifold. Then $\cbr{f,g} = X_gf$ holds for all $f,g \in C^\infty(M)$.
+\end{lemma}
+
+\begin{proof}
+	Using lemma \ref{lem:interior_multiplication_Hamiltonian_vector_field} and equation (\ref{eq:differential_vector_field}), we compute
+	\begin{equation*}
+		\cbr{f,g} = \omega(X_f,X_g) = \del[0]{i_{X_f}\omega}(X_g) = df(X_g) = X_g f.
+	\end{equation*}
+\end{proof}
+
+\begin{definition}[Integral of Motion]
+	Let $(M,\omega,H)$ be a Hamiltonian system. A function $f \in C^\infty(M)$ is said to be an \bld{integral of motion for the Hamiltonian system $(M,\omega,H)$}, iff $\cbr{H,f} = 0$.
+\end{definition}
+
+Let us recall some basic facts from the theory of Lie groups and Lie algebras. A \emph{Lie group} is defined to be a group $(G,\cdot)$, such that $G$ is a smooth manifold and the multiplication $\cdot$ as well as the inversion map $\cdot^{-1} : G \to G$ defined by $g\mapsto g^{-1}$ are smooth. If $G$ is a Lie group, we can associate to $G$ its \emph{Lie algebra} $\mathfrak{g}$ defined to be $\mathfrak{g} := T_eG$, where $e$ denotes the neutral element of $G$. It can be shown that $\mathfrak{g} \cong \mathfrak{X}_L(G)$ as real vector spaces, where $\mathfrak{X}_L(G) \subseteq \mathfrak{X}(G)$ denotes the space of \emph{left invariant vector fields on $G$}, that is, the vector fields $X \in \mathfrak{X}(G)$ satisfying $(L_g)_* X = X$, where $L_g$ is the diffeomorphism $L_g : G \to G$ defined by $L_g(h) := gh$ and $(L_g)_*$ is the \emph{pushforward of $X$} defined to be the vector field $\del[1]{(L_g)_*X}_h := d(L_g)_{g^{-1}h}X\vert_{g^{-1}h}$ for $h \in G$. Most importantly, any left invariant vector field on $G$ is complete and so we can define the \emph{exponential map} $\exp : \mathfrak{g} \to G$ by 
+\begin{equation*}
+	\exp v := \gamma(1),
+\end{equation*}
+\noindent where $\gamma \in C^\infty(\mathbb{R},G)$ is the integral curve of the \emph{left invariant vector field $X_v$ associated to $v$ on $G$}, that is $X_v\vert_g := d(L_g)_e(v)$, with starting point $\gamma(0) = e$. Then we have that $\gamma(t) = \exp tv$ and $(\exp tv)^{-1} = \exp (-tv)$ for all $v \in \mathfrak{g}$ and $t \in \mathbb{R}$.
+
+The most important applications of Lie groups to smooth manifold theory involve actions by Lie groups on manifolds. Let $G$ be a Lie group and $M$ be a smooth manifold. A map in $C^\infty(G \times M,M)$ given by $(g,x) \mapsto g \cdot x$, is said to be a \emph{left action of $G$ on $M$} iff
+\begin{equation*}
+	g \cdot (h \cdot x) = (gh) \cdot x \qquad \text{and} \qquad e \cdot x = x
+\end{equation*}
+\noindent holds for all $g,h \in G$ and $x \in M$. Similarly, a \emph{right action of $G$ on $M$} is defined to be a map in $C^\infty(M \times G,M)$ given by $(x,g) \mapsto x \cdot g$ satisfying
+\begin{equation*}
+	(x \cdot g) \cdot h = x \cdot (gh) \qquad \text{and} \qquad x \cdot e = x
+\end{equation*}
+\noindent for all $g,h \in G$ and $x \in M$. Note that any left action of $G$ on $M$ can be transformed into a right action of $G$ on $M$ by defining $x \cdot g := g^{-1} \cdot x$ for all $g \in G$ and $x \in M$, and similarly every right action of $G$ on $M$ can  be transformed into a left action of $G$ on $M$. 
+
+Suppose we are given a right action of a Lie group $G$ on a smooth manifold $M$. Then each element $v \in \mathfrak{g}$ determines a global flow on $M$ by
+\begin{equation*}
+	(t,x) \mapsto x \cdot \exp tv.
+\end{equation*}
+Define $V \in \mathfrak{X}(M)$ by
+\begin{equation*}
+	V_x := \frac{d}{dt}\bigg\vert_{t = 0} x \cdot \exp tv
+\end{equation*}
+\noindent for all $x \in M$. This is the \emph{infinitesimal generator} associated to the above flow (see \cite[210]{lee:smooth_manifolds:2013}). Hence we get a map $\mathfrak{g} \to \mathfrak{X}(M)$ defined by $v \mapsto V$. By \cite[526]{lee:smooth_manifolds:2013}, this map is actually a \emph{Lie algebra homomorphism}. This is the main reason we are working with right actions rather than left actions. 
+
+\begin{proposition}
+	Suppose we are given a right action of a Lie group $G$ on a smooth manifold $M$. Then for each $v \in \mathfrak{g}$, the infinitesimal generator $V$ associated to the flow generated by $v$ satisfies
+	\begin{equation*}
+		Vf = \frac{d}{dt}\bigg\vert_{t = 0} f(x \cdot \exp tv)
+	\end{equation*}
+	\noindent for all $f \in C^\infty(M)$.
+\end{proposition}
+
+\begin{proof}
+	Let $x \in M$. Then we compute
+	\begin{align*}
+		(Vf)(x) &= V_xf\\
+		&= \del[3]{\frac{d}{dt}\bigg\vert_{t = 0} x \cdot \exp tv}f\\
+		&= d\del[1]{\theta^x}_e(v)f\\
+		&= v\del[1]{f \circ \theta^x}\\
+		&= d\del[1]{f \circ \theta^x}_e(v)\\
+		&= \frac{d}{dt}\bigg\vert_{t = 0} f(x \cdot \exp tv)
+	\end{align*}
+\end{proof}
+
+\begin{definition}[Hamiltonian Action]
+	
+\end{definition}
