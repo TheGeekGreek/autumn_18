@@ -81,7 +81,7 @@ A useful characterisation of invariance under flows can be given in terms of a s
 	\begin{equation*}
 		\cbr{f,g} := \omega(X_f,X_g)
 	\end{equation*}
-	\noindent where $X_f$ and $X_g$ are Hamiltonian vector fields associated to the Hamiltonian systems $(M,\omega,f)$ and $(M,\omega,g)$, respectively. The mapping $\cbr{\cdot,\cdot}$ is called the \bld{Poisson bracket on $C^\infty(M)$}.	
+	\noindent where $X_f$ and $X_g$ are Hamiltonian vector fields associated to the Hamiltonian systems $(M,\omega,f)$ and $(M,\omega,g)$, respectively. The mapping $\cbr{\cdot,\cdot}$ is called the \bld{Poisson bracket on $C^\infty(M)$}\index{Poisson!bracket}.	
 \end{definition}
 
 Recall, that if $f \in C^\infty(M)$ for a smooth manifold $M$, the \emph{differential of $f$} is defined to be the covector field given by $df_x(v) := vf$ for $x \in M$ and $v \in T_xM$. This is indeed a smooth covector field by part (d) of the smoothness criteria for tensor fields \ref{prop:smoothness_criteria_for_tensor_fields} since
@@ -188,14 +188,14 @@ Recall, that if $F \in C^\infty(M,N)$ for two smooth manifolds $M$ and $N$, for 
 \end{definition}
 
 \begin{definition}[Symmetry Group]
-	A \bld{symmetry group of a Hamiltonian system $(M,\omega,H)$} is defined to be a Lie group $G$, such that there exists a Hamiltonian action of $G$ on $(M,\omega)$, such that
+	A \bld{symmetry group of a Hamiltonian system $(M,\omega,H)$}\index{Symmetry group} is defined to be a Lie group $G$, such that there exists a Hamiltonian action of $G$ on $(M,\omega)$, such that
 	\begin{equation*}
 		H(g \cdot x) = H(x)
 	\end{equation*}
 	\noindent holds for all $g \in G$ and $x \in M$.
 \end{definition}
 
-\begin{theorem}[Noether]
+\begin{theorem}[Noether\index{Noether!'s theorem}]
 	\label{thm:Noether_theorem}
 	Let $G$ be a symmetry group of a Hamiltonian system $(M,\omega,H)$. Then for each $v \in \mathfrak{g}$, the function $H_v \in C^\infty(M)$ such that $X_{H_v} = \what{v}$ is an integral of motion.
 \end{theorem}
