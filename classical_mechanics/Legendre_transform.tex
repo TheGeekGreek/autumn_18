@@ -2,7 +2,7 @@
 In this section we \emph{dualize} the notion of a Lagrangian function, that is, to each Lagrangian function $L \in C^\infty(TM)$ we will associate a \emph{dual function} $L^* \in C^\infty(T^*M)$. It turns out, that in this dual formulation, the equations of motion take a very symmetric form. To simplify the notation and illuminating the main concept, we consider Lagrangian functions of a special type.
 
 \begin{definition}[Autonomous System]
-	A Lagrangian system $(M,L)$ is said to be an \bld{autonomous Lagrangian system}\index{Lagrangian!system!autonomous}, iff $L \in C^\infty(TM)$.
+	An \bld{autonomous Lagrangian system} is defined to be a tuple $(M,L)$ consitsing of a smooth manifold $M$ and a function $L \in C^\infty(M)$.
 \end{definition}
 
 Let $(M^n,L)$ be an autonomous Lagrangian system and $(U,x^i)$ a chart on $M$. Moreover, let $(x^i,v^i)$ denote standard coordinates on $TM$, that is $v^i := dx^i$ for all $i = 1,\dots,n$. Expanding the Euler-Lagrange equations (\ref{eq:EL_equations}) yields
@@ -224,6 +224,7 @@ Since the nondegenracy of a Lagragian system $(M,L)$ is inherently connected to 
 \end{proof}
 
 \begin{definition}[Energy]
+	\label{def:energy}
 	The \bld{energy of an autonomous Lagrangian system $(M,L)$}\index{Energy!of an autonomous Lagrangian system} is defined to be the function $E_L \in C^\infty(TM)$ given by
 	\begin{equation*}
 		E_L(x,v) := D^\mathcal{F}_{(x,v)}L(v) - L(x,v),

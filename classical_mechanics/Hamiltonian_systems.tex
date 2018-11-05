@@ -9,6 +9,7 @@ If the Legendre transform \ref{def:Legendre_transform} is a diffeomorphism, we c
 	In what follows, we will write simply $(M,\omega,H)$ for a Hamiltonian system instead of the more cumbersome $\del[1]{(M,\omega),H}$. The latter was choosen in the definition to emphasize the similarity to the definition of a Lagrangian system \ref{def:Lagrangian_system}.
 \end{remark}
 
+\subsection*{Hamiltonian Vector Fields}
 As in Riemannian geometry, a main advantage of the symplectic structure is to reinstate the definition of the gradient of a smooth function as a vector field instead of a covector field using the tangent-cotangent bundle isomorphism (for the Riemannian case see \cite[342--343]{lee:smooth_manifolds:2013}).
 
 \begin{definition}[Hamiltonian Vector Field]
@@ -19,12 +20,6 @@ As in Riemannian geometry, a main advantage of the symplectic structure is to re
 	\end{equation}
 	\noindent is called the \bld{Hamiltonian vector field associated to the Hamiltonian system}\index{Hamiltonian!vector field}.
 \end{definition}
-
-Recall, that if $k \in \mathbb{N}$ and $X \in \mathfrak{X}(M)$ for a smooth manifold $M$, we can define a mapping $i_X : \upOmega^{k + 1}(M) \to \upOmega^k(M)$, called \emph{interior multiplication}, by
-\begin{equation*}
-	(i_X\omega)_x(v_1,\dots,v_k) := \omega_x\del[1]{X\vert_x,v_1,\dots,v_k}
-\end{equation*}
-\noindent for all $x \in M$ and $v_1,\dots,v_k \in T_xM$.
 
 \begin{lemma}
 	\label{lem:interior_multiplication_Hamiltonian_vector_field}
@@ -72,6 +67,8 @@ A useful characterisation of invariance under flows can be given in terms of a s
 	\end{equation*}
 \end{proof}
 
+\subsection*{Poisson Brackets}
+
 \begin{definition}[Poisson Bracket]
 	Let $(M,\omega)$ be a symplectic manifold. Define a mapping 
 	\begin{equation*}
@@ -107,6 +104,7 @@ Recall, that if $f \in C^\infty(M)$ for a smooth manifold $M$, the \emph{differe
 	Let $(M,\omega,H)$ be a Hamiltonian system. A function $f \in C^\infty(M)$ is said to be an \bld{integral of motion for the Hamiltonian system $(M,\omega,H)$}\index{Integral of motion}, iff $\cbr{H,f} = 0$.
 \end{definition}
 
+\subsection*{Noether's Theorem}
 Let us recall some basic facts from the theory of Lie groups and Lie algebras. A \emph{Lie group} is defined to be a group $(G,\cdot)$, such that $G$ is a smooth manifold and the multiplication $\cdot$ as well as the inversion map $\cdot^{-1} : G \to G$ defined by $g\mapsto g^{-1}$ are smooth. If $G$ is a Lie group, we can associate to $G$ its \emph{Lie algebra} $\mathfrak{g}$ defined to be $\mathfrak{g} := T_eG$, where $e$ denotes the neutral element of $G$. It can be shown that $\mathfrak{g} \cong \mathfrak{X}_L(G)$ as real vector spaces, where $\mathfrak{X}_L(G) \subseteq \mathfrak{X}(G)$ denotes the space of \emph{left invariant vector fields on $G$}, that is, the vector fields $X \in \mathfrak{X}(G)$ satisfying $(L_g)_* X = X$, where $L_g$ is the diffeomorphism $L_g : G \to G$ defined by $L_g(h) := gh$ and $(L_g)_*$ is the \emph{pushforward of $X$} defined to be the vector field $\del[1]{(L_g)_*X}_h := d(L_g)_{g^{-1}h}X\vert_{g^{-1}h}$ for $h \in G$. Most importantly, any left invariant vector field on $G$ is complete and so we can define the \emph{exponential map} $\exp : \mathfrak{g} \to G$ by 
 \begin{equation*}
 	\exp v := \gamma(1),
@@ -132,8 +130,6 @@ Define $\what{v} \in \mathfrak{X}(M)$ by
 	\what{v}_x := \frac{d}{dt}\bigg\vert_{t = 0} x \cdot \exp tv
 \end{equation*}
 \noindent for all $x \in M$. This is the \emph{infinitesimal generator} associated to the above flow (see \cite[210]{lee:smooth_manifolds:2013}). Hence we get a map $\mathfrak{g} \to \mathfrak{X}(M)$ defined by $v \mapsto \what{v}$. By \cite[526]{lee:smooth_manifolds:2013}, this map is actually a \emph{Lie algebra homomorphism}. This is the main reason we are working with right actions rather than left actions. 
-
-Recall, that if $F \in C^\infty(M,N)$ for two smooth manifolds $M$ and $N$, for $x \in M$ we define the \emph{differential of $F$ at $x$} to be the mapping $dF_x : T_xM \to T_{F(x)}N$, given by $dF_x(v)(f) := v(f \circ F)$ for all $f \in C^\infty(N)$.
 
 \begin{lemma}[{Computing the Differential Using a Velocity Vector \cite[70]{lee:smooth_manifolds:2013}}]
 	\label{lem:computing_the_differential_using_a_velocity_vector}
@@ -177,26 +173,28 @@ Recall, that if $F \in C^\infty(M,N)$ for two smooth manifolds $M$ and $N$, for 
 \end{proof}
 
 \begin{remark}
-	From now on, we will consider left actions of Lie groups $G$ on smooth manifolds $M$ instead of right actions, since they are more common. This is however no drawback, since any left action can be converted into a right action. Hence if $v \in \mathfrak{g}$, the corresponding infinitesimal generator $V$ is given by
+	From now on, we will consider left actions of Lie groups $G$ on smooth manifolds $M$ only instead of right actions, since they are more common. This is however no drawback, since any left action can be converted into a right action. Hence if $v \in \mathfrak{g}$, the corresponding infinitesimal generator $V$ is given by
 	\begin{equation*}
 		\what{v}_x = \frac{d}{dt}\bigg\vert_{t = 0}\exp(-tv) \cdot x.
 	\end{equation*}
 \end{remark}
 
-\begin{definition}[Hamiltonian Action]
-	A left action of a Lie group $G$ on a symplectic manifold $(M,\omega)$ is said to be a \bld{Hamiltonian action of $G$ on $(M,\omega)$}\index{Hamiltonian!action}, iff for each $v \in \mathfrak{g}$, there exists a Hamiltonian system $(M,\omega,H_v)$, such that $X_{H_v} = \what{v}$. 	
+Let $\theta : G \times M \to M$ be a left action of a Lie group $G$ on a symplectic manifold $(M,\omega)$. We say that \bld{$G$ acts on $M$ by symplectomorphisms}\index{Action!by symplectomorphisms}, iff for all $g \in G$, the map $\theta_g : M \to M$ defined by $\theta_g(x) := g \cdot x$ is a symplectomorphism. We adapt the terminology provided in \cite[203]{salamon:symplectic_topology:2017}.
+
+\begin{definition}[Weakly Hamiltonian Action and Hamiltonian Action]
+	A left action of a Lie group $G$ on a symplectic manifold $(M,\omega)$ by symplectomorphisms is said to be a \bld{Hamiltonian action of $G$ on $(M,\omega)$}\index{Action!weakly Hamiltonian}, iff for each $v \in \mathfrak{g}$, there exists a Hamiltonian system $(M,\omega,H_v)$, such that $X_{H_v} = \what{v}$. If additionally the induced mapping $\mathfrak{g} \to C^\infty(M)$ defined by $v \mapsto H_v$
 \end{definition}
 
 \begin{definition}[Symmetry Group]
-	A \bld{symmetry group of a Hamiltonian system $(M,\omega,H)$}\index{Symmetry group} is defined to be a Lie group $G$, such that there exists a Hamiltonian action of $G$ on $(M,\omega)$, such that
+	A Lie group $G$ is said to be a \bld{symmetry group of a Hamiltonian system $(M,\omega,H)$}\index{Symmetry group}, iff there exists a weakly Hamiltonian action of $G$ on $(M,\omega)$, such that
 	\begin{equation*}
 		H(g \cdot x) = H(x)
 	\end{equation*}
 	\noindent holds for all $g \in G$ and $x \in M$.
 \end{definition}
 
-\begin{theorem}[Noether\index{Noether!'s theorem}]
-	\label{thm:Noether_theorem}
+\begin{theorem}[Noether's Theorem, Hamiltonian Version\index{Noether!'s theorem, Hamiltonian version}]
+	\label{thm:Noethers_theorem_Hamiltonian_case}
 	Let $G$ be a symmetry group of a Hamiltonian system $(M,\omega,H)$. Then for each $v \in \mathfrak{g}$, the function $H_v \in C^\infty(M)$ such that $X_{H_v} = \what{v}$ is an integral of motion.
 \end{theorem}
 
