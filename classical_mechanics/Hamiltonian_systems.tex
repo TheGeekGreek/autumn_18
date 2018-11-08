@@ -104,7 +104,7 @@ Recall, that if $f \in C^\infty(M)$ for a smooth manifold $M$, the \emph{differe
 	Let $(M,\omega,H)$ be a Hamiltonian system. A function $f \in C^\infty(M)$ is said to be an \bld{integral of motion for the Hamiltonian system $(M,\omega,H)$}\index{Integral of motion}, iff $\cbr{H,f} = 0$.
 \end{definition}
 
-\subsection*{Noether's Theorem}
+\subsection*{Lie Group Actions and Noether's Theorem}
 Let us recall some basic facts from the theory of Lie groups and Lie algebras. A \emph{Lie group} is defined to be a group $(G,\cdot)$, such that $G$ is a smooth manifold and the multiplication $\cdot$ as well as the inversion map $\cdot^{-1} : G \to G$ defined by $g\mapsto g^{-1}$ are smooth. If $G$ is a Lie group, we can associate to $G$ its \emph{Lie algebra} $\mathfrak{g}$ defined to be $\mathfrak{g} := T_eG$, where $e$ denotes the neutral element of $G$. It can be shown that $\mathfrak{g} \cong \mathfrak{X}_L(G)$ as real vector spaces, where $\mathfrak{X}_L(G) \subseteq \mathfrak{X}(G)$ denotes the space of \emph{left invariant vector fields on $G$}, that is, the vector fields $X \in \mathfrak{X}(G)$ satisfying $(L_g)_* X = X$, where $L_g$ is the diffeomorphism $L_g : G \to G$ defined by $L_g(h) := gh$ and $(L_g)_*$ is the \emph{pushforward of $X$} defined to be the vector field $\del[1]{(L_g)_*X}_h := d(L_g)_{g^{-1}h}X\vert_{g^{-1}h}$ for $h \in G$. Most importantly, any left invariant vector field on $G$ is complete and so we can define the \emph{exponential map} $\exp : \mathfrak{g} \to G$ by 
 \begin{equation*}
 	\exp v := \gamma(1),

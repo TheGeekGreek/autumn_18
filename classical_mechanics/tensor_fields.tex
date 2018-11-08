@@ -15,7 +15,7 @@ Let $M^n$ be a smooth manifold and let $k,l \in \mathbb{N}$. For all $x \in M$ d
 \end{equation*}
 By proposition 12.10 \cite[311]{lee:smooth_manifolds:2013} we have that 
 \begin{equation*}
-	T^{(k,l)}(T_xM) \cong L\del[1]{\undercbrace{T^*_xM, \dots, T^*_xM}_{k},\undercbrace{T_xM,\dots,T_xM}_{l};\mathbb{R}}
+	T^{(k,l)}(T_xM) \cong \mathrm{L}\del[1]{\undercbrace{T^*_xM, \dots, T^*_xM}_{k},\undercbrace{T_xM,\dots,T_xM}_{l};\mathbb{R}}
 \end{equation*}
 \noindent since $(T^*_xM)^* \cong T_xM$ canonically ($T_xM$ is finite-dimensional) where the latter denotes the space of all $\mathbb{R}$-valued multilinear forms on
 \begin{equation*}
@@ -86,6 +86,34 @@ Next we want to ``glue'' together the different spaces of mixed tensors.
 	\end{equation*}
 	Therefore, conditions (i)-(iii) in the vector bundle chart lemma \ref{lem:vector_bundle_chart_lemma} are satisfied and the statement follows.
 \end{proof}
+
+\begin{remark}
+	There is a much more abstract approach for constructing vector bundles\footnote{See \href{https://www.merry.io/differential-geometry-i-lecture-notes/14-constructing-new-vector-bundles}{lecture 14} from the lecture notes of the course \emph{Differential Geometry I} taught by \emph{Will J. Merry} at the \emph{ETH Zurich} in the autumn semester 2018.} than the explicit one used for the bundle of mixed tensors in proposition \ref{prop:tensor_bundle}. Let us first formulate a \emph{metatheorem}:
+	\begin{quote}
+		``Anything one can do with vector spaces, one can also do with vector bundles.''
+	\end{quote}
+
+	We make this precise now. Let $\mathsf{Vect}$ denote the category of finite-dimensional real vector spaces. A functor 
+	\begin{equation*}
+		\mathcal{F} : \undercbrace{\mathsf{Vect} \times \dots \times \mathsf{Vect}}_k \to \mathsf{Vect}
+	\end{equation*}
+	\noindent which is either contravariant or covariant in its arguments, is said to be \emph{smooth}, iff for all vector spaces $V_1,\dots,V_k,W_1,\dots,W_k \in \mathsf{Vect}$ the induced map
+	\begin{equation*}
+		\bigoplus_{i = 1}^k \wtilde{\mathrm{L}}(V_i,W_i) \to \mathrm{L}\del[1]{\mathcal{F}(V_1,\dots,V_k),\mathcal{F}(W_1,\dots,W_k)}
+	\end{equation*}
+	\noindent where
+	\begin{equation*}
+		\wtilde{\mathrm{L}}(V_i,W_i) := \ccases{
+			\mathrm{L}(V_i,W_i) & \mathcal{F} \text{ is covariant in the $i$-th argument},\\
+			\mathrm{L}(W_i,V_i) & \mathcal{F} \text{ is contravariant in the $i$-th argument},
+		}
+	\end{equation*}
+	\noindent is a smooth map. The formal statement of the metatheorem can now be phrased as follows. If $\mathcal{F} : \mathsf{Vect} \times \dots \times \mathsf{Vect} \to \mathsf{Vect}$ is a smooth functor as above and $\pi_i : E_i \to M$ are $k$ vector bundles, then $\pi : \mathcal{F}(E_1,\dots,E_k) \to M$ is a vector bundle where
+	\begin{equation*}
+		\mathcal{F}(E_1,\dots,E_k) := \coprod_{x \in M} \mathcal{F}(E_1\vert_x,\dots,E_k\vert_x)
+	\end{equation*}
+	\noindent and $\pi(x,v) := x$. 
+\end{remark}
 
 Recall, that in a category $\mathcal{C}$, a \emph{section} of a morphism $f : X \to Y$ is a morphism $\sigma : Y \to X$ such that $f \circ \sigma = \id_Y$.
 
