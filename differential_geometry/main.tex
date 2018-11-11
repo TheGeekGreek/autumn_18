@@ -17,23 +17,4 @@
 
 \tableofcontents
 
-\section*{The Category of Smooth Manifolds}
-
-\begin{definition}[Topological Manifold]
-	Let $n \in \mathbb{N}$. A topological space $M$ is said to be a \bld{topological manifold of dimension $n$}, iff
-	\begin{enumerate}[label = \textup{(\roman*)},leftmargin=*]
-		\item $M$ is locally Euclidean of dimension $n$, that is, for every $x \in M$ there exist an open subset $U \subseteq M$ and a function $\varphi : U \to \mathbb{R}^n$ such that $\varphi(U) \subseteq \mathbb{R}^n$ is open and $\varphi : U \to \varphi(U)$ is a homeomorphism.
-		\item $M$ is Hausdorff and has at most countably many connected components.
-		\item $M$ is paracompact, that is, every open cover of $M$ admits a locally finite open refinement.
-	\end{enumerate}
-\end{definition}
-
-\begin{proposition}[Chain Rule]
-	Let $U \subseteq \mathbb{R}^n$ and $V \subseteq \mathbb{R}^m$ be open, $F \in C^1(U,V)$ and $G \in C^1(V,\mathbb{R}^p)$. Then $G \circ F \in C^1(U,\mathbb{R}^p)$ and
-	\begin{equation*}
-		\frac{\partial(G^i \circ F)}{\partial x^j}(x) = \frac{\partial G^i}{\partial y^k}\del[1]{F(x)}\frac{\partial F^k}{\partial x^j}(x)
-	\end{equation*}
-	\noindent holds for all $x \in U$.
-\end{proposition}
-
 \end{document}
