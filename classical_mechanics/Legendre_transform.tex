@@ -32,7 +32,7 @@ Let $(M^n,L)$ be an autonomous Lagrangian system and $(U,x^i)$ a chart on $M$. M
 
 The nondegeneracy of an autonomous Lagrangian system is intrinsically connected to a certain differential form in $\Omega^1(TM)$, which we will construct now. For every $(x,v) \in TM$ we can define a covector $D^\mathcal{F}_{(x,v)} L \in T^*_xM$ by setting
 \begin{equation}
-	D^\mathcal{F}_{(x,v)}L := \frac{\partial}{\partial v^i}\bigg\vert_{(x,v)}(L) dx^i\vert_x = \frac{\partial L}{\partial v^i}dx^i.
+	D^\mathcal{F}L_{(x,v)} := \frac{\partial}{\partial v^i}\bigg\vert_{(x,v)}(L) dx^i\vert_x.
 \end{equation}
 Let $(\wtilde{U},\wtilde{x}^i)$ be another chart on $M$ such that $U \cap \wtilde{U} \neq \varnothing$. Denote the induced coordinates on $TM$ by $(\wtilde{x}^i,\wtilde{v}^i)$. Then on $U \cap \wtilde{U}$ we have that 
 \begin{equation*}
@@ -62,7 +62,7 @@ Therefore, $D^\mathcal{F}L$ is independent of the choice of coordinates.
 
 \begin{definition}[Fibrewise Differential\footnote{\unboldmath This terminology is adapted from exercise C.3. on problem sheet C of the lecture \emph{Differential geometry I} taught by \emph{Will J. Merry} at \emph{ETH Z\"urich} in the autumn semester $2018$, which can be found \href{https://www.merry.io/differential-geometry-i-problem-sheets/problem-sheet-c}{here}. See also \cite[2]{mazzucchelli:CPT:2012}.}]
 	\label{def:fibrewise_differential}
-	Let $(M,L)$ be an autonomous Lagrangian system. The form $D^\mathcal{F}L \in \Omega^1(TM)$ defined on a chart $(U,x^i)$ of $M$ by
+	Let $(M,L)$ be an autonomous Lagrangian system. The form $D^\mathcal{F}L \in \upOmega^1(TM)$ defined on a chart $(U,x^i)$ of $M$ by
 	\begin{equation}
 		\label{eq:fibrewise_differential}
 		D^\mathcal{F}L := \frac{\partial L}{\partial v^i}dx^i
@@ -78,7 +78,7 @@ Therefore, $D^\mathcal{F}L$ is independent of the choice of coordinates.
 	\label{ex:fibrewise_differential_Riemannian_manifold}
 	Consider the autonomous Lagrangian system as defined in example \ref{ex:nondegenerate_Lagrangian_system}. Then the computation performed in example \ref{ex:motions_on_Riemannian_manifolds} yields
 	\begin{equation*}
-		D_{(x,v)}^\mathcal{F}(T - V) = g_{ij}(x)v^idx^j
+		D^\mathcal{F}(T - V)_{(x,v)} = g_{ij}(x)v^idx^j
 	\end{equation*}
 	\noindent on every chart since $\frac{\partial V}{\partial v^j} = 0$ for all $j$.
 \end{example}
@@ -141,7 +141,7 @@ Thus
 
 \begin{definition}[Tautological Form]
 	\label{def:tautological_form}
-	Let $M$ be a smooth manifold. The \bld{tautological form on $T^*M$}\index{Form!tautological}, denoted by $\alpha$, is the form  $\alpha \in \Omega^1(T^*M)$ defined locally by
+	Let $M$ be a smooth manifold. The \bld{tautological form on $T^*M$}\index{Form!tautological}, denoted by $\alpha$, is the form  $\alpha \in \upOmega^1(T^*M)$ defined locally by
 	\begin{equation*}
 		\alpha := \xi_idx^i,
 	\end{equation*}
@@ -175,7 +175,7 @@ Recall, that if $F \in C^\infty(M,N)$ for some smooth manifolds $M$ and $N$, and
 	Let $(M,L)$ be a Lagrangian system. Then the morphism $\tau_L : TM \to T^*M$ defined by
 	\begin{equation}
 		\label{eq:Legendre_transform}
-		\tau_L(x,v) := \del[1]{x,D^\mathcal{F}_{(x,v)}L}
+		\tau_L(x,v) := \del[1]{x,D^\mathcal{F}L_{(x,v)}}
 	\end{equation}
 	\noindent is a Legendre transform. In particular, if we consider the Lagrangian system defined in example \ref{ex:nondegenerate_Lagrangian_system}, we get that the above defined Legendre transform is a diffeomorphism. Indeed, suppose that $\tau_{T - V}(x,v) = \tau_{T - V}(\wtilde{x},\wtilde{v})$. Then $x = \wtilde{x}$ and
 	\begin{equation*}
@@ -211,23 +211,23 @@ Since the nondegenracy of a Lagragian system $(M,L)$ is inherently connected to 
 	\end{equation}
 	\noindent and so
 	\begin{equation*}
-		d_{(x,v)}\tau_L = \del{\begin{array}{c|c}
+		D\tau_L\vert_{(x,v)} = \del{\begin{array}{c|c}
 			I & 0\\\hline
 			0 & \mathcal{H}_L
 		\end{array}}
 	\end{equation*}
 	\noindent at every $(x,v) \in TM$. Hence 
 	\begin{equation*}
-		\det \del[1]{d_{(x,v)}\tau_L} = \det \mathcal{H}_L.
+		\det \del[1]{D\tau_L\vert_{(x,v)}} = \det \mathcal{H}_L.
 	\end{equation*}
-	If $\tau_L$ is a local diffeomorphism, by definition, we have that some restriction of $\tau_L$ to some neighbourhood of $(x,v)$ is a diffeomorphism, and so, by properties of differentials (d) \cite[55]{lee:smooth_manifolds:2013}, we have that $d_{(x,v)}\tau_L$ is an isomorphism. Conversly, if the Lagrangian system is nondegenerate, we conclude using the inverse function theorem for manifolds \cite[79]{lee:smooth_manifolds:2013}, that $\tau_L$ is a local diffeomorphism.
+	If $\tau_L$ is a local diffeomorphism, by definition, we have that some restriction of $\tau_L$ to some neighbourhood of $(x,v)$ is a diffeomorphism, and so, by properties of differentials (d) \cite[55]{lee:smooth_manifolds:2013}, we have that $D\tau_L\vert_{(x,v)}$ is an isomorphism. Conversly, if the Lagrangian system is nondegenerate, we conclude using the inverse function theorem for manifolds \cite[79]{lee:smooth_manifolds:2013}, that $\tau_L$ is a local diffeomorphism.
 \end{proof}
 
 \begin{definition}[Energy]
 	\label{def:energy}
 	The \bld{energy of an autonomous Lagrangian system $(M,L)$}\index{Energy!of an autonomous Lagrangian system} is defined to be the function $E_L \in C^\infty(TM)$ given by
 	\begin{equation*}
-		E_L(x,v) := D^\mathcal{F}_{(x,v)}L(v) - L(x,v),
+		E_L(x,v) := D^\mathcal{F}L_{(x,v)}(v) - L(x,v),
 	\end{equation*}
 	\noindent in standard coordinates $(x^i,v^i)$ of $TM$.
 \end{definition}

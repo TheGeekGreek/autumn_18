@@ -41,15 +41,15 @@ Explicitely, given any one-parameter group $\theta : (\mathbb{R},+) \to \Diff(M)
 \begin{equation*}
 	\theta_{s + t} = \theta_s \circ \theta_t \qquad \text{and} \qquad \theta_0 = \id_M
 \end{equation*}
-\noindent for all $s,t \in \mathbb{R}$. We say that the one-parameter group $(\theta_s)_{s \in \mathbb{R}}$ of diffeomorphisms of $M$ is smooth, iff the corresponding map $\theta : \mathbb{R} \times M \to M$ defined by $(s,x) \mapsto \theta_s(x)$ is smooth. If $F \in C^\infty(M,N)$ for two smooth manifolds $M$ and $N$, for $x \in M$ we define the \emph{differential of $F$ at $x$} to be the mapping $dF_x : T_xM \to T_{F(x)}N$, given by $dF_x(v)(f) := v(f \circ F)$ for all $f \in C^\infty(N)$. These fibrewise mappings can be assembled to the \emph{global differential of $F$}, defined to be the mapping $dF : TM \to TN$ given by $dF(x,v) := \del[1]{F(x),dF_x(v)}$. The global differential is a smooth map (see \cite[68]{lee:smooth_manifolds:2013}) and has the following properties. 
+\noindent for all $s,t \in \mathbb{R}$. We say that the one-parameter group $(\theta_s)_{s \in \mathbb{R}}$ of diffeomorphisms of $M$ is smooth, iff the corresponding map $\theta : \mathbb{R} \times M \to M$ defined by $(s,x) \mapsto \theta_s(x)$ is smooth. If $F \in C^\infty(M,N)$ for two smooth manifolds $M$ and $N$, for $x \in M$ we define the \emph{differential of $F$ at $x$} to be the mapping $DF_x : T_xM \to T_{F(x)}N$, given by $DF_x(v)(f) := v(f \circ F)$ for all $f \in C^\infty(N)$. These fibrewise mappings can be assembled to the \emph{global differential of $F$}, defined to be the mapping $DF : TM \to TN$ given by $DF(x,v) := \del[1]{F(x),DF_x(v)}$. The global differential is a smooth map (see \cite[68]{lee:smooth_manifolds:2013}) and has the following properties. 
 
 \begin{proposition}[{Properties of the Global Differential \cite[68]{lee:smooth_manifolds:2013}}]
 	\label{prop:properties_of_the_global_differential}
 	Let $M,N,P$ be smooth manifolds, $F \in C^\infty(M,N)$ and $G \in C^\infty(N,P)$. Then:
 	\begin{enumerate}[label = \textup{(\alph*)},leftmargin=*]
-		\item $d(G \circ F) = dG \circ dF$.
-		\item $d(\id_M) = \id_{TM}$.
-		\item If $F$ is a diffeomorphism, then $dF$ is a diffeomorphism with $(dF)^{-1} = d\del[1]{F^{-1}}$.
+		\item $D(G \circ F) = DG \circ DF$.
+		\item $D(\id_M) = \id_{TM}$.
+		\item If $F$ is a diffeomorphism, then $DF$ is a diffeomorphism with $(DF)^{-1} = D\del[1]{F^{-1}}$.
 	\end{enumerate} 
 \end{proposition}
 
@@ -59,17 +59,17 @@ Explicitely, given any one-parameter group $\theta : (\mathbb{R},+) \to \Diff(M)
 
 \begin{lemma}
 	\label{lem:induced_one-parameter_group_of_diffeomorphisms}
-	Let $(\theta_s)_{s \in \mathbb{R}}$ be a smooth one-parameter group of diffeomorphisms of a smooth manifold $M$. Then $(d\theta_s)_{s \in \mathbb{R}}$ is a smooth one-prameter group of diffeomorphisms of $TM$.
+	Let $(\theta_s)_{s \in \mathbb{R}}$ be a smooth one-parameter group of diffeomorphisms of a smooth manifold $M$. Then $(D\theta_s)_{s \in \mathbb{R}}$ is a smooth one-prameter group of diffeomorphisms of $TM$.
 \end{lemma}
 
 \begin{proof}
-	Part (c) of the properties of the global differential \ref{prop:properties_of_the_global_differential} implies that $d\theta_s$ is a diffeomorphism for all $s \in \mathbb{R}$. Moreover, by part (c) of the properties of the global differential \ref{prop:properties_of_the_global_differential} we compute
+	Part (c) of the properties of the global differential \ref{prop:properties_of_the_global_differential} implies that $D\theta_s$ is a diffeomorphism for all $s \in \mathbb{R}$. Moreover, by part (c) of the properties of the global differential \ref{prop:properties_of_the_global_differential} we compute
 	\begin{equation*}
-		d\theta_{s + t} = d(\theta_s \circ \theta_t) = d\theta_s \circ d\theta_t
+		D\theta_{s + t} = D(\theta_s \circ \theta_t) = D\theta_s \circ D\theta_t
 	\end{equation*}
 	\noindent for all $s,t \in \mathbb{R}$. Lastly, part (b) of the properties of the global differential \ref{prop:properties_of_the_global_differential} implies
 	\begin{equation*}
-		d\theta_0 = d(\id_M) = \id_{TM}.
+		D\theta_0 = D(\id_M) = \id_{TM}.
 	\end{equation*}
 \end{proof}
 
@@ -82,7 +82,7 @@ Given a one-parameter group $(\theta_s)_{s \in \mathbb{R}}$ of diffeomorphisms o
 \begin{definition}[Symmetry]
 	A \bld{symmetry of an autonomous Lagrangian system $(M,L)$}\index{Symmetry} is defined to be a diffeomorphism $F \in \Diff(M)$, such that
 	\begin{equation*}
-		L \circ dF = L.
+		L \circ DF = L.
 	\end{equation*}
 \end{definition}
 
@@ -94,7 +94,7 @@ Recall, that if $k \in \mathbb{N}$ and $X \in \mathfrak{X}(M)$ for a smooth mani
 
 \begin{theorem}[{Noether's Theorem, Lagrangian Version\index{Noether!'s theorem, Lagrangian version}}]
 	\label{thm:Noethers_theorem_Lagrangian_version}	
-	Let $(\theta_s)_{s \in \mathbb{R}}$ be a smooth one-parameter group of symmetries of an autonomous Lagrangian system. Then $i_V\del[1]{D^\mathcal{F}L}$ is a conservation law, where $V$ denotes the infinitesimal generator of the one-parameter group $(d\theta_s)_{s \in \mathbb{R}}$ of diffeomorphisms of $TM$. The conservation law $i_V\del[1]{D^\mathcal{F}L}$ is called the \bld{Noether integral}\index{Noether!integral}.
+	Let $(\theta_s)_{s \in \mathbb{R}}$ be a smooth one-parameter group of symmetries of an autonomous Lagrangian system. Then $i_V\del[1]{D^\mathcal{F}L}$ is a conservation law, where $V$ denotes the infinitesimal generator of the one-parameter group $(D\theta_s)_{s \in \mathbb{R}}$ of diffeomorphisms of $TM$. The conservation law $i_V\del[1]{D^\mathcal{F}L}$ is called the \bld{Noether integral}\index{Noether!integral}.
 \end{theorem}
 
 \begin{proof}
@@ -110,9 +110,9 @@ Recall, that if $k \in \mathbb{N}$ and $X \in \mathfrak{X}(M)$ for a smooth mani
 	\begin{equation*}
 		V^i(x) := \frac{d \theta_s^i(x)}{ds}(0).
 	\end{equation*}
-	Next consider the infinitesimal generator $V$ of the one-parameter group $(d\theta_s)_{s \in \mathbb{R}}$. For $(x,v) \in TU$, where $v = v^i \frac{\partial}{\partial x^i}$, we compute
+	Next consider the infinitesimal generator $V$ of the one-parameter group $(D\theta_s)_{s \in \mathbb{R}}$. For $(x,v) \in TU$, where $v = v^i \frac{\partial}{\partial x^i}$, we compute
 	\begin{align*}
-		V_{(x,v)} &= \frac{d}{ds}\bigg\vert_{s = 0} \del[1]{\theta_s(x),d(\theta_s)_x(v)}\\
+		V_{(x,v)} &= \frac{d}{ds}\bigg\vert_{s = 0} \del[1]{\theta_s(x),D\theta_s\vert_x(v)}\\
 		&= \frac{d}{ds}\bigg\vert_{s = 0} \del[3]{\theta_s(x),v^j\frac{\partial \theta_s^i}{\partial x^j}(x)\frac{\partial}{\partial x^i}\bigg\vert_{\theta_s(x)}}\\
 		&= \frac{d \theta_s^i(x)}{ds}(0)\frac{\partial}{\partial x^i}\bigg\vert_{(x,v)} + v^j\frac{\partial^2 \theta^i}{\partial s\partial x^j}(0,x) \frac{\partial}{\partial v^i}\bigg\vert_{(x,v)}\\
 		&= V^i(x)\frac{\partial}{\partial x^i}\bigg\vert_{(x,v)} + v^j\frac{\partial^2 \theta^i}{\partial x^j\partial s}(0,x) \frac{\partial}{\partial v^i}\bigg\vert_{(x,v)}\\
@@ -127,7 +127,7 @@ Recall, that if $k \in \mathbb{N}$ and $X \in \mathfrak{X}(M)$ for a smooth mani
 	\end{align*}
 	For $(x,v) \in TM$ set $\gamma(s) := d\theta_s(x,v)$. If $f \in C^\infty(TM)$, the definition of the velocity of a curve and of the differential yields
 	\begin{equation*}
-		(Vf)(x,v) = V_{(x,v)}f = \del[3]{\frac{d}{ds}\bigg\vert_{s = 0}\gamma(s)}f= d\gamma\del[3]{\frac{d}{ds}\bigg\vert_{s = 0}}f = \frac{d}{ds}\bigg\vert_{s = 0}(f \circ \gamma).
+		(Vf)(x,v) = V_{(x,v)}f = \del[3]{\frac{d}{ds}\bigg\vert_{s = 0}\gamma(s)}f= D\gamma\del[3]{\frac{d}{ds}\bigg\vert_{s = 0}}f = \frac{d}{ds}\bigg\vert_{s = 0}(f \circ \gamma).
 	\end{equation*}
 	So using the Euler-Lagrange equations \ref{thm:EL_equations} and the assumption that $\theta_s$ is a symmetry of $(M,L)$ for all $s \in \mathbb{R}$, we get
 	\begin{align*}
@@ -136,7 +136,7 @@ Recall, that if $k \in \mathbb{N}$ and $X \in \mathfrak{X}(M)$ for a smooth mani
 		&= \frac{\partial L}{\partial x^i}(\gamma,\dot{\gamma}) V^i(\gamma) + \frac{\partial L}{\partial v^i}(\gamma,\dot{\gamma}) \frac{d}{dt}V^i(\gamma)\\
 		&= \frac{\partial L}{\partial x^i}(\gamma,\dot{\gamma}) V^i(\gamma) + \frac{\partial L}{\partial v^i}(\gamma,\dot{\gamma}) \frac{\partial V^i}{\partial x^j}(\gamma)\dot{\gamma}^j\\
 		&= V_{(\gamma,\dot{\gamma})}L\\
-		&= \frac{d}{ds}\bigg\vert_{s = 0} \del[1]{L \circ d\theta_s}(\gamma,\dot{\gamma})\\
+		&= \frac{d}{ds}\bigg\vert_{s = 0} \del[1]{L \circ D\theta_s}(\gamma,\dot{\gamma})\\
 		&= \frac{d}{ds}\bigg\vert_{s = 0} L(\gamma,\dot{\gamma})\\
 		&= 0.
 	\end{align*}

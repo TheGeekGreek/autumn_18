@@ -11,6 +11,7 @@
 \end{definition}
 
 \begin{example}[Linear Map]
+	\label{ex:linear_map_differential}
 	Let $(V,\abs{\>\cdot\>}_V)$ and $(W,\abs{\>\cdot\>}_W)$ be finite-dimensional vector spaces and $L \in \mathrm{L}(V,W)$. Then $L$ is differentiable at every $x_0 \in V$ since
 	\begin{equation*}
 		L(x) - L(x_0) = L(x - x_0) = \varphi(x)(x - x_0)
@@ -101,14 +102,15 @@ Da $\varepsilon > 0$ beliebig war, folgt $\norm[0]{g(a)}_{\op} = 0$ und somit $g
 \end{definition}
 
 \begin{definition}[Partial Derivative]
-	Let $U \subseteq \mathbb{R}^n$ open, $F : U \to \mathbb{R}^m$ and $x_0 \in U$. If $F$ is differentiable at $x_0$, then define the \bld{$i$-th partial derivative of $F$ at $x_0$}, written $\partial_iF(x_0)$, by
+	Let $U \subseteq \mathbb{R}^n$ open, $F : U \to \mathbb{R}^m$ and $x_0 \in U$. If $F$ is differentiable at $x_0$, then define the \bld{$i$-th partial derivative of $F$ at $x_0$}, written $D_iF(x_0)$, by
 	\begin{equation*}
-		\partial_iF(x_0) := D_{e_i}F_{x_0},
+		D_iF(x_0) := D_{e_i}F_{x_0},
 	\end{equation*} 
 	\noindent where $(e_i)$ denotes the standard basis of $\mathbb{R}^n$.
 \end{definition}
 
 \begin{proposition}
+	\label{prop:computing_differential_via_directional_derivative}
 	Let $U \subseteq \mathbb{R}^n$ open, $F : U \to \mathbb{R}^m$ and $x_0 \in U$. If $F$ is differentiable at $x_0$, then 
 	\begin{equation*}
 		DF_{x_0}(v) = D_vF_{x_0}

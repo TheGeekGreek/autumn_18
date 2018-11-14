@@ -1,0 +1,81 @@
+\section*{The Category of Smooth Manifolds}
+
+\begin{definition}[Topological Manifold]
+	Let $n \in \mathbb{N}$. A topological space $M$ is said to be a \bld{topological manifold of dimension $n$}, iff
+	\begin{enumerate}[label = \textup{(\roman*)},leftmargin=*]
+		\item $M$ is locally Euclidean of dimension $n$, that is, for every $x \in M$ there exist an open subset $U \subseteq M$ and a function $\varphi : U \to \mathbb{R}^n$ such that $\varphi(U) \subseteq \mathbb{R}^n$ is open and $\varphi : U \to \varphi(U)$ is a homeomorphism. Every such pair $(U,\varphi)$ is called a \bld{chart on $M$ about $x$}.
+		\item $M$ is Hausdorff and has at most countably many connected components.
+		\item $M$ is paracompact, that is, every open cover of $M$ admits a locally finite open refinement.
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}[Smooth Atlas]
+	A \bld{smooth atlas for a topological manifold $M$} is a collection $(U_\alpha,\varphi_\alpha)_{\alpha \in A}$ of charts on $M$ such that
+	\begin{enumerate}[label = \textup{(\roman*)},leftmargin = *]
+		\item $(U_\alpha)_{\alpha \in A}$ is an open cover for $M$.
+		\item For all $\alpha,\beta \in A$ such that $U_\alpha \cap U_\beta \neq \varnothing$, the function 
+			\begin{equation*}
+				\varphi_\alpha \circ \varphi_\beta^{-1} : \varphi_\beta(U_\alpha \cap U_\beta) \to \varphi_\alpha(U_\alpha \cap U_\beta)
+			\end{equation*}
+			\noindent is smooth. The function $\varphi_\alpha \circ \varphi_\beta^{-1}$ is called a \bld{transition function}.
+	\end{enumerate}
+\end{definition}
+
+Let $\mathcal{A}$ and $\mathcal{A}'$ be two smooth atlases on a topological manifold $M$. Define a relation on the set of all smooth atlases on $M$ (this is a subset of the power set $2^M$) by
+\begin{equation*}
+	\mathcal{A} \sim \mathcal{A}' \quad :\Leftrightarrow \quad \mathcal{A} \cup \mathcal{A}' \text{ is an atlas for } M.
+\end{equation*}
+
+\begin{exercise}
+	Show that above relation is actually an equivalence relation on the set of all smooth atlases on a topological manifold $M$.
+\end{exercise}
+
+\begin{definition}[Smooth Structure]
+	A \bld{smooth structure on a topological manifold $M$} is an equivalence class $\sbr[0]{\mathcal{A}}$ where $\mathcal{A}$ is a smooth atlas for $M$.
+\end{definition}
+
+\begin{definition}[Maximal Smooth Atlas]
+	Let $\sbr[0]{\mathcal{A}}$ be a smooth structure on a topological manifold $M$. Define the \bld{maximal smooth atlas on $M$} by $\bigcup_{\mathcal{A}' \in \sbr[0]{\mathcal{A}}} \mathcal{A}'$.
+\end{definition}
+
+\begin{definition}[Smooth Manifold]
+	Let $n \in \mathbb{N}$. A \bld{smooth manifold of dimension $n$} is defined to be a pair $(M,\mathcal{A})$, where $M$ is a topological manifold of dimension $n$ and $\mathcal{A}$ is a maximal smooth atlas on $M$.
+\end{definition}
+
+\begin{example}[$n$-Spheres]
+	Let $n \in \mathbb{N}$. If $n = 0$, we have that $\mathbb{S}^0 = \cbr{\pm 1}$. It is easily seen that $\mathbb{S}^0$ is a smooth manifold of dimension $0$. Let $n \geq 1$. Define $N := e_{n + 1}$ and $S := -e_{n + 1}$, where $e_{n + 1}$ denotes the $n + 1$-th standard basis vector of $\mathbb{R}^{n + 1}$. Moreover, set
+	\begin{equation*}
+		U_+ := \mathbb{S}^n \setminus S \qquad \text{and} \qquad U_- := \mathbb{S}^n \setminus N.
+	\end{equation*}
+	Then $U_+$ and $U_-$ are open subsets of $\mathbb{S}^n$, the upper and lower hemisphere, respectively. Then the functions $\varphi_\pm : U_\pm \to \mathbb{R}^n$ defined by
+	\begin{equation*}
+		\varphi_\pm(x) := \frac{1}{1 \pm x_{n + 1}}(x_1,\dots,x_n),
+	\end{equation*}
+	\noindent are homeomorphisms. Indeed, one can check that $\psi_\pm : \mathbb{R}^n \to U_\pm$ defined by
+	\begin{equation*}
+		\psi_\pm(x) := \del[4]{\frac{2x}{1 + \abs[0]{x}^2}, \frac{\pm(1 - \abs[0]{x}^2)}{1 + \abs[0]{x}^2}} 
+	\end{equation*}
+	\noindent is a continuous inverse for $\varphi_+$ and $\varphi_-$, respectively. We claim that $\cbr[0]{(U_\pm,\varphi_\pm)}$ is a smooth atlas for $\mathbb{S}^n$. Clearly, $\mathbb{S}^n$ is covered by the two charts. Next we have to calculate the transition functions $\varphi_\mp \circ \varphi^{-1}_\pm = \varphi_\mp \circ \psi_\pm : \varphi_\pm(U_+ \cap U_-) \to \varphi_\mp(U_+ \cap U_-)$. It is easy to see that $\varphi_\pm(U_+ \cap U_-) = \mathbb{R}^n \setminus \cbr{0}$ and that
+	\begin{equation*}
+		\varphi_\mp \circ \psi_\pm = \frac{x}{\abs{x}^2},
+	\end{equation*}
+	\noindent which is smooth. Since $\mathbb{S}^n$ is Hausdorff as a metric space and as a subspace of a second countable space, itself second countable, $\mathbb{S}^n$ equipped with the smooth structure induced by the smooth atlas constructed above, is a smooth manifold of dimension $n$.
+\end{example}
+
+\begin{definition}[Smooth Map]
+	Let $M$ and $N$ be smooth manifolds and $F : M \to N$ a map. We say that $F$ is \bld{smooth}, iff for all $x \in M$, there exists a chart $(U,\varphi)$ on $M$ about $x$ and a chart $(V,\psi)$ on $N$ about $F(x)$ such that
+	\begin{enumerate}[label = \textup{(\roman*)},leftmargin=*]
+		\item $U \cap F^{-1}(V)$ is open in $M$.
+		\item $\psi \circ F \circ \psi^{-1} : \varphi\del[1]{U \cap F^{-1}(V)} \to \psi(V)$ is smooth.
+	\end{enumerate}
+	The \bld{set of all smooth maps from $M$ to $N$} is denoted by $C^\infty(M,N)$ and the \bld{set of all smooth functions on $M$} is denoted by $C^\infty(M)$.
+\end{definition}
+
+\begin{exercise}
+	Let $M$ be a smooth manifold. Show that $C^\infty(M)$ is an $\mathbb{R}$-algebra under pointwise defined operations.
+\end{exercise}
+
+\begin{example}[Coordinate Functions]
+	Let $M^n$ be a smooth manifold and $(U,\varphi)$ be a chart about some $x \in M$. Let $\pi^i : \mathbb{R}^n \to \mathbb{R}$ be defined by $\pi^i(x^1,\dots,x^n) := x^i$ for $i = 1,\dots,n$. Define $x^i : U \to \mathbb{R}$ by $x^i := \pi^i \circ \varphi$. Then $x^i \in C^\infty(U)$ and we call $x^i$ a \bld{coordinate function}. Moreover, we may denote the chart $(U,\varphi)$ by $\del[1]{U,(x^i)}$ and say that $(x^i)$ are \bld{local coordinates about $x$}. 
+\end{example}
+

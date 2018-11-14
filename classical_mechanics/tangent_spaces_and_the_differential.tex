@@ -1,0 +1,182 @@
+\section*{Tangent Spaces and the Differential}
+Let $M$ be a smooth manifold and let $x \in M$. Define a binary relation on the set
+\begin{equation*}
+	X := \cbr[1]{(U,f) : U \subseteq M \text{ neighbourhood of } x, f \in C^\infty(U)}
+\end{equation*}
+\noindent by
+\begin{equation*}
+	(U,f)\sim(V,g) \quad :\Leftrightarrow \quad \exists W \subseteq U \cap V \text{ neighbourhood of $x$, such that } f\vert_W = g\vert_W.
+\end{equation*}
+
+\begin{exercise}
+	Show that the above relation is actually an equivalence relation.
+\end{exercise}
+
+\begin{definition}[Germ]
+	Let $M$ be a smooth manifold and let $x \in M$. The set of \bld{germs at $p$}, written $C^\infty_x(M)$ is defined to be $C^\infty_x(M) := X/{\sim}$.
+\end{definition}
+
+\begin{exercise}
+	Show that $C^\infty_x(M)$ is an $\mathbb{R}$-algebra under the obvious operations.
+\end{exercise}
+
+\begin{remark}
+	Note that if $f \in C^\infty(M)$, then $\sbr[0]{(M,f)} \sim \sbr[0]{(U,f\vert_U)}$ for any neighbourhood $U$ of $x$. Thus any germ at $p$ contains a representant which is defined on the whole manifold and we thus may simply write $\sbr[0]{f}$ for a germ at $p$. 
+\end{remark}
+
+\begin{remark}
+	Let $\sbr[0]{f}$ be a germ at $x \in M$. Then $f(x)$ is well-defined. Indeed, if $f\vert_U = g\vert_U$ on some neighbourhood of $x$, then in particular $f(x) = g(x)$.
+\end{remark}
+
+\begin{definition}[Tangent Space]
+	Let $M$ be a smooth manifold and let $x \in M$. The \bld{tangent space of $M$ at $x$}, written $T_xM$, is defined to be the vector space $\del[1]{C^\infty_x(M)}^*$ such that
+	\begin{equation*}
+		v(\sbr[0]{f}\sbr[0]{g}) = v\sbr[0]{f}g(x) + f(x)v\sbr[0]{g}
+	\end{equation*}
+	\noindent holds.
+\end{definition}
+
+\begin{lemma}
+	\label{lem:derivation_of_constant_germ}
+	Let $M$ be a smooth manifold and $x \in M$. Suppose $\lambda \in C^\infty(M)$ is a constant function. Then $v\sbr{\lambda} = 0$ for all $v \in T_xM$.
+\end{lemma}
+
+\begin{proof}
+	This immediately follows from
+	\begin{equation*}
+		v\sbr{\lambda} = v\sbr{\lambda \cdot 1} = \lambda v\sbr{1} = \lambda v\sbr{1 \cdot 1} = 2\lambda v\sbr{1} = 2 v\sbr{\lambda}.
+	\end{equation*}
+\end{proof}
+
+\begin{definition}[Derivation]
+	Let $M$ be a smooth manifold, $x \in M$ and $U$ a neighbourhood of $x$. The \bld{space of derivations of $C^\infty(U)$ at $x$}, written $\mathcal{D}_x(U)$, is defined to be the vector space $\del[1]{C^\infty(U)}^*$ such that
+	\begin{equation*}
+		v(fg) = v(f)g(x) + f(x)v(g)
+	\end{equation*}
+	\noindent holds.
+\end{definition}
+
+\begin{proposition}
+	\label{prop:isomorphism_tangent_space}
+	Let $M$ be a a smooth manifold, $x \in M$ and $U$ be a neighbourhood of $x$. Then
+	\begin{equation*}
+		T_xM \cong \mathcal{D}_x(U).
+	\end{equation*}
+\end{proposition}
+
+\begin{proof}
+	Let $\Phi : T_xM \to \mathcal{D}_x(U)$ be defined by
+	\begin{equation*}
+		\Phi(v)(f) := v\sbr[0]{f}
+	\end{equation*}
+	\noindent for all $f \in C^\infty(U)$. Clearly $\Phi$ is well-defined and linear. We want to construct an inverse $\Psi : \mathcal{D}_x(U) \to T_xM$ for $\Phi$. This implies, that we should define
+	\begin{equation*}
+		\Psi(v)\sbr[0]{f} = v\del[1]{\wtilde{f}}
+	\end{equation*}
+	\noindent where $\wtilde{f} \in C^\infty(U)$ such that $\sbr[1]{\wtilde{f}} = \sbr[0]{f}$. 
+	\begin{enumerate}[label=\textit{Step \arabic*:},leftmargin=*,wide=0pt]
+		\item \textit{Existence of $\wtilde{f}$.} Let $(V,f)$ be a representant of $\sbr[0]{f}$. As in the proof of the smoothness criteria for tensor fields \ref{prop:smoothness_criteria_for_tensor_fields}, we find a neighbourhood $W$ about $x$ such that $\wwbar{W} \subseteq U \cap V$. Then there exists a smooth bump function $\psi \in C^\infty(U \cap V)$ such that $\psi\vert_W = 1$ and $\supp \psi \subseteq U\cap V$. Let $\wtilde{f} := \psi f$ extended to be zero on $U$. Then clearly $\sbr[1]{\wtilde{f}} = \sbr[0]{f}$ since $\wtilde{f} = f$ on $W$.
+		\item \textit{$\Psi$ is well-defined.} Suppose that $\sbr[0]{f} = \sbr[0]{g}$ in $C_x^\infty(M)$. Then $f = g$ on some neighbourhood $V$ of $x$. We claim that $v(f) = v(g)$ on $U \cap V$. Indeed, let $\psi$ be a smooth bump function for $\cbr{x}$ supported in $U \cap V$. Then $\psi(f - g) = 0$ on $U$ and we compute
+			\begin{equation*}
+				0 = v\del[1]{\psi(f - g)} = v(\psi)(f - g)(x) + \psi(x)v(f - g) = v(f - g).
+			\end{equation*}
+	\end{enumerate}
+\end{proof}
+
+\begin{lemma}
+	\label{lem:derivation_of_constant_function}
+	Let $M$ be a smooth manifold and $U$ a neighbourhood of $x \in M$. Suppose $\lambda \in C^\infty(U)$ is a constant function. Then $v(\lambda) = 0$ for all $v \in \mathcal{D}_x(U)$.
+\end{lemma}
+
+\begin{proof}
+	Using the notation of the proof of proposition \ref{prop:isomorphism_tangent_space}, lemma \ref{lem:derivation_of_constant_germ} yields	
+	\begin{equation*}
+		v(\lambda) = (\Phi \circ \Psi)(v)(\lambda) = \Psi(v)\sbr{\lambda} = 0.
+	\end{equation*}
+\end{proof}
+
+\begin{example}[Coordinate Derivation]
+	Let $M^n$ be a smooth manifold and $(U,\varphi)$ be a chart on $M$. For every $x \in U$ and every $i = 1,\dots,n$ define 
+	\begin{equation*}
+		\frac{\partial}{\partial x^i}\bigg\vert_x : C^\infty(U) \to \mathbb{R}
+	\end{equation*}
+	\noindent by
+	\begin{equation*}
+		\frac{\partial}{\partial x^i}\bigg\vert_x(f) := D_i(f \circ \varphi^{-1})\del[1]{\varphi(x)}.
+	\end{equation*}
+	Then clearly $\frac{\partial}{\partial x^i}\big\vert_x$ is a derivation of $C^\infty(U)$ at $x$. Thus by proposition \ref{prop:isomorphism_tangent_space}, $\frac{\partial}{\partial x^i}\big\vert_x \in T_xM$. 
+\end{example}
+
+One of the profound features of tangent spaces to a smooth manifold are that they are finite dimensional. In fact, they admit the same dimension as the manifold.
+
+\begin{lemma}
+	\label{lem:star_shaped}
+	Let $\upOmega \subseteq \mathbb{R}^n$ be open, and star-shaped about $0 \in \upOmega$. Suppose $f \in C^\infty(\upOmega)$. Then there exists $\varphi_1,\dots,\varphi_n \in C^\infty(\upOmega)$ such that $\varphi_i(0) = D_if(0)$ and
+	\begin{equation*}
+		f = f(0) + \pi^i \varphi_i.
+	\end{equation*}
+\end{lemma}
+
+\begin{proof}
+	For $x \in \upOmega$ define $\gamma : \intcc{0,1} \to \upOmega$ by $\gamma_x(t) := tx$ (note that this is only possible since $\upOmega$ is assumed to be star-shaped with centre $0$). Then
+	\begin{align*}
+		f(x) - f(0) &= \int_0^1 (f \circ \gamma_x)'(t) dt\\
+		&= \int_0^1 D_if\del[1]{\gamma_x(t)} \dot{\gamma}^i_x(t) dt\\
+		&= \int_0^1 D_if\del[1]{\gamma_x(t)} \pi^i(x)dt\\
+		&= \pi^i(x)\varphi_i(x)
+	\end{align*}
+	\noindent where
+	\begin{equation*}
+		\varphi_i(x) := \int_0^1 D_if\del[1]{\gamma_x(t)} dt.
+	\end{equation*}
+\end{proof}
+
+\begin{proposition}[Basis for the Tangent Space]
+	Let $M^n$ be a smooth manifold and $\del[0]{U,\varphi}$ a chart on $M$ about $x \in M$. Then 
+	\begin{equation*}
+		\cbr[3]{\frac{\partial}{\partial x^i}\bigg\vert_x : i = 1,\dots,n}
+	\end{equation*}
+	\noindent is a basis for $T_xM$, where $x^i := \pi^i \circ \varphi$.
+\end{proposition}
+
+\begin{proof}
+	We may assume that $(U,\varphi)$ is centered about $x$. Since $\varphi(U) \subseteq \mathbb{R}^n$ is open, there exists $\varepsilon > 0$ such that $B_\varepsilon(0) \subseteq \varphi(U)$. Set $V := \varphi^{-1}\del[1]{B_\varepsilon(0)}$. Then $V$ is a neighbourhood of $x$ in $M$ and thus by proposition \ref{prop:isomorphism_tangent_space}, we have that $T_xM \cong \mathcal{D}_x(V)$. Let $f \in C^\infty(V)$. An application of lemma \ref{lem:star_shaped} to $f \circ \varphi^{-1} \in C^\infty\del[1]{B_\varepsilon(0)}$ yields
+	\begin{align*}
+		(f \circ \varphi^{-1})(y) = f(x) + \pi^i(y)\varphi_i(y) = f(x) + (\pi^i \circ \varphi)\del[1]{\varphi^{-1}(y)}(\varphi_i \circ \varphi)\del[1]{\varphi^{-1}(y)}.
+	\end{align*}
+	Thus 
+	\begin{equation*}
+		f = f(x) + x^i(\varphi_i \circ \varphi) 
+	\end{equation*}
+	\noindent on $V$. Using lemma \ref{lem:derivation_of_constant_function} we compute
+	\begin{equation*}
+		v(f) = v\del[1]{x^i(\varphi_i \circ \varphi)} = v(x^i)\varphi_i(0) + x^i(x)v(\varphi_i \circ \varphi) = v(x^i)\frac{\partial}{\partial x^i}\bigg\vert_x(f)
+	\end{equation*}
+	\noindent since $x^i(x) = 0$.\\
+	Suppose that $\lambda^i\frac{\partial}{\partial x^i}\big\vert_x = 0$. Then using example \ref{ex:linear_map_differential} and proposition \ref{prop:computing_differential_via_directional_derivative} we compute
+	\begin{equation*}
+		0 = \lambda^i\frac{\partial}{\partial x^i}\bigg\vert_x(x^j) = \lambda^i D_i(x^j \circ \varphi^{-1})(0) = \lambda^i D_i\pi^j(0) = \lambda^i \pi^j(e_i) = \lambda^i \delta^j_i = \lambda^j.
+	\end{equation*}
+\end{proof}
+
+\begin{definition}[Differential]
+	Let $M$ and $N$ be smooth manifolds and $F \in C^\infty(M,N)$. For $x \in M$, define a map $DF_x : T_xM \to T_{F(x)}N$ by
+	\begin{equation*}
+		DF_x(v)(f) := v(f \circ F)
+	\end{equation*}
+	\noindent for all $f \in C^\infty(N)$. This map is called the \bld{differential of $F$ at $x$}.
+\end{definition}
+
+\begin{definition}[Velocity of a Curve]
+	\label{def:velocity_of_a_curve}
+	Let $J \subseteq \mathbb{R}$ be an open interval and $\gamma \in C^\infty(J,M)$ be a curve in a smooth manifold $M$. For every $t \in J$, define the \bld{velocity vector of $\gamma$ at $t$}, written $\gamma'(t)$, by
+	\begin{equation*}
+		\gamma'(t) := D\gamma_t\del[3]{\frac{d}{dt}\bigg\vert_t} \in T_{\gamma(t)}M.
+	\end{equation*}
+\end{definition}
+
+It is immediate from the definition of the velocity vector of a curve \ref{def:velocity_of_a_curve}, that
+\begin{equation*}
+	\gamma'(t)(f) = D\gamma_t\del[3]{\frac{d}{dt}\bigg\vert_t}(f) = \frac{d}{dt}\bigg\vert_t(f \circ \gamma) = (f \circ \gamma)'(t)
+\end{equation*}
+\noindent for all $f \in C^\infty(M)$.
