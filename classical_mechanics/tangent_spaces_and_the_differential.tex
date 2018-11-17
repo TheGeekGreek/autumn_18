@@ -111,19 +111,20 @@ One of the profound features of tangent spaces to a smooth manifold are that the
 
 \begin{lemma}
 	\label{lem:star_shaped}
-	Let $\upOmega \subseteq \mathbb{R}^n$ be open, and star-shaped about $0 \in \upOmega$. Suppose $f \in C^\infty(\upOmega)$. Then there exists $\varphi_1,\dots,\varphi_n \in C^\infty(\upOmega)$ such that $\varphi_i(0) = D_if(0)$ and
+	Let $\upOmega \subseteq \mathbb{R}^n$ be open and star-shaped about $x_0 \in \upOmega$. Suppose $f \in C^\infty(\upOmega)$. Then there exists $\varphi_1,\dots,\varphi_n \in C^\infty(\upOmega)$ such that $\varphi_i(x_0) = D_if(x_0)$ and
 	\begin{equation*}
-		f = f(0) + \pi^i \varphi_i.
+		f(x) = f(x_0) + \pi^i(x - x_0) \varphi_i(x)
 	\end{equation*}
+	\noindent holds for all $x \in \upOmega$
 \end{lemma}
 
 \begin{proof}
-	For $x \in \upOmega$ define $\gamma : \intcc{0,1} \to \upOmega$ by $\gamma_x(t) := tx$ (note that this is only possible since $\upOmega$ is assumed to be star-shaped with centre $0$). Then
+	For $x \in \upOmega$ define $\gamma_x : \intcc{0,1} \to \upOmega$ by $\gamma_x(t) := x_0 + t(x - x_0)$ (note that this is only possible since $\upOmega$ is assumed to be star-shaped with centre $x_0$). Then
 	\begin{align*}
-		f(x) - f(0) &= \int_0^1 (f \circ \gamma_x)'(t) dt\\
+		f(x) - f(x_0) &= \int_0^1 (f \circ \gamma_x)'(t) dt\\
 		&= \int_0^1 D_if\del[1]{\gamma_x(t)} \dot{\gamma}^i_x(t) dt\\
-		&= \int_0^1 D_if\del[1]{\gamma_x(t)} \pi^i(x)dt\\
-		&= \pi^i(x)\varphi_i(x)
+		&= \int_0^1 D_if\del[1]{\gamma_x(t)} \pi^i(x - x_0)dt\\
+		&= \pi^i(x - x_0)\varphi_i(x)
 	\end{align*}
 	\noindent where
 	\begin{equation*}
@@ -140,22 +141,24 @@ One of the profound features of tangent spaces to a smooth manifold are that the
 \end{proposition}
 
 \begin{proof}
-	We may assume that $(U,\varphi)$ is centered about $x$. Since $\varphi(U) \subseteq \mathbb{R}^n$ is open, there exists $\varepsilon > 0$ such that $B_\varepsilon(0) \subseteq \varphi(U)$. Set $V := \varphi^{-1}\del[1]{B_\varepsilon(0)}$. Then $V$ is a neighbourhood of $x$ in $M$ and thus by proposition \ref{prop:isomorphism_tangent_space}, we have that $T_xM \cong \mathcal{D}_x(V)$. Let $f \in C^\infty(V)$. An application of lemma \ref{lem:star_shaped} to $f \circ \varphi^{-1} \in C^\infty\del[1]{B_\varepsilon(0)}$ yields
+	Since $\varphi(U) \subseteq \mathbb{R}^n$ is open, there exists $\varepsilon > 0$ such that $B_\varepsilon\del[1]{\varphi(x)} \subseteq \varphi(U)$. Set $V := \varphi^{-1}\del[1]{B_\varepsilon\del[1]{\varphi(x)}}$. Then $V$ is a neighbourhood of $x$ in $M$ and thus by proposition \ref{prop:isomorphism_tangent_space}, we have that $T_xM \cong \mathcal{D}_x(V)$. Let $f \in C^\infty(V)$. An application of lemma \ref{lem:star_shaped} to $f \circ \varphi^{-1} \in C^\infty\del[1]{B_\varepsilon\del[1]{\varphi(x)}}$ yields
 	\begin{align*}
-		(f \circ \varphi^{-1})(y) = f(x) + \pi^i(y)\varphi_i(y) = f(x) + (\pi^i \circ \varphi)\del[1]{\varphi^{-1}(y)}(\varphi_i \circ \varphi)\del[1]{\varphi^{-1}(y)}.
+		(f \circ \varphi^{-1})(y) &= f(x) + \pi^i\del[1]{y - \varphi(x)}\varphi_i(y)\\
+		&= f(x) + \del[1]{\pi^i(y) - x^i(x)}\varphi_i(y)\\
+		&= f(x) + \del[1]{(\pi^i \circ \varphi)\del[1]{\varphi^{-1}(y)} - x^i(x)}(\varphi_i \circ \varphi)\del[1]{\varphi^{-1}(y)}.\\
 	\end{align*}
 	Thus 
 	\begin{equation*}
-		f = f(x) + x^i(\varphi_i \circ \varphi) 
+		f = f(x) + \del[1]{x^i - x^i(x)}(\varphi_i \circ \varphi) 
 	\end{equation*}
 	\noindent on $V$. Using lemma \ref{lem:derivation_of_constant_function} we compute
-	\begin{equation*}
-		v(f) = v\del[1]{x^i(\varphi_i \circ \varphi)} = v(x^i)\varphi_i(0) + x^i(x)v(\varphi_i \circ \varphi) = v(x^i)\frac{\partial}{\partial x^i}\bigg\vert_x(f)
-	\end{equation*}
-	\noindent since $x^i(x) = 0$.\\
+	\begin{equation}
+		\label{eq:derivation_in_coordinates}
+		v(f) = v\del[1]{\del[1]{x^i - x^i(x)}(\varphi_i \circ \varphi)} = v(x^i)\varphi_i\del[1]{\varphi(x)} = v(x^i)\frac{\partial}{\partial x^i}\bigg\vert_x(f).
+	\end{equation}
 	Suppose that $\lambda^i\frac{\partial}{\partial x^i}\big\vert_x = 0$. Then using example \ref{ex:linear_map_differential} and proposition \ref{prop:computing_differential_via_directional_derivative} we compute
 	\begin{equation*}
-		0 = \lambda^i\frac{\partial}{\partial x^i}\bigg\vert_x(x^j) = \lambda^i D_i(x^j \circ \varphi^{-1})(0) = \lambda^i D_i\pi^j(0) = \lambda^i \pi^j(e_i) = \lambda^i \delta^j_i = \lambda^j.
+		0 = \lambda^i\frac{\partial}{\partial x^i}\bigg\vert_x(x^j) = \lambda^i D_i\pi^j\del[1]{\varphi(x)} = \lambda^i \pi^j(e_i) = \lambda^i \delta^j_i = \lambda^j.
 	\end{equation*}
 \end{proof}
 
@@ -179,4 +182,47 @@ It is immediate from the definition of the velocity vector of a curve \ref{def:v
 \begin{equation*}
 	\gamma'(t)(f) = D\gamma_t\del[3]{\frac{d}{dt}\bigg\vert_t}(f) = \frac{d}{dt}\bigg\vert_t(f \circ \gamma) = (f \circ \gamma)'(t)
 \end{equation*}
-\noindent for all $f \in C^\infty(M)$.
+\noindent for all $f \in C^\infty(M)$. Moreover, if $(U,\varphi)$ is a chart on $M$, then equation \ref{eq:derivation_in_coordinates} yields
+\begin{equation*}
+	\gamma'(t) = \gamma'(t)(x^i)\frac{\partial}{\partial x^i}\bigg\vert_{\gamma(t)} = (x^i \circ \gamma)'(t)\frac{\partial}{\partial x^i}\bigg\vert_{\gamma(t)} = \dot{\gamma}^i(t)\frac{\partial}{\partial x^i}\bigg\vert_{\gamma(t)}.
+\end{equation*}
+Velocity vectors to a curve give yet another way to think about the tangent space $T_xM$ to a point $x \in M$ of a smooth maifold $M$. Consider the set
+\begin{equation*}
+	X := \cbr{\gamma \in C^\infty(J,M) : J \subseteq \mathbb{R} \text{ open interval with } 0\in J, \gamma(0) = x}.
+\end{equation*}
+Define a binary relation on $X$ as follows:
+\begin{equation*}
+	\gamma_1 \sim \gamma_2 \quad :\Leftrightarrow \quad \exists \text{ chart $U$ about $x$ such that } \gamma'_1(0)f = \gamma_2'(0)f \text{for all } f \in C^\infty(U). 
+\end{equation*}
+
+\begin{exercise}
+	Show that the above relation is an equivalence relation.
+\end{exercise}
+
+Let $\mathcal{V}_xM := X/{\sim}$.
+
+\begin{proposition}
+	Let $M$ be a smooth manifold and $x \in M$. Then $T_xM \cong \mathcal{V}_xM$ as sets.
+\end{proposition}
+
+\begin{proof}
+	Define $\Phi : \mathcal{V}_xM \to T_xM$ by $\Phi\sbr[0]{\gamma} := \gamma'(0)$. This map is well-defined and injective. Let $v \in T_xM$. Then in any chart $(U,\varphi)$ centered about $x$ we have that $v = v^i\frac{\partial}{\partial x^i}\big\vert_x$. Hence for $\varepsilon > 0$ sufficiently small we can define $\gamma_v : \intoo{-\varepsilon,\varepsilon} \to M^n$ by
+	\begin{equation*}
+		\gamma_v(t) := \varphi^{-1}\del[1]{tv^i,\dots,tv^n}.
+	\end{equation*}
+	Thus $\Phi$ is surjective.
+\end{proof}
+
+We can equip $\mathcal{V}_xM$ with the structure of a vector space by means of the following lemma.
+
+\begin{lemma}
+	Let $V$ be a a finite-dimensional real vector space and $S$ be a set. If there exists a bijection $\varphi : S \to V$, we can equip $V$ with a structure of a real vector space such that $\varphi$ is an isomorphism.
+\end{lemma}
+
+\begin{proof}
+	Just define 
+	\begin{equation*}
+		\lambda x + y := \varphi^{-1}\del[1]{\lambda \varphi(x) + \varphi(y)}
+	\end{equation*}
+	\noindent for all $x,y \in S$ and $\lambda \in \mathbb{R}$.
+\end{proof}
