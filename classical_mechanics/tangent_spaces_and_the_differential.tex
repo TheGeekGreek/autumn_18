@@ -133,11 +133,12 @@ One of the profound features of tangent spaces to a smooth manifold are that the
 \end{proof}
 
 \begin{proposition}[Basis for the Tangent Space]
-	Let $M^n$ be a smooth manifold and $\del[0]{U,\varphi}$ a chart on $M$ about $x \in M$. Then 
+	\label{prop:basis_tangent_space}
+	Let $M^n$ be a smooth manifold and $\del[0]{U,\varphi}$ a chart on $M$. Then 
 	\begin{equation*}
 		\cbr[3]{\frac{\partial}{\partial x^i}\bigg\vert_x : i = 1,\dots,n}
 	\end{equation*}
-	\noindent is a basis for $T_xM$, where $x^i := \pi^i \circ \varphi$.
+	\noindent is a basis for $T_xM$ for all $x \in U$, where $x^i := \pi^i \circ \varphi$.
 \end{proposition}
 
 \begin{proof}
@@ -157,17 +158,18 @@ One of the profound features of tangent spaces to a smooth manifold are that the
 		v(f) = v\del[1]{\del[1]{x^i - x^i(x)}(\varphi_i \circ \varphi)} = v(x^i)\varphi_i\del[1]{\varphi(x)} = v(x^i)\frac{\partial}{\partial x^i}\bigg\vert_x(f).
 	\end{equation}
 	Suppose that $\lambda^i\frac{\partial}{\partial x^i}\big\vert_x = 0$. Then using example \ref{ex:linear_map_differential} and proposition \ref{prop:computing_differential_via_directional_derivative} we compute
-	\begin{equation*}
+	\begin{equation}
+		\label{eq:linear_independence_tangent_basis}
 		0 = \lambda^i\frac{\partial}{\partial x^i}\bigg\vert_x(x^j) = \lambda^i D_i\pi^j\del[1]{\varphi(x)} = \lambda^i \pi^j(e_i) = \lambda^i \delta^j_i = \lambda^j.
-	\end{equation*}
+	\end{equation}
 \end{proof}
 
-\begin{definition}[Differential]
+\begin{definition}[Derivative]
 	Let $M$ and $N$ be smooth manifolds and $F \in C^\infty(M,N)$. For $x \in M$, define a map $DF_x : T_xM \to T_{F(x)}N$ by
 	\begin{equation*}
 		DF_x(v)(f) := v(f \circ F)
 	\end{equation*}
-	\noindent for all $f \in C^\infty(N)$. This map is called the \bld{differential of $F$ at $x$}.
+	\noindent for all $f \in C^\infty(N)$. This map is called the \bld{derivative of $F$ at $x$}.
 \end{definition}
 
 \begin{definition}[Velocity of a Curve]
@@ -183,16 +185,17 @@ It is immediate from the definition of the velocity vector of a curve \ref{def:v
 	\gamma'(t)(f) = D\gamma_t\del[3]{\frac{d}{dt}\bigg\vert_t}(f) = \frac{d}{dt}\bigg\vert_t(f \circ \gamma) = (f \circ \gamma)'(t)
 \end{equation*}
 \noindent for all $f \in C^\infty(M)$. Moreover, if $(U,\varphi)$ is a chart on $M$, then equation \ref{eq:derivation_in_coordinates} yields
-\begin{equation*}
-	\gamma'(t) = \gamma'(t)(x^i)\frac{\partial}{\partial x^i}\bigg\vert_{\gamma(t)} = (x^i \circ \gamma)'(t)\frac{\partial}{\partial x^i}\bigg\vert_{\gamma(t)} = \dot{\gamma}^i(t)\frac{\partial}{\partial x^i}\bigg\vert_{\gamma(t)}.
-\end{equation*}
-Velocity vectors to a curve give yet another way to think about the tangent space $T_xM$ to a point $x \in M$ of a smooth maifold $M$. Consider the set
+\begin{equation}
+	\label{eq:velocity_vector_in_coordinates}
+	\gamma'(t) = \gamma'(t)(x^i)\frac{\partial}{\partial x^i}\bigg\vert_{\gamma(t)} = (x^i \circ \gamma)'(t)\frac{\partial}{\partial x^i}\bigg\vert_{\gamma(t)} = \dot{\gamma}^i(t)\frac{\partial}{\partial x^i}\bigg\vert_{\gamma(t)}
+\end{equation}
+\noindent at least sufficiently close to $t$. Velocity vectors to a curve give yet another way to think about the tangent space $T_xM$ to a point $x \in M$ of a smooth maifold $M$. Consider the set
 \begin{equation*}
 	X := \cbr{\gamma \in C^\infty(J,M) : J \subseteq \mathbb{R} \text{ open interval with } 0\in J, \gamma(0) = x}.
 \end{equation*}
 Define a binary relation on $X$ as follows:
 \begin{equation*}
-	\gamma_1 \sim \gamma_2 \quad :\Leftrightarrow \quad \exists \text{ chart $U$ about $x$ such that } \gamma'_1(0)f = \gamma_2'(0)f \text{for all } f \in C^\infty(U). 
+	\gamma_1 \sim \gamma_2 \quad :\Leftrightarrow \quad \exists \text{ chart $(U,\varphi)$ about $x$ such that } (\varphi \circ \gamma_1)'(0) = (\varphi \circ \gamma_2)'(0). 
 \end{equation*}
 
 \begin{exercise}
@@ -206,7 +209,7 @@ Let $\mathcal{V}_xM := X/{\sim}$.
 \end{proposition}
 
 \begin{proof}
-	Define $\Phi : \mathcal{V}_xM \to T_xM$ by $\Phi\sbr[0]{\gamma} := \gamma'(0)$. This map is well-defined and injective. Let $v \in T_xM$. Then in any chart $(U,\varphi)$ centered about $x$ we have that $v = v^i\frac{\partial}{\partial x^i}\big\vert_x$. Hence for $\varepsilon > 0$ sufficiently small we can define $\gamma_v : \intoo{-\varepsilon,\varepsilon} \to M^n$ by
+	Define $\Phi : \mathcal{V}_xM \to T_xM$ by $\Phi\sbr[0]{\gamma} := \gamma'(0)$. This map is well-defined. Indeed, if $\sbr[0]{\gamma_1} = \sbr[0]{\gamma_2}$, there exists a chart $(U,\varphi)$ about $x$ such that $(\varphi \circ \gamma_1)'(0) = (\varphi \circ \gamma_2)'(0)$. This immediately implies that $\dot{\gamma}^i_1(0) = \dot{\gamma}^i_2(0)$ for all $i = 1,\dots,n$. Thus (\ref{eq:velocity_vector_in_coordinates}) yields $\gamma_1'(0) = \gamma_2'(0)$. From this also follows that $\Phi$ is injective. Indeed, if $\gamma_1'(0) = \gamma_2'(0)$, then $\dot{\gamma}_1^i(0) = \dot{\gamma}_2^i(0)$ for all $i = 1,\dots,n$ by (\ref{eq:velocity_vector_in_coordinates}) and proposition \ref{prop:basis_tangent_space}. Let $v \in T_xM$. Then in any chart $(U,\varphi)$ about $x$ we have that $v = v^i\frac{\partial}{\partial x^i}\big\vert_x$. Hence for $\varepsilon > 0$ sufficiently small we can define $\gamma_v : \intoo{-\varepsilon,\varepsilon} \to M^n$ by
 	\begin{equation*}
 		\gamma_v(t) := \varphi^{-1}\del[1]{tv^i,\dots,tv^n}.
 	\end{equation*}
@@ -225,4 +228,34 @@ We can equip $\mathcal{V}_xM$ with the structure of a vector space by means of t
 		\lambda x + y := \varphi^{-1}\del[1]{\lambda \varphi(x) + \varphi(y)}
 	\end{equation*}
 	\noindent for all $x,y \in S$ and $\lambda \in \mathbb{R}$.
+\end{proof}
+
+\begin{definition}[Cotangent Space]
+	Let $M$ be a smooth manifold. For $x \in M$, define the \bld{cotangent space of $M$ at $x$}, written $T^*_xM$, to be 
+	\begin{equation*}
+		T^*_xM := (T_xM)^*.
+	\end{equation*}
+\end{definition}
+
+\begin{definition}[Differential]
+	Let $M$ be a smooth manifold, $U$ a neighbourhood of $x \in M$ and $f \in C^\infty(U)$. Define the \bld{differential of $f$ at $x$}, written $df_x$, to be the element $df_x \in T^*_xM$ given by
+	\begin{equation*}
+		df_x(v) := v(f).
+	\end{equation*}
+\end{definition}
+
+\begin{lemma}[Basis for the Cotangent Space]
+	\label{lem:basis_cotangent_space}
+	Let $M^n$ be a smooth manifold and $\del[0]{U,\varphi}$ a chart on $M$. Then 
+	\begin{equation*}
+		\cbr[1]{dx^i\vert_x : i = 1,\dots,n}
+	\end{equation*}
+	\noindent is a basis for $T^*_xM$ for all $x \in U$, where $x^i := \pi^i \circ \varphi$.
+\end{lemma}
+
+\begin{proof}
+	We only need to note that this is the dual basis of the tangent space basis \ref{prop:basis_tangent_space}. This follows from (\ref{eq:linear_independence_tangent_basis}) since
+	\begin{equation*}
+		dx^i\vert_x\del[3]{\frac{\partial}{\partial x^j}\bigg\vert_x} = \frac{\partial}{\partial x^j}\bigg\vert_x(x^i) = \delta^i_j.
+	\end{equation*}
 \end{proof}

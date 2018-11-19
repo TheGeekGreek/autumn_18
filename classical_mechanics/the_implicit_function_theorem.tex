@@ -1,0 +1,10 @@
+\section*{The Implicit Function Theorem}
+
+\begin{theorem}[The Implicit Function Theorem]
+	\label{thm:implicit_function_theorem}
+	Let $U \subseteq \mathbb{R}^n \times \mathbb{R}^k$ be open, $\Phi : U \to \mathbb{R}^k$ smooth, $(x_0,y_0) \in U$ and $c := \Phi(x_0,y_0)$.  If
+	\begin{equation*}
+		\det\del[1]{D_j\Phi^i_{(x_0,y_0)}}^i_{j = n + 1,\dots,n + k} \neq 0,
+	\end{equation*}
+	\noindent then there exist neighbourhoods $V_0 \subseteq \mathbb{R}^n$ of $x_0$ and $W_0 \subseteq \mathbb{R}^k$ of $y_0$ and a smooth function $F : V_0 \to W_0$ such that $\Phi^{-1}(c) \cap (V_0 \times W_0)$ is the graph of $F$.
+\end{theorem}

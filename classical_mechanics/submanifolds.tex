@@ -1,0 +1,119 @@
+\section*{Submanifolds}
+
+\begin{proposition}
+	\label{prop:inverse_function_theorem_for_manifolds}
+	Let $M^n$ and $N^n$ be smooth manifolds, $F \in C^\infty(M,N)$ and $x \in M$. If $DF_x$ is invertible then there exists a neighbourhood $U$ of $x$ in $M$ such that $F : U \to F(U)$ is a diffeomorphism.
+\end{proposition}
+
+\begin{proof}
+	Let $(V,\varphi)$ be a chart about $x$ and $(W,\psi)$ be a chart about $F(x)$. Then 
+	\begin{equation*}
+		\psi \circ F \circ \varphi^{-1} : \varphi\del[1]{V \cap F^{-1}(W)} \to \mathbb{R}^n
+	\end{equation*}
+	\noindent and using the chain rule yields
+	\begin{equation*}
+		D\del[1]{\psi \circ F \circ \varphi^{-1}}_{\varphi(x)} = D\psi_{F(x)} \circ DF_x \circ D\del[1]{\varphi^{-1}}_{\varphi(x)}
+	\end{equation*}
+	\noindent and thus $D\del[1]{\psi \circ F \circ \varphi^{-1}}_{\varphi(x)}$ is invertible. An application of the inverse function theorem \ref{thm:inverse_function_theorem} yields a neighbourhood $\wtilde{U}$ in $\varphi\del[1]{V \cap F^{-1}(W)}$ about $\varphi(x)$ such that the restriction $\psi \circ F \circ \varphi^{-1}\vert_{\wtilde{U}}$ is a diffeomorhism. Set $U := \varphi^{-1}(\wtilde{U})$. 
+\end{proof}
+
+\begin{proposition}
+	Let $U \subseteq \mathbb{R}^n$ be a neighbourhood about $0$ and $f : U \to \mathbb{R}^k$ smooth such that $f(0) = 0$. Then:
+	\begin{enumerate}[label=\textup{(\alph*)},leftmargin=*]
+		\item If $n \leq k$ and the matrix $Df_0$ has maximal rank, then there exists a chart $\psi$ about $0$ on $\mathbb{R}^k$ such that $\psi \circ f = \iota$, where $\iota : \mathbb{R}^n \hookrightarrow \mathbb{R}^k$ denotes the inclusion.
+		\item If $n \geq k$ and the matrix $Df_0$ has maximal rank, then there exists a chart $\varphi$ about $0$ on $\mathbb{R}^n$ such that $f \circ \varphi = \pi$, where $\pi : \mathbb{R}^n \to \mathbb{R}^k$ denotes the projection.
+	\end{enumerate}
+\end{proposition}
+
+\begin{definition}[Immersion]
+	A smooth map $F : M \to N$ is said to be an \bld{immersion}, iff $DF_x$ is injective for all $x \in M$.
+\end{definition}
+
+\begin{definition}[Embedding]
+	A smooth map $F : M \to N$ is said to be an \bld{embedding}, iff $F$ is an injective immersion and $F : M \to F(M)$ is a homeomorphism, where $F(M)$ is endowed with the subspace topology. 	
+\end{definition}
+
+\begin{definition}[Immersed Submanifold]
+	Let $M$ and $N$ be smooth manifolds and $M \subseteq N$ as sets. We say that $M$ is an \bld{immersed submanifold of $N$}, iff the inclusion $M \hookrightarrow N$ is an immersion. 
+\end{definition}
+
+\begin{definition}[Embedded Submanifold]
+	Let $M$ and $N$ be smooth manifolds and $M \subseteq N$ as sets. We say that $M$ is a \bld{embedded submanifold of $N$}, iff the inclusion $M \hookrightarrow N$ is an embedding. 
+\end{definition}
+
+\begin{proposition}
+	Suppose $F : M^n \to N^k$ is an immersion. Then for any $x \in M$, there exists a chart $U$ of $x$ and a chart $(V,\psi)$ about $F(x)$ such that
+	\begin{enumerate}[label=\textup{(\alph*)},leftmargin=*]
+		\item If $y^i := \pi^i \circ \psi$, then
+			\begin{equation*}
+				F(U) \cap V = \cbr[1]{y \in V : y^{n + 1}(y) = \dots = y^k(y)= 0}. 
+			\end{equation*}
+		\item $F\vert_U$ is an embedding.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proposition}
+	Suppose $F : M^n \to N^k$ is an embedding. Then for any $x \in M$, there exists a chart $U$ of $x$ and a chart $(V,\psi)$ about $F(x)$ such that if $y^i := \pi^i \circ \psi$, then
+	\begin{equation*}
+		F(U) \cap V = \cbr[1]{y \in V : y^{n + 1}(y) = \dots = y^k(y)= 0}. 
+	\end{equation*}
+\end{proposition}
+
+\begin{proof}
+	Since $F$ is a homeomorphism onto $F(M)$, we have that $F(U)$ is open in $F(M)$. By definition of the subspace toology, $F(U) = F(M) \cap W$, where $W$ is open in $N$. But then
+	\begin{equation*}
+		F(U) \cap (W \cap V) = \cbr[1]{y \in V : y^{n + 1}(y) = \dots = y^k(y)= 0}. 
+	\end{equation*}
+\end{proof}
+
+\begin{corollary}
+	Suppose $M^n \subseteq N^k$ is an embedded submanifold. Then for any $x \in M$, there exists a chart $(U,\varphi)$ about $x$ such that if $x^i := \pi^i \circ \varphi$, then
+	\begin{equation*}
+		M \cap U = \cbr[1]{x \in U : x^{n + 1}(x) = \dots = x^k(x)= 0}. 
+	\end{equation*}
+	Every such chart is called a \bld{slice chart for $M$ in $N$}.
+\end{corollary}
+
+\begin{definition}[Regular and Critical Point]
+	Let $F : M \to N$ be smooth. A point $x \in M$ is said to be a \bld{regular point}, iff $\rank DF_x = \dim N$. A point $x \in M$ is said to be a \bld{critical point}, iff $x$ is not a regular point. 
+\end{definition}
+
+\begin{definition}[Regular and Critical Value]
+	Let $F : M \to N$ be smooth. A point $y \in N$ is said to be a \bld{regular value}, iff $F^{-1}(y)$ consist only of regular points. A point $y \in N$ is said to be a \bld{critical value}, iff $y$ is not a regular value. 
+\end{definition}
+
+\begin{theorem}[The Implicit Function Theorem for Manifolds]
+	\label{thm:implicit_function_theorem_for_manifolds}
+	Let $F : M^n \to N^k$ be smooth and suppose that $y \in N$ is a regular value of $F$ such that $F^{-1}(y) \neq \varnothing$. Then $F^{-1}(y)$ is a topological manifold of dimension $n - k$. Moreover, there exists a smooth structure on $F^{-1}(y)$ making it into an embedded submanifold of $M$.
+\end{theorem}
+
+\begin{proposition}
+	Let $F : M \to N$ be smooth and $y \in N$ a regular value of $F$ such that $F^{-1}(y) \neq \varnothing$. Then
+	\begin{equation*}
+		D\iota_x\del[1]{T_xF^{-1}(y)} = \ker DF_x
+	\end{equation*}
+	\noindent holds for all $x \in F^{-1}(y)$ where $\iota : F^{-1}(y) \hookrightarrow M$ denotes the inclusion.
+\end{proposition}
+
+\begin{definition}[Submersion]
+	A smooth map $F : M \to N$ is said to be a \bld{submersion}, iff every point of $M$ is a regular value.	
+\end{definition}
+
+The next theorem is the main reason why we require smooth manifolds to admit only countably many connected components.
+
+\begin{theorem}[Sard's Theorem for Manifolds]
+	\label{thm:Sards_theorem_for_manifolds}
+	Let $F : M \to N$ be smooth. Then the set of regular values of $F$ is dense in $N$.
+\end{theorem}
+
+\begin{theorem}[The Strong Whitney Embedding Theorem]
+	Let $M^n$ be a smooth manifold. Then there exists a proper embedding $M \to \mathbb{R}^{2n}$.
+\end{theorem}
+
+\begin{theorem}[The Weak Whitney Embedding Theorem]
+	Let $M^n$ be a smooth manifold. Then there exists a proper embedding $M \to \mathbb{R}^{2n + 1}$.
+\end{theorem}
+
+\begin{theorem}[The Whitney Approximation Theorem]
+	Let $F : M \to N$ be a continuous map between two smooth manifolds $M$ and $N$. Then $F$ is homotopic to a smooth map.
+\end{theorem}

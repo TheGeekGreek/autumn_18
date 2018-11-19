@@ -1,0 +1,131 @@
+\section*{Differentiability}
+
+\begin{definition}[Carath\'eodory Differentiability]
+	Let $(V,\abs{\>\cdot\>}_V)$ and $(W,\abs{\>\cdot\>}_W)$ be finite-dimensional vector spaces, $U \subseteq V$ open and $x_0 \in U$. A map $F : U \to W$ is said to be \bld{differentiable at $x_0$}, iff there exists a map $\varphi : U \to \mathrm{L}(V,W)$ such that $\varphi$ is continuous at $x_0$ and
+	\begin{equation}
+		\label{eq:differentiable}
+		F(x) - F(x_0) = \varphi(x)(x - x_0)
+	\end{equation}
+	\noindent holds for all $x \in U$. 
+\end{definition}
+
+\begin{example}[Linear Map]
+	\label{ex:linear_map_differential}
+	Let $(V,\abs{\>\cdot\>}_V)$ and $(W,\abs{\>\cdot\>}_W)$ be finite-dimensional vector spaces and $L \in \mathrm{L}(V,W)$. Then $L$ is differentiable at every $x_0 \in V$ since
+	\begin{equation*}
+		L(x) - L(x_0) = L(x - x_0) = \varphi(x)(x - x_0)
+	\end{equation*}
+	\noindent holds, where $\varphi : V \to \mathrm{L}(V,W)$ is given by $\varphi(x) := L$.
+\end{example} 
+
+\begin{proposition}
+	Let $(V,\abs{\>\cdot\>}_V)$ and $(W,\abs{\>\cdot\>}_W)$ be finite-dimensional vector spaces, $U \subseteq V$ open and $x_0 \in U$. Suppose $\varphi,\psi : U \to \mathrm{L}(V,W)$ are continuous at $x_0$ such that  
+	\begin{equation*}
+		F(x) - F(x_0) = \varphi(x)(x - x_0) \qquad \text{and} \qquad F(x) - F(x_0) = \psi(x)(x - x_0)
+	\end{equation*}	
+	\noindent holds for all $x \in U$. Then $\varphi(x_0) = \psi(x_0)$.
+\end{proposition}
+
+\begin{proof}
+	Definiere $g : U \to M_{mn}(\mathbb{R})$ durch
+\begin{equation*}
+g(x) := \varphi(x) - \psi(x).
+\end{equation*}
+Dann gilt für alle $x \in U$
+\begin{equation*}
+g(x)(x - a) = \varphi(x)(x - a) - \psi(x)(x - a) = 0.
+\end{equation*}
+Somit folgt
+\begin{equation*}
+\norm[0]{g(a)(x - a)} = \norm[0]{\del[1]{g(a) - g(x)}(x - a)} \leq \norm[0]{g(a) - g(x)}_\op \norm[0]{x - a}
+\end{equation*}
+\noindent für alle $x \in U$ oder äquivalent
+\begin{equation}
+\norm[3]{g(a)\frac{x - a}{\norm[0]{x - a}}} \leq \norm[0]{g(a) - g(x)}_\op.
+\label{eq:ineq}
+\end{equation}
+Sei $\varepsilon > 0$. Da $g$ stetig ist in $a$, existiert $r >\delta > 0$, wobei $B_r(a) \subseteq U$, sodass für alle $x \in \dot{B}_\delta(a)$
+\begin{equation*}
+\norm[0]{g(a) - g(x)}_\op < \varepsilon 
+\end{equation*}
+\noindent gilt. Weiter ist
+\begin{equation*}
+\cbr[1]{\norm[0]{g(a)(x-a)/\norm[0]{x - a}} : x \in \dot{B}_\delta(a)} = \cbr[0]{\norm[0]{g(a)x} : \norm[0]{x} = 1}.
+\end{equation*}
+In der Tat, die Inklusion $\subseteq$ ist klar. Angenommen, $\norm[0]{y} = 1$. Definiere $x := a + \frac{\delta}{2}y$. Dann gilt
+\begin{equation*}
+\norm[0]{x - a} \leq \frac{\delta}{2}\norm[0]{y} < \delta
+\end{equation*}
+\noindent und somit $x \in \dot{B}_\delta(a)$. Weiter ist auch 
+\begin{equation*}
+g(a)\frac{x - a}{\norm[0]{x - a}} = g(a)\frac{\frac{\delta}{2}y}{\frac{\delta}{2}\norm[0]{y}} = g(a)y.
+\end{equation*}
+Daher folgt aus (\ref{eq:ineq})
+\begin{equation*}
+\norm[0]{g(a)}_{\op} = \sup_{\norm[0]{x} = 1}\norm[0]{g(a)x} = \sup_{x \in \dot{B}_\delta(a)}\norm[3]{g(a)\frac{x - a}{\norm[0]{x - a}}} < \varepsilon
+\end{equation*}
+Da $\varepsilon > 0$ beliebig war, folgt $\norm[0]{g(a)}_{\op} = 0$ und somit $g(a) = 0$. Dies impliziert insbesondere $\varphi(a) = \psi(a)$.	
+\end{proof}
+
+\begin{definition}[Differential]
+	Let $(V,\abs{\>\cdot\>}_V)$ and $(W,\abs{\>\cdot\>}_W)$ be finite-dimensional vector spaces, $U \subseteq V$ open and $x_0 \in U$. If $F$ is differentiable at $x_0$, define the \bld{differential of $F$ at $x_0$}, written $DF_{x_0}$, by
+	\begin{equation*}
+		DF_{x_0} := \varphi(x_0)
+	\end{equation*}
+	\noindent where $\varphi$ is as in \textup{\ref{eq:differentiable}}.
+\end{definition}
+
+\begin{lemma}
+	Let $U \subseteq \mathbb{R}$ open, $f : U \to \mathbb{R}^n$ and $x_0 \in U$. Then $f$ is differentiable at $x_0$ if and only if 
+	\begin{equation}
+		\lim_{x \to x_0, x \in U} \frac{f(x) - f(x_0)}{x - x_0} \in \mathbb{R}.
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	
+\end{proof}
+
+\begin{definition}[Derivative]
+	Let $U \subseteq \mathbb{R}$ open and $f : U \to \mathbb{R}^n$ differentiable at $x_0 \in U$. Then the \bld{derivative of $f$ at $x_0$}, written $f'(x_0)$, is defined by
+	\begin{equation*}
+		f'(x_0) := \lim_{x \to x_0, x \in U} \frac{f(x) - f(x_0)}{x - x_0}.
+	\end{equation*}
+\end{definition}
+
+\begin{definition}[Directional Derivative]
+	Let $U \subseteq \mathbb{R}^n$ be open, $F : U \to \mathbb{R}^m$ and $v \in \mathbb{R}^n$. Define the \bld{directional derivative of $F$ in direction $v$ at $x_0$}, written $D_vF_{x_0}$, by
+	\begin{equation*}
+		D_vF_{x_0} := \lim_{t \to 0, t \in \mathbb{R}}\frac{F(x_0 + tv) - F(x_0)}{t}
+	\end{equation*} 
+\end{definition}
+
+\begin{definition}[Partial Derivative]
+	Let $U \subseteq \mathbb{R}^n$ open, $F : U \to \mathbb{R}^m$ and $x_0 \in U$. If $F$ is differentiable at $x_0$, then define the \bld{$i$-th partial derivative of $F$ at $x_0$}, written $D_iF(x_0)$, by
+	\begin{equation*}
+		D_iF(x_0) := D_{e_i}F_{x_0},
+	\end{equation*} 
+	\noindent where $(e_i)$ denotes the standard basis of $\mathbb{R}^n$.
+\end{definition}
+
+\begin{proposition}
+	\label{prop:computing_differential_via_directional_derivative}
+	Let $U \subseteq \mathbb{R}^n$ open, $F : U \to \mathbb{R}^m$ and $x_0 \in U$. If $F$ is differentiable at $x_0$, then 
+	\begin{equation*}
+		DF_{x_0}(v) = D_vF_{x_0}
+	\end{equation*}
+	\noindent for all $v \in \mathbb{R}^n$.
+\end{proposition}
+
+\begin{proof}
+	Consider the composition
+	\begin{equation*}
+		\begin{tikzcd}
+			t \arrow[r,maps to,"f"] & x_0 + tv \arrow[r,maps to,"F"] & F(x_0 + tv).
+		\end{tikzcd}
+	\end{equation*}
+	Then we compute
+	\begin{equation*}
+		D_vF_{x_0} = (F \circ f)'(0) = D(F \circ f)_0 = DF_{x_0} \circ Df_0 = DF_{x_0} \circ f'(0) = DF_{x_0}(v).
+	\end{equation*}
+\end{proof}
