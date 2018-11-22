@@ -1,1 +1,75 @@
 \section*{Vector Fields}
+
+\begin{definition}[Vector Field]
+	Let $M$ be a smooth manifold and $U \subseteq M$ open. A \bld{vector field on $U$} is defined to be a section of the projection $\pi : TU \to U$, where $TU \subseteq TM$. The set of all vector fields on $U$ is denoted by $\mathfrak{X}(U)$.
+\end{definition}
+
+\begin{example}[Coordinate Vector Fields]
+	Let $M$ be a smooth manifold and $\del[1]{U,(x^i)}$ be a chart on $M$. Define $\frac{\partial}{\partial x^i} : U \to TM$ by
+	\begin{equation*}
+		\frac{\partial}{\partial x^i}(x) := \frac{\partial}{\partial x^i}\bigg\vert_x.
+	\end{equation*}
+	It immediately follows from the smoothness criteria for tensor fields \ref{prop:smoothness_criteria_for_tensor_fields} that $\frac{\partial}{\partial x^i} \in \mathfrak{X}(U)$.
+\end{example}
+
+\begin{exercise}
+	Show that $\mathfrak{X}(U)$ is a $C^\infty(U)$-module. \emph{Hint:} Use the smoothness criteria for tensor fields \ref{prop:smoothness_criteria_for_tensor_fields}.
+\end{exercise}
+
+In contrast to arbitrary tensor fields, vector fields can act on smooth functions.
+
+\begin{proposition}
+	\label{prop:vector_fields_acting_on_functions}
+	Let $M$ be a smooth manifold and $U \subseteq M$ open. Then $X \in \mathfrak{X}(U)$ if and only if the function $Xf : U \to \mathbb{R}$ defined by $Xf(x) := X(x)f$ is smooth for all $f \in C^\infty(V)$, where $V \subseteq U$ is open.
+\end{proposition}
+
+\begin{proof}
+	Using the smoothness criteria for tensor fields \ref{prop:smoothness_criteria_for_tensor_fields}, we locally write $X = X^i\frac{\partial}{\partial x^i}$, where $X^i$ are smooth functions. Hence
+	\begin{equation*}
+		Xf = X^i\frac{\partial f}{\partial x^i}
+	\end{equation*}
+	\noindent which is smooth.\\
+	Conversly, suppose that $Xf$ is smooth for any $f \in C^\infty(V)$. Then in particular
+	\begin{equation*}
+		X(x^j) = X^i\frac{\partial x^j}{\partial x^i} = X^j
+	\end{equation*}
+	\noindent is smooth.
+\end{proof}
+
+We adopt the terminology from \cite[218]{weibel:homological_algebra:1994}.
+
+\begin{definition}[Derivation]
+	Let $M$ be a smooth manifold and $U \subseteq M$ open. A \bld{derivation of $C^\infty(U)$} is a linear map $D : C^\infty(U) \to C^\infty(U)$ such that
+	\begin{equation*}
+		D(fg) = D(f)g + fD(g)
+	\end{equation*}
+	\noindent holds for all $f,g \in C^\infty(U)$. Denote the set of all derivations of $C^\infty(U)$ by $\Der(U)$.
+\end{definition}
+
+\begin{exercise}
+	Show that $\Der(U)$ is a $C^\infty(M)$-module.
+\end{exercise}
+
+\begin{proposition}
+	\label{prop:vector_fields_as_derivations}
+	Let $M$ be a smooth manifold and $U \subseteq M$ be open and non-empty. Then $\mathfrak{X}(U) \cong \Der(U)$ as modules over $C^\infty(U)$.
+\end{proposition}
+
+\begin{proof}
+	Define $\Phi : \mathfrak{X}(U) \to \Der(U)$ by $\Phi(X)(f) := Xf$ using proposition \ref{prop:vector_fields_acting_on_functions}. Moreover, define $\Psi : \Der(U) \to \mathfrak{X}(U)$ by $\Psi(D)(x)(f) := Df$ for all $f \in C^\infty(U)$ again using proposition \ref{prop:vector_fields_acting_on_functions}.
+\end{proof}
+
+\begin{remark}
+	From now on we will identify vector fields in $\mathfrak{X}(U)$ with derivations $\Der(U)$ by means of proposition \ref{prop:vector_fields_as_derivations}. 
+\end{remark}
+
+Proposition \ref{prop:vector_fields_as_derivations} yields a new tool for constructing vector fields.
+
+\begin{exercise}
+	Let $M$ be a smooth manifold and $U \subseteq M$ a non-empty open subset. Show that 
+	\begin{equation*}
+		\sbr[0]{X,Y} := X\circ Y - Y\circ X \in \mathfrak{X}(U)
+	\end{equation*}
+	\noindent for any $X,Y \in \mathfrak{X}(U)$.
+\end{exercise}
+

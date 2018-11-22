@@ -62,6 +62,18 @@ Let $\mathcal{A}$ and $\mathcal{A}'$ be two smooth atlases on a topological mani
 	\noindent which is smooth. Since $\mathbb{S}^n$ is Hausdorff as a metric space and as a subspace of a second countable space, itself second countable, $\mathbb{S}^n$ equipped with the smooth structure induced by the smooth atlas constructed above, is a smooth manifold of dimension $n$.
 \end{example}
 
+\begin{proposition}[Smooth Manifold Chart Lemma]
+	Let $M$ be a set and suppose $(U_\alpha,\varphi_\alpha)_{\alpha \in A}$ is a family of subsets $U_\alpha \subseteq M$ and maps $\varphi_\alpha : U_\alpha \to \mathbb{R}^n$, for some fixed $n \in \mathbb{N}$, such that:
+	\begin{enumerate}[label = \textup{(\roman*)},leftmargin=*]
+		\item For all $\alpha \in A$, $\varphi_\alpha(U_\alpha)$ is open and $\varphi : U_\alpha \to \varphi_\alpha(U_\alpha)$ is a bijection.
+		\item For all $\alpha,\beta \in A$, $\varphi_\alpha(U_\alpha \cap U_\beta)$ and $\varphi_\beta(U_\alpha \cap U_\beta)$ are open in $\mathbb{R}^n$.
+		\item If $U_\alpha \cap U_\beta \neq \varnothing$, then $\varphi_\alpha \circ \varphi_\beta^{-1} : \varphi_\beta(U_\alpha \cap U_\beta) \to \varphi_\alpha(U_\alpha \cap U_\beta)$ is smooth.
+		\item Countably many of the sets $U_\alpha$ cover $M$.
+		\item If $x,y \in M$ such that $x \neq y$, there either exists some $\alpha \in A$ such that $x,y \in U_\alpha$ or there exists $\alpha,\beta \in A$ such that $U_\alpha \cap U_\beta = \varnothing$, $x \in U_\alpha$ and $y \in U_\beta$.
+	\end{enumerate}
+	Then $M$ admits a unique smooth structure containing the atlas $(U_\alpha,\varphi_\alpha)_{\alpha \in A}$.
+\end{proposition}
+
 \begin{definition}[Smooth Map]
 	Let $M$ and $N$ be smooth manifolds and $F : M \to N$ a map. We say that $F$ is \bld{smooth}, iff for all $x \in M$, there exists a chart $(U,\varphi)$ on $M$ about $x$ and a chart $(V,\psi)$ on $N$ about $F(x)$ such that
 	\begin{enumerate}[label = \textup{(\roman*)},leftmargin=*]

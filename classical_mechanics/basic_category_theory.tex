@@ -1,0 +1,137 @@
+\chapter{Basic Category Theory}
+\section*{Categories}
+
+\begin{definition}[Category]
+	A \bld{category $\mathcal{C}$} consists of 
+	\begin{itemize}[leftmargin = *]
+		\item A class $\ob(\mathcal{C})$, called the \bld{objects of $\mathcal{C}$}.
+		\item A class $\mor(\mathcal{C})$, called the \bld{morphisms of $\mathcal{C}$}.
+		\item Two functions $\dom : \mor(\mathcal{C}) \to \ob(\mathcal{C})$ and $\cod : \mor(\mathcal{C}) \to \ob(\mathcal{C})$, which assign to each morphism $f$ in $\mathcal{C}$ its \bld{domain} and \bld{codomain}, respectively.
+		\item For each $X \in \ob(\mathcal{C})$ a function $\ob(\mathcal{C}) \to \mor(\mathcal{C})$ which assigns a morphism $\id_X$ such that $\dom \id_X = \cod \id_X = X$.
+		\item A function 
+			\begin{equation}
+				\circ : \cbr{(g,f) \in \mor(\mathcal{C}) \times \mor(\mathcal{C}) : \dom g = \cod f} \to \mor(\mathcal{C}) 
+			\end{equation}
+			mapping $(g,f)$ to $g \circ f$, called \bld{composition}, such that $\dom(g \circ f) = \dom f$ and $\cod(g \circ f) = \cod g$.
+	\end{itemize}
+	Subject to the following axioms:
+	\begin{itemize}[leftmargin = *]
+		\item \bld{(Associativity Axiom)} For all $f,g,h \in \mor(\mathcal{C})$ with $\dom h = \cod g$ and $\dom g = \cod f$, we have that
+			\begin{equation}
+				(h \circ g) \circ f = h \circ (g \circ f).
+			\end{equation}
+		\item \bld{(Unit Axiom)} For all $f \in \mor(\mathcal{C})$ with $\dom f = X$ and $\cod f = Y$ we have that
+			\begin{equation}
+				f = f \circ \id_X = \id_Y \circ f.
+			\end{equation}
+	\end{itemize}
+\end{definition}
+
+\begin{remark}
+	Let $\mathcal{C}$ be a category. For $X,Y \in \ob(\mathcal{C})$ we will abreviate
+	\begin{equation*}
+		\mathcal{C}(X,Y) := \cbr{f \in \mor(\mathcal{C}) : \dom f = X \text{ and } \cod f = Y}.
+	\end{equation*}
+	Moreover, $f \in \mathcal{C}(X,Y)$ is depicted as
+	\begin{equation}
+		f : X \to Y.
+	\end{equation}
+\end{remark}
+
+\begin{example}
+	Let $\ast$ be a single, not nearer specified object. Consider as morphisms the class of all cardinal numbers and as composition cardinal addition. By \cite[112--113]{halbeisen:set_theory:2012}, cardinal addition is associative and $\varnothing$ serves for the identity $\id_\ast$.  
+\end{example}
+
+\begin{definition}[Locally Small, Hom-Set]
+	A category $\mathcal{C}$ is said to be \bld{locally small} if for all $X,Y \in \mathcal{C}$, $\mathcal{C}(X,Y)$ is a set. If $\mathcal{C}$ is locally small, $\mathcal{C}(X,Y)$ is called a \bld{hom-set} for all $X,Y \in \mathcal{C}$. 
+\end{definition}
+
+\begin{definition}[Monic]
+	Let $\mathcal{C}$ be a category. A morphism $f \in \mathcal{C}(X,Y)$ is said to be \bld{monic}, iff for all objects $A \in \mathcal{C}$ and morphisms $g,h \in \mathcal{C}(A,X)$
+	\begin{equation*}
+		f \circ g = f \circ h \Rightarrow g = h
+	\end{equation*}
+	\noindent holds.
+\end{definition}
+
+\begin{exercise}
+	In $\mathsf{Set}$, show that a morphism is monic if and only if it is injective.
+\end{exercise}
+
+\begin{definition}[Epic]
+	Let $\mathcal{C}$ be a category. A morphism $f \in \mathcal{C}(X,Y)$ is said to be \bld{epic}, iff $f$ is monic in $\mathcal{C}^\op$.
+\end{definition}
+
+\begin{exercise}
+	In $\mathsf{Set}$, show that a morphism is epic if and only if it is surjective.
+\end{exercise}
+
+\begin{definition}[Isomorphism]
+	\label{def:isomorphism}
+	Let $\mathcal{C}$ be a category. An \bld{isomorphism in $\mathcal{C}$} is a morphism $f \in \mathcal{C}(X,Y)$, such that there exists a morphism $g \in \mathcal{C}(Y,X)$ with 
+	\begin{equation*}
+		g \circ f = \id_X \qquad \text{and} \qquad f \circ g = \id_Y.
+	\end{equation*}
+\end{definition}
+
+\begin{exercise}
+	Let $\mathcal{C}$ be a category. Show that any isomorphism is both monic and epic.
+\end{exercise}
+
+\begin{exercise}
+	In $\mathsf{Set}$, show that any monic and epic morphism is an isomorphism.
+\end{exercise}
+
+In the definition of an isomorphism \ref{def:isomorphism}, a morphism is forced to admit a two-sided inverse. However, in reality, often only one-sided inverses do exist. Since they are particularly useful, they get they own terminology.
+
+\begin{definition}[Section]
+	Let $\mathcal{C}$ be a category and $f \in \mathcal{C}(X,Y)$. A morphism $\sigma \in \mathcal{C}(Y,X)$ is called a \bld{section of $f$}, iff $f \circ \sigma = \id_Y$.
+\end{definition}
+
+\begin{exercise}
+	Let $\mathcal{C}$ be a category. Show that any morphism admitting a section is epic.
+\end{exercise}
+
+\begin{exercise}
+	In $\mathsf{Set}$, show that any epic morphism admits a section (observe the subtle use of the axiom of choice!).
+\end{exercise}
+
+\begin{definition}[Retraction]
+	Let $\mathcal{C}$ be a category and $f \in \mathcal{C}(X,Y)$. A morphism $\rho \in \mathcal{C}(Y,X)$ is called a \bld{retraction of $f$}, iff $\rho \circ f = \id_X$.
+\end{definition}
+
+\begin{exercise}
+	Let $\mathcal{C}$ be a category. Show that any morphism admitting a retraction is monic.
+\end{exercise}
+
+In algebraic topology, there is a very useful construction on categories.
+
+\begin{definition}[Congruence]
+	Let $\mathcal{C}$ be a category. A \bld{congruence on $\mathcal{C}$} is an equivalence relation $\sim$ on $\mor(\mathcal{C})$ such that 
+	\begin{enumerate}[label = \textup{(}\alph*\textup{)},wide = 0pt]
+		\item If $f \in \mathcal{C}(X,Y)$ and $f {\sim} g$, then $g \in \mathcal{C}(X,Y)$.
+		\item If $f_0 : X \to Y$ and $g_0 : Y \to Z$ such that $f_0 {\sim} f_1$ and $g_0 {\sim} g_1$, then $g_0 \circ f_0 {\sim} g_1 \circ f_1$.
+	\end{enumerate}
+\end{definition}
+
+\begin{exercise}
+	Let $\mathcal{C}$ be a category. Show that for any congruence on $\mathcal{C}$, there exists a category $\mathcal{C}'$, called \bld{quotient category}, with $\ob(\mathcal{C}') = \ob(\mathcal{C})$, for any objects $X,Y \in \mathcal{C}'$
+	\begin{equation*}
+		\mathcal{C}'(X,Y) = \cbr[0]{\sbr[0]{f} : f \in \mathcal{C}(X,Y)},
+	\end{equation*}
+	\noindent and pointwise composition.
+\end{exercise}
+
+\section*{Functors}
+
+\begin{definition}[Functor]
+	Let $\mathcal{C}$ and $\mathcal{D}$ be categories. A \bld{functor $F : \mathcal{C} \to \mathcal{D}$} is a pair of functions $(F_1,F_2)$, $F_1 : \ob(\mathcal{C}) \to \ob(\mathcal{D})$, called the \bld{object function} and $F_2 : \mor(\mathcal{C}) \to \mor(\mathcal{D})$, called the \bld{morphism function}, such that for every morphism $f : X \to Y$ we have that $F_2(f) : F_1(X) \to F_1(Y)$ and $(F_1,F_2)$ is subject to the following \bld{compatibility conditions}:
+	\begin{itemize}[leftmargin = *]
+		\item For all $X \in \ob(\mathcal{C})$, $F_2(\id_X) = \id_{F_1(X)}$.
+		\item For all $f \in \mathcal{C}(X,Y)$ and $g \in \mathcal{C}(Y,Z)$ we have that $F_2(g \circ f) = F_2(g) \circ F_2(f)$.
+	\end{itemize}
+\end{definition}
+
+\begin{remark}
+	Let $F : \mathcal{C} \to \mathcal{D}$ be a functor. It is convenient to denote the components $F_1$ and $F_2$ also with $F$.
+\end{remark}

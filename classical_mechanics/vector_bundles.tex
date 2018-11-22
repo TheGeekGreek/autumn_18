@@ -1,1 +1,30 @@
 \section*{Vector Bundles}
+
+\begin{definition}[Fibre Bundle]
+	A \bld{fibre bundle} is defined to be a tuple $(E,M,\pi,F)$ consisting of smooth manifolds $E,M$ and $F$ together with a surjective map $\pi \in C^\infty(E,M)$ such that for every $x \in M$, there exists a neighbourhood $U$ of $x$ and a diffeomorphism $\varphi_x : \pi^{-1}(U) \to U \times F$ such that
+	\begin{equation*}
+		\begin{tikzcd}
+			\pi^{-1}(U) \arrow[dr,"\pi"']\arrow[rr,"\varphi_x"] && U \times F\arrow[dl,"\pi^1"]\\
+			& U\\
+		\end{tikzcd}
+	\end{equation*}
+	\noindent commutes. If $(E,M,\pi,F)$ is a fibre bundle, we call $M$ the \bld{base space}, $E$ the \bld{total space} and $F$ the \bld{fibre}.
+\end{definition}
+
+The fibre $F$ of a fibre bundle $(E,M,\pi,F)$ is completely determined by $\pi : E \to M$. 
+
+\begin{proposition}
+	Let $(E,M,\pi,F)$ be a fibre bundle. Then $\pi$ is a submersion and for all $x \in M$, we have that $E_x \cong F$ in $\mathsf{Man}$, where $E_x := \pi^{-1}(x)$.
+\end{proposition}
+
+\begin{proof}
+	
+\end{proof}
+
+\begin{example}[Trivial Bundle]
+	Let $M$ and $F$ be smooth manifolds. Then 
+	\begin{equation*}
+		\pi : M \times F \to M
+	\end{equation*}
+	\noindent is a fibre bundle.
+\end{example}
