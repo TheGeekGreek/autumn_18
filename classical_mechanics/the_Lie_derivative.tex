@@ -1,0 +1,112 @@
+\section*{The Lie Derivative}
+
+\begin{definition}[Pullback]
+	Let $l \in \mathbb{N}$ and $F \in C^\infty(M,N)$. Define 
+	\begin{equation*}
+		F^* : \mathcal{T}^{0,l}(N) \to \mathcal{T}^{0,l}(M)
+	\end{equation*}
+	\noindent by
+	\begin{equation*}
+		(F^*A)_x(v_1,\dots,v_l) := A_{F(x)}\del[1]{DF_x(v_1),\dots,DF_x(v_l)}
+	\end{equation*}
+	\noindent for all $x \in M$ and $v_1,\dots,v_l \in T_xM$, if $k \geq 1$ and by $F^*f := f \circ F$ if $k = 0$. We call $F^*A$ the \bld{pullback of $A$ under $F$}.
+\end{definition}
+
+To extend the notion of a pullback of a tensor field to arbitrary tensor fields, we must impose an additional contition on the map.
+
+\begin{definition}[Cotangent Lift]
+	Let $F \in C^\infty(M,N)$ be a diffeomorphism. Define a map $DF^\dagger : T^*M \to T^*N$ by
+	\begin{equation*}
+		DF^\dagger(x,\xi)(v) := \xi\del[1]{(DF_x)^{-1}(v)}
+	\end{equation*}
+	\noindent for all $v \in T_{F(x)}N$. This map is called the \bld{cotangent lift of the diffeomorphism $F$}.
+\end{definition}
+
+\begin{definition}[Pullback]
+	Let $k,l \in \mathbb{N}$ and $f \in C^\infty(M,N)$ a diffeomorphism. Define 
+	\begin{equation*}
+		F^* : \mathcal{T}^{k,l}(N) \to \mathcal{T}^{k,l}(M)
+	\end{equation*}
+	\noindent by
+	\begin{equation*}
+		A \mapsto (F^*A)_x\del[1]{\xi^1,\dots,\xi^k,v_1,\dots,v_l}
+	\end{equation*}
+	\noindent for all $x \in M$, $\xi^1,\dots,\xi^k \in T_x^*M$ and $v_1,\dots,v_l \in T_xM$, if $k \geq 1$, where the latter is defined to be
+	\begin{equation*}
+		A_{F(x)}\del[1]{DF^\dagger(\xi^1),\dots,DF^\dagger(\xi^k),DF_x(v_1),\dots,DF_x(v_k)}
+	\end{equation*}
+	We call $F^*A$ the \bld{pullback of $A$ under $F$}.
+\end{definition}
+
+\begin{definition}[Pushforward]
+	Let $k,l \in \mathbb{N}$ and $f \in C^\infty(M,N)$ a diffeomorphism. Define 
+	\begin{equation*}
+		F_* : \mathcal{T}^{k,l}(M) \to \mathcal{T}^{k,l}(N)
+	\end{equation*}
+	\noindent by
+	\begin{equation*}
+		F_*A := \del[1]{F^{-1}}^*A.
+	\end{equation*}
+\end{definition}
+
+\begin{definition}[Tensor Derivation]
+	A \bld{tensor derivation on a smooth manifold $M$} is defined to be a sheaf morphism $\mathcal{D} : \mathcal{T}_M \to \mathcal{T}_M$ that preserves type and satisfies:
+	\begin{enumerate}[label = \textup{(\roman*)},leftmargin=*]
+		\item For all $U \in \mathcal{O}(M)$, $\mathcal{D}_U$ commutes with all contractions of $\mathcal{T}_M(U)$.
+		\item For all $U \in \mathcal{O}(M)$, $\mathcal{D}_U$ is a derivation, that is
+			\begin{equation*}
+				\mathcal{D}_U(A \otimes B) = \mathcal{D}_UA \otimes B + A \otimes \mathcal{D}_UB
+			\end{equation*}
+			\noindent holds for all $A,B \in \mathcal{T}(U)$.
+	\end{enumerate}
+\end{definition}
+
+\begin{proposition}
+	Let $\mathcal{D}$ and $\mathcal{D}'$ be two tensor derivations on a smooth manifold which agree on functions and vector fields. Then $\mathcal{D} = \mathcal{D}'$.
+\end{proposition}
+
+\begin{proposition}
+	\label{prop:constructing_tensor_derivation}
+	Let $\mathcal{D}$ be a sheaf morphism on functions and vector fields. If 
+	\begin{equation*}
+		\mathcal{D}_U(fg) = \mathcal{D}_U(f)g + f\mathcal{D}_U(g) \quad \text{and} \quad \mathcal{D}_U(fX) = \mathcal{D}_U(f)X + f\mathcal{D}_U(X)
+	\end{equation*}
+	\noindent holds for all $U \in \mathcal{O}(M)$, $f,g \in C^\infty(U)$ and $X \in \mathfrak{X}(U)$, then $\mathcal{D}$ extends uniquely to a tensor derivation on $M$.
+\end{proposition}
+
+\begin{theorem}[The Lie Derivative]
+	Let $M$ be a smooth manifold and $X \in \mathfrak{X}(M)$. Then there exists a unique tensor derivation 
+	\begin{equation*}
+		\mathcal{L}_X : \mathcal{T}_M \to \mathcal{T}_M
+	\end{equation*}
+	\noindent on $M$ such that
+	\begin{equation*}
+		\mathcal{L}_Xf = Xf \qquad \text{and} \qquad \mathcal{L}_XY = \sbr[0]{X,Y}
+	\end{equation*}
+	\noindent for all $U \in \mathcal{O}(M)$, $f \in C^\infty(U)$ and $Y \in \mathfrak{X}(U)$. This tensor derivation is called the \bld{Lie derivative}.
+\end{theorem}
+
+\begin{proof}
+	This immediately follows from proposition \ref{prop:constructing_tensor_derivation} since
+	\begin{align*}
+		\del[1]{\mathcal{L}_X(fY)}g &= \sbr[0]{X,fY}g\\
+		&= X\del[1]{(fY)(g)} - fY\del[1]{X(g)}\\
+		&= X\del[1]{fY(g)} - fY\del[1]{X(g)}\\
+		&= X(f)Y(g) + f \del[1]{X\del[1]{Y(g)}} -  fY\del[1]{X(g)}\\
+		&= X(f)Y(g) + f \sbr[0]{X,Y}g
+	\end{align*}
+	\noindent implies
+	\begin{equation*}
+		\mathcal{L}_X(fY) = \mathcal{L}_X(f)Y + f\mathcal{L}_XY.
+	\end{equation*}
+\end{proof}
+
+The next proposition shows why the name Lie derivative is appropriate.
+
+\begin{proposition}
+	Let $M$ be a smooth manifold and $X \in \mathfrak{X}(M)$ with flow $\theta$. Then
+	\begin{equation*}
+		\mathcal{L}_XA = \frac{d}{dt}\bigg\vert_{t = 0} \theta_t^*(A)
+	\end{equation*}
+	\noindent for any $A \in \mathcal{T}^{(k,l)}(M)$.
+\end{proposition}

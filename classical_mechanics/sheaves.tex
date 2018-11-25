@@ -1,0 +1,40 @@
+\section*{Sheaves}
+If $M$ is a smooth manifold, so is $U$ for any open subset $U \subseteq M$. Most of the constructions we performed so far also work for this induced smooth structure on $U$. However, it is tedious to explicitely mention this all the time. So we introduce now a foundational notion of a mathematical field called \emph{Algebraic Geometry}.
+
+Let $(X,\mathcal{T}) \in \mathsf{Top}$. Then denote by $\mathcal{O}(X)$ the category of open subsets of $X$, that is the category associated to the poset $(\mathcal{T},\subseteq)$ (see \cite[24]{leinster:basic_category:2016}). Recall, that for any two categories $\mathcal{C}$ and $\mathcal{D}$, there exists the functor category $\mathcal{D}^\mathcal{C}$ from $\mathcal{C}$ to $\mathcal{D}$ (see \cite[30]{leinster:basic_category:2016}).
+
+\begin{definition}[Presheaf]
+	Let $X \in \mathsf{Top}$ and $\mathcal{C}$ be a category. A \bld{presheaf of $\mathcal{C}$ on $X$} is defined to be a contravariant functor $\mathcal{O}(X) \to \mathcal{C}$. The \bld{category of presheaves of $\mathcal{C}$ on $X$} is denoted by $\mathsf{PSh}(X;\mathcal{C})$.
+\end{definition}
+
+\begin{remark}
+	Let $F : \mathcal{O}(X) \to \mathcal{C}$, where $\mathcal{C}$ is the category of a mathematical structure, that is $\mathsf{Grp}$, $\mathsf{Ring}$, $\mathsf{Vect}$, $\dots$, be a presheaf of $\mathcal{C}$ on $X$. Then if $U \subseteq V$ for $U,V \in \mathcal{O}(X)$, we simply write $f\vert_U$ for $F(U \hookrightarrow V)(f)$, where $f \in F(V)$. 
+\end{remark}
+
+\begin{example}
+	\label{ex:vector_bundle_presheaf}
+	Let $(E,M,\pi)$ be a vector bundle. Define $\mathcal{E}_E : \mathcal{O}(X) \to \mathsf{Vect}$ on objects $U \in \mathcal{O}(X)$ by $\mathcal{E}_E(U) := \upGamma(U,E)$ and on morphisms by restriction.	
+\end{example}
+
+\begin{definition}[Sheaf]
+	Let $X \in \mathsf{Top}$ and $F$ a presheaf of $\mathsf{Set}$ \textup{(}$\mathsf{Grp}$, $\mathsf{Ring}$, $\mathsf{Vect}$, $\dots$\textup{)} on $X$. We say that $F$ is a \bld{sheaf on $X$}, iff for all $U \in \mathcal{O}(X)$ the following \bld{gluing condition} is satisfied: Given any open cover $(U_\alpha)_{\alpha \in A}$ for $U$ and $f_\alpha \in F(U_\alpha)$ for all $\alpha \in A$ such that
+	\begin{equation*}
+		f_\alpha\vert_{U_\alpha \cap U_\beta} = f_\beta\vert_{U_\alpha \cap U_\beta}
+	\end{equation*}
+	\noindent for all $\alpha,\beta \in A$ with $U_\alpha \cap U_\beta \neq \varnothing$, then there exists a unique element $f \in F(U)$ with $f\vert_{U_\alpha} = f_\alpha$ for all $\alpha \in A$.
+\end{definition}
+
+From example \ref{ex:vector_bundle_presheaf} we already know that $\mathcal{E}_E$ is a presheaf. In fact, more is true.
+
+\begin{proposition}
+	\label{prop:section_sheaf}
+	Let $(E,M,\pi)$ be a vector bundle. Then $\mathcal{E}_E$ is a sheaf. 
+\end{proposition}
+
+\begin{example}
+	Let $M$ be a smooth manifold. Then tensor fields of type $(k,l)$ can be assembled in a sheaf by proposition \ref{prop:section_sheaf}. Denote this sheaf by $\mathcal{T}^{k,l}_M := \mathcal{E}_{T^{(k,l)}TM}$. We can assemble these sheaves in a total sheaf $\mathcal{T}_M : \mathcal{O}(M) \to {_{\mathbb{R}}}\mathsf{GAlg}$ by setting
+	\begin{equation*}
+		\mathcal{T}_M(U) := \bigoplus_{k,l \geq 0} \mathcal{T}^{k,l}_M(U).
+	\end{equation*}
+	We call $\mathcal{T}_M$ the \bld{tensor algebra sheaf on $M$}.
+\end{example}

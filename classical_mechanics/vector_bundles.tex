@@ -1,24 +1,17 @@
 \section*{Vector Bundles}
 
 \begin{definition}[Fibre Bundle]
-	A \bld{fibre bundle} is defined to be a tuple $(E,M,\pi,F)$ consisting of smooth manifolds $E,M$ and $F$ together with a surjective map $\pi \in C^\infty(E,M)$ such that for every $x \in M$, there exists a neighbourhood $U$ of $x$ and a diffeomorphism $\varphi_x : \pi^{-1}(U) \to U \times F$ such that
-	\begin{equation*}
-		\begin{tikzcd}
-			\pi^{-1}(U) \arrow[dr,"\pi"']\arrow[rr,"\varphi_x"] && U \times F\arrow[dl,"\pi^1"]\\
-			& U\\
-		\end{tikzcd}
-	\end{equation*}
-	\noindent commutes. If $(E,M,\pi,F)$ is a fibre bundle, we call $M$ the \bld{base space}, $E$ the \bld{total space} and $F$ the \bld{fibre}.
+	A \bld{fibre bundle} is defined to be a tuple $(E,M,\pi,F)$ consisting of smooth manifolds $E,M$ and $F$ together with a surjective map $\pi \in C^\infty(E,M)$ such that there exists an open cover $(U_\alpha)_{\alpha \in A}$ of $M$ and maps $\varphi_\alpha \in C^\infty\del[1]{\pi^{-1}(U_\alpha), F}$ for all $\alpha \in A$ such that $(\pi,\varphi_\alpha) : \pi^{-1}(U_\alpha) \to U_\alpha \times F$ is a diffeomorphism. If $(E,M,\pi,F)$ is a fibre bundle, we call $M$ the \bld{base space}, $E$ the \bld{total space} and $F$ the \bld{fibre}. Moreover, the family $(U_\alpha,\varphi_\alpha)_{\alpha \in A}$ is called a \bld{bundle atlas} for $(E,M,\pi,F)$.
 \end{definition}
 
 The fibre $F$ of a fibre bundle $(E,M,\pi,F)$ is completely determined by $\pi : E \to M$. 
 
 \begin{proposition}
-	Let $(E,M,\pi,F)$ be a fibre bundle. Then $\pi$ is a submersion and for all $x \in M$, we have that $E_x \cong F$ in $\mathsf{Man}$, where $E_x := \pi^{-1}(x)$.
+	Let $(E,M,\pi,F)$ be a fibre bundle. Then $\pi$ is a submersion, $E_x := \pi^{-1}(x)$ is an embedded submanifold of $E$ for all $x \in M$ and $E_x \cong F$ in $\mathsf{Man}$.
 \end{proposition}
 
 \begin{proof}
-	
+	Let $x \in M$. Then there exists a neighbourhood $U_\alpha$ of $x$ such that $\pi = \pi^1 \circ (\pi,\varphi_\alpha)$. But then $\pi$ is a submersion as compositions of submersions. Thus an application of the implicit function theorem for manifolds \ref{thm:implicit_function_theorem_for_manifolds} yields that $E_x$ is an embedded submanifold of $E$. Now $E_x \cong \cbr{x} \times F$ by $\varphi_\alpha$, but $\cbr{x} \times F \cong F$ in $\mathsf{Man}$.	
 \end{proof}
 
 \begin{example}[Trivial Bundle]
@@ -28,3 +21,66 @@ The fibre $F$ of a fibre bundle $(E,M,\pi,F)$ is completely determined by $\pi :
 	\end{equation*}
 	\noindent is a fibre bundle.
 \end{example}
+
+\begin{exercise}
+	Let $M$ and $N$ be smooth manifolds and $G \in C^\infty(M,N)$. Moreover, suppose that $(E,N,\pi)$ is a fibre bundle. Define
+	\begin{equation*}
+		G^*E := \cbr[1]{(x,p) \in M \times E : G(x) = \pi(p)}.
+	\end{equation*}
+	Show that $(G^*E,M,\pi^1,F)$ is a fibre bundle. This fibre bundle is called the \bld{pullback bundle}.
+\end{exercise}
+
+\begin{definition}[Effective Action]
+	A left action $\theta : G \times M \to M$ of a Lie group $G$ on a smooth manfiold $M$ is said to be \bld{effective}, iff $\theta_g = \id_M$ if and only if $g = e$.
+\end{definition}
+
+\begin{definition}[Compatibility]
+	Let $(E,M,\pi)$ be a fibre bundle and $\theta : G \times F \to F$ an effective Lie group action. Let $\alpha,\beta \in A$ such that $U_\alpha \cap U_\beta \neq \varnothing$. We say that $\varphi_\alpha : \pi^{-1}(U_\alpha) \to F$ and $\varphi_\beta : \pi^{-1}(U_\beta) \to F$ are \bld{$(G,\theta)$ - compatible}, iff there exists $\wtilde{\rho}_{\alpha\beta} : U_\alpha \cap U_\beta \to G$ such that
+	\begin{equation*}
+		\rho_{\alpha\beta}(x)(y) = \wtilde{\rho}_{\alpha\beta}(x)\cdot y
+	\end{equation*}
+	\noindent holds for all $x \in U_\alpha \cap U_\beta$ and $y \in F$, where $\rho_{\alpha\beta} : U_\alpha \cap U_\beta \to \Diff(F)$ is defined by
+	\begin{equation*}
+		\rho_{\alpha\beta}(x) := \varphi_\alpha\vert_{E_x} \circ \varphi_\beta\vert_{E_x}^{-1}.
+	\end{equation*}
+\end{definition}
+
+\begin{definition}[Structure Group]
+	A \bld{structure group} of a fibre bundle $(E,M,\pi)$ is a Lie group $G$ such that there exists an effective Lie group action on $F$ and a bundle atlas $(U_\alpha,\varphi_\alpha)_{\alpha \in A}$ which is $G$-compatible.
+\end{definition}
+
+\begin{definition}[Vector Bundle]
+	\label{def:vector_bundle}
+	Let $k \in \mathbb{N}$. A \bld{vector bundle of rank $k$} is defined to be a fibre bundle $(E,M,\pi,\mathbb{R}^k)$ admiting a matrix Lie subgroup of $\GL(k)$ as a structure group.
+\end{definition}
+
+As aestetically pleasing the definition of a vector bundle \ref{def:vector_bundle} may be, in practice, it is not that useful. Hence we give an alternative definition.
+
+\begin{definition}[Vector Bundle]
+	Let $E$ and $M$ be smooth manifolds, $\pi \in C^\infty(E,M)$ surjective and $k \in \mathbb{N}$. We say that $(E,M,\pi)$ is a \bld{vector bundle of rank $k$}, iff $E_x$ admits the structure of a $k$-dimensional real vector space and there exists an open cover $(U_\alpha)_{\alpha \in A}$ of $M$ and a map $\varphi_\alpha \in C^\infty\del[1]{\pi^{-1}(U_\alpha),\mathbb{R}^k}$ for all $\alpha \in A$ such that
+	\begin{enumerate}[label = \textup{(\roman*)},leftmargin=*]
+		\item $(\pi,\varphi_\alpha) : \pi^{-1}(U_\alpha) \to U_\alpha \times \mathbb{R}^k$ is a diffeomorphism for all $\alpha \in A$.
+		\item $\varphi_\alpha\vert_{E_x} : E_x \to \mathbb{R}^k$ is an isomorphism of vector spaces.
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}[Vector Bundle Morphism]
+	Let $(E,M,\pi)$ and $(E',M',\pi')$ be two vector bundles and $f \in C^\infty(M,M')$. A \bld{vector bundle morphism along $f$} is defined to be a map $F \in C^\infty(E,E')$ such that 
+	\begin{equation*}
+		\begin{tikzcd}
+			E \arrow[d,"\pi"']\arrow[r,"F"] & E'\arrow[d,"\pi'"]\\
+			M \arrow[r,"f"'] & M'
+		\end{tikzcd}
+	\end{equation*}
+	\noindent commutes and $F\vert_{E_x} : E_x \to E'_{f(x)}$ is linear for all $x \in M$.
+\end{definition}
+
+\begin{definition}[Vector Bundle Homomorphism]
+	Let $(E,M,\pi)$ and $(E',M,\pi')$ be two vector bundles	over the same base space. A \bld{vector bundle homomorphism} is a vector bundle morphism along $\id_M$.
+\end{definition}
+
+One particular advantage of studying vector bundles instead of mere fibre bundles is that the set of sections admits an additional structure.
+
+\begin{lemma}
+	Let $(E,M,\pi)$ be a vector bundle. Then for any $U \subseteq M$ open, the set $\upGamma(U,E)$ is a vector space and a $C^\infty(U)$-module. 
+\end{lemma}
