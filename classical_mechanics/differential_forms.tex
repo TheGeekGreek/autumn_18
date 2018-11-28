@@ -1,1 +1,25 @@
 \section*{Differential Forms}
+Differential forms are a key technical tool in differential geometry. In contrast to mere tensor fields, they can be both differentiated and integrated.
+
+\begin{definition}
+	Let $M$ be a smooth manifold and $l \in \mathbb{Z}$. A \bld{graded derivation of degree $l$ on $M$} is defined to be an $\mathbb{R}$-linear sheaf morphism $\mathcal{D} : \upOmega_M \to \upOmega_M$ satisfying:
+	\begin{enumerate}[label=\textup{(\roman*)},leftmargin=*]
+		\item If $\omega \in \upOmega^k(U)$, then $\mathcal{D}_U(\omega) \in \upOmega^{k + l}(U)$.
+		\item If $\omega \in \upOmega^k(U)$ and $\eta \in \upOmega(U)$, then
+			\begin{equation*}
+				\mathcal{D}_U(\omega \wedge \eta) = \mathcal{D}_U(\omega) \wedge \eta + (-1)^{kl}\omega \wedge \mathcal{D}_U(\eta).
+			\end{equation*}
+	\end{enumerate}
+\end{definition}
+
+\begin{proposition}
+	Let $M$ be a smooth manifold and suppose that $\mathcal{D}$ and $\mathcal{D}'$ are two gradedderivations on $M$ of the same degree which coincide on functions and exact $1$-forms. Then $\mathcal{D} = \mathcal{D}'$.
+\end{proposition}
+
+\begin{theorem}[The Exterior Differential]
+	Let $M$ be a smooth manifold. Then there exists a unique graded derivation $d : \upOmega_M \to \upOmega$ of degree $1$ such that
+	\begin{equation*}
+		d_U(f) = df \qquad \text{and} \qquad d \circ d = 0
+	\end{equation*}
+	\noindent holds for all $f \in C^\infty(U)$. This graded derivation is called the \bld{exterior differential}.
+\end{theorem}

@@ -28,13 +28,21 @@ From example \ref{ex:vector_bundle_presheaf} we already know that $\mathcal{E}_E
 
 \begin{proposition}
 	\label{prop:section_sheaf}
-	Let $(E,M,\pi)$ be a vector bundle. Then $\mathcal{E}_E$ is a sheaf. 
+	Let $(E,M,\pi)$ be a vector bundle. Then $\mathcal{E}_E : \mathcal{O}(M) \to \mathsf{Vect}$ is a sheaf. 
 \end{proposition}
 
-\begin{example}
+\begin{example}[Tensor Sheaf]
+	\label{ex:tensor_sheaf}
 	Let $M$ be a smooth manifold. Then tensor fields of type $(k,l)$ can be assembled in a sheaf by proposition \ref{prop:section_sheaf}. Denote this sheaf by $\mathcal{T}^{k,l}_M := \mathcal{E}_{T^{(k,l)}TM}$. We can assemble these sheaves in a total sheaf $\mathcal{T}_M : \mathcal{O}(M) \to {_{\mathbb{R}}}\mathsf{GAlg}$ by setting
 	\begin{equation*}
 		\mathcal{T}_M(U) := \bigoplus_{k,l \geq 0} \mathcal{T}^{k,l}_M(U).
 	\end{equation*}
 	We call $\mathcal{T}_M$ the \bld{tensor algebra sheaf on $M$}.
+\end{example}
+
+\begin{example}[Sheaf of Differential Forms]
+	Let $M^n$ be a smooth manifold and let $0 \leq k \leq n$. Then by \ref{prop:section_sheaf}, $\mathcal{E}_{\upLambda^k(T^*M)}$ is a sheaf. This sheaf is denoted by $\upOmega^k_M$ and called the \bld{sheaf of differential $k$-forms}. As with tensor fields in example \ref{ex:tensor_sheaf},we can define a sheaf $\upOmega_M : \mathcal{O}(M) \to {_{\mathbb{R}}}\mathsf{GSCAlg}$ by
+	\begin{equation*}
+		\upOmega_M(U) := \bigoplus_{0 \leq k \leq n} \upOmega^k_M(U).
+	\end{equation*}
 \end{example}

@@ -64,18 +64,21 @@
 \counterwithout{figure}{chapter}
 %Section, subsection and subsubsection font
 %------------------------------------------
-	\renewcommand{\@secnumfont}{\bfseries}
-	\renewcommand\section{\@startsection{section}{1}%
-  	\z@{.7\linespacing\@plus\linespacing}{.5\linespacing}%
-  	{\normalfont\bfseries\boldmath\centering}}
-	\renewcommand\subsection{\@startsection{subsection}{2}%
-    	\z@{.5\linespacing\@plus.7\linespacing}{-.5em}%
-    	{\normalfont\bfseries\boldmath}}%
-	\renewcommand\subsubsection{\@startsection{subsubsection}{3}%
-    	\z@{.5\linespacing\@plus.7\linespacing}{-.5em}%
-    	{\normalfont\bfseries\boldmath}}%
+\renewcommand{\@secnumfont}{\bfseries}
+%\renewcommand\chapter{\@startsection{chapter}{1}%
+%	\z@{.7\linespacing\@plus\linespacing}{.5\linespacing}%
+%	{\normalfont\bfseries\boldmath\centering}}
+\renewcommand\section{\@startsection{section}{2}%
+	\z@{.7\linespacing\@plus\linespacing}{.5\linespacing}%
+	{\normalfont\bfseries\boldmath\centering}}
+\renewcommand\subsection{\@startsection{subsection}{2}%
+	\z@{.5\linespacing\@plus.7\linespacing}{-.5em}%
+	{\normalfont\bfseries\boldmath}}%
+\renewcommand\subsubsection{\@startsection{subsubsection}{4}%
+	\z@{.5\linespacing\@plus.7\linespacing}{-.5em}%
+	{\normalfont\bfseries\boldmath}}%
 
-		\renewenvironment{proof}{\noindent\textit{Proof}.}{\qed}
+\renewenvironment{proof}{\noindent\textit{Proof}.}{\qed}
 
 %ToC
 %---

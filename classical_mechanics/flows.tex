@@ -1,0 +1,59 @@
+\section*{Flows}
+
+\begin{definition}[Integral Curve]
+	Let $M$ be a smooth manifold and $X \in \mathfrak{X}(M)$. A curve $\gamma \in C^\infty(J,M)$, where $J \subseteq \mathbb{R}$ is an interval, is said to be an \bld{integral curve of $X$}, iff 
+	\begin{equation*}
+		\gamma'(t) = X_{\gamma(t)}
+	\end{equation*}
+	\noindent holds for all $t \in J$.
+\end{definition}
+
+\begin{proposition}[Fundamental Theorem for Autonomous ODEs]
+	Let $U \subseteq \mathbb{R}^n$ open and $X \in C^\infty(U,\mathbb{R}^n)$. Consider the initial value problem
+	\begin{equation}
+		\label{eq:IVP}
+		\ccases{
+			\gamma'(t) = X\del[1]{\gamma^1(t),\dots,\gamma^n(t)}\\
+			\gamma(t_0) = c,
+		}
+	\end{equation}
+	\noindent for  $t_0 \in \mathbb{R}$ and $c \in U$. Then:
+	\begin{enumerate}[label = \textup{(\alph*)},leftmargin=*]
+		\item For any $t_0 \in \mathbb{R}$ and $x_0 \in U$ there exists an open interval $J_0$ containing $t_0$ and an open subset $U_0 \subseteq U$ containing $x_0$ such that for each $c \in U_0$ there is a map $\gamma \in C^1(J_0,U)$ that solves \textup{(\ref{eq:IVP})}.
+		\item Any two solutions to \textup{(\ref{eq:IVP})} agree on their common domain.
+		\item Define 
+			\begin{equation*}
+				\theta : J_0 \times U_0 \to U
+			\end{equation*}
+			\noindent by $\theta(t,x) := \gamma(t)$, where $\gamma(t)$ is the unique solution of \textup{(\ref{eq:IVP})} such that $\gamma(t_0) = x$. Then $\theta$ is smooth.
+	\end{enumerate}
+\end{proposition}
+
+\begin{theorem}[Fundamental Theorem of Flows]
+	Let $M$ be a smooth manifold and $X \in \mathfrak{X}(M)$. Then there exists a unique open set $\mathcal{D} \subseteq \mathbb{R} \times M$ and a unique smooth map $\theta : \mathcal{D} \to M$, called the \bld{maximal flow associated to $X$}, such that
+	\begin{enumerate}[label=\textup{(\alph*)},leftmargin=*]
+		\item For all $x \in M$ we have that
+			\begin{equation*}
+				\mathcal{D} \cap (\mathbb{R} \times \cbr{x}) = \intoo[1]{t^-(x),t^+(x)} \times \cbr{x}.
+			\end{equation*}
+		\item $\theta(t,x) = \gamma_x(t)$ for all $(t,x) \in \mathcal{D}$.
+	\end{enumerate}
+\end{theorem}
+
+\begin{definition}[Complete]
+	A vector field $X \in \mathfrak{X}(M)$ on a smooth manifold $M$ is said to be \bld{complete}, iff its flow $\theta$ admits the domain $\mathbb{R} \times M$.
+\end{definition}
+
+A sufficient condition for completeness is given in the following lemma.
+
+\begin{lemma}
+	Let $M$ be a smooth manifold and $X \in \mathfrak{X}(M)$. Suppose thta there exists $\varepsilon > 0$ such that $\intoo{-\varepsilon,\varepsilon} \subseteq \intoo[1]{t^-(x),t^+(x)}$ for all $x \in M$. Then $X$ is complete.
+\end{lemma}
+
+\begin{proposition}
+	Let $M$ be a smooth manifold and $X \in \mathfrak{X}(M)$ with compact support. Then $X$ is complete.
+\end{proposition}
+
+\begin{corollary}
+	Every vector field on a compact smooth manifold is complete.
+\end{corollary}

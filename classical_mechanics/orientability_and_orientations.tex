@@ -1,0 +1,48 @@
+\section*{Orientability and Orientations}
+
+\begin{definition}[Orientation]
+	Let $V$ be a real vector space. An \bld{orientation of $V$} is defined to be a choice of one of the two components of $\upLambda^{\dim V}(V) \setminus \cbr{0}$.  
+\end{definition}
+
+\begin{definition}[Determinant Functor]
+	Let $k \in \mathbb{N}$. Define a functor 
+	\begin{equation*}
+		\det : \mathsf{Vect}^{\geq 1} \to \mathsf{Vect}^1
+	\end{equation*}
+	\noindent on objects by $\det V := \upLambda^k V$ and on morphisms $L : V \to W$ as follows: If $\dim V = \dim W = k$, then set
+	\begin{equation*}
+		\det L(v_1 \wedge \dots \wedge v_k) := Lv_1 \wedge \dots \wedge Lv_k
+	\end{equation*}
+	\noindent and to be the zero-morphism otherwise.
+\end{definition}
+
+\begin{proposition}
+	\label{prop:orientability_vector_bundles}
+	Let $(E,M,\pi)$ be a vector bundle of rank $k$. The following conditions are equivalent:
+	\begin{enumerate}[label=\textup{(\alph*)},leftmargin = *]
+		\item There exists a nowhere-vanishing section $\sigma \in \upGamma(\det E^*)$.
+		\item The structure group of $E$ can be reduced to $\GL^+(k)$.
+		\item The bundle $\det E^* \to M$ is trivial.
+	\end{enumerate}
+\end{proposition}
+
+\begin{definition}[Orientability]
+	A vector bundle $(E,M,\pi)$ is said to be \bld{orientable}, iff one of the conditions of proposition \ref{prop:orientability_vector_bundles} is satisfied. A specific choice of a nowhere vanishing section in $\upGamma(\det E^*)$ is called an \bld{orientation of $E$}. A smooth manifold $M$ is said to be \bld{orientable},  iff the tangent bundle $\pi : TM \to M$ is orientable.
+\end{definition}
+
+\begin{definition}[Volume Form]
+	Let $M^n$ be a smooth manifold. A \bld{volume form on $M$} is defined to be a nowhere-vanishing $n$-form.
+\end{definition}
+
+\begin{corollary}[Orientability of Manifolds]
+	Let $M$ be a smooth manifold. Then the following conditions are equivalent:
+	\begin{enumerate}[label=\textup{(\alph*)},leftmargin = *]
+		\item $M$ admits a volume form.
+		\item There exists a smooth atlas $(U_\alpha,\varphi_\alpha)_{\alpha \in A}$ on $M$ such that when $U_\alpha \cap U_\beta \neq \varnothing$
+			\begin{equation*}
+				\det D(\varphi_\alpha \circ \varphi_\beta^{-1})\del[1]{\varphi_\beta(x)} > 0
+			\end{equation*}
+			\noindent holds for all $x \in U_\alpha \cap U_\beta$.
+		\item The bundle $\det E^* \to M$ is trivial.
+	\end{enumerate}
+\end{corollary}
