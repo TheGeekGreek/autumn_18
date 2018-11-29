@@ -1,1 +1,60 @@
 \section*{Lie groups and Lie algebras}
+
+\begin{definition}[Lie Group]
+	A \bld{Lie group} is defined to be a group object in $\mathsf{Man}$.
+\end{definition}
+
+\begin{definition}[Lie Group Homomorphism]
+	A map $F \in C^\infty(G,H)$ between two Lie groups $G$ and $H$ is said to be a \bld{Lie group homomorphism}, iff $F : G \to H$ is a homomorphism.
+\end{definition}
+
+The group structure of a Lie group induces canonical maps.
+
+\begin{definition}[Translation]
+	Let $G$ be a Lie group and $g \in G$. Define $L_g,R_g \in \Diff(G)$ by
+	\begin{equation*}
+		L_g(h) := gh \qquad \text{and} \qquad R_g(h) := hg.
+	\end{equation*}
+	\noindent These maps are called \bld{left translation} and \bld{right translation by $g$}, respectively.
+\end{definition}
+
+\begin{proposition}
+	Every Lie group homomorphism has constant rank.
+\end{proposition}
+
+\begin{definition}[Lie Subgroup]
+	A \bld{Lie subgroup} of a Lie group $G$ is defined to be a subgroup of $G$, which is itself a Lie group and an immersed submanifold of $G$.
+\end{definition}
+
+\begin{proposition}
+	Let$G$ be a Lie group and $H$ be a subgroup of $G$ such that $H$ is an embedded submanifold of $G$. Then $H$ is a Lie subgroup of $G$.
+\end{proposition}
+
+To every Lie group we can associate an algebraic object.
+
+\begin{definition}[Lie Algebra]
+	A \bld{Lie algebra} is defined to be a real vector space $\mathfrak{g}$, such that there exists a bilinear mapping
+	\begin{equation*}
+		[\>\cdot\>,\>\cdot\>] : \mathfrak{g} \times \mathfrak{g} \to \mathfrak{g},
+	\end{equation*}
+	\noindent called the \bld{Lie bracket on $\mathfrak{g}$}, such that:
+	\begin{enumerate}[label=\textup{(\roman*)},leftmargin=*]
+		\item \textup{(}\bld{Antisymmetry}\textup{)} $[x,y] = -[y,x]$,
+		\item \textup{(}\bld{Jacobi's Identity}\textup{)} $[x,[y,z]] + [z,[x,y]] + [y,[z,x]] = 0$,
+	\end{enumerate}
+	\noindent holds for all $x,y,z \in \mathfrak{g}$.
+\end{definition}
+
+\begin{example}[Vector Fiels]
+	Let $M$ be a smooth manifold and $U \subseteq M$ open. Then $\mathfrak{X}(U)$ together with $[\>\cdot\>,\>\cdot\>]$ defined in exercise \ref{ex:Lie_bracket_on_vector_fields} is a Lie algebra, called the \bld{Lie algebra of vector fields on $M$}.
+\end{example}
+
+\begin{definition}[Lie Algebra Homomorphism]
+	Let $\mathfrak{g}$ and $\mathfrak{h}$ be two Lie algebras. A \bld{Lie algebra homomorphism between $\mathfrak{g}$ and $\mathfrak{h}$} is defined to be a homomorphism $L \in \mathrm{L}(\mathfrak{g},\mathfrak{h})$ such that
+	\begin{equation*}
+		L[x,y] = [Lx,Ly]
+	\end{equation*}
+	\noindent holds for all $x,y \in \mathfrak{g}$.
+\end{definition}
+
+
